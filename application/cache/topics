@@ -1,4 +1,4 @@
-a:3:{s:4:"time";i:1618802512;s:3:"ttl";i:300;s:4:"data";a:6:{i:0;O:8:"stdClass":4:{s:2:"id";s:1:"1";s:5:"title";s:13:"JavaScript란";s:11:"description";s:691:"<h2>
+a:3:{s:4:"time";i:1618843601;s:3:"ttl";i:300;s:4:"data";a:6:{i:0;O:8:"stdClass":4:{s:2:"id";s:1:"1";s:5:"title";s:13:"JavaScript란";s:11:"description";s:691:"<h2>
     자바스크립트는</h2>
 <ul>
   <li>
@@ -150,5 +150,5 @@ echo json_encode($userinfo);
 </ul>
 
 <p>&nbsp;</p>
-";s:7:"created";s:19:"2021-04-19 11:18:47";}i:5;O:8:"stdClass":4:{s:2:"id";s:2:"10";s:5:"title";s:15:"하ㅓ하하하";s:11:"description";s:57:"<p>ㅎㄹㄶㄴㅁㅇㅂㅎㄹㄴㅁ읗룬믕ㅎㅁ</p>
-";s:7:"created";s:19:"2021-04-19 12:21:41";}}}
+";s:7:"created";s:19:"2021-04-19 11:18:47";}i:5;O:8:"stdClass":4:{s:2:"id";s:2:"11";s:5:"title";s:6:"연습";s:11:"description";s:40:"<p>연습입니다. 잘 되나요?</p>
+";s:7:"created";s:19:"2021-04-19 13:50:51";}}}
