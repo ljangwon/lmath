@@ -1689,3 +1689,201 @@ DEBUG - 2021-04-19 05:21:52 --> File loaded: application/views/main.php
 DEBUG - 2021-04-19 05:21:52 --> File loaded: application/views/footer.php
 DEBUG - 2021-04-19 05:21:52 --> Final output sent to browser
 DEBUG - 2021-04-19 05:21:52 --> Total execution time: 0.0506
+DEBUG - 2021-04-19 05:31:20 --> Config Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Hooks Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Utf8 Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> UTF-8 Support Enabled
+DEBUG - 2021-04-19 05:31:20 --> URI Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Router Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Output Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Security Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Input Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Global POST and COOKIE data sanitized
+DEBUG - 2021-04-19 05:31:20 --> Language Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Loader Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Helper loaded: url_helper
+DEBUG - 2021-04-19 05:31:20 --> Helper loaded: alert_helper
+DEBUG - 2021-04-19 05:31:20 --> Session Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Helper loaded: string_helper
+DEBUG - 2021-04-19 05:31:20 --> Database Driver Class Initialized
+ERROR - 2021-04-19 05:31:20 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\dev\bin\xampp\htdocs\leanmath\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2021-04-19 05:31:20 --> Session routines successfully run
+DEBUG - 2021-04-19 05:31:20 --> Controller Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2021-04-19 05:31:20 --> Model Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Model Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Config file loaded: application/config/development/leanmath.php
+DEBUG - 2021-04-19 05:31:20 --> File loaded: application/views/head.php
+DEBUG - 2021-04-19 05:31:20 --> Helper loaded: file_helper
+DEBUG - 2021-04-19 05:31:20 --> File loaded: application/views/topic_list.php
+DEBUG - 2021-04-19 05:31:20 --> Helper loaded: html_helper
+DEBUG - 2021-04-19 05:31:20 --> Helper loaded: korean_helper
+DEBUG - 2021-04-19 05:31:20 --> File loaded: application/views/get.php
+DEBUG - 2021-04-19 05:31:20 --> File loaded: application/views/footer.php
+DEBUG - 2021-04-19 05:31:20 --> Final output sent to browser
+DEBUG - 2021-04-19 05:31:20 --> Total execution time: 0.1083
+DEBUG - 2021-04-19 05:31:20 --> Config Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Hooks Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Utf8 Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> UTF-8 Support Enabled
+DEBUG - 2021-04-19 05:31:20 --> URI Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Router Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Output Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Security Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Input Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Global POST and COOKIE data sanitized
+DEBUG - 2021-04-19 05:31:20 --> Language Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Loader Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Helper loaded: url_helper
+DEBUG - 2021-04-19 05:31:20 --> Helper loaded: alert_helper
+DEBUG - 2021-04-19 05:31:20 --> Session Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Helper loaded: string_helper
+DEBUG - 2021-04-19 05:31:20 --> Database Driver Class Initialized
+ERROR - 2021-04-19 05:31:20 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\dev\bin\xampp\htdocs\leanmath\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2021-04-19 05:31:20 --> Session routines successfully run
+DEBUG - 2021-04-19 05:31:20 --> Controller Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2021-04-19 05:31:20 --> Model Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Model Class Initialized
+DEBUG - 2021-04-19 05:31:20 --> Config file loaded: application/config/development/leanmath.php
+DEBUG - 2021-04-19 05:31:20 --> File loaded: application/views/head.php
+DEBUG - 2021-04-19 05:31:20 --> Helper loaded: file_helper
+DEBUG - 2021-04-19 05:31:20 --> File loaded: application/views/topic_list.php
+DEBUG - 2021-04-19 05:31:20 --> Helper loaded: html_helper
+DEBUG - 2021-04-19 05:31:20 --> Helper loaded: korean_helper
+DEBUG - 2021-04-19 05:31:20 --> File loaded: application/views/get.php
+DEBUG - 2021-04-19 05:31:20 --> File loaded: application/views/footer.php
+DEBUG - 2021-04-19 05:31:20 --> Final output sent to browser
+DEBUG - 2021-04-19 05:31:20 --> Total execution time: 0.0811
+DEBUG - 2021-04-19 05:31:21 --> Config Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> Hooks Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> Utf8 Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> UTF-8 Support Enabled
+DEBUG - 2021-04-19 05:31:21 --> URI Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> Router Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> Output Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> Security Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> Input Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> Global POST and COOKIE data sanitized
+DEBUG - 2021-04-19 05:31:21 --> Language Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> Loader Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> Helper loaded: url_helper
+DEBUG - 2021-04-19 05:31:21 --> Helper loaded: alert_helper
+DEBUG - 2021-04-19 05:31:21 --> Session Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> Helper loaded: string_helper
+DEBUG - 2021-04-19 05:31:21 --> Database Driver Class Initialized
+ERROR - 2021-04-19 05:31:21 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\dev\bin\xampp\htdocs\leanmath\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2021-04-19 05:31:21 --> Session routines successfully run
+DEBUG - 2021-04-19 05:31:21 --> Controller Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2021-04-19 05:31:21 --> Model Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> Model Class Initialized
+DEBUG - 2021-04-19 05:31:21 --> Config file loaded: application/config/development/leanmath.php
+DEBUG - 2021-04-19 05:31:21 --> File loaded: application/views/head.php
+DEBUG - 2021-04-19 05:31:21 --> Helper loaded: file_helper
+DEBUG - 2021-04-19 05:31:21 --> File loaded: application/views/topic_list.php
+DEBUG - 2021-04-19 05:31:21 --> Helper loaded: html_helper
+DEBUG - 2021-04-19 05:31:21 --> Helper loaded: korean_helper
+DEBUG - 2021-04-19 05:31:21 --> File loaded: application/views/get.php
+DEBUG - 2021-04-19 05:31:21 --> File loaded: application/views/footer.php
+DEBUG - 2021-04-19 05:31:21 --> Final output sent to browser
+DEBUG - 2021-04-19 05:31:21 --> Total execution time: 0.0780
+DEBUG - 2021-04-19 05:31:22 --> Config Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Hooks Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Utf8 Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> UTF-8 Support Enabled
+DEBUG - 2021-04-19 05:31:22 --> URI Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Router Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Output Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Security Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Input Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Global POST and COOKIE data sanitized
+DEBUG - 2021-04-19 05:31:22 --> Language Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Loader Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Helper loaded: url_helper
+DEBUG - 2021-04-19 05:31:22 --> Helper loaded: alert_helper
+DEBUG - 2021-04-19 05:31:22 --> Session Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Helper loaded: string_helper
+DEBUG - 2021-04-19 05:31:22 --> Database Driver Class Initialized
+ERROR - 2021-04-19 05:31:22 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\dev\bin\xampp\htdocs\leanmath\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2021-04-19 05:31:22 --> Session routines successfully run
+DEBUG - 2021-04-19 05:31:22 --> Controller Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2021-04-19 05:31:22 --> Model Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Model Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Config file loaded: application/config/development/leanmath.php
+DEBUG - 2021-04-19 05:31:22 --> File loaded: application/views/head.php
+DEBUG - 2021-04-19 05:31:22 --> Helper loaded: file_helper
+DEBUG - 2021-04-19 05:31:22 --> File loaded: application/views/topic_list.php
+DEBUG - 2021-04-19 05:31:22 --> Helper loaded: html_helper
+DEBUG - 2021-04-19 05:31:22 --> Helper loaded: korean_helper
+DEBUG - 2021-04-19 05:31:22 --> File loaded: application/views/get.php
+DEBUG - 2021-04-19 05:31:22 --> File loaded: application/views/footer.php
+DEBUG - 2021-04-19 05:31:22 --> Final output sent to browser
+DEBUG - 2021-04-19 05:31:22 --> Total execution time: 0.0903
+DEBUG - 2021-04-19 05:31:22 --> Config Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Hooks Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Utf8 Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> UTF-8 Support Enabled
+DEBUG - 2021-04-19 05:31:22 --> URI Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Router Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Output Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Security Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Input Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Global POST and COOKIE data sanitized
+DEBUG - 2021-04-19 05:31:22 --> Language Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Loader Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Helper loaded: url_helper
+DEBUG - 2021-04-19 05:31:22 --> Helper loaded: alert_helper
+DEBUG - 2021-04-19 05:31:22 --> Session Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Helper loaded: string_helper
+DEBUG - 2021-04-19 05:31:22 --> Database Driver Class Initialized
+ERROR - 2021-04-19 05:31:22 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\dev\bin\xampp\htdocs\leanmath\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2021-04-19 05:31:22 --> Session routines successfully run
+DEBUG - 2021-04-19 05:31:22 --> Controller Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2021-04-19 05:31:22 --> Model Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Model Class Initialized
+DEBUG - 2021-04-19 05:31:22 --> Config file loaded: application/config/development/leanmath.php
+DEBUG - 2021-04-19 05:31:22 --> File loaded: application/views/head.php
+DEBUG - 2021-04-19 05:31:22 --> Helper loaded: file_helper
+DEBUG - 2021-04-19 05:31:23 --> File loaded: application/views/topic_list.php
+DEBUG - 2021-04-19 05:31:23 --> Helper loaded: html_helper
+DEBUG - 2021-04-19 05:31:23 --> Helper loaded: korean_helper
+DEBUG - 2021-04-19 05:31:23 --> File loaded: application/views/get.php
+DEBUG - 2021-04-19 05:31:23 --> File loaded: application/views/footer.php
+DEBUG - 2021-04-19 05:31:23 --> Final output sent to browser
+DEBUG - 2021-04-19 05:31:23 --> Total execution time: 0.0754
+DEBUG - 2021-04-19 05:31:23 --> Config Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> Hooks Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> Utf8 Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> UTF-8 Support Enabled
+DEBUG - 2021-04-19 05:31:23 --> URI Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> Router Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> Output Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> Security Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> Input Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> Global POST and COOKIE data sanitized
+DEBUG - 2021-04-19 05:31:23 --> Language Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> Loader Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> Helper loaded: url_helper
+DEBUG - 2021-04-19 05:31:23 --> Helper loaded: alert_helper
+DEBUG - 2021-04-19 05:31:23 --> Session Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> Helper loaded: string_helper
+DEBUG - 2021-04-19 05:31:23 --> Database Driver Class Initialized
+ERROR - 2021-04-19 05:31:23 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\dev\bin\xampp\htdocs\leanmath\system\database\drivers\mysql\mysql_driver.php 91
+DEBUG - 2021-04-19 05:31:23 --> Session routines successfully run
+DEBUG - 2021-04-19 05:31:23 --> Controller Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2021-04-19 05:31:23 --> Model Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> Model Class Initialized
+DEBUG - 2021-04-19 05:31:23 --> Config file loaded: application/config/development/leanmath.php
+DEBUG - 2021-04-19 05:31:23 --> File loaded: application/views/head.php
+DEBUG - 2021-04-19 05:31:23 --> Helper loaded: file_helper
+DEBUG - 2021-04-19 05:31:23 --> File loaded: application/views/topic_list.php
+DEBUG - 2021-04-19 05:31:23 --> Helper loaded: html_helper
+DEBUG - 2021-04-19 05:31:23 --> Helper loaded: korean_helper
+DEBUG - 2021-04-19 05:31:23 --> File loaded: application/views/get.php
+DEBUG - 2021-04-19 05:31:23 --> File loaded: application/views/footer.php
+DEBUG - 2021-04-19 05:31:23 --> Final output sent to browser
+DEBUG - 2021-04-19 05:31:23 --> Total execution time: 0.0737
