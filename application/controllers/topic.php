@@ -48,10 +48,9 @@ class Topic extends MY_Controller {
     function add(){
      
         // 로그인 필요
-     
         // 로그인이 되어 있지 않다면 로그인 페이지로 리다이렉션
 
-        $this->_require_login(site_url('topic/add'));
+        $this->_require_login(site_url('/topic/add'));
      
         $this->_head();
         $this->_sidebar();
@@ -84,7 +83,7 @@ class Topic extends MY_Controller {
     }
     function upload_receive_from_ck(){
         // 사용자가 업로드 한 파일을 /static/user/ 디렉토리에 저장한다.
-        $config['upload_path'] =  $this->config->item('base_url').'/static/user';
+        $config['upload_path'] =  '/leanmath/static/user';
         // git,jpg,png 파일만 업로드를 허용한다.
         $config['allowed_types'] = 'gif|jpg|png';
         // 허용되는 파일의 최대 사이즈
@@ -106,7 +105,7 @@ class Topic extends MY_Controller {
             $data = $this->upload->data();            
             $filename = $data['file_name'];
             
-            $url = $this->config->item('base_url').'/static/user/'.$filename;
+            $url = '/leanmath/static/user/'.$filename;
 
             echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction('".$CKEditorFuncNum."', '".$url."', '전송에 성공 했습니다')</script>";         
         }

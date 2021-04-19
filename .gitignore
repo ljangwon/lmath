@@ -1,4 +1,4 @@
 /application/config/database.php
 /application/config/config.php
-/application/cache/*
+/application/cache/topics
 /logs/*
