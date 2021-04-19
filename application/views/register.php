@@ -2,7 +2,7 @@
   <div class="span4"></div>
   <div class="span4">
     <?php echo validation_errors(); ?>
-    <form class="form-horizontal" action="/index.php/auth/register" method="post">
+    <form class="form-horizontal" action="<?=$this->config->item('base_url')?>/index.php/auth/register" method="post">
       <div class="control-group">
         <label class="control-label" for="inputEmail">이메일</label>
         <div class="controls">
@@ -30,7 +30,7 @@
       <div class="control-group">
         <label class="control-label"></label>
         <div class="controls">
-          <input type="submit" class="btn btn-primary" value="로그인" />
+          <input type="submit" class="btn btn-primary" value="가입" />
         </div>
       </div>      
     </form>  

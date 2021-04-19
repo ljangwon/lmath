@@ -3,9 +3,15 @@ class Auth extends MY_Controller {
     function __construct()
     {       
         parent::__construct();    
-    }    
+    }
+
+    function index(){        
+        $this->login();
+    }
+
     function login(){
     	$this->_head();
+        $this->load->helper('url');
         $this->load->view('login', array('returnURL'=>$this->input->get('returnURL')));     
         $this->_footer();   
     }
@@ -13,7 +19,7 @@ class Auth extends MY_Controller {
     function logout(){
     	$this->session->sess_destroy();
     	$this->load->helper('url');
-    	redirect('/');
+        redirect($this->config->item('base_url'));
     }
 
     function register(){
@@ -43,9 +49,8 @@ class Auth extends MY_Controller {
 
             $this->session->set_flashdata('message', '회원가입에 성공했습니다.');
             $this->load->helper('url');
-            redirect('/');
+            redirect($this->config->item('base_url'));
         }
-
         
         $this->_footer();   
     }
@@ -61,16 +66,26 @@ class Auth extends MY_Controller {
             password_verify($this->input->post('password'), $user->password)
     	) {
     		$this->session->set_userdata('is_login', true);
+            $this->session->set_userdata('name', $user->name );
     		$this->load->helper('url');
             $returnURL = $this->input->get('returnURL');
             if($returnURL === false){
-                $returnURL = '/';
+                $returnURL = $this->config->item('base_url');
             }
             redirect($returnURL);
     	} else {
     		$this->session->set_flashdata('message', '로그인에 실패 했습니다.');
     		$this->load->helper('url');
-    		redirect('/auth/login');
+    		redirect( $this->config->item('base_url').'/index.php/auth/login');
     	}
     }
+
+    function _head() {
+        $this->load->view('head');
+    }
+
+    function _footer() {
+        $this->load->view('footer');
+    }
+    
 }

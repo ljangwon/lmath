@@ -1,1 +1,11 @@
-Deny from all
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+	RewriteBase /
+
+	RewriteCond $1 !^(index\.php|images|captcha|include)
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+
+	RewriteRule ^(.*)$ /leanmath/index.php/$1 [L]
+</IfModule>

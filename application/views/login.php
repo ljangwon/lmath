@@ -4,10 +4,8 @@
   </div>
   <form class="form-horizontal" action="<?=site_url('/auth/authentication?returnURL='.rawurlencode($returnURL))?>" method="post">
     <div class="modal-body">
-      
-      
         <div class="control-group">
-          <label class="control-label" for="inputEmail">아이디</label>
+          <label class="control-label" for="inputEmail">이메일</label>
           <div class="controls">
             <input type="text" id="email" name="email" placeholder="이메일">
           </div>

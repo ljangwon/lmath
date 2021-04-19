@@ -4,7 +4,7 @@
                 <meta charset="utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 			    <!-- Bootstrap -->
-			    <link href="/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+			    <link href="<?=$this->config->item('base_url')?>/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 			    <style>
 			    	body{
 			    		padding-top:60px;
@@ -13,7 +13,7 @@
 			    		padding-top:20px;
 			    	}
 			    </style>
-			    <link href="/static/lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">			    
+			    <link href="<?=$this->config->item('base_url')?>/static/lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">			    
             </head>
             <body>
             	<?php
@@ -45,12 +45,14 @@
 				        	<?php
 				        	if($this->session->userdata('is_login')){
 				        	?>
-				        		<li><a href="/index.php/auth/logout">로그아웃</a></li>
+										<li> 환영합니다. <?=$this->session->userdata('name')?>님, 
+										현재 id =<?=$this->session->userdata('cid')?></li>
+				        		<li><a href="<?=$this->config->item('base_url')?>/index.php/auth/logout">로그아웃</a></li>
 				        	<?php
 				        	} else {
 				        	?>
-				        		<li><a href="/index.php/auth/login">로그인</a></li>
-				        		<li><a href="/index.php/auth/register">회원가입</a></li>
+				        		<li><a href="<?=$this->config->item('base_url')?>/index.php/auth/login">로그인</a></li>
+				        		<li><a href="<?=$this->config->item('base_url')?>/index.php/auth/register">회원가입</a></li>
 				        	<?php
 				        	}
 				        	?>
