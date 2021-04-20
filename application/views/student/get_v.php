@@ -10,10 +10,15 @@
 		</div>
 	
 	<form action="<?=site_url()?>/student/modify" method="post" class="span10">
+	  
 		<input type="hidden" name="id" value="<?=$student->id?>" placeholder="아이디" class="span12" />
+		<label for="id" class="form-lable">이름</label>
 		<input type="text" name="name" value="<?=$student->name?>" placeholder="이름" class="span12" />
+		<label for="grade1" class="form-lable">학년구분1</label>
 		<input type="text" name="grade1" value="<?=$student->grade1?>" placeholder="학년구분1" class="span12" />
+		<label for="grade2" class="form-lable">학년구분2</label>
 		<input type="text" name="grade2" value="<?=$student->grade2?>" placeholder="학년구분2" class="span12" />
+		<label for="class_name" class="form-lable">수업이름</label>
 		<input type="text" name="class_name" value="<?=$student->class_name?>" placeholder="수업이름" class="span12" />
 		
 		<textarea name="memo"  placeholder="메모" class="span12" rows="15" > <?=$student->memo?> </textarea>

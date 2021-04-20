@@ -42,7 +42,7 @@ class MY_Controller extends CI_Controller {
 
     function _student_sidebar(){
         if ( ! $students = $this->cache->get('students')) {
-            $students = $this->student_m->get_h();    
+            $students = $this->student_m->gets();    
             //$this->cache->save('students', $students, 300);
         }
         $this->load->view('student/list_v', array('students'=>$students));
