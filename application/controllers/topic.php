@@ -71,7 +71,10 @@ class Topic extends MY_Controller {
             /*
             // Batch Queue에 notify_email_add_topic 추가
             $this->load->model('batch_model');
-            $this->batch_model->add(array('job_name'=>'notify_email_add_topic', 'context'=>json_encode(array('topic_id'=>$topic_id))));
+            $this->batch_model->add(array(
+                'job_name'=>'notify_email_add_topic', 
+                'context'=>json_encode(array('topic_id'=>$topic_id)))
+            );
             */
             $this->cache->delete('topics');
 

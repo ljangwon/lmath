@@ -33,4 +33,25 @@ class MY_Controller extends CI_Controller {
             alert('로그인이 필요합니다.',site_url('/auth/login?returnURL='.rawurlencode($return_url) ));
         }
     }
+
+    function _student_head(){
+        //$this->_head();
+        $this->load->config('leanmath');
+        $this->load->view('student/head_v');  
+    }
+
+    function _student_sidebar(){
+        if ( ! $students = $this->cache->get('students')) {
+            $students = $this->student_m->get_h();    
+            //$this->cache->save('students', $students, 300);
+        }
+        $this->load->view('student/list_v', array('students'=>$students));
+    }
+    function _student_footer(){
+
+        //$this->_footer();
+        $this->load->view('student/footer_v');
+
+    }
+
 }

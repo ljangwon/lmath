@@ -76,7 +76,7 @@ class Auth extends MY_Controller {
     	} else {
     		$this->session->set_flashdata('message', '로그인에 실패 했습니다.');
     		$this->load->helper('url');
-    		redirect( $this->config->item('base_url').'/index.php/auth/login');
+    		redirect( site_url('/auth/login') );
     	}
     }
 
