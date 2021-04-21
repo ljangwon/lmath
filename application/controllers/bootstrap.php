@@ -4,7 +4,7 @@ class Bootstrap extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('bootstrap_v');
+		$this->load->view('sidebars/sidebar_v');
 	}
 }
 
