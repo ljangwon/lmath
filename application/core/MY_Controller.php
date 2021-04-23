@@ -64,6 +64,7 @@ class MY_Controller extends CI_Controller {
                 'st_fees_sum_e'=>$st_fees_sum_e            
             ));
     }
+    
     function _student_footer(){
 
         //$this->_footer();

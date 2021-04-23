@@ -30,7 +30,8 @@
 		<form action="<?= site_url('/student/delete') ?>" method="post">
 					<input type="hidden" name="student_id" value="<?= $student->id ?>" />
 					<input type="submit" class="btn" value="학생삭제" />
-					<a href="<?= site_url() ?>/student/add" class="btn">학생추가</a>
+					<a href="<?= site_url('/student/add') ?>" class="btn">학생추가</a>
+					<a href="<?= site_url('/student') ?>" class="btn">학생목록</a>
 		</form>
 	</article>
 </div>
