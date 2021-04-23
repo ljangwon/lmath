@@ -8,7 +8,7 @@
 
 	foreach($students as $entry){
 	?>
-		<li><a href="<?=site_url()?>/student/get/<?=$entry->id?>"><?=$entry->name?></a></li>
+		<li><a href="<?=site_url()?>/student/get/<?=$entry->id?>"><?=$entry->name?>-<?=$entry->class_name?></a> </li>
 	<?php
 	}
 	?>

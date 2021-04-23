@@ -20,7 +20,7 @@ class MY_Controller extends CI_Controller {
     function _sidebar(){
         if ( ! $topics = $this->cache->get('topics')) {
             $topics = $this->topic_model->gets();    
-            $this->cache->save('topics', $topics, 300);
+            //$this->cache->save('topics', $topics, 300);
         }
         $this->load->view('topic_list', array('topics'=>$topics));
     }

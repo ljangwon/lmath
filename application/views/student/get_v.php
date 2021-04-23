@@ -16,6 +16,8 @@
 		<input type="text" name="name" value="<?=$student->name?>" placeholder="이름" class="span12" />
 		<label for="grade1" class="form-lable">학년구분1</label>
 		<input type="text" name="grade1" value="<?=$student->grade1?>" placeholder="학년구분1" class="span12" />
+		<label for="grade1" class="form-lable">학교이름</label>
+		<input type="text" name="school_name" value="<?=$student->school_name?>" placeholder="학교이름" class="span12" />
 		<label for="grade2" class="form-lable">학년구분2</label>
 		<input type="text" name="grade2" value="<?=$student->grade2?>" placeholder="학년구분2" class="span12" />
 		<label for="class_name" class="form-lable">수업이름</label>

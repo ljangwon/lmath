@@ -100,6 +100,7 @@ class Student extends MY_Controller {
      
         $this->form_validation->set_rules('name', '이름', 'required');
         $this->form_validation->set_rules('grade1', '학년구분1', 'required');
+
         $this->form_validation->set_rules('grade2', '학년구분2', 'required');
         $this->form_validation->set_rules('class_name', '수업이름', 'required');
         $this->form_validation->set_rules('memo', '메모', 'required');
@@ -115,6 +116,7 @@ class Student extends MY_Controller {
                 'id'=>$this->input->post('id'),
                 'name'=>$this->input->post('name'), 
                 'grade1'=>$this->input->post('grade1'),
+                'school_name'=>$this->input->post('school_name'),
                 'grade2'=>$this->input->post('grade2'),
                 'class_name'=>$this->input->post('class_name'),
                 'memo'=>$this->input->post('memo')
