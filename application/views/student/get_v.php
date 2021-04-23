@@ -24,16 +24,13 @@
 			<textarea name="memo" placeholder="메모" class="span12" rows="15"> <?= $student->memo ?> </textarea>
 			<div class="form_control">
 				<input class="btn" type="submit" value="수정" />
-				<form action="<?= site_url('/student/delete') ?>" method="post">
-					<input type="hidden" name="student_id" value="<?= $student->id ?>" />
-					<input type="submit" class="btn" value="삭제" />
-				</form>
 			</div>
 		</form>
 
-
-
-		<a href="<?= site_url() ?>/student/add" class="btn">학생추가</a>
-
+		<form action="<?= site_url('/student/delete') ?>" method="post">
+					<input type="hidden" name="student_id" value="<?= $student->id ?>" />
+					<input type="submit" class="btn" value="학생삭제" />
+					<a href="<?= site_url() ?>/student/add" class="btn">학생추가</a>
+		</form>
 	</article>
 </div>

@@ -26,7 +26,7 @@ class Student extends MY_Controller {
         $student = $this->student_m->get($id);
 
         if(empty($student)){
-            alert('student의 값이 없습니다');
+            alert('student의 값이 없습니다',site_url('/student/get'));
         }
 
         $this->load->helper(array( 'HTML', 'korean'));

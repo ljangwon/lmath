@@ -19,7 +19,6 @@ class Student_m extends CI_Model {
      	return $result;
     }
 
-
     function get($student_id){
         $this->db->select('id');
         $this->db->select('name');
@@ -42,6 +41,12 @@ class Student_m extends CI_Model {
 
     function get_count($option) {
         $this->db->select('count(*) as cnt');
+        $result = $this->db->get_where('student', array('grade1'=>$option))->row();
+        return $result;
+    }
+
+    function get_fees_sum($option) {
+        $this->db->select_sum('fees');
         $result = $this->db->get_where('student', array('grade1'=>$option))->row();
         return $result;
     }
