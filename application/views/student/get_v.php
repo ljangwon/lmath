@@ -18,6 +18,8 @@
 			<input type="text" name="grade2" value="<?= $student->grade2 ?>" placeholder="학년구분2" class="span12" />
 			<label for="class_name" class="form-lable">수업이름</label>
 			<input type="text" name="class_name" value="<?= $student->class_name ?>" placeholder="수업이름" class="span12" />
+			<label for="fees" class="form-lable">수업료</label>
+			<input type="text" name="fees" value="<?= $student->fees ?>" placeholder="수업료" class="span12" />
 
 			<textarea name="memo" placeholder="메모" class="span12" rows="15"> <?= $student->memo ?> </textarea>
 			<div class="form_control">

@@ -6,22 +6,14 @@ class Student_m extends CI_Model {
         parent::__construct();
     }
 
-    function get_h() {
-
-        $this->db->select('*');
-        $result =$this->db->get_where('student', array(
-                'grade1'=>'고등',
-                'grade2'=>'1')
-            )->result();
-    	return $result;
-    }
-
-    
-    function gets() {
+    function gets($option=null) {
         $this->db->select('*');
         $this->db->order_by('class_name', 'ASC');
         $this->db->order_by('grade1', 'DESC');
         $this->db->order_by('grade2', 'ASC');
+            if( $option) {
+                $this->db->where('grade1', $option);        
+            }        
         $result = $this->db->get('student')->result();;
         //$result =  $this->db->query("SELECT * FROM student")->result();
      	return $result;
@@ -36,6 +28,7 @@ class Student_m extends CI_Model {
         $this->db->select('grade2');
         $this->db->select('class_name');
         $this->db->select('memo');
+        $this->db->select('fees');
         //$this->db->select('house');
         //$this->db->select('distance');
         //$this->db->select('start_date');
@@ -84,12 +77,11 @@ class Student_m extends CI_Model {
         $this->db->set('grade2', $option['grade2']);
         $this->db->set('class_name', $option['class_name']);
         $this->db->set('memo', $option['memo']);
+        $this->db->set('fees', $option['fees']);
 
         $this->db->where('id', $option['id']);
 
         $result = $this->db->update('student');
-
-        var_dump( $result );
 
         return $option['id'];
     }
