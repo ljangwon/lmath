@@ -31,7 +31,7 @@
 					<input type="hidden" name="student_id" value="<?= $student->id ?>" />
 					<input type="submit" class="btn" value="학생삭제" />
 					<a href="<?= site_url('/student/add') ?>" class="btn">학생추가</a>
-					<a href="<?= site_url('/student') ?>" class="btn">학생목록</a>
+					<a href="<?= site_url('/student') ?>" class="btn">학생명단 메인화면</a>
 		</form>
 	</article>
 </div>
