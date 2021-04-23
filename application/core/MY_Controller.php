@@ -44,8 +44,18 @@ class MY_Controller extends CI_Controller {
         if ( ! $students = $this->cache->get('students')) {
             $students = $this->student_m->gets();    
             //$this->cache->save('students', $students, 300);
-        }
-        $this->load->view('student/list_v', array('students'=>$students));
+            $st_count_h = $this->student_m->get_count('고등');
+            $st_count_m = $this->student_m->get_count('중등');
+            $st_count_e = $this->student_m->get_count('초등');
+
+       }
+        $this->load->view('student/list_v', 
+            array(
+                'students'=>$students, 
+                'st_count_h'=>$st_count_h,
+                'st_count_m'=>$st_count_m,
+                'st_count_e'=>$st_count_e            
+            ));
     }
     function _student_footer(){
 

@@ -47,6 +47,12 @@ class Student_m extends CI_Model {
     	return $result;
     }
 
+    function get_count($option) {
+        $this->db->select('count(*) as cnt');
+        $result = $this->db->get_where('student', array('grade1'=>$option))->row();
+        return $result;
+    }
+
     function add($option)
     {
         $this->db->set('created', 'NOW()', false);
