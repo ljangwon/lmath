@@ -3,6 +3,7 @@
             <head>
                 <meta charset="utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+								<title> 학생관리 </title>
 			    <!-- Bootstrap -->
 			    <link href="<?=$this->config->item('base_url')?>/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 			    <style>
@@ -13,6 +14,7 @@
 			    		padding-top:20px;
 			    	}
 			    </style>
+
 			    <link href="<?=$this->config->item('base_url')?>/static/lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">			    
             </head>
             <body>
