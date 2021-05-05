@@ -1,6 +1,6 @@
 <div class="span10">
 	<article>
-		<h3> 학생 추가화면 </h3>
+		<h3> 테스트 추가화면 </h3>
 
 		<form action="<?= site_url() ?>/student/add" method="post" >
 			<?php echo validation_errors(); ?>
