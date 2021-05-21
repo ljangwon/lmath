@@ -44,8 +44,6 @@ class MY_Controller extends CI_Controller {
         if ( ! $students = $this->cache->get('students')) {
             $students = $this->student_m->gets();    
             //$this->cache->save('students', $students, 300);
-
-
        }
         $this->load->view('student/list_v', 
             array(

@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Student extends MY_Controller {
+class Test extends MY_Controller {
     function __construct()
     {       
         parent::__construct();
@@ -37,20 +37,18 @@ class Student extends MY_Controller {
         $this->_student_sidebar();
 
         if(!$id) {
-            redirect( site_url('/student'));
+            redirect( site_url('/student/get/'.$this->session->userdata('st_id')));
         }
+        $student = $this->student_m->get($this->session->userdata('st_id'));
+        $test = $this->test_m->get($id);
 
-        $student = $this->student_m->get($id);
-        $tests = $this->test_m->gets($id);
-
-        if(empty($student)){
-            alert('student의 값이 없습니다',site_url('/student/get'));
+        if(empty($test)){
+            alert('test의 값이 없습니다',site_url('/student/get/'.$this->session->userdata('st_id')));
         }
 
         $this->load->helper(array( 'HTML', 'korean'));
 
-        $this->load->view('student/get_v', array('student'=>$student, 'tests'=>$tests));
-
+        $this->load->view('test/get_v', array('test'=>$test));
 
         $this->_student_footer();
 
@@ -70,37 +68,27 @@ class Student extends MY_Controller {
         // 로그인 필요
         // 로그인이 되어 있지 않다면 로그인 페이지로 리다이렉션
 
-        $this->_require_login(site_url('/student/add'));
+        $this->_require_login(site_url('/test/add'));
      
         $this->_student_head();
         $this->_student_sidebar();
          
         $this->load->library('form_validation');
      
-        $this->form_validation->set_rules('name', '이름', 'required');
-        $this->form_validation->set_rules('grade1', '학년구분1', 'required');
-        $this->form_validation->set_rules('grade2', '학년구분2', 'required');
-        $this->form_validation->set_rules('class_name', '수업이름', 'required');
-        $this->form_validation->set_rules('memo', '메모', 'required');
+        $this->form_validation->set_rules('st_id', '학생ID', 'required');
          
         if ($this->form_validation->run() == FALSE)
         {
-             $this->load->view('student/add_v');
+             $this->load->view('test/add_v');
         }
         else
         {
-            $student_id = $this->student_m->add( array(
-                'name'=>$this->input->post('name'), 
-                'grade1'=>$this->input->post('grade1'),
-                'grade2'=>$this->input->post('grade2'),
-                'class_name'=>$this->input->post('class_name'),
-                'memo'=>$this->input->post('memo')
+            $this->test_m->add( array(
+                'st_id'=>$this->input->post('st_id')
                 )
             );
 
-            $this->cache->delete('students');
-
-            redirect( site_url('/student/get/'.$student_id) );
+            redirect( site_url('/student/get/'.$this->input->post('st_id')) );
         }
          
         $this->_student_footer();
@@ -110,7 +98,7 @@ class Student extends MY_Controller {
         // 로그인 필요
         // 로그인이 되어 있지 않다면 로그인 페이지로 리다이렉션
 
-        $this->_require_login(site_url('/student/modify'));
+        $this->_require_login(site_url('/test/modify'));
      
         $this->_student_head();
         $this->_student_sidebar();
@@ -127,7 +115,7 @@ class Student extends MY_Controller {
          
         if ($this->form_validation->run() == FALSE)
         {
-            
+
              redirect( site_url('/student/get/'.$this->input->post('id')) ) ;
         }
         else
@@ -146,7 +134,7 @@ class Student extends MY_Controller {
 
             $this->cache->delete('students');
 
-            redirect( site_url('/student/get/'.$student_id) );
+            redirect( site_url('/student/get/'.$student_id) )
         }
          
         $this->_student_footer();
