@@ -7,7 +7,7 @@
 
 		<form action="<?= site_url() ?>/test/modify" method="post" >
 
-			<input type="hidden" name="id" value="<?= $test->id ?>" placeholder="아이디" class="span12" />
+			<input type="hidden" name="id" value="<?= $test->id ?>" placeholder="테스트아이디"/>
 			<label for="id" class="form-lable">학생ID</label>
 			<input type="text" name="st_id" value="<?= $test->st_id ?>" placeholder="학생ID" class="span12" />
 			<label for="grade1" class="form-lable">학년구분</label>
@@ -29,6 +29,7 @@
 
 		<form action="<?= site_url('/test/delete') ?>" method="post">
 					<input type="hidden" name="test_id" value="<?= $test->id ?>" />
+					<input type="hidden" name="st_id" value="<?= $test->st_id ?>" />
 					<input type="submit" class="btn" value="테스트삭제" />
 
 					<a href="<?= site_url('/student/get/'.$test->st_id ) ?>" class="btn">학생 상세 화면</a>

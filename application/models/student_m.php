@@ -12,7 +12,8 @@ class Student_m extends CI_Model {
         $this->db->order_by('grade1', 'DESC');
         $this->db->order_by('grade2', 'ASC');
             if( $option) {
-                $this->db->where('grade1', $option);        
+                $this->db->where('grade1', $option);
+                $this->db->where('flag', 1);       
             }        
         $result = $this->db->get('student')->result();;
         //$result =  $this->db->query("SELECT * FROM student")->result();

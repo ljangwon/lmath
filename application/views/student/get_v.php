@@ -39,7 +39,12 @@
 			foreach ($tests as $entry) {
 			?>
 				<li><a href="<?= site_url('/test/get/') ?>/<?= $entry->id ?>">
-						ID: <?= $entry->id ?> </a> Grade: <?= $entry->grade ?> Chapter: <?= $entry->chapter ?> score: <?= $entry->score ?> </li>
+						ID: <?= $entry->id ?> 
+						Grade: <?= $entry->grade ?> 
+						Chapter: <?= $entry->chapter ?> 
+						score: <?= $entry->score ?> 
+						</a>
+				</li>
 			<?php
 			}
 			?>

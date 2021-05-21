@@ -74,12 +74,13 @@ class Test_m extends CI_Model {
     {
         $this->db->set('created', 'NOW()', false);
         $this->db->set('st_id', $option['st_id']);
+        $this->db->set('score', $option['score']);
 
         $this->db->where('id', $option['id']);
 
         $result = $this->db->update('test');
 
-        return $option['id'];
+        return $result;
     }
 
     function backup($student_id){

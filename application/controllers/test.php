@@ -55,12 +55,13 @@ class Test extends MY_Controller {
     }
 
     function delete(){
-        $student_id = $this->input->post('student_id');
-        $this->_require_login(site_url('/student/get/'.$student_id));
-        $this->load->model('student_m');
-        $this->student_m->delete($student_id);
-        $this->cache->delete('students');
-        redirect( site_url('/student') );
+        $test_id = $this->input->post('test_id');
+        $st_id = $this->input->post('st_id');
+        $this->_require_login(site_url('/test/get/'.$test_id));
+        $this->load->model('test_m');
+        $this->test_m->delete($test_id);
+        //$this->cache->delete('tests');
+        redirect( site_url('/student/get/'.$st_id) );
     }
 
     function add(){
@@ -105,36 +106,24 @@ class Test extends MY_Controller {
          
         $this->load->library('form_validation');
      
-        $this->form_validation->set_rules('name', '이름', 'required');
-        $this->form_validation->set_rules('grade1', '학년구분1', 'required');
+        $this->form_validation->set_rules('st_id', '학생ID', 'required');
+        $this->form_validation->set_rules('score', '점수', 'required');
 
-        $this->form_validation->set_rules('grade2', '학년구분2', 'required');
-        $this->form_validation->set_rules('class_name', '수업이름', 'required');
-        $this->form_validation->set_rules('memo', '메모', 'required');
-        $this->form_validation->set_rules('fees', '수업료', 'required');
-         
         if ($this->form_validation->run() == FALSE)
         {
 
-             redirect( site_url('/student/get/'.$this->input->post('id')) ) ;
+             redirect( site_url('/test/get/'.$this->input->post('id')) ) ;
         }
         else
         {
-            $student_id = $this->student_m->modify( array (
+            $test_id = $this->test_m->modify( array (
                 'id'=>$this->input->post('id'),
-                'name'=>$this->input->post('name'), 
-                'grade1'=>$this->input->post('grade1'),
-                'school_name'=>$this->input->post('school_name'),
-                'grade2'=>$this->input->post('grade2'),
-                'class_name'=>$this->input->post('class_name'),
-                'memo'=>$this->input->post('memo'),
-                'fees'=>$this->input->post('fees')
+                'st_id'=>$this->input->post('st_id'), 
+                'score'=>$this->input->post('score')
                 )
             );
 
-            $this->cache->delete('students');
-
-            redirect( site_url('/student/get/'.$student_id) )
+            redirect( site_url('/test/get/'.$test_id) );
         }
          
         $this->_student_footer();
