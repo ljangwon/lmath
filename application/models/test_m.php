@@ -78,9 +78,11 @@ class Test_m extends CI_Model {
 
         $this->db->where('id', $option['id']);
 
-        $result = $this->db->update('test');
+        $this->db->update('test');
 
-        return $result;
+        $test_id= $option['id'];
+
+        return $test_id;
     }
 
     function backup($student_id){
