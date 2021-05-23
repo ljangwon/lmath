@@ -31,19 +31,33 @@
 		<ul class="nav nav-tabs nav-stacked">
 			<h4> 테스트 결과 </h4>
 			<form action="<?= site_url('/test/add') ?>" method="post">
-			<input type="hidden" name="st_id" value="<?= $student->id ?>" />
-			<input class="btn" type="submit" value="테스트추가" />
+				<input type="hidden" name="st_id" value="<?= $student->id ?>" />
+				<input class="btn" type="submit" value="테스트추가" />
 			</form>
-	
+
 			<?php
 			foreach ($tests as $entry) {
 			?>
 				<li><a href="<?= site_url('/test/get/') ?>/<?= $entry->id ?>">
-						ID: <?= $entry->id ?> 
-						Grade: <?= $entry->grade ?> 
-						Chapter: <?= $entry->chapter ?> 
-						score: <?= $entry->score ?> 
-						</a>
+						시험: <?= $entry->type ?>
+						| <?= $entry->grade ?>
+						| <?= $entry->level ?>
+						| <?= $entry->chapter ?>
+
+						<?php
+						if ($entry->total_num == 0) {
+							$score = 0;
+						} else {
+							$score = ($entry->corrt_num / $entry->total_num) * 100;
+						}
+						?>
+						점수: <?= $entry->corrt_num ?>/<?= $entry->total_num ?>
+						( <?= number_format($score, 2) ?>점 )
+						Result: <?= $entry->result ?>
+						날짜: <?php $date = date_create($entry->test_date);
+								echo date_format($date, 'Y/m/d'); ?>
+						Memo: <?= $entry->memo ?>
+					</a>
 				</li>
 			<?php
 			}

@@ -39,7 +39,7 @@ class Test extends MY_Controller {
         if(!$id) {
             redirect( site_url('/student/get/'.$this->session->userdata('st_id')));
         }
-        $student = $this->student_m->get($this->session->userdata('st_id'));
+        $this->student_m->get($this->session->userdata('st_id'));
         $test = $this->test_m->get($id);
 
         if(empty($test)){
@@ -107,7 +107,6 @@ class Test extends MY_Controller {
         $this->load->library('form_validation');
      
         $this->form_validation->set_rules('st_id', '학생ID', 'required');
-        $this->form_validation->set_rules('score', '점수', 'required');
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -116,10 +115,20 @@ class Test extends MY_Controller {
         }
         else
         {
+            $memo = ltrim($this->input->post('memo'));
             $test_id = $this->test_m->modify( array (
                 'id'=>$this->input->post('id'),
                 'st_id'=>$this->input->post('st_id'), 
-                'score'=>$this->input->post('score')
+                'grade'=>$this->input->post('grade'),
+                'chapter'=>$this->input->post('chapter'),
+                'type'=>$this->input->post('type'),
+                'level'=>$this->input->post('level'),
+                'corrt_num'=>$this->input->post('corrt_num'),
+                'total_num'=>$this->input->post('total_num'),
+                'score'=>$this->input->post('score'),
+                'result'=>$this->input->post('result'),
+                'test_date'=>$this->input->post('test_date'),
+                'memo'=>$memo
                 )
             );
 
