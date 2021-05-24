@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '';
-$db['default']['username'] = '';
+$db['default']['hostname'] = 'jakeleanco.ipdisk.co.kr';
+$db['default']['username'] = 'codei';
 $db['default']['password'] = '';
-$db['default']['database'] = '';
+$db['default']['database'] = 'leanmath';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
