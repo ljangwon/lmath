@@ -16,18 +16,21 @@
 			<label for="grade1" class="form-lable">학년구분1</label>
 			<input type="text" name="grade1" value="<?= $student->grade1 ?>" placeholder="학년구분1" class="span3" />
 
-
 			<label for="grade1" class="form-lable">학교이름</label>
 			<input type="text" name="school_name" value="<?= $student->school_name ?>" placeholder="학교이름" class="span3" />
 
 			<label for="grade2" class="form-lable">학년구분2</label>
 			<input type="text" name="grade2" value="<?= $student->grade2 ?>" placeholder="학년구분2" class="span3" />
-
 			
 			<label for="class_name" class="form-lable">수업이름</label>
 			<input type="text" name="class_name" value="<?= $student->class_name ?>" placeholder="수업이름" class="span12" />
+
 			<label for="fees" class="form-lable">수업료</label>
 			<input type="text" name="fees" value="<?= $student->fees ?>" placeholder="수업료" class="span12" />
+
+			<label for="flag" class="form-lable">수강여부</label>
+			<input type="text" name="flag" value="<?= $student->flag ?>" placeholder="수강여부" class="span12" />
+
 			<label for="memo" class="form-lable">메모</label>
 			<textarea name="memo" placeholder="메모" class="span12" rows="5"> <?= $student->memo ?> </textarea>
 			<div class="form_control">
@@ -44,13 +47,16 @@
 
 		<div class="table-responsive">
 			<h4> 기본정보 </h4>
-			
-			<div >
+
 
 		</div>
 
 		<div class="table-responsive">
 			<h4> 주요 평가 기록 </h4>
+			<form action="<?= site_url('/test_history/add') ?>" method="post">
+				<input type="hidden" name="st_id" value="<?= $student->id ?>" />
+				<input class="btn" type="submit" value="추가" />
+			</form>
 			<table class="table table-striped table-hover table-sm table align-middle">
 				<thead>
 					<tr>
@@ -62,16 +68,19 @@
 				</thead>
 
 				<tbody>
-				<tr class="align-middle">
-							<th scope="row">1 </th>
-							<td class="align-middle">구분1</td>
-							<td class="align-middle">메모1</td>
-				</tr>
-				<tr class="align-middle">
-							<th scope="row">2 </th>
-							<td class="align-middle">구분2</td>
-							<td class="align-middle">메모2</td>
-				</tr>
+					<?php
+					$i = 1;
+					foreach ($test_hs as $entry) {
+					?>
+						<tr class="align-middle">
+							<th scope="row"><a href="<?= site_url('/test_history/get/') ?>/<?= $entry->id ?>"><?= $i ?></a></th>
+							<td class="align-middle"><?= $entry->course ?></td>
+							<td class="align-middle"><?= $entry->memo ?></td>
+						</tr>
+					<?php
+						$i++;
+					}
+					?>
 				</tbody>
 			</table>
 		</div>
@@ -162,7 +171,7 @@
 			<h4> 테스트 결과 </h4>
 			<form action="<?= site_url('/test/add') ?>" method="post">
 				<input type="hidden" name="st_id" value="<?= $student->id ?>" />
-				<input class="btn" type="submit" value="테스트추가" />
+				<input class="btn" type="submit" value="추가" />
 			</form>
 			<table class="table table-striped table-hover table-sm table align-middle">
 				<thead>

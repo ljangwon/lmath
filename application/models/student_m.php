@@ -8,7 +8,7 @@ class Student_m extends CI_Model {
 
     function gets($option=null) {
         $this->db->select('*');
-        $this->db->order_by('created', 'DESC');
+        $this->db->order_by('flag', 'ASC');
         $this->db->order_by('class_name', 'ASC');
         $this->db->order_by('grade1', 'DESC');
         $this->db->order_by('grade2', 'ASC');
@@ -22,20 +22,8 @@ class Student_m extends CI_Model {
     }
 
     function get($student_id){
-        $this->db->select('id');
-        $this->db->select('name');
-        $this->db->select('grade1');
-        $this->db->select('school_name');
-        $this->db->select('grade2');
-        $this->db->select('class_name');
-        $this->db->select('memo');
-        $this->db->select('fees');
-        //$this->db->select('house');
-        //$this->db->select('distance');
-        //$this->db->select('start_date');
-        //$this->db->select('s_phone');
-        //$this->db->select('m_phone');
-        //$this->db->select('mon_memo');
+        $this->db->select('*');
+
         $this->db->select('UNIX_TIMESTAMP(created) AS created');
         $result = $this->db->get_where('student', array('id'=>$student_id))->row();
     	return $result;
@@ -78,6 +66,16 @@ class Student_m extends CI_Model {
         return $result;
     }
 
+    function test_h_add($option)
+    {
+        $this->db->set('created', 'NOW()', false);
+        $this->db->set('st_id', $option['st_id']);
+
+        $this->db->insert('test_history');
+        $result = $this->db->insert_id();
+        return $result;
+    }
+
     function delete($student_id)
     {
         $result = $this->db->delete('student', array(
@@ -96,6 +94,7 @@ class Student_m extends CI_Model {
         $this->db->set('class_name', $option['class_name']);
         $this->db->set('memo', $option['memo']);
         $this->db->set('fees', $option['fees']);
+        $this->db->set('flag', $option['flag']);
 
         $this->db->where('id', $option['id']);
 

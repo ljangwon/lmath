@@ -46,7 +46,7 @@ class MY_Controller extends CI_Controller {
             $students = $this->student_m->gets();    
             //$this->cache->save('students', $students, 300);
        }
-        $this->load->view('student/list_v', 
+        $this->load->view('student/sidebar_list_v', 
             array(
                 'students'=>$students
             ));

@@ -7,6 +7,7 @@ class Student extends MY_Controller
 
         $this->load->model('student_m');
         $this->load->model('test_m');
+        $this->load->model('test_history_m');
     }
     function index()
     {
@@ -152,6 +153,7 @@ class Student extends MY_Controller
 
         $student = $this->student_m->get($id);
         $tests = $this->test_m->gets($id);
+        $test_hs = $this->test_history_m->gets($id);
 
         if (empty($student)) {
             alert('student의 값이 없습니다', site_url('/student/get'));
@@ -159,7 +161,11 @@ class Student extends MY_Controller
 
         $this->load->helper(array('HTML', 'korean'));
 
-        $this->load->view('student/get_v', array('student' => $student, 'tests' => $tests));
+        $this->load->view('student/get_v', array(
+            'student' => $student, 
+            'tests' => $tests,
+            'test_hs' => $test_hs
+            ));
 
 
         $this->load->view('student/footer_v');
@@ -202,7 +208,7 @@ class Student extends MY_Controller
                 )
             );
 
-            $this->cache->delete('students');
+            //$this->cache->delete('students');
 
             redirect(site_url('/student/get/' . $student_id));
         }
@@ -223,12 +229,7 @@ class Student extends MY_Controller
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('name', '이름', 'required');
-        $this->form_validation->set_rules('grade1', '학년구분1', 'required');
-
-        $this->form_validation->set_rules('grade2', '학년구분2', 'required');
         $this->form_validation->set_rules('class_name', '수업이름', 'required');
-        $this->form_validation->set_rules('memo', '메모', 'required');
-        $this->form_validation->set_rules('fees', '수업료', 'required');
 
         if ($this->form_validation->run() == FALSE) {
 
@@ -243,11 +244,12 @@ class Student extends MY_Controller
                     'grade2' => $this->input->post('grade2'),
                     'class_name' => $this->input->post('class_name'),
                     'memo' => $this->input->post('memo'),
-                    'fees' => $this->input->post('fees')
+                    'fees' => $this->input->post('fees'),
+                    'flag' => $this->input->post('flag')
                 )
             );
 
-            $this->cache->delete('students');
+            //$this->cache->delete('students');
 
             redirect(site_url('/student/get/' . $student_id));
         }

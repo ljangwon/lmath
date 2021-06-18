@@ -15,5 +15,7 @@
 	<p>고2 :<?=$st_count_h2->cnt?> 명 </p>
 	<p>고3 :<?=$st_count_h3->cnt?> 명 </p>
 	<p>고등 전체 : <?=$st_count_h->cnt?> 명  = 총 <?=number_format($st_fees_sum_h->fees)?> 원 </p>
-
+	<hr>
+	<p>전체 인원 : <?=$st_count_e->cnt + $st_count_m->cnt + $st_count_h->cnt?> 명 </p>
+	<p>전체 매출 : <?=number_format($st_fees_sum_e-> fees + $st_fees_sum_m->fees + $st_fees_sum_h->fees )?> 원 </p>
 </div>
