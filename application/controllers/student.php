@@ -10,8 +10,8 @@ class Student extends MY_Controller
     }
     function index()
     {
-        $this->_student_head();
-        $this->_student_sidebar();
+        $this->load->view('student/head_v');  
+        $this->sidebar();
 
         // $st_count_h = $this->student_m->get_count('고등');
         $st_count_h1 = $this->student_m->get_count_option(
@@ -104,13 +104,47 @@ class Student extends MY_Controller
             )
         );
 
-        $this->_student_footer();
+        $this->load->view('student/footer_v');
     }
+
+    function sidebar()
+    {
+        if ( ! $students = $this->cache->get('students')) {
+            $students = $this->student_m->gets();    
+            //$this->cache->save('students', $students, 300);
+       }
+        $this->load->view('student/sidebar_list_v', 
+            array(
+                'students'=>$students
+            ));
+    }
+
+    
+    function lists()
+    {
+
+        $this->load->view('student/head_v');  
+        $this->sidebar();
+
+        $students = $this->student_m->gets();
+
+        if (empty($students)) {
+            alert('student의 값이 없습니다', site_url('/student'));
+        }
+
+        $this->load->helper(array('HTML', 'korean'));
+
+        $this->load->view('student/list_v', array('student' => $students));
+
+        $this->load->view('student/footer_v');
+    }
+
+
     function get($id)
     {
 
-        $this->_student_head();
-        $this->_student_sidebar();
+        $this->load->view('student/head_v');  
+        $this->sidebar();
 
         if (!$id) {
             redirect(site_url('/student'));
@@ -128,8 +162,9 @@ class Student extends MY_Controller
         $this->load->view('student/get_v', array('student' => $student, 'tests' => $tests));
 
 
-        $this->_student_footer();
+        $this->load->view('student/footer_v');
     }
+
 
     function delete()
     {
@@ -149,8 +184,8 @@ class Student extends MY_Controller
 
         $this->_require_login(site_url('/student/add'));
 
-        $this->_student_head();
-        $this->_student_sidebar();
+        $this->load->view('student/head_v');  
+        $this->sidebar();
 
         $this->load->library('form_validation');
 
@@ -178,7 +213,7 @@ class Student extends MY_Controller
             redirect(site_url('/student/get/' . $student_id));
         }
 
-        $this->_student_footer();
+        $this->load->view('student/footer_v');
     }
 
     function modify()
@@ -188,8 +223,8 @@ class Student extends MY_Controller
 
         $this->_require_login(site_url('/student/modify'));
 
-        $this->_student_head();
-        $this->_student_sidebar();
+        $this->load->view('student/head_v');  
+        $this->sidebar();
 
         $this->load->library('form_validation');
 
@@ -223,6 +258,6 @@ class Student extends MY_Controller
             redirect(site_url('/student/get/' . $student_id));
         }
 
-        $this->_student_footer();
+        $this->load->view('student/footer_v');
     }
 }

@@ -13,6 +13,7 @@ class MY_Controller extends CI_Controller {
             $this->load->library('session');      
         $this->load->driver('cache', array('adapter' => 'file'));
     }
+    
     function _head(){
         $this->load->config('leanmath');
         $this->load->view('head');        
