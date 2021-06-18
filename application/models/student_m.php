@@ -8,6 +8,7 @@ class Student_m extends CI_Model {
 
     function gets($option=null) {
         $this->db->select('*');
+        $this->db->order_by('created', 'DESC');
         $this->db->order_by('class_name', 'ASC');
         $this->db->order_by('grade1', 'DESC');
         $this->db->order_by('grade2', 'ASC');
@@ -69,10 +70,8 @@ class Student_m extends CI_Model {
     {
         $this->db->set('created', 'NOW()', false);
         $this->db->set('name', $option['name']);
-        $this->db->set('grade1', $option['grade1']);
-        $this->db->set('grade2', $option['grade2']);
         $this->db->set('class_name', $option['class_name']);
-        $this->db->set('memo', $option['memo']);
+
 
         $this->db->insert('student');
         $result = $this->db->insert_id();

@@ -1,6 +1,6 @@
 <div class="span10">
 	<article>
-		<h3><?= $student->name ?> 학생 상세화면 </h3>
+		<h3><?= $student->name ?> Dashboard </h3>
 		<div><?= kdate($student->created) ?>, 학생 ID = <?= $student->id ?>
 			<?= $this->session->set_userdata('student_id', $student->id) ?>
 			<?= $this->session->set_userdata('st_id', $student->id) ?>
@@ -34,11 +34,129 @@
 				<input class="btn" type="submit" value="수정" />
 			</div>
 		</form>
+		<form action="<?= site_url('/student/delete') ?>" method="post">
+			<input type="hidden" name="student_id" value="<?= $student->id ?>" />
+			<input type="submit" class="btn" value="학생삭제" />
+			<a href="<?= site_url('/student/add') ?>" class="btn">학생추가</a>
+			<a href="<?= site_url('/student/lists') ?>" class="btn">학생리스트</a>
+		</form>
 
-		<ul class="nav nav-tabs nav-stacked">
 
+		<div class="table-responsive">
+			<h4> 기본정보 </h4>
+			
+			<div >
 
-		</ul>
+		</div>
+
+		<div class="table-responsive">
+			<h4> 주요 평가 기록 </h4>
+			<table class="table table-striped table-hover table-sm table align-middle">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">구분</th>
+						<th scope="col">메모</th>
+					</tr>
+					
+				</thead>
+
+				<tbody>
+				<tr class="align-middle">
+							<th scope="row">1 </th>
+							<td class="align-middle">구분1</td>
+							<td class="align-middle">메모1</td>
+				</tr>
+				<tr class="align-middle">
+							<th scope="row">2 </th>
+							<td class="align-middle">구분2</td>
+							<td class="align-middle">메모2</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="table-responsive">
+			<h4> 자기주도 학습 시간 계획 </h4>
+			<table class="table table-striped table-hover table-sm table align-middle">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">구분</th>
+						<th scope="col">메모</th>
+					</tr>
+					
+				</thead>
+
+				<tbody>
+				<tr class="align-middle">
+							<th scope="row">1 </th>
+							<td class="align-middle">구분1</td>
+							<td class="align-middle">메모1</td>
+				</tr>
+				<tr class="align-middle">
+							<th scope="row">2 </th>
+							<td class="align-middle">구분2</td>
+							<td class="align-middle">메모2</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="table-responsive">
+			<h4> 학습한 교재 이력 메모 </h4>
+			<table class="table table-striped table-hover table-sm table align-middle">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">구분</th>
+						<th scope="col">메모</th>
+					</tr>
+					
+				</thead>
+
+				<tbody>
+				<tr class="align-middle">
+							<th scope="row">1 </th>
+							<td class="align-middle">구분1</td>
+							<td class="align-middle">메모1</td>
+				</tr>
+				<tr class="align-middle">
+							<th scope="row">2 </th>
+							<td class="align-middle">구분2</td>
+							<td class="align-middle">메모2</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="table-responsive">
+			<h4> 교재진도 이력 </h4>
+			<table class="table table-striped table-hover table-sm table align-middle">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">구분</th>
+						<th scope="col">메모</th>
+					</tr>
+					
+				</thead>
+
+				<tbody>
+				<tr class="align-middle">
+							<th scope="row">1 </th>
+							<td class="align-middle">구분1</td>
+							<td class="align-middle">메모1</td>
+				</tr>
+				<tr class="align-middle">
+							<th scope="row">2 </th>
+							<td class="align-middle">구분2</td>
+							<td class="align-middle">메모2</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
 
 		<div class="table-responsive">
 			<h4> 테스트 결과 </h4>
@@ -95,11 +213,6 @@
 			</table>
 		</div>
 
-		<form action="<?= site_url('/student/delete') ?>" method="post">
-			<input type="hidden" name="student_id" value="<?= $student->id ?>" />
-			<input type="submit" class="btn" value="학생삭제" />
-			<a href="<?= site_url('/student/add') ?>" class="btn">학생추가</a>
-			<a href="<?= site_url('/student') ?>" class="btn">학생명단 메인화면</a>
-		</form>
+
 	</article>
 </div>

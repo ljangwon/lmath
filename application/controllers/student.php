@@ -173,7 +173,7 @@ class Student extends MY_Controller
         $this->load->model('student_m');
         $this->student_m->delete($student_id);
         $this->cache->delete('students');
-        redirect(site_url('/student'));
+        redirect(site_url('/student/lists'));
     }
 
     function add()
@@ -190,10 +190,7 @@ class Student extends MY_Controller
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('name', '이름', 'required');
-        $this->form_validation->set_rules('grade1', '학년구분1', 'required');
-        $this->form_validation->set_rules('grade2', '학년구분2', 'required');
-        $this->form_validation->set_rules('class_name', '수업이름', 'required');
-        $this->form_validation->set_rules('memo', '메모', 'required');
+        $this->form_validation->set_rules('class_name', '반이름', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('student/add_v');
@@ -201,10 +198,7 @@ class Student extends MY_Controller
             $student_id = $this->student_m->add(
                 array(
                     'name' => $this->input->post('name'),
-                    'grade1' => $this->input->post('grade1'),
-                    'grade2' => $this->input->post('grade2'),
                     'class_name' => $this->input->post('class_name'),
-                    'memo' => $this->input->post('memo')
                 )
             );
 

@@ -1,6 +1,7 @@
 <div class="span2">
 	<ul class="nav nav-tabs nav-stacked">
-	<h4> 학생 명단</h4>
+	<h4> 사이드바 </h4>
+	
 	<?php
 	foreach($students as $entry){
 	?>
