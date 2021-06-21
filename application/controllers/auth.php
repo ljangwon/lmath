@@ -10,10 +10,12 @@ class Auth extends MY_Controller {
     }
 
     function login(){
-    	$this->_head();
+    	$this->_header();
         $this->load->helper('url');
-        $this->load->view('login', array('returnURL'=>$this->input->get('returnURL')));     
-        $this->_footer();   
+        $this->load->view('login', array(
+            'returnURL'=>$this->input->get('returnURL')
+            ));     
+        $this->_footer();;   
     }
 
     function logout(){
@@ -23,12 +25,12 @@ class Auth extends MY_Controller {
     }
 
     function register(){
-        $this->_head();
+        $this->_header();
 
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('email', '이메일 주소', 'required|valid_email|is_unique[user.email]');
-        $this->form_validation->set_rules('nickname', '닉네임', 'required|min_length[5]|max_length[20]');
+        $this->form_validation->set_rules('nickname', '닉네임', 'required|min_length[2]|max_length[20]');
         $this->form_validation->set_rules('password', '비밀번호', 'required|min_length[6]|max_length[30]|matches[re_password]');
         $this->form_validation->set_rules('re_password', '비밀번호 확인', 'required');
 
@@ -40,8 +42,8 @@ class Auth extends MY_Controller {
             }
             $hash = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
 
-            $this->load->model('user_model');
-            $this->user_model->add(array(
+            $this->load->model('user_m');
+            $this->user_m->add(array(
                 'email'=>$this->input->post('email'),
                 'password'=>$hash,
                 'nickname'=>$this->input->post('nickname')
@@ -80,12 +82,11 @@ class Auth extends MY_Controller {
     	}
     }
 
-    function _head() {
-        $this->load->view('head');
+    function _header() {
+        $this->load->view('student/head_v');
     }
 
     function _footer() {
-        $this->load->view('footer');
-    }
-    
+        $this->load->view('student/footer_v');
+    }   
 }
