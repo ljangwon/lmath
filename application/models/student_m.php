@@ -93,6 +93,7 @@ class Student_m extends CI_Model {
         $this->db->set('grade1', $option['grade1']);
         $this->db->set('school_name', $option['school_name']);
         $this->db->set('grade2', $option['grade2']);
+        $this->db->set('class_name', $option['class_name']);
         $this->db->set('class_day1', $option['class_day1']);
         $this->db->set('class_time1', $option['class_time1']);
         $this->db->set('class_day2', $option['class_day2']);
@@ -100,7 +101,7 @@ class Student_m extends CI_Model {
         $this->db->set('class_day3', $option['class_day3']);
         $this->db->set('class_time3', $option['class_time3']);
 
-        $this->db->set('memo', $option['memo']);
+        $this->db->set('memo', ltrim( $option['memo'] ));
         $this->db->set('fees', $option['fees']);
         $this->db->set('flag', $option['flag']);
 

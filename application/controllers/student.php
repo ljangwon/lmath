@@ -142,7 +142,7 @@ class Student extends MY_Controller
 
         $this->load->view('student/list_v', array(
             'student' => $students
-            ));
+        ));
 
         $this->load->view('student/footer_v');
     }
@@ -227,58 +227,41 @@ class Student extends MY_Controller
     function modify()
     {
         // 로그인 필요
-        // 로그인이 되어 있지 않다면 로그인 페이지로 리다이렉션
 
         $this->_require_login(site_url('/student/modify'));
 
         $this->load->view('student/head_v');
         $this->sidebar_student_list();
 
-        $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('name', '이름', 'required');
-        $this->form_validation->set_rules('class_name', '수업이름', 'required');
 
-        if ($this->form_validation->run() == FALSE) {
+        $result = $this->student_m->modify(
+            array(
+                'id' => $this->input->post('id'),
+                'name' => $this->input->post('name'),
+                'grade1' => $this->input->post('grade1'),
+                'school_name' => $this->input->post('school_name'),
+                'grade2' => $this->input->post('grade2'),
+                'class_name' => $this->input->post('class_name'),
+                'class_day1' => $this->input->post('class_day1'),
+                'class_time1' => $this->input->post('class_time1'),
+                'class_day2' => $this->input->post('class_day2'),
+                'class_time2' => $this->input->post('class_time2'),
+                'class_day3' => $this->input->post('class_day3'),
+                'class_time3' => $this->input->post('class_time3'),
+                'memo' => $this->input->post('memo'),
+                'fees' => $this->input->post('fees'),
+                'flag' => $this->input->post('flag')
+            )
+        );
 
-            $this->load->view('error/main_error_v', array(
-                'error'=> ' validation error'
-            ));
+        //$this->cache->delete('students');
+        if (!$result) {
+            alert( "업데이트가 실패했습니다.", site_url('/student/get/' . $this->input->post('id')));
+        }
 
-            redirect(site_url('/student/get/' . $this->input->post('id')));
-
-        } else {
-            $result = $this->student_m->modify(
-                array(
-                    'id' => $this->input->post('id'),
-                    'name' => $this->input->post('name'),
-                    'grade1' => $this->input->post('grade1'),
-                    'school_name' => $this->input->post('school_name'),
-                    'grade2' => $this->input->post('grade2'),
-                    'class_name' => $this->input->post('class_name'),
-                    'class_day1' => $this->input->post('class_day1'),
-                    'class_time1' => $this->input->post('class_time1'),
-                    'class_day2' => $this->input->post('class_day2'),
-                    'class_time2' => $this->input->post('class_time2'),
-                    'class_day3' => $this->input->post('class_day3'),
-                    'class_time3' => $this->input->post('class_time3'),                    
-                    'memo' => $this->input->post('memo'),
-                    'fees' => $this->input->post('fees'),
-                    'flag' => $this->input->post('flag')
-                )
-            );
-
-            //$this->cache->delete('students');
-
-            $this->load->view('error/main_error_v', array(
-                'error'=> ' validation error' . 'result: ' . $result
-            ));
-
-            // if( !$result) {
-            //     redirect(site_url('/student'));
-            // }
-
-            //redirect(site_url('/student/get/' . $this->input->post('id')));
+        else {
+            alert( "업데이트가 성공했습니다.", site_url('/student/get/' . $this->input->post('id')));
         }
 
         $this->load->view('student/footer_v');
