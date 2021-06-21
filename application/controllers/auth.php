@@ -58,8 +58,8 @@ class Auth extends MY_Controller {
     }
 
     function authentication(){
-    	$this->load->model('user_model');
-        $user = $this->user_model->getByEmail(array('email'=>$this->input->post('email')));
+    	$this->load->model('user_m');
+        $user = $this->user_m->getByEmail(array('email'=>$this->input->post('email')));
         if(!function_exists('password_hash')){
             $this->load->helper('password');
         }

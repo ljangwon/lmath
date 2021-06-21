@@ -24,6 +24,18 @@
 			
 			<label for="class_name" class="form-lable">수업이름</label>
 			<input type="text" name="class_name" value="<?= $student->class_name ?>" placeholder="수업이름" class="span3" />
+			<label for="class_name" class="form-lable">수업요일1</label>
+			<input type="text" name="class_name" value="<?= $student->class_day1 ?>" placeholder="수업요일1" class="span3" />
+			<label for="class_name" class="form-lable">수업시간1</label>
+			<input type="text" name="class_name" value="<?= $student->class_time1 ?>" placeholder="수업시간1" class="span3" />
+			<label for="class_name" class="form-lable">수업요일2</label>
+			<input type="text" name="class_name" value="<?= $student->class_day2 ?>" placeholder="수업요일2" class="span3" />
+			<label for="class_name" class="form-lable">수업시간2</label>
+			<input type="text" name="class_name" value="<?= $student->class_time2 ?>" placeholder="수업시간2" class="span3" />
+			<label for="class_name" class="form-lable">수업요일3</label>
+			<input type="text" name="class_name" value="<?= $student->class_day3 ?>" placeholder="수업요일3" class="span3" />
+			<label for="class_name" class="form-lable">수업시간3</label>
+			<input type="text" name="class_name" value="<?= $student->class_time3 ?>" placeholder="수업시간3" class="span3" />
 
 			<label for="fees" class="form-lable">수업료</label>
 			<input type="text" name="fees" value="<?= $student->fees ?>" placeholder="수업료" class="span3" />

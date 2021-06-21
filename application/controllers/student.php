@@ -11,9 +11,8 @@ class Student extends MY_Controller
     }
     function index()
     {
-
         $this->load->view('student/head_v');
-        $this->_require_login(site_url('/student/'));
+        $this->_require_login(site_url('/student'));
         $this->sidebar_student_list();
         $this->main_student_summary();
         $this->load->view('student/footer_v');
@@ -242,9 +241,14 @@ class Student extends MY_Controller
 
         if ($this->form_validation->run() == FALSE) {
 
+            $this->load->view('error/main_error_v', array(
+                'error'=> ' validation error'
+            ));
+
             redirect(site_url('/student/get/' . $this->input->post('id')));
+
         } else {
-            $student_id = $this->student_m->modify(
+            $result = $this->student_m->modify(
                 array(
                     'id' => $this->input->post('id'),
                     'name' => $this->input->post('name'),
@@ -252,6 +256,12 @@ class Student extends MY_Controller
                     'school_name' => $this->input->post('school_name'),
                     'grade2' => $this->input->post('grade2'),
                     'class_name' => $this->input->post('class_name'),
+                    'class_day1' => $this->input->post('class_day1'),
+                    'class_time1' => $this->input->post('class_time1'),
+                    'class_day2' => $this->input->post('class_day2'),
+                    'class_time2' => $this->input->post('class_time2'),
+                    'class_day3' => $this->input->post('class_day3'),
+                    'class_time3' => $this->input->post('class_time3'),                    
                     'memo' => $this->input->post('memo'),
                     'fees' => $this->input->post('fees'),
                     'flag' => $this->input->post('flag')
@@ -260,7 +270,15 @@ class Student extends MY_Controller
 
             //$this->cache->delete('students');
 
-            redirect(site_url('/student/get/' . $student_id));
+            $this->load->view('error/main_error_v', array(
+                'error'=> ' validation error' . 'result: ' . $result
+            ));
+
+            // if( !$result) {
+            //     redirect(site_url('/student'));
+            // }
+
+            //redirect(site_url('/student/get/' . $this->input->post('id')));
         }
 
         $this->load->view('student/footer_v');

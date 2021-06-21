@@ -25,7 +25,9 @@ class Student_m extends CI_Model {
         $this->db->select('*');
 
         $this->db->select('UNIX_TIMESTAMP(created) AS created');
-        $result = $this->db->get_where('student', array('id'=>$student_id))->row();
+        $result = $this->db->get_where('student', array(
+                                                        'id'=>$student_id
+                                                        ))->row();
     	return $result;
     }
 
@@ -91,7 +93,13 @@ class Student_m extends CI_Model {
         $this->db->set('grade1', $option['grade1']);
         $this->db->set('school_name', $option['school_name']);
         $this->db->set('grade2', $option['grade2']);
-        $this->db->set('class_name', $option['class_name']);
+        $this->db->set('class_day1', $option['class_day1']);
+        $this->db->set('class_time1', $option['class_time1']);
+        $this->db->set('class_day2', $option['class_day2']);
+        $this->db->set('class_time2', $option['class_time2']);
+        $this->db->set('class_day3', $option['class_day3']);
+        $this->db->set('class_time3', $option['class_time3']);
+
         $this->db->set('memo', $option['memo']);
         $this->db->set('fees', $option['fees']);
         $this->db->set('flag', $option['flag']);
@@ -100,7 +108,13 @@ class Student_m extends CI_Model {
 
         $result = $this->db->update('student');
 
-        return $option['id'];
+        if( true) {
+            $this->load->view('error/main_error_v', array(
+                'error'=>'update error '. 'result: ' . $result
+            ));
+        }
+
+        return $result;
     }
 
     function backup($student_id){
