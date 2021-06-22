@@ -4,8 +4,10 @@
 	<a href="<?= site_url('/student/add') ?>" class="btn">학생추가</a>
 	<?php
 	foreach($students as $entry){
+		if ( $entry->class_day1 == date('w') |
+				 $entry->class_day2 == date('w') |
+				 $entry->class_day3 == date('w') ) {
 	?>
-		
 		<li>
 			<div>
 				<div style="display:inline" >
@@ -15,13 +17,14 @@
 				<div style="display:inline-block" >
 					<form action="<?= site_url('/student/delete') ?>" method="post">
 						<input type="hidden" name="student_id" value="<?= $entry->id ?>" />
-						<input type="submit" class="btn"  value="삭제" />
+						<input type="submit" class="btn" onclick="alert('삭제하시겠습니까?')" value="삭제" />
 					</form>
 				</div>
 			</div>
 		</li>
 
 	<?php
+				 }
 	}
 	?>
 	</ul>

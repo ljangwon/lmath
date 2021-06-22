@@ -39,8 +39,9 @@
 				      </a>
 				 
 				      <!-- Be sure to leave the brand out there if you want it shown -->
-				      <a class="brand" href="<?=site_url()?>/student/lists">학생리스트</a>
+				      <a class="brand" href="<?=site_url()?>/student/lists">Today학생리스트</a>
 							<a class="brand" href="<?=site_url()?>/student">학생메인화면</a>
+							<a class="brand" href="#">학생메뉴2</a>
 							<a class="brand" href="#">테스트결과입력</a>
 				 
 				      <!-- Everything you want hidden at 940px or less, place within here -->

@@ -14,7 +14,9 @@ class Student extends MY_Controller
         $this->load->view('student/head_v');
         $this->_require_login(site_url('/student'));
         $this->sidebar_student_list();
+
         $this->main_student_summary();
+
         $this->load->view('student/footer_v');
     }
 

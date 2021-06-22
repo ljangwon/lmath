@@ -1,5 +1,6 @@
 <div class="span10">
 <h3> 학생명단 메인화면 </h3>
+
 	<p>초3 : <?=$st_count_e3->cnt?> 명 </p>
 	<p>초4 : <?=$st_count_e4->cnt?> 명 </p>
 	<p>초5 : <?=$st_count_e5->cnt?> 명 </p>
