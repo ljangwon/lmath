@@ -1,66 +1,100 @@
 <div class="span10">
 	<article>
-		<h3><?= $student->name ?> Dashboard </h3>
-		<div><?= kdate($student->created) ?>, 학생 ID = <?= $student->id ?>
-			<?= $this->session->set_userdata('student_id', $student->id) ?>
-			<?= $this->session->set_userdata('st_id', $student->id) ?>
-		</div>
-
-		<form  action="<?= site_url() ?>/student/modify" method="post">
-
-			<input type="hidden" name="id" value="<?= $student->id ?>" />
-
-			<label for="id" class="form-lable">이름</label>
-			<input type="text" name="name" value="<?= $student->name ?>" placeholder="이름" class="span3" />
-
-			<label for="grade1" class="form-lable">학년구분1</label>
-			<input type="text" name="grade1" value="<?= $student->grade1 ?>" placeholder="학년구분1" class="span3" />
-
-			<label for="grade1" class="form-lable">학교이름</label>
-			<input type="text" name="school_name" value="<?= $student->school_name ?>" placeholder="학교이름" class="span3" />
-
-			<label for="grade2" class="form-lable">학년구분2</label>
-			<input type="text" name="grade2" value="<?= $student->grade2 ?>" placeholder="학년구분2" class="span3" />
-			
-			<label for="class_name" class="form-lable">수업이름</label>
-			<input type="text" name="class_name" value="<?= $student->class_name ?>" placeholder="수업이름" class="span3" />
-
-			<label for="class_day1" class="form-lable">수업요일1</label>
-			<input type="text" name="class_day1" value="<?= $student->class_day1 ?>" placeholder="수업요일1" class="span3" />
-			<label for="class_time1" class="form-lable">수업시간1</label>
-			<input type="text" name="class_time1" value="<?= $student->class_time1 ?>" placeholder="수업시간1" class="span3" />
-			<label for="class_day2" class="form-lable">수업요일2</label>
-			<input type="text" name="class_day2" value="<?= $student->class_day2 ?>" placeholder="수업요일2" class="span3" />
-			<label for="class_time2" class="form-lable">수업시간2</label>
-			<input type="text" name="class_time2" value="<?= $student->class_time2 ?>" placeholder="수업시간2" class="span3" />
-			<label for="class_day3" class="form-lable">수업요일3</label>
-			<input type="text" name="class_day3" value="<?= $student->class_day3 ?>" placeholder="수업요일3" class="span3" />
-			<label for="class_time3" class="form-lable">수업시간3</label>
-			<input type="text" name="class_time3" value="<?= $student->class_time3 ?>" placeholder="수업시간3" class="span3" />
-
-			<label for="fees" class="form-lable">수업료</label>
-			<input type="text" name="fees" value="<?= $student->fees ?>" placeholder="수업료" class="span3" />
-
-			<label for="flag" class="form-lable">수강여부</label>
-			<input type="text" name="flag" value="<?= $student->flag ?>" placeholder="수강여부" class="span3" /> 수강: 1, 대기: 0
-
-			<label for="memo" class="form-lable">메모</label>
-			<textarea name="memo" placeholder="메모" class="span6" rows="5"> <?= $student->memo ?> </textarea>
-			<div class="form_control">
-				<input class="btn" type="submit" value="수정" />
+		<div class="container">
+			<div class="row">
+				<h3><?= $student->name ?> Dashboard </h3>
 			</div>
-		</form>
-		<form action="<?= site_url('/student/delete') ?>" method="post">
-			<input type="hidden" name="student_id" value="<?= $student->id ?>" />
-			<input type="submit" class="btn" value="학생삭제" />
-			<a href="<?= site_url('/student/add') ?>" class="btn">학생추가</a>
-			<a href="<?= site_url('/student/lists') ?>" class="btn">학생리스트</a>
-		</form>
 
+			<div class="row"><?= kdate($student->created) ?>, 학생 ID = <?= $student->id ?>
+				<?= $this->session->set_userdata('student_id', $student->id) ?>
+				<?= $this->session->set_userdata('st_id', $student->id) ?>
+			</div>
+
+			<form action="<?= site_url() ?>/student/modify" method="post">
+
+				<input type="hidden" name="id" value="<?= $student->id ?>" />
+
+				<div class="row row-cols-4">
+					<div class="col">
+						<label for="id" class="form-lable">이름</label>
+						<input type="text" name="name" value="<?= $student->name ?>" placeholder="이름" class="span3" />
+					</div>
+
+					<div class="col">
+						<label for="grade1" class="form-lable">학년구분1</label>
+						<input type="text" name="grade1" value="<?= $student->grade1 ?>" placeholder="학년구분1" class="span3" />
+					</div>
+					<div class="col">
+						<label for="grade1" class="form-lable">학교이름</label>
+						<input type="text" name="school_name" value="<?= $student->school_name ?>" placeholder="학교이름" class="span3" />
+					</div>
+					<div class="col">
+						<label for="grade2" class="form-lable">학년구분2</label>
+						<input type="text" name="grade2" value="<?= $student->grade2 ?>" placeholder="학년구분2" class="span3" />
+					</div>
+					<div class="col">
+						<label for="class_name" class="form-lable">수업이름</label>
+						<input type="text" name="class_name" value="<?= $student->class_name ?>" placeholder="수업이름" class="span3" />
+					</div>
+					<div class="col">
+						<label for="class_day1" class="form-lable">수업요일1</label>
+						<input type="text" name="class_day1" value="<?= $student->class_day1 ?>" placeholder="수업요일1" class="span3" />
+					</div>
+					<div class="col">
+						<label for="class_time1" class="form-lable">수업시간1</label>
+						<input type="text" name="class_time1" value="<?= $student->class_time1 ?>" placeholder="수업시간1" class="span3" />
+					</div>
+					<div class="col">
+						<label for="class_day2" class="form-lable">수업요일2</label>
+						<input type="text" name="class_day2" value="<?= $student->class_day2 ?>" placeholder="수업요일2" class="span3" />
+					</div>
+					<div class="col">
+						<label for="class_time2" class="form-lable">수업시간2</label>
+						<input type="text" name="class_time2" value="<?= $student->class_time2 ?>" placeholder="수업시간2" class="span3" />
+					</div>
+					<div class="col">
+						<label for="class_day3" class="form-lable">수업요일3</label>
+						<input type="text" name="class_day3" value="<?= $student->class_day3 ?>" placeholder="수업요일3" class="span3" />
+					</div>
+					<div class="col">
+						<label for="class_time3" class="form-lable">수업시간3</label>
+						<input type="text" name="class_time3" value="<?= $student->class_time3 ?>" placeholder="수업시간3" class="span3" />
+					</div>
+					<div class="col">
+						<label for="fees" class="form-lable">수업료</label>
+						<input type="text" name="fees" value="<?= $student->fees ?>" placeholder="수업료" class="span3" />
+					</div>
+					<div class="col">
+						<label for="flag" class="form-lable">수강여부</label>
+						<input type="text" name="flag" value="<?= $student->flag ?>" placeholder="수강여부" class="span3" /> 수강: 1, 대기: 0
+					</div>
+					<div class="col">
+						<label for="memo" class="form-lable">메모</label>
+						<textarea name="memo" placeholder="메모" class="span6" rows="5"> <?= $student->memo ?> </textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form_control">
+						<input class="btn" type="submit" value="수정" />
+					</div>
+				</div>
+
+
+			</form>
+
+			<div class="row">
+				<form action="<?= site_url('/student/delete') ?>" method="post">
+					<input type="hidden" name="student_id" value="<?= $student->id ?>" />
+					<input type="submit" class="btn" value="학생삭제" />
+					<a href="<?= site_url('/student/add') ?>" class="btn">학생추가</a>
+					<a href="<?= site_url('/student/lists') ?>" class="btn">학생리스트</a>
+				</form>
+			</div>
+
+		</div>
 
 		<div class="table-responsive">
 			<h4> 기본정보 </h4>
-
 
 		</div>
 
@@ -77,7 +111,7 @@
 						<th scope="col">구분</th>
 						<th scope="col">메모</th>
 					</tr>
-					
+
 				</thead>
 
 				<tbody>
@@ -107,20 +141,20 @@
 						<th scope="col">구분</th>
 						<th scope="col">메모</th>
 					</tr>
-					
+
 				</thead>
 
 				<tbody>
-				<tr class="align-middle">
-							<th scope="row">1 </th>
-							<td class="align-middle">구분1</td>
-							<td class="align-middle">메모1</td>
-				</tr>
-				<tr class="align-middle">
-							<th scope="row">2 </th>
-							<td class="align-middle">구분2</td>
-							<td class="align-middle">메모2</td>
-				</tr>
+					<tr class="align-middle">
+						<th scope="row">1 </th>
+						<td class="align-middle">구분1</td>
+						<td class="align-middle">메모1</td>
+					</tr>
+					<tr class="align-middle">
+						<th scope="row">2 </th>
+						<td class="align-middle">구분2</td>
+						<td class="align-middle">메모2</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -134,20 +168,20 @@
 						<th scope="col">구분</th>
 						<th scope="col">메모</th>
 					</tr>
-					
+
 				</thead>
 
 				<tbody>
-				<tr class="align-middle">
-							<th scope="row">1 </th>
-							<td class="align-middle">구분1</td>
-							<td class="align-middle">메모1</td>
-				</tr>
-				<tr class="align-middle">
-							<th scope="row">2 </th>
-							<td class="align-middle">구분2</td>
-							<td class="align-middle">메모2</td>
-				</tr>
+					<tr class="align-middle">
+						<th scope="row">1 </th>
+						<td class="align-middle">구분1</td>
+						<td class="align-middle">메모1</td>
+					</tr>
+					<tr class="align-middle">
+						<th scope="row">2 </th>
+						<td class="align-middle">구분2</td>
+						<td class="align-middle">메모2</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -161,24 +195,23 @@
 						<th scope="col">구분</th>
 						<th scope="col">메모</th>
 					</tr>
-					
+
 				</thead>
 
 				<tbody>
-				<tr class="align-middle">
-							<th scope="row">1 </th>
-							<td class="align-middle">구분1</td>
-							<td class="align-middle">메모1</td>
-				</tr>
-				<tr class="align-middle">
-							<th scope="row">2 </th>
-							<td class="align-middle">구분2</td>
-							<td class="align-middle">메모2</td>
-				</tr>
+					<tr class="align-middle">
+						<th scope="row">1 </th>
+						<td class="align-middle">구분1</td>
+						<td class="align-middle">메모1</td>
+					</tr>
+					<tr class="align-middle">
+						<th scope="row">2 </th>
+						<td class="align-middle">구분2</td>
+						<td class="align-middle">메모2</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
-
 
 		<div class="table-responsive">
 			<h4> 테스트 결과 </h4>
@@ -234,7 +267,5 @@
 				</tbody>
 			</table>
 		</div>
-
-
 	</article>
 </div>
