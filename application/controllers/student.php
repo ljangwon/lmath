@@ -11,7 +11,7 @@ class Student extends MY_Controller
     }
     function index()
     {
-        $this->load->view('student/head_v');
+        $this->load->view('student/header_v');
         $this->_require_login(site_url('/student'));
         $this->sidebar_student_list();
 
@@ -34,6 +34,19 @@ class Student extends MY_Controller
         );
     }
 
+    function sidebar_student_list_today()
+    {
+        if (!$students = $this->cache->get('students')) {
+            $students = $this->student_m->gets_today();
+            //$this->cache->save('students', $students, 300);
+        }
+        $this->load->view(
+            'student/sidebar_list_today_v',
+            array(
+                'students' => $students
+            )
+        );
+    }
     function main_student_summary()
     {
         // $st_count_h = $this->student_m->get_count('고등');
@@ -130,7 +143,7 @@ class Student extends MY_Controller
 
     function lists()
     {
-        $this->load->view('student/head_v');
+        $this->load->view('student/header_v');
         $this->_require_login(site_url('/student/lists'));
         $this->sidebar_student_list();
 
@@ -149,12 +162,32 @@ class Student extends MY_Controller
         $this->load->view('student/footer_v');
     }
 
+    function list_today()
+    {
+        $this->load->view('student/header_v');
+        $this->_require_login(site_url('/student/lists'));
+        $this->sidebar_student_list_today();
+
+        $students = $this->student_m->gets_today();
+
+        if (empty($students)) {
+            alert('student의 값이 없습니다', site_url('/student'));
+        }
+
+        $this->load->helper(array('HTML', 'korean'));
+
+        $this->load->view('student/list_today_v', array(
+            'student' => $students
+        ));
+
+        $this->load->view('student/footer_v');
+    }
 
     function get($id)
     {
         $this->_require_login(site_url('/student/get/' . $id));
 
-        $this->load->view('student/head_v');
+        $this->load->view('student/header_v');
         $this->sidebar_student_list();
 
         if (!$id) {
@@ -181,6 +214,36 @@ class Student extends MY_Controller
         $this->load->view('student/footer_v');
     }
 
+    function today_check($id)
+    {
+        $this->_require_login(site_url('/student/today_check/' . $id));
+
+        $this->load->view('student/header_v');
+        $this->sidebar_student_list_today();
+
+        if (!$id) {
+            redirect(site_url('/student/list_today'));
+        }
+
+        $student = $this->student_m->get($id);
+        $tests = $this->test_m->gets($id);
+        $test_hs = $this->test_history_m->gets($id);
+
+        if (empty($student)) {
+            alert('student의 값이 없습니다', site_url('/student/list_today'));
+        }
+
+        $this->load->helper(array('HTML', 'korean'));
+
+        $this->load->view('student/today_check_v', array(
+            'student' => $student,
+            'tests' => $tests,
+            'test_hs' => $test_hs
+        ));
+
+
+        $this->load->view('student/footer_v');
+    }
 
     function delete()
     {
@@ -200,7 +263,7 @@ class Student extends MY_Controller
 
         $this->_require_login(site_url('/student/add'));
 
-        $this->load->view('student/head_v');
+        $this->load->view('student/header_v');
         $this->sidebar_student_list();
 
         $this->load->library('form_validation');
@@ -232,7 +295,7 @@ class Student extends MY_Controller
 
         $this->_require_login(site_url('/student/modify'));
 
-        $this->load->view('student/head_v');
+        $this->load->view('student/header_v');
         $this->sidebar_student_list();
 
 

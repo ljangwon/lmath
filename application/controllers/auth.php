@@ -83,7 +83,7 @@ class Auth extends MY_Controller {
     }
 
     function _header() {
-        $this->load->view('student/head_v');
+        $this->load->view('student/header_v');
     }
 
     function _footer() {

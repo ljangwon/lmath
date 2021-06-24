@@ -21,6 +21,24 @@ class Student_m extends CI_Model {
      	return $result;
     }
 
+    function gets_today($option=null) {
+        $this->db->select('*');
+        $this->db->order_by('flag', 'ASC');
+        $this->db->order_by('class_name', 'ASC');
+        $this->db->order_by('grade1', 'DESC');
+        $this->db->order_by('grade2', 'ASC');
+            if( $option) {
+                $this->db->where('class_day1', $option);
+                $this->db->or_where('class_day2', $option);
+                $this->db->or_where('class_day3', $option);
+                $this->db->where('flag', 1);       
+            }        
+        $result = $this->db->get('student')->result();;
+        //$result =  $this->db->query("SELECT * FROM student")->result();
+     	return $result;
+    }
+
+
     function get($student_id){
         $this->db->select('*');
 

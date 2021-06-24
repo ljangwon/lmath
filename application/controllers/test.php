@@ -8,7 +8,7 @@ class Test extends MY_Controller {
         $this->load->model('test_m');
     }
     function index(){        
-        $this->_student_head();
+        $this->_student_header();
         $this->_student_sidebar();
 
         $this->load->view('test/main_v', 
@@ -18,7 +18,7 @@ class Test extends MY_Controller {
     }
     function get($id){        
 
-        $this->_student_head();
+        $this->_student_header();
         $this->_student_sidebar();
 
         if(!$id) {
@@ -56,7 +56,7 @@ class Test extends MY_Controller {
 
         $this->_require_login(site_url('/test/add'));
      
-        $this->_student_head();
+        $this->_student_header();
         $this->_student_sidebar();
          
         $this->load->library('form_validation');
@@ -86,7 +86,7 @@ class Test extends MY_Controller {
 
         $this->_require_login(site_url('/test/modify'));
      
-        $this->_student_head();
+        $this->_student_header();
         $this->_student_sidebar();
          
         $this->load->library('form_validation');

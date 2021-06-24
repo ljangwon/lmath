@@ -35,10 +35,10 @@ class MY_Controller extends CI_Controller {
         }
     }
 
-    function _student_head(){
+    function _student_header(){
         //$this->_head();
         $this->load->config('leanmath');
-        $this->load->view('student/head_v');  
+        $this->load->view('student/header_v');  
     }
 
     function _student_sidebar(){
