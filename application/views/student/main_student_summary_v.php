@@ -7,7 +7,7 @@
 	<p>초6 : <?=$st_count_e6->cnt?> 명 </p>
 	<p>초등 전체 : <?=$st_count_e->cnt?> 명 = 총 <?=number_format($st_fees_sum_e->fees)?> 원 </P>
 	<hr>
-	<p>중 : <?=$st_count_m1->cnt?> 명 </p>
+	<p>중1 : <?=$st_count_m1->cnt?> 명 </p>
 	<p>중2 : <?=$st_count_m2->cnt?> 명 </p>
 	<p>중3 : <?=$st_count_m3->cnt?> 명 </p>
 	<p>중등 전체 : <?=$st_count_m->cnt?> 명 = 총 <?=number_format($st_fees_sum_m->fees)?> 원 </p>
