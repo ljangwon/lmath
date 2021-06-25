@@ -60,7 +60,8 @@ class Student_m extends CI_Model {
         $result = $this->db->get_where('student', 
             array(
                 'grade1'=>$option['grade1'],
-                'grade2'=>$option['grade2']            
+                'grade2'=>$option['grade2'],
+                'flag'=>'1'            
                 )
             )->row();
         return $result;
@@ -68,7 +69,10 @@ class Student_m extends CI_Model {
 
     function get_fees_sum($option) {
         $this->db->select_sum('fees');
-        $this->db->where( array('grade1'=>$option));
+        $this->db->where( array(
+                            'grade1'=>$option,
+                            'flag'=>'1'
+                            ));
         //$result = $this->db->get_where('student', array('grade1'=>$option))->row();
         $result = $this->db->get('student')->row();
         return $result;

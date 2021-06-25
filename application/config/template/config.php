@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/leanmath';
+$config['base_url']	= 'http://localhost/lmath';
 
 /*
 |--------------------------------------------------------------------------
