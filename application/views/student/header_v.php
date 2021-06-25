@@ -42,7 +42,7 @@
 				      <a class="brand" href="<?=site_url()?>/student/list_today">Today학생리스트</a>
 							<a class="brand" href="<?=site_url()?>/student/lists">전체학생리스트</a>
 							<a class="brand" href="<?=site_url()?>/student">전체현황</a>
-							<a class="brand" href="#">테스트결과입력</a>
+							<a class="brand" href="<?=site_url()?>/grid">임시화면</a>
 				 
 				      <!-- Everything you want hidden at 940px or less, place within here -->
 				      <div class="nav-collapse collapse">
