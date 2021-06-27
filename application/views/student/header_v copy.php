@@ -5,7 +5,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 								<title> 학생관리 </title>
 			    <!-- Bootstrap -->
-			    <link href="\lmath\my\bootstrap-2.3.2\css\bootstrap.min.css" rel="stylesheet" media="screen">
+			    <link href="<?=$this->config->item('base_url')?>/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 			    <style>
 			    	body{
 			    		padding-top:60px;
@@ -14,7 +14,8 @@
 			    		padding-top:20px;
 			    	}
 			    </style>
-							    
+
+			    <link href="<?=$this->config->item('base_url')?>/static/lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">			    
             </head>
             <body>
             	<?php
@@ -41,11 +42,7 @@
 				      <a class="brand" href="<?=site_url()?>/student/list_today">Today학생리스트</a>
 							<a class="brand" href="<?=site_url()?>/student/lists">전체학생리스트</a>
 							<a class="brand" href="<?=site_url()?>/student">전체현황</a>
-							<a class="brand" href="<?=site_url()?>/grid">임시화면1</a>
-							<a class="brand" href="<?=site_url()?>/grid2">임시화면2</a>
-							<a class="brand" href="<?=site_url()?>/grid3">임시화면3</a>
-							<a class="brand" href="<?=site_url()?>/grid4">임시화면4</a>
-							<a class="brand" href="<?=site_url()?>/grid5">임시화면5</a>
+							<a class="brand" href="<?=site_url()?>/grid">임시화면</a>
 				 
 				      <!-- Everything you want hidden at 940px or less, place within here -->
 				      <div class="nav-collapse collapse">
