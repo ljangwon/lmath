@@ -1,39 +1,147 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="" />
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
-    crossorigin="anonymous">
+		<title>Sidebars · Bootstrap v5.0</title>
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
+		<!-- Bootstrap core CSS -->
+		<link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <h1>Hello, world!</h1>
+		<style>
+			.bd-placeholder-img {
+				font-size: 1.125rem;
+				text-anchor: middle;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				user-select: none;
+			}
 
-    <!-- Optional JavaScript; choose one of the two! -->
+			@media (min-width: 768px) {
+				.bd-placeholder-img-lg {
+					font-size: 3.5rem;
+				}
+			}
+		</style>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
-    crossorigin="anonymous"></script>
+		<!-- Custom styles for this template -->
+		<link href="./sidebars/sidebars.css" rel="stylesheet" />
+	</head>
+	<!-- header end  -->
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
+	<body>
+		<main>
+			<div class="flex-shrink-0 p-3 bg-white" style="width: 280px">
+				<span class="fs-5 fw-semibold">학생리스트</span>
 
+				<!-- Sidemenu start  -->
 
+				<ul class="list-unstyled ps-0">
+					<!-- Sidemenu 1 start -->
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse"
+							data-bs-target="#home-collapse"
+							aria-expanded="true"
+						>
+							Sidemenu1
+						</button>
+						<div class="collapse show" id="home-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="link-dark rounded">Menu1-1</a></li>
+								<li><a href="#" class="link-dark rounded">Menu1-2</a></li>
+								<li><a href="#" class="link-dark rounded">Menu1-3</a></li>
+							</ul>
+						</div>
+					</li>
+					<!-- Sidemenu 1 end -->
 
+					<!-- Sidemenu 2 start -->
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse"
+							data-bs-target="#dashboard-collapse"
+							aria-expanded="false"
+						>
+							Sidemenu2
+						</button>
+						<div class="collapse" id="dashboard-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="link-dark rounded">Menu2-1</a></li>
+								<li><a href="#" class="link-dark rounded">Menu2-2</a></li>
+								<li><a href="#" class="link-dark rounded">Menu2-3</a></li>
+								<li><a href="#" class="link-dark rounded">Menu2-4</a></li>
+							</ul>
+						</div>
+					</li>
+					<!-- Sidemenu 2 end -->
 
+					<!-- Sidemenu 3 start -->
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse"
+							data-bs-target="#orders-collapse"
+							aria-expanded="false"
+						>
+							Sidemenu3
+						</button>
+						<div class="collapse" id="orders-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="link-dark rounded">Menu3-1</a></li>
+								<li><a href="#" class="link-dark rounded">Menu3-2</a></li>
+								<li><a href="#" class="link-dark rounded">Menu3-3</a></li>
+								<li><a href="#" class="link-dark rounded">Menu3-4</a></li>
+							</ul>
+						</div>
+					</li>
+					<!-- Sidemenu 3 end -->
 
+					<li class="border-top my-3"></li>
 
+					<!-- Sidemenu 4 start -->
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse"
+							data-bs-target="#account-collapse"
+							aria-expanded="false"
+						>
+							Sidemenu4
+						</button>
 
-  </body>
+						<div class="collapse" id="account-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="link-dark rounded">Menu4-1</a></li>
+								<li><a href="#" class="link-dark rounded">Menu4-2</a></li>
+								<li><a href="#" class="link-dark rounded">Menu4-3</a></li>
+								<li><a href="#" class="link-dark rounded">Menu4-4</a></li>
+							</ul>
+						</div>
+					</li>
+					<!-- Sidemenu 4 end -->
+				</ul>
+
+				<!-- Sidemenu end  -->
+			</div>
+
+			<!-- vertical divider end -->
+			<div class="b-example-divider"></div>
+			<!-- vertical divider end -->
+
+			<div class="row">
+				<div class="col auto">colfsdafasdfadsfasdfasfas1</div>
+				<div class="col auto">codssadasdasdasl2</div>
+				<div class="col auto">cfdsfdsffdsdfsdfdsfdsfdsfdsfdsfsdfdsfsdfdsfdsfdssdfsdfsdfsdol3</div>
+			</div>
+		</main>
+
+		<script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+
+		<script src="./sidebars/sidebars.js"></script>
+	</body>
 </html>

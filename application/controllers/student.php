@@ -13,6 +13,8 @@ class Student extends MY_Controller
     {
         $this->load->view('student/header_v');
         $this->_require_login(site_url('/student'));
+
+        $this->load->view('student/navbar_v');
         $this->sidebar_student_list();
 
         $this->main_student_summary();
@@ -145,6 +147,7 @@ class Student extends MY_Controller
     {
         $this->load->view('student/header_v');
         $this->_require_login(site_url('/student/lists'));
+        $this->load->view('student/navbar_v');
         $this->sidebar_student_list();
 
         $students = $this->student_m->gets();
@@ -166,6 +169,7 @@ class Student extends MY_Controller
     {
         $this->load->view('student/header_v');
         $this->_require_login(site_url('/student/lists'));
+        $this->load->view('student/navbar_v');
         $this->sidebar_student_list_today();
 
         $students = $this->student_m->gets_today();
@@ -188,6 +192,7 @@ class Student extends MY_Controller
         $this->_require_login(site_url('/student/get/' . $id));
 
         $this->load->view('student/header_v');
+        $this->load->view('student/navbar_v');
         $this->sidebar_student_list();
 
         if (!$id) {
@@ -216,9 +221,9 @@ class Student extends MY_Controller
 
     function today_check($id)
     {
-        $this->_require_login(site_url('/student/today_check/' . $id));
-
         $this->load->view('student/header_v');
+        $this->_require_login(site_url('/student/today_check/' . $id));
+        $this->load->view('student/navbar_v');
         $this->sidebar_student_list_today();
 
         if (!$id) {
@@ -261,9 +266,11 @@ class Student extends MY_Controller
         // 로그인 필요
         // 로그인이 되어 있지 않다면 로그인 페이지로 리다이렉션
 
+        $this->load->view('student/header_v');
         $this->_require_login(site_url('/student/add'));
 
-        $this->load->view('student/header_v');
+        $this->load->view('student/navbar_v');
+
         $this->sidebar_student_list();
 
         $this->load->library('form_validation');
@@ -292,13 +299,10 @@ class Student extends MY_Controller
     function modify()
     {
         // 로그인 필요
-
-        $this->_require_login(site_url('/student/modify'));
-
         $this->load->view('student/header_v');
+        $this->_require_login(site_url('/student/modify'));
+        $this->load->view('student/navbar_v');
         $this->sidebar_student_list();
-
-
 
         $result = $this->student_m->modify(
             array(
