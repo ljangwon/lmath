@@ -8,7 +8,7 @@
 		<title>Sidebars · Bootstrap v5.0</title>
 
 		<!-- Bootstrap core CSS -->
-		<link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="http://localhost/lmath/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
 
 		<style>
 			.bd-placeholder-img {
@@ -27,7 +27,7 @@
 		</style>
 
 		<!-- Custom styles for this template -->
-		<link href="./sidebars/sidebars.css" rel="stylesheet" />
+		<link href="http://localhost/lmath/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/sidebars/sidebars.css" rel="stylesheet" />
 	</head>
 	<!-- header end  -->
 
@@ -140,8 +140,8 @@
 			</div>
 		</main>
 
-		<script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="http://localhost/lmath/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/assets/dist/js/bootstrap.bundle.min.js"></script>
 
-		<script src="./sidebars/sidebars.js"></script>
+		<script src="http://localhost/lmath/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/sidebars/sidebars.js"></script>
 	</body>
 </html>
