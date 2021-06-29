@@ -10,14 +10,14 @@
 			</a>
 
 			<!-- Be sure to leave the brand out there if you want it shown -->
-			<a class="brand" href="<?= site_url() ?>/student/list_today">Today학생리스트</a>
-			<a class="brand" href="<?= site_url() ?>/student/lists">전체학생리스트</a>
-			<a class="brand" href="<?= site_url() ?>/student">전체현황</a>
-			<a class="brand" href="<?= site_url() ?>/grid">임시화면1</a>
-			<a class="brand" href="<?= site_url() ?>/grid2">임시화면2</a>
-			<a class="brand" href="<?= site_url() ?>/grid3">임시화면3</a>
-			<a class="brand" href="<?= site_url() ?>/grid4">임시화면4</a>
-			<a class="brand" href="<?= site_url() ?>/grid5">임시화면5</a>
+			<a class="" href="<?= site_url() ?>/student/list_today">Today학생리스트</a>
+			<a class="" href="<?= site_url() ?>/student/lists">전체학생리스트</a>
+			<a class="" href="<?= site_url() ?>/student">전체현황</a>
+			<a class="" href="<?= site_url() ?>/grid">임시화면1</a>
+			<a class="" href="<?= site_url() ?>/grid2">임시화면2</a>
+			<a class="" href="<?= site_url() ?>/grid3">임시화면3</a>
+			<a class="" href="<?= site_url() ?>/grid4">임시화면4</a>
+			<a class="" href="<?= site_url() ?>/grid5">임시화면5</a>
 
 			<!-- Everything you want hidden at 940px or less, place within here -->
 			<div class="nav-collapse collapse">

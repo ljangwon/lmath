@@ -136,7 +136,7 @@
 			<div class="row">
 				<div class="col auto">colfsdafasdfadsfasdfasfas1</div>
 				<div class="col auto">codssadasdasdasl2</div>
-				<div class="col auto">cfdsfdsffdsdfsdfdsfdsfdsfdsfdsfsdfdsfsdfdsfdsfdssdfsdfsdfsdol3</div>
+				<div class="col auto">cfdsfdsffsdfdsfdsfdssdfsdfsdfsdol3</div>
 			</div>
 		</main>
 

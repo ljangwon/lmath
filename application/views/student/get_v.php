@@ -18,68 +18,25 @@
 			<input type="hidden" name="id" value="<?= $student->id ?>" />
 
 			<div class="col">
-				<label for="id" class="form-lable">이름</label>
-				<input type="text" name="name" value="<?= $student->name ?>" placeholder="이름" class="span3" />
-			</div>
-
-			<div class="col">
-				<label for="grade1" class="form-lable">학년구분1</label>
-				<input type="text" name="grade1" value="<?= $student->grade1 ?>" placeholder="학년구분1" class="span3" />
-			</div>
-
-			<div class="col">
-				<label for="grade1" class="form-lable">학교이름</label>
-				<input type="text" name="school_name" value="<?= $student->school_name ?>" placeholder="학교이름" class="span3" />
-			</div>
-
-			<div class="col">
-				<label for="grade2" class="form-lable">학년구분2</label>
-				<input type="text" name="grade2" value="<?= $student->grade2 ?>" placeholder="학년구분2" class="span3" />
-			</div>
-
-			<div class="col">
-				<label for="class_name" class="form-lable">수업이름</label>
-				<input type="text" name="class_name" value="<?= $student->class_name ?>" placeholder="수업이름" class="span3" />
-			</div>
-
-			<div class="col">
-				<label for="class_day1" class="form-lable">수업요일1</label>
-				<input type="text" name="class_day1" value="<?= $student->class_day1 ?>" placeholder="수업요일1" class="span3" />
-			</div>
-
-			<div class="col">
-				<label for="class_time1" class="form-lable">수업시간1</label>
-				<input type="text" name="class_time1" value="<?= $student->class_time1 ?>" placeholder="수업시간1" class="span3" />
-			</div>
-
-			<div class="col">
-				<label for="class_day2" class="form-lable">수업요일2</label>
-				<input type="text" name="class_day2" value="<?= $student->class_day2 ?>" placeholder="수업요일2" class="span3" />
-			</div>
-
-			<div class="col">
-				<label for="class_time2" class="form-lable">수업시간2</label>
-				<input type="text" name="class_time2" value="<?= $student->class_time2 ?>" placeholder="수업시간2" class="span3" />
-			</div>
-
-			<div class="col">
-				<label for="class_day3" class="form-lable">수업요일3</label>
-				<input type="text" name="class_day3" value="<?= $student->class_day3 ?>" placeholder="수업요일3" class="span3" />
-			</div>
-
-			<div class="col">
-				<label for="class_time3" class="form-lable">수업시간3</label>
-				<input type="text" name="class_time3" value="<?= $student->class_time3 ?>" placeholder="수업시간3" class="span3" />
-			</div>
-
-			<div class="col">
-				<label for="fees" class="form-lable">수업료</label>
-				<input type="text" name="fees" value="<?= $student->fees ?>" placeholder="수업료" class="span3" />
-			</div>
-
-			<div class="col">
-				<label for="flag" class="form-lable">수강여부</label>
-				<input type="text" name="flag" value="<?= $student->flag ?>" placeholder="수강여부" class="span3" /> 수강: 1, 대기: 0
+				이름: <input type="text" name="name" value="<?= $student->name ?>" placeholder="이름" class="span1" />
+				학년구분(초중고): <input type="text" name="grade1" value="<?= $student->grade1 ?>" placeholder="학년구분1" class="span1" />
+				<br>
+				학교이름: <input type="text" name="school_name" value="<?= $student->school_name ?>" placeholder="학교이름" class="span1" />
+				학년: <input type="text" name="grade2" value="<?= $student->grade2 ?>" placeholder="학년구분2" class="span1" />
+				<br>
+				수업이름: <input type="text" name="class_name" value="<?= $student->class_name ?>" placeholder="수업이름" class="span1" />
+				<br>
+				수업요일1: <input type="text" name="class_day1" value="<?= $student->class_day1 ?>" placeholder="수업요일1" class="span1" />
+				수업시간1: <input type="text" name="class_time1" value="<?= $student->class_time1 ?>" placeholder="수업시간1" class="span1" />
+				<br>
+				수업요일2: <input type="text" name="class_day2" value="<?= $student->class_day2 ?>" placeholder="수업요일2" class="span1" />
+				수업시간2: <input type="text" name="class_time2" value="<?= $student->class_time2 ?>" placeholder="수업시간2" class="span1" />
+				<br>
+				수업요일3: <input type="text" name="class_day3" value="<?= $student->class_day3 ?>" placeholder="수업요일3" class="span1" />
+				수업시간3: <input type="text" name="class_time3" value="<?= $student->class_time3 ?>" placeholder="수업시간3" class="span1" />
+				<br>
+				수업료: <input type="text" name="fees" value="<?= $student->fees ?>" placeholder="수업료" class="span2" />
+				수강여부: <input type="text" name="flag" value="<?= $student->flag ?>" placeholder="수강여부" class="span1" /> 수강: 1, 대기: 0
 			</div>
 
 			<div class="col">

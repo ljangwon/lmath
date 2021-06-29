@@ -18,7 +18,11 @@ class Test extends MY_Controller {
     }
     function get($id){        
 
-        $this->_student_header();
+        $this->load->view('student/header_v');
+        $this->_require_login(site_url('/student'));
+
+        $this->load->view('student/navbar_v');
+
         $this->_student_sidebar();
 
         if(!$id) {
@@ -54,9 +58,11 @@ class Test extends MY_Controller {
         // 로그인 필요
         // 로그인이 되어 있지 않다면 로그인 페이지로 리다이렉션
 
+        $this->load->view('student/header_v');
         $this->_require_login(site_url('/test/add'));
-     
-        $this->_student_header();
+
+        $this->load->view('student/navbar_v');
+
         $this->_student_sidebar();
          
         $this->load->library('form_validation');
@@ -84,9 +90,11 @@ class Test extends MY_Controller {
         // 로그인 필요
         // 로그인이 되어 있지 않다면 로그인 페이지로 리다이렉션
 
+        $this->load->view('student/header_v');
         $this->_require_login(site_url('/test/modify'));
-     
-        $this->_student_header();
+
+        $this->load->view('student/navbar_v');
+
         $this->_student_sidebar();
          
         $this->load->library('form_validation');
