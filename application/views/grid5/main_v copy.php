@@ -1,18 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-	<meta name="generator" content="Hugo 0.84.0">
-	<title>LeanMath</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
 
+	<title>Sidebars · Bootstrap v5.0</title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="<?= $this->config->item('base_url') ?>
-	/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="<?= $this->config->item('base_url') ?>/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
 
 	<style>
 		.bd-placeholder-img {
@@ -28,32 +25,68 @@
 				font-size: 3.5rem;
 			}
 		}
+
+		.themed-grid-col {
+			padding-top: .75rem;
+			padding-bottom: .75rem;
+			background-color: rgba(86, 61, 124, .15);
+			border: 1px solid rgba(86, 61, 124, .2);
+		}
+
+		.themed-container {
+			padding: .75rem;
+			margin-bottom: 1.5rem;
+			background-color: rgba(0, 123, 255, .15);
+			border: 1px solid rgba(0, 123, 255, .2);
+		}
 	</style>
 
-
 	<!-- Custom styles for this template -->
-	<link href="<?= $this->config->item('base_url') ?>
-	/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/dashboard/dashboard.css" rel="stylesheet" />
-	<link href="<?= $this->config->item('base_url') ?>
-	/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/navbars/navbar.css" rel="stylesheet" />
-
+	<link href="<?= $this->config->item('base_url') ?>/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/sidebars/sidebars.css" rel="stylesheet" />
+	<link href="<?= $this->config->item('base_url') ?>/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/dashboard/dashboard.css" rel="stylesheet" />
 </head>
+<!-- header end  -->
 
 <body>
 
 	<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">LeanMath</a>
-		<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<a class="navbar col-md-3 col-lg-2 me-0 px-3" href="#">menu1</a>
-		<a class="navbar col-md-3 col-lg-2 me-0 px-3" href="#">menu2</a>
-		<a class="navbar col-md-3 col-lg-2 me-0 px-3" href="#">LeanMath</a>
-		<input class="form-control form-control-dark w-20" type="text" placeholder="Search" aria-label="Search">
-		<input class="form-control form-control-dark w-20" type="text" placeholder="Search" aria-label="Search">
-		<input class="form-control form-control-dark w-20" type="text" placeholder="Search" aria-label="Search">
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">LeanMath</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
+				<div class="collapse navbar-collapse" id="navbarsExample03">
+					<ul class="navbar-nav me-auto mb-2 mb-sm-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="#">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Link</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+							<ul class="dropdown-menu" aria-labelledby="dropdown03">
+								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#">Another action</a></li>
+								<li><a class="dropdown-item" href="#">Something else here</a></li>
+							</ul>
+						</li>
+					</ul>
+					<div class="navbar-nav ">
+						<div class="nav-item text-nowrap">
+							<a class="nav-link px-3" href="#">Sign out</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
 	</header>
+
 
 	<div class="container-fluid">
 		<div class="row">
@@ -134,13 +167,12 @@
 			</nav>
 
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<div class="h2">Dashborad </div>
+					<h1 class="h2">Dashboard</h1>
 					<div class="btn-toolbar mb-2 mb-md-0">
 						<div class="btn-group me-2">
-							<button type="button" class="btn btn-sm btn-outline-secondary">학생추가</button>
-							<button type="button" class="btn btn-sm btn-outline-secondary">학생삭제</button>
+							<button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+							<button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
 						</div>
 						<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
 							<span data-feather="calendar"></span>
@@ -149,24 +181,10 @@
 					</div>
 				</div>
 
-				학교:
-				이름:
+				<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
-				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<div class="h2">테스트 결과 </div>
-					<div class="btn-toolbar mb-2 mb-md-0">
-						<div class="btn-group me-2">
-							<button type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#stinfo1-collapse" aria-controls="stinfo1-collapse" aria-expanded="false" aria-label="Toggle navigation">
-								접고펴기
-							</button>
-							<button type="button" class="btn btn-sm btn-outline-secondary">
-								학생삭제
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div id="stinfo1-collapse" class="table-responsive collapse">
+				<h2>Section title</h2>
+				<div class="table-responsive">
 					<table class="table table-striped table-sm">
 						<thead>
 							<tr>
@@ -293,29 +311,16 @@
 						</tbody>
 					</table>
 				</div>
-
-
-
-
 			</main>
-
-
 		</div>
 	</div>
 
-	<!-- bootstrap js core -->
-	<script src="<?= $this->config->item('base_url') ?>
-		/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/assets/dist/js/bootstrap.bundle.min.js"></script>
-
-	<script src="<?= $this->config->item('base_url') ?>
-	/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/sidebars/sidebars.js"></script>
-
-	<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
-	<script src="<?= $this->config->item('base_url') ?>
-	/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/dashboard/dashboard.js"></script>
 
 
+	<script src="<?= $this->config->item('base_url') ?>/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/assets/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="<?= $this->config->item('base_url') ?>/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/sidebars/sidebars.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+	<script src="<?= $this->config->item('base_url') ?>/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/dashboard/dashboard.js"></script>
 </body>
 
 </html>
