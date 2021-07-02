@@ -1,6 +1,7 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Grid5 extends MY_Controller {
+class Grid5 extends MY_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -20,28 +21,30 @@ class Grid5 extends MY_Controller {
 
 	function __construct()
 	{
-			parent::__construct();
+		parent::__construct();
 
-			$this->load->model('student_m');
-			$this->load->model('test_m');
-			$this->load->model('test_history_m');
+		$this->load->model('student_m');
+		$this->load->model('test_m');
+		$this->load->model('test_history_m');
 	}
 
 	public function index()
 	{
-    $this->load->view('grid5/head_v');
+		$this->load->view('grid5/head_v');
 
 		$students = $this->student_m->gets();
 
 		$this->load->view('grid5/header_v');
-		$this->load->view('grid5/sidebar_v');
+		$this->load->view(
+			'grid5/sidebar_v',
+			array(
+				'students' => $students
+			)
+		);
 
-    $this->load->view('grid5/main_v', 
-												array(
-            									'student' => $students
-        							));
+		$this->load->view('grid5/main_v');
 
-    $this->load->view('grid5/footer_v');
+		$this->load->view('grid5/footer_v');
 	}
 }
 

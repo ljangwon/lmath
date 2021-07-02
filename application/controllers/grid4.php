@@ -19,9 +19,9 @@ class Grid4 extends CI_Controller {
 	 */
 	public function index()
 	{
-    $this->load->view('grid/header_v');
-		$this->load->view('grid/main_v');
-    $this->load->view('grid/footer_v');
+    $this->load->view('grid4/header_v');
+		$this->load->view('grid4/main_v');
+    $this->load->view('grid4/footer_v');
 	}
 }
 
