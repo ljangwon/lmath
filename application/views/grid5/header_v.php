@@ -18,6 +18,7 @@
         aria-label="Search">
 
 </header>
+
  <!-- header 가 끝나면 아래에 컨텐츠(nav + main)가 시작된다.  -->
 <div class="container-fluid">
 	<div class="row">  

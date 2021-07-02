@@ -11,7 +11,7 @@
 
 <!-- sidebars.js -->
 <script src="<?= $this->config->item('base_url') ?>
-	/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/sidebars/sidebars.js"></script>
+	/my/js/sidebars.js"></script>
 
 <!-- feather.js -->
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" 
@@ -25,7 +25,7 @@ crossorigin="anonymous"></script>
 
 <!-- dashboard.js -->
 <script src="<?= $this->config->item('base_url') ?>
-	/my/bootstrap-5.0.2/bootstrap-5.0.2-examples/dashboard/dashboard.js"></script>
+	/my/js/dashboard.js"></script>
 
 </body>
 
