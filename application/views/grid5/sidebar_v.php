@@ -1,8 +1,8 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
   <div class="position-sticky pt-3">
 
-    <!-- Nav List 1 start  -->
-    <!-- nav list Title -->
+    <!-- Sidebar List 1 start  -->
+    <!-- list Title -->
     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
       <a class="link-secondary" data-bs-toggle="collapse" 
       data-bs-target="#nav1-collapse"  aria-expanded="false" aria-label="Toggle navigation">
@@ -18,12 +18,12 @@
       <ul class="nav flex-column mb-2 ">
         <li class="nav-item">
           <a class="nav-link" href="#">
-            학생1
+            <span class="h6"> 학생1 </span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-          학생2
+          <span> 학생2 </span>
           </a>
         </li>
         <li class="nav-item">
@@ -45,8 +45,8 @@
     <!-- nav list end  -->
 
 
-    <!-- Nav List 2 start  -->
-    <!-- nav list Title -->
+    <!-- Sidebar List 2 start  -->
+    <!-- list Title -->
     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
       <a class="link-secondary" data-bs-toggle="collapse" 
       data-bs-target="#nav2-collapse"  aria-expanded="false" aria-label="Toggle navigation">

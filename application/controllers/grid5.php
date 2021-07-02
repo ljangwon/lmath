@@ -34,7 +34,7 @@ class Grid5 extends MY_Controller {
 		$students = $this->student_m->gets();
 
 		$this->load->view('grid5/header_v');
-		$this->load->view('grid5/nav_v');
+		$this->load->view('grid5/sidebar_v');
 
     $this->load->view('grid5/main_v', 
 												array(
