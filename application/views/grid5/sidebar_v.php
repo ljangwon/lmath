@@ -3,7 +3,7 @@
     <?php
     $weekString = array("일", "월", "화", "수", "목", "금", "토");
     ?>
-    <div class="fw-bold text-center"> ( Today: <?= date("Y-m-d", time()) ?> <?= $weekString[date('w')] ?> )</div>
+    <div class="fw-bold text-center"> ( Today: <?= date("Y-m-d", time() ) ?> <?= $weekString[date('w')] ?> )</div>
 
     <div class="fs-5 fw-bolder text-decoration-underline text-center mt-2"> 학생명단 </div>
 
@@ -75,7 +75,7 @@
 
             <li class="nav-item">
 
-              <a class="nav-link" href="<?= site_url('/student/today_check/') ?>/<?= $entry->id ?>">
+              <a class="nav-link" href="<?= site_url('/grid5/get/') ?>/<?= $entry->id ?>">
                 <span style="font-size:0.7rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?></a>
               </span>
               </a>
