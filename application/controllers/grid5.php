@@ -46,7 +46,24 @@ class Grid5 extends MY_Controller
 
 		$this->load->view('grid5/footer_v');
 	}
+
+	function schedule_add()
+	{
+		if ( $this->input->post('st_id') == null )
+		{
+				 $this->load->view('grid5/main_v');
+		}
+		else
+		{
+				$this->grid5_m->schedule_add( array(
+						'st_id'=>$this->input->post('st_id')
+						)
+				);
+
+				redirect( site_url('/grid5/get/'.$this->input->post('st_id')) );
+		}
+
+	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+
