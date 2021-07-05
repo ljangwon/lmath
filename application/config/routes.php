@@ -44,13 +44,13 @@ $route['topic/([a-z]+)/([a-z]+)/(\d+)'] = "$1/$2/$3";
 $route['student/(:num)'] = "student/get/$1";
 $route['student/([a-z]+)/([a-z]+)/(\d+)'] = "$1/$2/$3";
 
-$route['grid5/(:num)'] = "student/get/$1";
-$route['grid5/([a-z]+)/([a-z]+)/(\d+)'] = "$1/$2/$3";
+$route['dashboard/(:num)'] = "dashboard/get/$1";
+$route['dashboard/([a-z]+)/([a-z]+)/(\d+)'] = "$1/$2/$3";
 
 $route['test/(:num)'] = "test/get/$1";
 $route['test/([a-z]+)/([a-z]+)/(\d+)'] = "$1/$2/$3";
 
-$route['default_controller'] = "grid5/index";
+$route['default_controller'] = "dashboard";
 $route['404_override'] = 'errors/notfound';
 
 

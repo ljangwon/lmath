@@ -14,40 +14,30 @@
 			</div>
 		</div>
 	</div>
-	<?= ?>
 
 	<!-- collapse start -->
-	<div id="main1-collapse" class="row collapse.show">
-		<div class="col-sm-2 text-center">
+	<div id="main1-collapse" class="row collapse">
+		<div class="col-sm-3">
 			<label for="" class="form-label">이 름</label>
 			<input type="text" class="form-control"  
-			placeholder="" value="<?=$student->name?>">
+			placeholder="" value="">
 		</div>
 
-		<div class="col-sm-2 text-center">
+		<div class="col-sm-3">
 			<label for="" class="form-label">거주지</label>
 			<input type="text" class="form-control"  placeholder="" value="">
 		</div>
 
-		<div class="col-sm-2 text-center">
-			<label for="" class="form-label text-center">학 교</label>
+		<div class="col-sm-6 ">
+			<label for="" class="form-label">학 교</label>
 			<input type="text" class="form-control"  placeholder="" value="">
 		</div>
 
-		<div class="col-sm-2 text-center">
-			<label for="" class="form-label text-center">학 년</label>
+		<div class="col-sm-6 mt-2">
+			<label for="" class="form-label">학 년</label>
 			<input type="text" class="form-control"  placeholder="" value="">
 		</div>
 
-		<div class="col-sm-2 text-center">
-			<label for="" class="form-label text-center"></label>
-			<input type="text" class="form-control"  placeholder="" value="">
-		</div>
-
-		<div class="col-sm-2 text-center">
-			<label for="" class="form-label text-center">학 년</label>
-			<input type="text" class="form-control"  placeholder="" value="">
-		</div>
 
 	</div>
 	<!-- collapse end -->

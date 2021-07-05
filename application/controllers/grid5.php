@@ -39,44 +39,58 @@ class Grid5 extends MY_Controller
 		$this->load->view(
 			'grid5/sidebar_v',
 			array(
-				'students' => $students
-			)
-		);
+					'students' => $students
+					 )
+			);
 
 		$this->load->view('grid5/main_v');
-
 		$this->load->view('grid5/footer_v');
 	}
 
-	function get($id)
+	function dashboard_get($st_id)
 	{
+		if( empty($st_id) ) {
+			alert('st_id의 값이 없습니다', site_url('/'));
+			// session setting
+			$this->session->set_userdata('st_id', $st_id);
+		}
+
+
+
+
+		// loading head
 		$this->load->view('grid5/head_v');
 
+		// select db
 		$students = $this->student_m->gets();
 
+		// header 
 		$this->load->view('grid5/header_v');
 
-		$this->load->view(
-			'grid5/sidebar_v',
-			array(
+		// sidebar (left)
+		$this->load->view('grid5/sidebar_v', array(
 				'students' => $students
 			)
 		);
 
-
 		$this->load->helper(array('HTML', 'korean'));
 
-		$student = $this->student_m->get($id);
-		$tests = $this->test_m->gets($id);
-		$schedule = $this->grid5_m->schedule_get($id);
+		if ( $this->session->userdata('st_id') ){
+			$st_id = $this->session->userdata('st_id');
+		}
 
+		$student = $this->student_m->get($st_id);
+		$tests = $this->test_m->gets($st_id);
+		$schedules = $this->grid5_m->schedule_gets($st_id);
+
+		// main 
 		$this->load->view('grid5/dashboard_v', array(
 				'student' => $student,
 				'tests' => $tests,
-				'schedule' => $schedule
+				'schedules' => $schedules
 		));
 
-
+		// footer
 		$this->load->view('grid5/footer_v');
 	}
 
@@ -84,7 +98,7 @@ class Grid5 extends MY_Controller
 	{
 		if ( $this->input->post('st_id') == null )
 		{
-				 $this->load->view('grid5/main_v');
+				 $this->load->view('grid5/dashboard_v');
 		}
 		else
 		{
