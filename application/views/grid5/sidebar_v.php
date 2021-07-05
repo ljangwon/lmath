@@ -33,10 +33,10 @@
 
             <li class="nav-item">
 
-              <a class="nav-link" href="<?= site_url('/student/today_check/') ?>/<?= $entry->id ?>">
-                <span style="font-size:0.7rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?></a>
+            <a class="nav-link" href="<?= site_url('/grid5/get/') ?>/<?= $entry->id ?>">
+              <span style="font-size:0.7rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?></a>
               </span>
-              </a>
+            </a>
 
             </li>
 
