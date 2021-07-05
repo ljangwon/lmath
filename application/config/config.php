@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://jakeleanco.ipdisk.co.kr:8000/lmath';
+$config['base_url']	= 'http://localhost/lmath';
 
 /*
 |--------------------------------------------------------------------------
