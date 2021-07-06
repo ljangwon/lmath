@@ -237,11 +237,11 @@
 		<!-- section 2 start -->
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 		<div class="main-title"
-		 data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="자기주도학습 시간 기록">
+		 data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="과제검사등 기록">
 		 지적사항 메모 </div>
 		<div class="btn-toolbar mb-1 mb-md-0">
 			<div class="btn-group me-2">
-				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="checkmemo-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#checkmemo-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
 					접고펴기
 				</a>
 				<button type="button" onclick="location.href='<?= site_url('/dashboard/checkmemo_add/')?>'" 
@@ -256,27 +256,6 @@
 		</div>
 	</div>
 
- <!-- Button trigger modal -->
-
-<!-- Modal1 -->
-<div class="modal fade" id="checkmemo_add" tabindex="-1" 
-  aria-labelledby="checkmemo-modal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="checkmemo-modal">지적사항 추가</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        지적사항을 추가합니다.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 	<!-- collapse start -->
 	<div id="checkmemo-collapse" class="row collapse.show">
@@ -292,7 +271,6 @@
 						<th scope="col" class="text-center text-nowrap">상태</th>
 						<th scope="col" class="text-center text-nowrap">수정</th>
 						<th scope="col" class="text-center text-nowrap">삭제</th>
-
 					</tr>
 				</thead>
 
