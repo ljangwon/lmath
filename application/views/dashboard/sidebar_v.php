@@ -75,7 +75,7 @@
         ?>
 
             <li class="nav-item">
-            <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?><?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
+            <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
                 <span style="font-size:0.7rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?></a>
               </span>
               </a>
