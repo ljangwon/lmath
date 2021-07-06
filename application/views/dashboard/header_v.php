@@ -8,9 +8,9 @@
       학생메뉴
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown2-2">
-      <li><a class="dropdown-item" href="#">학생 등록</a></li>
-      <li><a class="dropdown-item" href="#">학생 리스트</a></li>
-      <li><a class="dropdown-item" href="#">성적 상세조회</a></li>
+      <li><a class="dropdown-item" href="<?= site_url('/student/add') ?>"> 학생 등록</a></li>
+      <li><a class="dropdown-item" href="#">학생 현황</a></li>
+      <li><a class="dropdown-item" href="#">상세조회</a></li>
       <li>
         <hr class="dropdown-divider">
       </li>
@@ -47,7 +47,8 @@
       <li>
         <hr class="dropdown-divider">
       </li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
+      <li><a class="dropdown-item" href="<?= site_url() ?>/auth/login">로그인</a></li>
+      <li><a class="dropdown-item" href="<?= site_url() ?>/auth/register">로그인</a></li>
     </ul>
   </div>
 

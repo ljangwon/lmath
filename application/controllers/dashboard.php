@@ -2,23 +2,7 @@
 
 class Dashboard extends MY_Controller
 {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
-
+	// 기본 생성자
 	function __construct()
 	{
 		parent::__construct();
@@ -29,6 +13,7 @@ class Dashboard extends MY_Controller
 		$this->load->model('dashboard_m');
 	}
 
+	// Default 컨트롤러
 	public function index()
 	{
 		$this->load->view('dashboard/head_v');
@@ -44,6 +29,8 @@ class Dashboard extends MY_Controller
 		$this->load->view('dashboard/default_v');
 		$this->load->view('dashboard/footer_v');
 	}
+
+	// Dashboard 상세화면 컨트롤러
 
 	function dashboard_get($st_id)
 	{
@@ -78,17 +65,21 @@ class Dashboard extends MY_Controller
 		$student = $this->student_m->get($st_id);
 		$tests = $this->test_m->gets($st_id);
 		$schedules = $this->dashboard_m->schedule_gets($st_id);
+		$checkmemos = $this->dashboard_m->check_memo_gets($st_id);
 
 		// main 
 		$this->load->view('dashboard/dashboard_v', array(
 				'student' => $student,
 				'tests' => $tests,
-				'schedules' => $schedules
+				'schedules' => $schedules,
+				'checkmemo' => $checkmemos
 		));
 
 		// footer
 		$this->load->view('dashboard/footer_v');
 	}
+
+	// 학생 수정 컨트롤러
 
 	function st_modify()
 	{
@@ -121,6 +112,8 @@ class Dashboard extends MY_Controller
 			}
 	}
 
+	// 스케줄 추가 컨트롤러
+
 	function schedule_add()
 	{
 			$st_id = $this->session->userdata('st_id');
@@ -139,23 +132,9 @@ class Dashboard extends MY_Controller
 			}
 	}
 
-	function schedule_delete($schedule_id)
-	{
-		$st_id = $this->session->userdata('st_id');
 
-		$this->_require_login(site_url('dashboard/dashboard_get/' .$st_id));
 
-		$result = $this->dashboard_m->schedule_delete($schedule_id);
-
-		if (!$result) {
-			alert( "schedule 삭제 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
-		}
-
-		else {
-			alert( "schedule 삭제 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
-		}
-	}
-
+	// 스케줄 수정 컨트롤러
 	function schedule_modify()
 	{
 			$result = $this->dashboard_m->schedule_modify(
@@ -185,6 +164,84 @@ class Dashboard extends MY_Controller
 					alert( "업데이트가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $this->input->post('id')));
 			}
 	}
+
+		// 스케줄 삭제 컨트롤러
+		function schedule_delete($schedule_id)
+		{
+			$st_id = $this->session->userdata('st_id');
+	
+			$this->_require_login(site_url('dashboard/dashboard_get/' .$st_id));
+	
+			$result = $this->dashboard_m->schedule_delete($schedule_id);
+	
+			if (!$result) {
+				alert( "schedule 삭제 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
+			}
+	
+			else {
+				alert( "schedule 삭제 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
+			}
+		}
+
+		// 지적사항 추가 컨트롤러
+
+		function checkmemo_add()
+		{
+				$st_id = $this->session->userdata('st_id');
+			
+				$result = $this->dashboard_m->_add( array(
+							'st_id'=>$st_id
+							)
+					);
+	
+				if (!$result) {
+						alert( "지적사항 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
+				}
+	
+				else {
+						alert( "지적사항 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
+				}
+		}
+  
+			// 지적사항 수정 컨트롤러
+	function checkmemo_modify()
+	{
+			$result = $this->dashboard_m->checkmemo_modify(
+					array(
+							'memo' => $this->input->post('memo'),
+							'm_date' => $this->input->post('m_date'),
+							'f_memo' => $this->input->post('f_memo'),
+							'f_date' => $this->input->post('f_date'),
+							'status' => $this->input->post('status'),
+					)
+			);
+
+			if (!$result) {
+					alert( "지적사항 업데이트가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $this->input->post('id')));
+			}
+
+			else {
+					alert( "지적사항 업데이트가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $this->input->post('id')));
+			}
+	}
+
+		// 스케줄 삭제 컨트롤러
+		function checkmemo_delete($memo_id)
+		{
+			$st_id = $this->session->userdata('st_id');
+	
+			$this->_require_login(site_url('dashboard/dashboard_get/' .$st_id));
+	
+			$result = $this->dashboard_m->checkmemo_delete($memo_id);
+	
+			if (!$result) {
+				alert( "지적사항 삭제 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
+			}
+	
+			else {
+				alert( "지적사항 삭제 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
+			}
+		}
 
 }
 

@@ -34,6 +34,8 @@ class Dashboard_m extends CI_Model {
         return $result;
     }
 
+
+
     function schedule_delete($id)
     {
         $result = $this->db->delete('st_schedule', array(
@@ -61,5 +63,15 @@ class Dashboard_m extends CI_Model {
         $id= $option['id'];
 
         return $id;
+    }
+
+    function checkmemo_add($option)
+    {
+        $this->db->set('m_date', 'NOW()', false);
+        $this->db->set('st_id', $option['st_id']);
+
+        $this->db->insert('st_checkmemo');
+        $result = $this->db->insert_id();
+        return $result;
     }
 }
