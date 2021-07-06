@@ -43,7 +43,9 @@ class Dashboard_m extends CI_Model {
         $this->db->set('fri_s', $option['fri_s']);
         $this->db->set('sat_s', $option['sat_s']);
         $this->db->set('sun_s', $option['sun_s']);
+        $this->db->set('time_per_week', $option['time_per_week']);
         $this->db->set('s_date', $option['s_date']);
+        $this->db->set('e_date', $option['e_date']);
 
         $this->db->where('id', $option['id']);
 
