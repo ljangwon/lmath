@@ -6,6 +6,15 @@ class Dashboard_m extends CI_Model {
         parent::__construct();
     }
 
+    function schedule_add($option)
+    {
+        $this->db->set('s_date', 'NOW()', false);
+        $this->db->set('st_id', $option['st_id']);
+
+        $this->db->insert('st_schedule');
+        $result = $this->db->insert_id();
+        return $result;
+    }
     function schedule_gets($option=null) {
         $this->db->select('*');
         $this->db->order_by('s_date', 'DESC');
@@ -22,26 +31,6 @@ class Dashboard_m extends CI_Model {
                             array('id'=>$id)
                             )->row();
     	return $result;
-    }
-
-    function schedule_add($option)
-    {
-        $this->db->set('s_date', 'NOW()', false);
-        $this->db->set('st_id', $option['st_id']);
-
-        $this->db->insert('st_schedule');
-        $result = $this->db->insert_id();
-        return $result;
-    }
-
-
-
-    function schedule_delete($id)
-    {
-        $result = $this->db->delete('st_schedule', array(
-            'id'=>$id
-        ));
-        return $result;
     }
 
     function schedule_modify($option)
@@ -65,13 +54,64 @@ class Dashboard_m extends CI_Model {
         return $id;
     }
 
+    function schedule_delete($id)
+    {
+        $result = $this->db->delete('st_schedule', array(
+            'id'=>$id
+        ));
+        return $result;
+    }
+
     function checkmemo_add($option)
     {
         $this->db->set('m_date', 'NOW()', false);
         $this->db->set('st_id', $option['st_id']);
 
-        $this->db->insert('st_checkmemo');
-        $result = $this->db->insert_id();
+        $result = $this->db->insert('st_checkmemo');
         return $result;
     }
+
+    function checkmemo_gets($option=null) {
+        $this->db->select('*');
+        $this->db->order_by('m_date', 'DESC');
+        if( $option ) {
+             $this->db->where('st_id', $option);        
+        }        
+        $result = $this->db->get('st_checkmemo')->result();
+     	return $result;
+    }
+
+    function checkmemo_get($id){
+        $this->db->select('*');
+        $result = $this->db->get_where('st_checkmemo', 
+                            array('id'=>$id)
+                            )->row();
+    	return $result;
+    }
+
+    function checkmemo_modify($option)
+    {
+        $this->db->set('st_id', $option['st_id']);
+        $this->db->set('memo', $option['memo']);
+        $this->db->set('m_date', $option['m_date']);
+        $this->db->set('f_memo', $option['f_memo']);
+        $this->db->set('f_date', $option['f_date']);
+        $this->db->set('status', $option['status']);
+
+        $this->db->where('id', $option['id']);
+
+        $result = $this->db->update('st_checkmemo');
+
+        return $result;
+    }
+
+    function checkmemo_delete($id)
+    {
+        $result = $this->db->delete('st_checkmemo', array(
+            'id'=>$id
+        ));
+        return $result;
+    }
+
+
 }

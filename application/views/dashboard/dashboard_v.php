@@ -111,11 +111,9 @@
 
 	</div>
 	<!-- collapse end -->
-
 	<!-- section end -->
 
-	<!-- section start -->
-	<form id="st_schedule_modify" action="<?= site_url() ?>/dashboard/schedule_modify" method="post">
+	<!-- section 2 start -->
 	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 		<div class="main-title"
 		 data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="자기주도학습 시간 기록">
@@ -125,10 +123,6 @@
 				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#main2-1-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
 					접고펴기
 				</a>
-				<button type="submit" class="btn btn-sm btn-outline-secondary">
-					수정
-				</button>
-           
 				<button type="button" onclick="location.href='<?= site_url('/dashboard/schedule_add/')?>'" 
 					class="btn btn-sm btn-outline-secondary">
 					추가
@@ -180,6 +174,7 @@
 						<th scope="col" class="text-center text-nowrap">합계</th>
 						<th scope="col" class="text-center text-nowrap">시작일</th>
 						<th scope="col" class="text-center text-nowrap">종료일</th>
+						<th scope="col" class="text-center text-nowrap">수정</th>
 						<th scope="col" class="text-center text-nowrap">삭제</th>
 
 					</tr>
@@ -193,7 +188,11 @@
           ) {
         ?>
 					<tr>
-						<td class="text-nowrap">자기주도</td>
+					<form id="st_schedule_modify" 
+						action="<?= site_url('dashboard/schedule_modify') ?>" method="post">
+						<td class="text-nowrap">시간</td>
+						<input type="hidden" name="id" value="<?=$entry->id?>" >
+						<input type="hidden" name="st_id" value="<?=$entry->st_id?>" >
 						<td><input type="text" name="mon_s"
 						class="form-control text-center " placeholder="" value="<?=$entry->mon_s?>"></td>
 						<td><input type="text" name="tue_s"
@@ -214,8 +213,11 @@
 						class="form-control text-center text-nowrap"  placeholder="" value="<?=$entry->s_date?>"></td>
 						<td><input size=100 type="text" name="e_date"
 						 class="form-control text-center text-nowrap"  placeholder="" value="<?=$entry->e_date?>"></td>
+						<td><input type="submit" 
+						class="form-control text-center"  placeholder="" value="수정"></td>
 						<td><input type="button" onclick="location.href='<?= site_url('/dashboard/schedule_delete/'. $entry->id )?>'" 
 						class="form-control text-center"  placeholder="" value="삭제"></td>
+						</form>
 					</tr>
 
         <?php
@@ -229,10 +231,113 @@
 		</div>
 
 	</div>
-	</form>
+	
 	<!-- collapse end -->
 
-	
+		<!-- section 2 start -->
+		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+		<div class="main-title"
+		 data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="자기주도학습 시간 기록">
+		 지적사항 메모 </div>
+		<div class="btn-toolbar mb-1 mb-md-0">
+			<div class="btn-group me-2">
+				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="checkmemo-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+					접고펴기
+				</a>
+				<button type="button" onclick="location.href='<?= site_url('/dashboard/checkmemo_add/')?>'" 
+					class="btn btn-sm btn-outline-secondary">
+					추가
+				</button>
+				<button type="button" id="btn_open" class="btn btn-sm btn-outline-secondary"  
+				    data-bs-toggle="modal" data-bs-target="#checkmemo_add">
+					modal
+				</button>
+			</div>
+		</div>
+	</div>
+
+ <!-- Button trigger modal -->
+
+<!-- Modal1 -->
+<div class="modal fade" id="checkmemo_add" tabindex="-1" 
+  aria-labelledby="checkmemo-modal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="checkmemo-modal">지적사항 추가</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        지적사항을 추가합니다.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<!-- collapse start -->
+	<div id="checkmemo-collapse" class="row collapse.show">
+		<div class="table-responsive">
+			<table class="table-sm">
+				<thead>
+					<tr>
+						<th scope="col" class="text-center text-nowrap"># </th>
+						<th scope="col" class="text-center text-nowrap">지적사항</th>
+						<th scope="col" class="text-center text-nowrap">날짜</th>
+						<th scope="col" class="text-center text-nowrap">조치사항</th>
+						<th scope="col" class="text-center text-nowrap">날짜</th>
+						<th scope="col" class="text-center text-nowrap">상태</th>
+						<th scope="col" class="text-center text-nowrap">수정</th>
+						<th scope="col" class="text-center text-nowrap">삭제</th>
+
+					</tr>
+				</thead>
+
+				<tbody>
+				<?php
+				$num = 1;
+        foreach ($checkmemos as $entry) {
+          if (
+							true
+          ) {
+        ?>
+					<tr>
+					<form id="st_checkmemo_modify" 
+						action="<?= site_url('dashboard/checkmemo_modify') ?>" method="post">
+						<td class="text-nowrap"> <?=$num++?> </td>
+						<input type="hidden" name="id" value="<?=$entry->id?>" >
+						<input type="hidden" name="st_id" value="<?=$entry->st_id?>" >
+						<td><input type="text" name="memo" size="50"
+						class="form-control text-center " placeholder="" value="<?=$entry->memo?>"></td>
+						<td><input type="text" name="m_date"
+						class="form-control text-center"  placeholder="" value="<?=$entry->m_date?>"></td>
+						<td><input type="text" name="f_memo" size="50"
+						class="form-control text-center"  placeholder="" value="<?=$entry->f_memo?>"></td>
+						<td><input type="text" name="f_date"
+						class="form-control text-center"  placeholder="" value="<?=$entry->f_date?>"></td>
+						<td><input type="text" name="status"
+						class="form-control text-center"  placeholder="" value="<?=$entry->status?>"></td>
+						<td><input type="submit" 
+						class="form-control text-center"  placeholder="" value="수정"></td>
+						<td><input type="button" onclick="location.href='<?= site_url('/dashboard/checkmemo_delete/'. $entry->id )?>'" 
+						class="form-control text-center"  placeholder="" value="삭제"></td>
+						</form>
+					</tr>
+
+        <?php
+          }
+        }
+        ?>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+	<!-- collapse end -->
+	<!-- section end -->
 
 	<!-- section start -->
 	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -273,47 +378,7 @@
 
 	</div>
 	<!-- collapse end -->
-
-
-	<!-- section start -->
-	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-		<div class="main-title">지적사항 메모 </div>
-		<div class="btn-toolbar mb-1 mb-md-0">
-			<div class="btn-group me-2">
-				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#main3-1-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
-					접고펴기
-				</a>
-				<button type="button" class="btn btn-sm btn-outline-secondary">
-					버튼
-				</button>
-			</div>
-		</div>
-	</div>
-
-	<!-- collapse start -->
-	<div id="main3-1-collapse" class="row collapse">
-		<div class="col-sm-3">
-			<label for="" class="form-label">이 름</label>
-			<input type="text" class="form-control"  placeholder="" value="">
-		</div>
-
-		<div class="col-sm-3">
-			<label for="" class="form-label">거주지</label>
-			<input type="text" class="form-control"  placeholder="" value="">
-		</div>
-
-		<div class="col-sm-6 ">
-			<label for="" class="form-label">학 교</label>
-			<input type="text" class="form-control"  placeholder="" value="">
-		</div>
-
-		<div class="col-sm-6 mt-2">
-			<label for="" class="form-label">학 년</label>
-			<input type="text" class="form-control"  placeholder="" value="">
-		</div>
-
-	</div>
-	<!-- collapse end -->
+	<!-- section end -->
 
 	<!-- section start -->
 	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
