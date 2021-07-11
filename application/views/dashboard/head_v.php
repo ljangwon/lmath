@@ -43,6 +43,21 @@
 			padding: 20px;
 			background-color: #fff;
 		}
+
+		td {
+		  text-align: center;
+		  vertical-align: auto;
+		}
+
+		th {
+			text-align: center;
+		  vertical-align: auto;
+		}
+
+		tr {
+			text-align: center;
+			vertical-align: auto;
+		}
 	</style>
 
 
