@@ -28,8 +28,13 @@ class Dashboard extends MY_Controller
 			)
 		);
 
-		$this->load->view('dashboard/default_v');
-		$this->load->view('dashboard/footer_v');
+		if( !$st_id = $this->session->userdata('st_id') )	{
+			$this->load->view('dashboard/default_v');
+			$this->load->view('dashboard/footer_v');
+		}
+		else {
+			redirect( site_url('/dashboard/dashboard_get/' . $st_id) );
+		}
 	}
 
 	// Dashboard 상세화면 컨트롤러
@@ -81,28 +86,32 @@ class Dashboard extends MY_Controller
 		$this->load->view('dashboard/footer_v');
 	}
 
-	// 스케줄 추가 컨트롤러
-	function schedule_add()
+	function st_add()
 	{
-		$st_id = $this->session->userdata('st_id');
+			// 로그인 필요
+			// 로그인이 되어 있지 않다면 로그인 페이지로 리다이렉션
+			$st_id = $this->session->userdata('st_id');
 
-		$result = $this->dashboard_m->schedule_add(
-			array(
-				'st_id' => $st_id
-			)
-		);
-
-		if (!$result) {
-			alert("schedule 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
-		} else {
-			alert("schedule 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
-		}
+			$new_st_id = $this->dashboard_m->st_add(
+				array(
+						'name' => $this->input->post('name'),
+						'class_name' => $this->input->post('class_name'),
+							)
+				);
+	
+			if (!$st_id) {
+				alert("학생 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			} else {
+				alert("학생 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $new_st_id));
+			}
 	}
 
 	// 학생 수정 컨트롤러
 	function st_modify()
 	{
-		$result = $this->student_m->modify(
+		$st_id = $this->session->userdata('st_id');
+
+		$result = $this->dashboard_m->st_modify(
 			array(
 				'id' => $this->input->post('id'),
 				'name' => $this->input->post('name'),
@@ -123,13 +132,38 @@ class Dashboard extends MY_Controller
 		);
 
 		if (!$result) {
-			alert("st 업데이트가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $this->input->post('id')));
+			alert("st 업데이트가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
 		} else {
 			alert("st 업데이트가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $this->input->post('id')));
 		}
 	}
 
+	function st_delete()
+	{
+			$student_id = $this->input->post('student_id');
+			$this->_require_login(site_url('/dashboard'));
+			$this->dashboard_m->st_delete($student_id);
+			$this->session->set_userdata('st_id', '');
+			redirect(site_url('/dashboard'));
+	}
 
+	// 스케줄 추가 컨트롤러
+	function schedule_add()
+	{
+		$st_id = $this->session->userdata('st_id');
+
+		$result = $this->dashboard_m->schedule_add(
+			array(
+				'st_id' => $st_id
+			)
+		);
+
+		if (!$result) {
+			alert("schedule 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+		} else {
+			alert("schedule 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+		}
+	}
 
 	// 스케줄 수정 컨트롤러
 	function schedule_modify()
@@ -195,6 +229,7 @@ class Dashboard extends MY_Controller
 	// 지적사항 수정 컨트롤러
 	function checkmemo_modify()
 	{
+		$st_id = $this->session->userdata('st_id');
 		$result = $this->dashboard_m->checkmemo_modify(
 			array(
 				'id' => $this->input->post('id'),
@@ -208,7 +243,7 @@ class Dashboard extends MY_Controller
 		);
 
 		if (!$result) {
-			alert("지적사항 업데이트가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $this->input->post('st_id')));
+			alert("지적사항 업데이트가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
 		} else {
 			alert("지적사항 업데이트가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $this->input->post('st_id')));
 		}

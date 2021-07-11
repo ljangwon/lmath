@@ -6,6 +6,8 @@ class Dashboard_m extends CI_Model {
         parent::__construct();
     }
 
+
+    // schedule CRUD start
     function schedule_add($option)
     {
         $this->db->set('s_date', 'NOW()', false);
@@ -15,6 +17,7 @@ class Dashboard_m extends CI_Model {
         $result = $this->db->insert_id();
         return $result;
     }
+
     function schedule_gets($option=null) {
         $this->db->select('*');
         $this->db->order_by('s_date', 'DESC');
@@ -64,6 +67,8 @@ class Dashboard_m extends CI_Model {
         return $result;
     }
 
+    // checkmemo CRUD start
+
     function checkmemo_add($option)
     {
         $this->db->set('m_date', 'NOW()', false);
@@ -97,7 +102,6 @@ class Dashboard_m extends CI_Model {
         $this->db->set('memo', $option['memo']);
         $this->db->set('m_date', $option['m_date']);
         $this->db->set('f_memo', $option['f_memo']);
-        $this->db->set('f_date', $option['f_date']);
         $this->db->set('status', $option['status']);
 
         $this->db->where('id', $option['id']);
@@ -114,6 +118,63 @@ class Dashboard_m extends CI_Model {
         ));
         return $result;
     }
+
+    // checkmemo CRUD end
+
+    // student CRUD start 
+
+    function st_add($option)
+    {
+        $this->db->set('created', 'NOW()', false);
+        $this->db->set('name', $option['name']);
+        $this->db->set('class_name', $option['class_name']);
+
+        $this->db->insert('student');
+        $st_id = $this->db->insert_id();
+        return $st_id;
+    }
+
+    function st_modify($option)
+    {
+        $this->db->set('created', 'NOW()', false);
+        $this->db->set('name', $option['name']);
+        $this->db->set('grade1', $option['grade1']);
+        $this->db->set('school_name', $option['school_name']);
+        $this->db->set('grade2', $option['grade2']);
+        $this->db->set('class_name', $option['class_name']);
+        $this->db->set('class_day1', $option['class_day1']);
+        $this->db->set('class_time1', $option['class_time1']);
+        $this->db->set('class_day2', $option['class_day2']);
+        $this->db->set('class_time2', $option['class_time2']);
+        $this->db->set('class_day3', $option['class_day3']);
+        $this->db->set('class_time3', $option['class_time3']);
+
+        $this->db->set('memo', ltrim( $option['memo'] ));
+        $this->db->set('fees', $option['fees']);
+        $this->db->set('flag', $option['flag']);
+
+        $this->db->where('id', $option['id']);
+
+        $result = $this->db->update('student');
+
+        if( true) {
+            $this->load->view('error/main_error_v', array(
+                'error'=>'update error '. 'result: ' . $result
+            ));
+        }
+
+        return $result;
+    }
+
+    function st_delete($student_id)
+    {
+        $result = $this->db->delete('student', array(
+            'id'=>$student_id
+        ));
+        return $result;
+    }
+
+    // student CRUD end
 
 
 }

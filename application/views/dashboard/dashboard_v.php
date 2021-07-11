@@ -13,6 +13,12 @@
 					<button type="submit" class="btn btn-sm btn-outline-secondary">
 						수정
 					</button>
+					<button type="button" id="btn_st_add" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#student_add">
+						학생추가
+					</button>
+					<button type="button" id="btn_st_del" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#student_del">
+						학생삭제
+					</button>
 				</div>
 			</div>
 		</div>
@@ -93,9 +99,67 @@
 				<label for="" class="form-label">메모</label>
 				<textarea name="memo" placeholder="메모" class="form-control text-start" rows="5"><?= $student->memo ?> </textarea>
 			</div>
+		</div>
 	</form>
 
+	<!-- Button trigger modal -->
+	<!-- Modal1 -->
+	<div class="modal fade" id="student_add" aria-labelledby="student_add" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="st_add_Label">학생 추가</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form action="<?= site_url() ?>/dashboard/st_add" method="post">
+						<input type="text" name="name" placeholder="이름" class="span12" />
+						<input type="text" name="class_name" placeholder="수업이름" class="span12" />
+						<div class="form_control">
+							<input class="btn" type="submit" value="학생추가" />
+							<a href="<?= site_url('/dashboard') ?>" class="btn">대시보드</a>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<!-- Button trigger modal -->
+	<!-- Modal2 -->
+	<div class="modal fade" id="student_del" aria-labelledby="student_del" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<h5 class="modal-title" id="st_delete_Label">학생 삭제</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+
+				<div class="modal-body">
+					<form action="<?= site_url() ?>/dashboard/st_delete" method="post">
+						<input type="hidden" name="student_id" value="<?= $student->id ?>" />
+						<div class="form_control">
+							정말로 <?= $student->name ?> 을 삭제하시겠습니까?
+							<br>
+							<input class="btn" type="submit" value="학생삭제" />
+							<a href="<?= site_url('/dashboard') ?>" class="btn">대시보드</a>
+						</div>
+					</form>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
 	<!-- collapse end -->
 	<!-- section end -->
 
@@ -111,30 +175,6 @@
 				<button type="button" onclick="location.href='<?= site_url('/dashboard/schedule_add/') ?>'" class="btn btn-sm btn-outline-secondary">
 					추가
 				</button>
-				<button type="button" id="btn_open" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#schedule_add">
-					modal
-				</button>
-			</div>
-		</div>
-	</div>
-
-	<!-- Button trigger modal -->
-
-	<!-- Modal1 -->
-	<div class="modal fade" id="schedule_add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">스케줄 추가</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					스케줄을 추가합니다.
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -163,15 +203,15 @@
 
 				<tbody>
 					<?php
-					$seq=1;
+					$seq = 1;
 					foreach ($schedules as $entry) {
 						if (
 							true
 						) {
 					?>
 							<tr class="d-flex flex-nowrap">
-								<form id="st_schedule_modify" action="<?= site_url('dashboard/schedule_modify') ?>" method="post">
-									<th class="col-1 text-nowrap"><?=$seq++?></th>
+								<form id="schedule_<?$seq?>" action="<?= site_url('dashboard/schedule_modify') ?>" method="post">
+									<th class="col-1 text-nowrap"><?= $seq++ ?></th>
 									<input type="hidden" name="id" value="<?= $entry->id ?>">
 									<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
 									<td class="col-1"><input type="text" size=2 name="mon_s" class="text-center " value="<?= $entry->mon_s ?>"></td>
@@ -182,14 +222,11 @@
 									<td class="col-1"><input type="text" size=2 name="sat_s" class="text-center" value="<?= $entry->sat_s ?>"></td>
 									<td class="col-1"><input type="text" size=2 name="sun_s" class="text-center" value="<?= $entry->sun_s ?>"></td>
 									<td class="col-1"><input type="text" size=2 name="time_per_week" class="text-center" value="<?= $entry->time_per_week ?>"> </td>
-									<td class="col-1"><input type="text" size=14 name="s_date" class="text-left text-nowrap" value="<?= $entry->s_date ?>"></td>
-									<td class="col-1"><input type="text" size=14 name="e_date" class="text-left text-nowrap" value="<?= $entry->e_date ?>"></td>
-									<td class="col-1">
-									<div class="d-inline-flex">
-										<input type="submit" class="text-center" value="수정">
-										/<input type="button" onclick="location.href='<?= site_url('/dashboard/schedule_delete/' . $entry->id) ?>'" 
-										class="text-center" value="삭제">
-									<div>
+									<td class="col-1"><input type="text" size=20 name="s_date" class="text-left text-nowrap" value="<?= $entry->s_date ?>"></td>
+									<td class="col-1"><input type="text" size=20 name="e_date" class="text-left text-nowrap" value="<?= $entry->e_date ?>"></td>
+									<td class="col-1 d-flex">
+											<input type="submit" class="text-center" value="수정">
+											/<input type="button" onclick="location.href='<?= site_url('/dashboard/schedule_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
 									</td>
 
 								</form>
@@ -219,27 +256,21 @@
 				<button type="button" onclick="location.href='<?= site_url('/dashboard/checkmemo_add/') ?>'" class="btn btn-sm btn-outline-secondary">
 					추가
 				</button>
-				<button type="button" id="btn_open" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#checkmemo_add">
-					modal
-				</button>
 			</div>
 		</div>
 	</div>
 
 	<!-- collapse start -->
-	<div id="checkmemo-collapse" class="row collapse.show">
-		<div class="table-responsive-sm">
+	<div id="checkmemo-collapse" class="row collapse">
+		<div class="table-responsive">
 			<table class="table">
 				<thead>
 					<tr>
-						<th class="text-center text-nowrap"># </th>
+						<th class="text-center text-nowrap">구분 </th>
+						<th class="text-center text-nowrap">날짜</th>
 						<th class="text-center text-nowrap">지적사항</th>
-						<th class="text-center text-nowrap">날짜</th>
-						<th class="text-center text-nowrap">조치사항</th>
-						<th class="text-center text-nowrap">날짜</th>
 						<th class="text-center text-nowrap">상태</th>
-						<th class="text-center text-nowrap">수정</th>
-						<th class="text-center text-nowrap">삭제</th>
+						<th class="text-center text-nowrap">수정/삭제</th>
 					</tr>
 				</thead>
 
@@ -251,20 +282,27 @@
 							true
 						) {
 					?>
+						<form id="checkmemo_<?=$seq?>" action="<?= site_url('dashboard/checkmemo_modify') ?>" method="post">
 							<tr>
-								<form id="st_checkmemo_modify" action="<?= site_url('dashboard/checkmemo_modify') ?>" method="post">
-									<td class="text-nowrap"> <?= $seq++ ?> </td>
+									<th class="text-nowrap"> <?= $seq++ ?> </th>
 									<input type="hidden" name="id" value="<?= $entry->id ?>">
 									<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
-									<td><input type="text" name="memo" size="50" class="form-control text-center " placeholder="" value="<?= $entry->memo ?>"></td>
-									<td><input type="text" name="m_date" class="form-control text-center" placeholder="" value="<?= $entry->m_date ?>"></td>
-									<td><input type="text" name="f_memo" size="50" class="form-control text-center" placeholder="" value="<?= $entry->f_memo ?>"></td>
-									<td><input type="text" name="f_date" class="form-control text-center" placeholder="" value="<?= $entry->f_date ?>"></td>
-									<td><input type="text" name="status" class="form-control text-center" placeholder="" value="<?= $entry->status ?>"></td>
-									<td><input type="submit" class="form-control text-center" placeholder="" value="수정"></td>
-									<td><input type="button" onclick="location.href='<?= site_url('/dashboard/checkmemo_delete/' . $entry->id) ?>'" class="form-control text-center" placeholder="" value="삭제"></td>
-								</form>
+									<td><input type="text" name="m_date" size=10 class="text-start" placeholder="" value="<?= $entry->m_date ?>"></td>
+
+									<td><textarea name="memo" cols=50 rows="2" class="text-start"><?= $entry->memo ?> </textarea>
+									
+									<td rowspan=2 ><input type="text" size=5 name="status" class="text-center" placeholder="" value="<?= $entry->status ?>"></td>
+									<td rowspan=2 class="col-1 d-flex text-center">
+											<input type="submit" class="text-center" value="수정">
+											/<input type="button" onclick="location.href='<?= site_url('/dashboard/checkmemo_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
+									</td>
 							</tr>
+							<tr>
+									<th class="text-nowrap"> --> </th>
+									<td> 조치내용 </td>
+									<td><textarea name="f_memo" cols=50 rows="2" class="text-start"><?= $entry->f_memo ?> </textarea>
+							</tr>
+						</form>
 
 					<?php
 						}
