@@ -8,7 +8,6 @@ class Dashboard extends MY_Controller
 		parent::__construct();
 
 		$this->load->model('student_m');
-		$this->load->model('test_m');
 		$this->load->model('test_history_m');
 		$this->load->model('dashboard_m');
 	}
@@ -53,13 +52,13 @@ class Dashboard extends MY_Controller
 		// loading head
 		$this->load->view('dashboard/head_v');
 
-		// select db
+		// 학생들 Data 가져오기 
 		$students = $this->student_m->gets();
 
-		// header 
+		// 위 메뉴 헤더 화면 로드하기
 		$this->load->view('dashboard/header_v');
 
-		// sidebar (left)
+		// 왼쪽 사이드바 화면 로드하기
 		$this->load->view(
 			'dashboard/sidebar_v',
 			array(
@@ -69,9 +68,16 @@ class Dashboard extends MY_Controller
 
 		$this->load->helper(array('HTML', 'korean'));
 
+		// 학생 한명 Data 로드하기 
 		$student = $this->student_m->get($st_id);
-		$tests = $this->test_m->gets($st_id);
+
+		// 학생 테스트들 Data 로드하기 
+		$tests = $this->dashboard_m->test_gets($st_id);
+
+		// 학생 학습 시간 Data 로드하기
 		$schedules = $this->dashboard_m->schedule_gets($st_id);
+
+		// 학생 지적사항 Data 로드하기
 		$checkmemos = $this->dashboard_m->checkmemo_gets($st_id);
 
 		// main 
@@ -192,7 +198,7 @@ class Dashboard extends MY_Controller
 		}
 	}
 
-	// 스케줄 삭제 컨트롤러
+	// 삭제 컨트롤러
 	function schedule_delete($schedule_id)
 	{
 		$st_id = $this->session->userdata('st_id');
@@ -208,7 +214,8 @@ class Dashboard extends MY_Controller
 		}
 	}
 
-	// 지적사항 추가 컨트롤러
+	// 지적사항 CRUD start
+	// 추가 컨트롤러
 	function checkmemo_add()
 	{
 		$st_id = $this->session->userdata('st_id');
@@ -226,7 +233,7 @@ class Dashboard extends MY_Controller
 		}
 	}
 
-	// 지적사항 수정 컨트롤러
+	// 수정 컨트롤러
 	function checkmemo_modify()
 	{
 		$st_id = $this->session->userdata('st_id');
@@ -249,7 +256,7 @@ class Dashboard extends MY_Controller
 		}
 	}
 
-	// 스케줄 삭제 컨트롤러
+	// 삭제 컨트롤러
 	function checkmemo_delete($memo_id)
 	{
 		$st_id = $this->session->userdata('st_id');
@@ -264,4 +271,65 @@ class Dashboard extends MY_Controller
 			alert("지적사항 삭제 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 		}
 	}
+	// 지적사항 CRUD end
+
+	// 테스트 CRUD start
+	// 추가 컨트롤러
+	function test_add()
+	{
+		$st_id = $this->session->userdata('st_id');
+
+		$result = $this->dashboard_m->test_add(
+			array(
+				'st_id' => $st_id
+			)
+		);
+
+		if (!$result) {
+			alert("테스트 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+		} else {
+			alert("테스트 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+		}
+	}
+
+	// 수정 컨트롤러
+	function test_modify()
+	{
+		$st_id = $this->session->userdata('st_id');
+		$result = $this->dashboard_m->test_modify(
+			array(
+				'id' => $this->input->post('id'),
+				'st_id' => $this->input->post('st_id'),
+				'memo' => $this->input->post('memo'),
+				'm_date' => $this->input->post('m_date'),
+				'f_memo' => $this->input->post('f_memo'),
+				'f_date' => $this->input->post('f_date'),
+				'status' => $this->input->post('status'),
+			)
+		);
+
+		if (!$result) {
+			alert("테스트 업데이트가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
+		} else {
+			alert("테스트 업데이트가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $this->input->post('st_id')));
+		}
+	}
+
+	// 삭제 컨트롤러
+	function test_delete($memo_id)
+	{
+		$st_id = $this->session->userdata('st_id');
+
+		$this->_require_login(site_url('dashboard/dashboard_get/' . $st_id));
+
+		$result = $this->dashboard_m->test_delete($memo_id);
+
+		if (!$result) {
+			alert("테스트 삭제 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+		} else {
+			alert("테스트 삭제 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+		}
+	}
+	// 테스트 CRUD end
+
 }

@@ -163,7 +163,7 @@
 	<!-- collapse end -->
 	<!-- section end -->
 
-	<!-- section 2 start -->
+	<!-- 자기주도학습 시간계획 화면 start -->
 	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 		<div class="main-title" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="자기주도학습 시간 기록">
 			자기주도학습 시간계획 </div>
@@ -180,7 +180,7 @@
 	</div>
 
 	<!-- collapse start -->
-	<div id="main2-1-collapse" class="row collapse.show">
+	<div id="main2-1-collapse" class="row collapse">
 
 		<div class="table-responsive">
 			<table class="table">
@@ -244,7 +244,7 @@
 
 	<!-- collapse end -->
 
-	<!-- section 2 start -->
+	<!-- 지적사항 메모 화면 start -->
 	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 		<div class="main-title" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="지적사항 메모">
 			지적사항 메모 </div>
@@ -284,9 +284,9 @@
 					?>
 						<form id="checkmemo_<?=$seq?>" action="<?= site_url('dashboard/checkmemo_modify') ?>" method="post">
 							<tr>
-									<th class="text-nowrap"> <?= $seq++ ?> </th>
 									<input type="hidden" name="id" value="<?= $entry->id ?>">
 									<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
+									<th class="text-nowrap"> <?= $seq++ ?> </th>
 									<td><input type="text" name="m_date" size=10 class="text-start" placeholder="" value="<?= $entry->m_date ?>"></td>
 
 									<td><textarea name="memo" cols=50 rows="2" class="text-start"><?= $entry->memo ?> </textarea>
@@ -315,6 +315,100 @@
 	</div>
 	<!-- collapse end -->
 	<!-- section end -->
+
+	<!-- 테스트 화면 start -->
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+		<div class="main-title" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="테스트 결과 입력">
+		테스트 결과 기록 </div>
+		<div class="btn-toolbar mb-1 mb-md-0">
+			<div class="btn-group me-2">
+				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" 
+				data-bs-toggle="collapse" data-bs-target="#test-collapse" aria-controls="main-collapse" 
+				aria-expanded="false" aria-label="Toggle navigation">
+					접고펴기
+				</a>
+				<button type="button" onclick="location.href='<?= site_url('/dashboard/test_add/') ?>'" class="btn btn-sm btn-outline-secondary">
+					추가
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- collapse start -->
+	<div id="test-collapse" class="row collapse.show">
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+				<tr class="d-flex flex-nowrap">
+						<th class="col-1 text-center text-nowrap">#</th>
+						<th class="col-1 text-center text-nowrap">시험구분</th>
+						<th class="col-1 text-center text-nowrap">과정</th>
+						<th class="col-1 text-center text-nowrap">수준</th>
+						<th class="col-1 text-center text-nowrap">단원</th>
+						<th class="col-1 text-center text-nowrap">정답수</th>
+						<th class="col-1 text-center text-nowrap">문제수</th>
+						<th class="col-1 text-center text-nowrap">점수</th>
+						<th class="col-1 text-center text-nowrap">결과</th>
+						<th class="col-1 text-center text-nowrap">날짜</th>
+						<th class="col-1 text-center text-nowrap">메모</th>
+						<th class="col-1 text-center text-nowrap">수정/삭제</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<?php
+					$seq = 1;
+					foreach ($tests as $entry) {
+						if (
+							true
+						) {
+					?>
+						<tr class="d-flex flex-nowrap">
+							<form id="test_<?=$seq?>" action="<?= site_url('dashboard/test_modify') ?>" method="post">
+								<input type="hidden" name="id" value="<?= $entry->id ?>">
+								<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
+								<th class="col-1 text-nowrap"> <?= $seq++ ?> </th>
+								<td class="col-1"> <input type="text" name="type" size=10 class="text-start"  value="<?= $entry->type ?>"></td>
+								<td class="col-1"> <input type="text" name="grade" size=10 class="text-start"  value="<?= $entry->grade ?>"></td>
+								<td class="col-1"> <input type="text" name="level" size=10 class="text-start"  value="<?= $entry->level ?>"></td>
+								<td class="col-1"> <input type="text" name="chapter" size=10 class="text-start"  value="<?= $entry->chapter ?>"></td>								<td class="align-middle"><?= $entry->chapter ?></td>
+								<?php
+								if ($entry->total_num == 0) {
+									$score = 0;
+								} else {
+									$score = ($entry->corrt_num / $entry->total_num) * 100;
+								}
+								?>
+								<td class="col-1"> <input type="text" name="result" size=10 class="text-start"  value="<?= $entry->corrt_num ?>"></td>
+								<td class="col-1"> <input type="text" name="result" size=10 class="text-start"  value="<?= $entry->total_num ?>"></td>
+								<td class="col-1 d-flex text-center">
+									<div class="text-center">
+									<?= $entry->corrt_num ?>/<?= $entry->total_num ?>
+									<br>
+									( <?= number_format($score, 2) ?>점 )
+									</div>
+								</td>
+								<td class="col-1"> <input type="text" name="result" size=10 class="text-start"  value="<?= $entry->result ?>"></td>
+								<td class="col-1"> <input type="text" name="test_date" size=10 class="text-start"  value="<?= $entry->test_date ?>"></td>
+								<td class="col-1"> <input type="text" name="memo" size=10 class="text-start"  value="<?= $entry->memo ?>"></td>
+								<td class="col-1 d-flex text-center">
+											<input type="submit" class="text-center" value="수정">
+											/<input type="button" onclick="location.href='<?= site_url('/dashboard/test_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
+									</td>
+							</form>
+						</tr>						
+					<?php
+						}
+					}
+					?>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+	<!-- collapse end -->
+	<!-- section end -->
+
 
 	<!-- section start -->
 	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -484,46 +578,5 @@
 
 	<!-- section end -->
 
-	<!-- section start -->
-	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-		<div class="main-title"> 테스트 결과 기록 </div>
-		<div class="btn-toolbar mb-1 mb-md-0">
-			<div class="btn-group me-2">
-				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#main5-1-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
-					접고펴기
-				</a>
-				<button type="button" class="btn btn-sm btn-outline-secondary">
-					버튼
-				</button>
-			</div>
-		</div>
-	</div>
-
-	<!-- collapse start -->
-	<div id="main5-1-collapse" class="row collapse">
-		<div class="col-sm-3">
-			<label for="" class="form-label">이 름</label>
-			<input type="text" class="form-control" placeholder="" value="">
-		</div>
-
-		<div class="col-sm-3">
-			<label for="" class="form-label">거주지</label>
-			<input type="text" class="form-control" placeholder="" value="">
-		</div>
-
-		<div class="col-sm-6 ">
-			<label for="" class="form-label">학 교</label>
-			<input type="text" class="form-control" placeholder="" value="">
-		</div>
-
-		<div class="col-sm-6 mt-2">
-			<label for="" class="form-label">학 년</label>
-			<input type="text" class="form-control" placeholder="" value="">
-		</div>
-
-	</div>
-	<!-- collapse end -->
-
-	<!-- section end -->
 
 </main>
