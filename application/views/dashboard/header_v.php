@@ -8,9 +8,10 @@
       학생메뉴
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown2-2">
-      <li><a class="dropdown-item" href="<?= site_url('/student/add') ?>"> 학생 등록</a></li>
-      <li><a class="dropdown-item" href="#">학생 현황</a></li>
-      <li><a class="dropdown-item" href="#">상세조회</a></li>
+      <li><a class="dropdown-item" href="<?= site_url('/dashboard/st_add') ?>"> 학생 등록</a></li>
+      <li><a class="dropdown-item" href="<?= site_url('/dashboard/st_summary') ?>">학생 현황</a></li>
+
+      <li><a class="dropdown-item" href="<?= site_url('/dashboard') ?>"> Dashboard </a></li>
       <li>
         <hr class="dropdown-divider">
       </li>
@@ -22,23 +23,21 @@
   <div class="navbar-brand col dropdown">
     <a href="#" class="link-light text-decoration-none dropdown-toggle" 
     id="dropdown2-1" data-bs-toggle="dropdown" aria-expanded="false">
-      임시화면
+      환경설정
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown2-1">
-      <li><a class="dropdown-item" href="<?= site_url() ?>/grid4">Grid4</a></li>
-      <li><a class="dropdown-item" href="<?= site_url() ?>/grid3">Grid3</a></li>
-      <li><a class="dropdown-item" href="<?= site_url() ?>/grid2">Grid2</a></li>
+    <li><a class="dropdown-item" href="<?= site_url('/dashboard/session_reset') ?>"> 세션리셋 </a></li>
       <li>
         <hr class="dropdown-divider">
       </li>
-      <li><a class="dropdown-item" href="#">성적전달</a></li>
+      <li><a class="dropdown-item" href="#">코드설정</a></li>
     </ul>
   </div>
 
   <div class="navbar-brand col dropdown">
     <a href="#" class="link-light text-decoration-none dropdown-toggle" 
     id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-      홍길동
+      로그인관리
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
       <li><a class="dropdown-item" href="#">New project...</a></li>
@@ -48,7 +47,7 @@
         <hr class="dropdown-divider">
       </li>
       <li><a class="dropdown-item" href="<?= site_url() ?>/auth/login">로그인</a></li>
-      <li><a class="dropdown-item" href="<?= site_url() ?>/auth/register">로그인</a></li>
+      <li><a class="dropdown-item" href="<?= site_url() ?>/auth/register">회원가입</a></li>
     </ul>
   </div>
 

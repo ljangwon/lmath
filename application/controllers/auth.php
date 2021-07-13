@@ -65,6 +65,7 @@ class Auth extends MY_Controller {
         }
     	if(
     		$this->input->post('email') == $user->email && 
+            $user->level == 10 &&
             password_verify($this->input->post('password'), $user->password)
     	) {
     		$this->session->set_userdata('is_login', true);

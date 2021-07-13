@@ -109,7 +109,8 @@ class Test extends MY_Controller {
         else
         {
             $memo = ltrim($this->input->post('memo'));
-            $test_id = $this->test_m->modify( array (
+            $test_id = $this->test_m->modify( 
+                array (
                 'id'=>$this->input->post('id'),
                 'st_id'=>$this->input->post('st_id'), 
                 'grade'=>$this->input->post('grade'),
