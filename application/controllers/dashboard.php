@@ -412,9 +412,9 @@ class Dashboard extends MY_Controller
 		);
 
 		if (!$result) {
-			alert("지적사항 업데이트가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
+			alert("메모 업데이트가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
 		} else {
-			alert("지적사항 업데이트가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $this->input->post('st_id')));
+			alert("메모 업데이트가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $this->input->post('st_id')));
 		}
 	}
 
