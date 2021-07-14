@@ -213,6 +213,7 @@ class Dashboard_m extends CI_Model
 	{
 		$this->db->set('m_date', 'NOW()', false);
 		$this->db->set('st_id', $option['st_id']);
+		$this->db->set('category', $option['category']);
 
 		$result = $this->db->insert('st_checkmemo');
 		return $result;
@@ -395,8 +396,11 @@ class Dashboard_m extends CI_Model
 	{
 		$this->db->set('st_id', $option['st_id']);
 		$this->db->set('seq', $option['seq']);
+		$this->db->set('category', $option['category']);
 		$this->db->set('course', $option['course']);
 		$this->db->set('book', $option['book']);
+		$this->db->set('period', $option['period']);
+		$this->db->set('count_chap', $option['count_chap']);
 
 		$this->db->set('s_chap1', $option['s_chap1']);
 		$this->db->set('s_chap2', $option['s_chap2']);

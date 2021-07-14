@@ -338,21 +338,61 @@ class Dashboard extends MY_Controller
 
 	// 지적사항 CRUD start
 	// 추가 컨트롤러
-	function checkmemo_add()
+	function checkmemo_add($category)
 	{
 		$st_id = $this->session->userdata('st_id');
 
-		$result = $this->dashboard_m->checkmemo_add(
-			array(
-				'st_id' => $st_id
-			)
-		);
+		if( $category == "noshow" ) 
+		{
+			$result = $this->dashboard_m->checkmemo_add(
+				array(
+					'st_id' => $st_id,
+					'category' => $category
+				)
+			);
 
-		if (!$result) {
-			alert("지적사항 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
-		} else {
-			alert("지적사항 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			if (!$result) {
+				alert("지각결석메모 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			} else {
+				alert("지각결석메모 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			}
 		}
+
+		elseif ( $category == "checkm"  ) 
+		{
+			$result = $this->dashboard_m->checkmemo_add(
+				array(
+					'st_id' => $st_id,
+					'category' => $category
+				)
+			);
+			if (!$result) {
+				alert("지적사항메모 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			} else {
+				alert("지적사항메모 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			}
+		}
+
+		elseif ( $category == "bookm"  ) 
+		{
+			$result = $this->dashboard_m->checkmemo_add(
+				array(
+					'st_id' => $st_id,
+					'category' => $category
+				)
+			);
+			if (!$result) {
+				alert("교재메모 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			} else {
+				alert("교재메모 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			}
+		}
+
+		else 
+		{
+			alert("메모 구분이 없습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+		}
+		
 	}
 
 	// 수정 컨트롤러
@@ -486,8 +526,12 @@ class Dashboard extends MY_Controller
 				'id' => $this->input->post('id'),
 				'st_id' => $this->input->post('st_id'),
 				'seq' => $this->input->post('seq'),
+				'category' => $this->input->post('category'),
+				'period' => $this->input->post('period'),
 				'course' => $this->input->post('course'),
 				'book' => $this->input->post('book'),
+				'period' => $this->input->post('period'),
+				'count_chap' => $this->input->post('count_chap'),
 
 				's_chap1' => $this->input->post('s_chap1'),
 				's_chap2' => $this->input->post('s_chap2'),

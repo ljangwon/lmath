@@ -98,14 +98,14 @@
    <!-- Sidebar List 3 start  -->
     <!-- list Title -->
     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-      <a class="link-secondary" data-bs-toggle="collapse" data-bs-target="#nav3-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="link-secondary" data-bs-toggle="collapse" data-bs-target="#standby-collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span data-feather="users"></span>
       </a>
       <span>입반 대기 학생 리스트 </span>
     </h6>
 
     <!-- collapse wrapping start -->
-    <div id="nav3-collapse" class="table-responsive collapse">
+    <div id="standby-collapse" class="table-responsive collapse">
 
       <!-- nav item start -->
       <ul class="nav flex-column mb-2 overflow-auto">
@@ -140,14 +140,14 @@
        <!-- Sidebar List 4 start  -->
     <!-- list Title -->
     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-      <a class="link-secondary" data-bs-toggle="collapse" data-bs-target="#-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="link-secondary" data-bs-toggle="collapse" data-bs-target="#outstudent-collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span data-feather="users"></span>
       </a>
       <span>퇴원 학생 리스트 </span>
     </h6>
 
     <!-- collapse wrapping start -->
-    <div id="nav3-collapse" class="table-responsive collapse">
+    <div id="outstudent-collapse" class="table-responsive collapse">
 
       <!-- nav item start -->
       <ul class="nav flex-column mb-2 overflow-auto">
