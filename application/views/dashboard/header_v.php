@@ -26,7 +26,7 @@
       환경설정
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown2-1">
-    <li><a class="dropdown-item" href="<?= site_url('/dashboard/session_reset') ?>"> 세션리셋 </a></li>
+    <li><a class="dropdown-item" href="<?= site_url('/dashboard/setting_get') ?>"> 환경세팅 </a></li>
       <li>
         <hr class="dropdown-divider">
       </li>

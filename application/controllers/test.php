@@ -43,7 +43,7 @@ class Test extends MY_Controller {
 
     }
 
-    function delete(){
+    function delete()  {
         $test_id = $this->input->post('test_id');
         $st_id = $this->input->post('st_id');
         $this->_require_login(site_url('/test/get/'.$test_id));

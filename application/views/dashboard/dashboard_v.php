@@ -7,7 +7,7 @@
 			<div class="main-title">학생 인적사항 </div>
 			<div class="btn-toolbar mb-1 mb-md-0">
 				<div class="btn-group me-2">
-					<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#main1-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+					<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#st_info-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
 						접고펴기
 					</a>
 					<button type="submit" class="btn btn-sm btn-outline-secondary">
@@ -24,7 +24,20 @@
 		</div>
 
 		<!-- collapse start -->
-		<div id="main1-collapse" class="row collapse.show">
+		<?php 
+			if( $this->session->userdata('st_show') ) 	{
+		?>
+				<div id="st_info-collapse" class="row collapse.show">
+		<?php
+			}
+			else
+			{
+		?>
+				<div id="st_info-collapse" class="row collapse">
+		<?php
+			}
+		?>
+
 			<div class="col-sm-2 text-center">
 				<label for="" class="form-label">ST_ID</label>
 				<input type="text" name="id" class="form-control" placeholder="" value="<?= $student->id ?>">
@@ -190,7 +203,7 @@
 				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#bookm-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
 					접고펴기
 				</a>
-				<button type="button" onclick="location.href='<?= site_url('/dashboard/checkmemo_add/bookm') ?>'" class="btn btn-sm btn-outline-secondary">
+				<button type="button" onclick="location.href='<?= site_url('/dashboard/memo_add/bookm') ?>'" class="btn btn-sm btn-outline-secondary">
 					추가
 				</button>
 			</div>
@@ -198,7 +211,8 @@
 	</div>
 
 	<!-- collapse start -->
-	<div id="bookm-collapse" class="row collapse">
+
+	<div id="bookm-collapse" class="row collapse.show">
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
@@ -212,24 +226,24 @@
 				<tbody>
 					<?php
 					$seq = 1;
-					foreach ($checkmemos as $entry) {
+					foreach ($memos as $entry) {
 						if (
-							$entry->category == "bookm"
+							$entry->type == "bookm"
 						) {
 					?>
-							<form id="checkmemo_<?= $seq ?>" action="<?= site_url('dashboard/checkmemo_modify') ?>" method="post">
+							<form id="book_memo_<?= $seq ?>" action="<?= site_url('dashboard/memo_modify') ?>" method="post">
 								<tr>
 									<input type="hidden" name="id" value="<?= $entry->id ?>">
 									<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
 									<th class="text-nowrap text-center align-middle bg-secondary text-white"> <?= $seq++ ?> </th>
 									<td class="text-center align-middle">
 										<div class="d-flex"><input type="submit" class="text-center" value="수정">
-										/<input type="button" onclick="location.href='<?= site_url('/dashboard/checkmemo_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
+										/<input type="button" onclick="location.href='<?= site_url('/dashboard/memo_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
 										</div>
 									</td>
 									<td class="align-middle"><input type="text" name="m_date" size=10 class="text-start" placeholder="" value="<?= $entry->m_date ?>"></td>
 
-									<td><textarea name="memo" cols=100 rows="2" class="text-start"><?= $entry->memo ?> </textarea>
+									<td><textarea name="memo" cols=100 rows="2" class="text-start"><?= $entry->memo ?> </textarea> </td>
 								</tr>
 							</form>
 
@@ -250,7 +264,7 @@
 			자기주도학습 시간계획 </div>
 		<div class="btn-toolbar mb-1 mb-md-0">
 			<div class="btn-group me-2">
-				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#main2-1-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#schedule-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
 					접고펴기
 				</a>
 				<button type="button" onclick="location.href='<?= site_url('/dashboard/schedule_add/') ?>'" class="btn btn-sm btn-outline-secondary">
@@ -261,7 +275,7 @@
 	</div>
 
 	<!-- collapse start -->
-	<div id="main2-1-collapse" class="row collapse">
+	<div id="schedule-collapse" class="row collapse">
 
 		<div class="table-responsive">
 			<table class="table">
@@ -331,10 +345,10 @@
 			지적사항 메모 </div>
 		<div class="btn-toolbar mb-1 mb-md-0">
 			<div class="btn-group me-2">
-				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#checkmemo-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#check_memo-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
 					접고펴기
 				</a>
-				<button type="button" onclick="location.href='<?= site_url('/dashboard/checkmemo_add/checkm') ?>'" class="btn btn-sm btn-outline-secondary">
+				<button type="button" onclick="location.href='<?= site_url('/dashboard/memo_add/checkm') ?>'" class="btn btn-sm btn-outline-secondary">
 					추가
 				</button>
 			</div>
@@ -342,7 +356,7 @@
 	</div>
 
 	<!-- collapse start -->
-	<div id="checkmemo-collapse" class="row collapse">
+	<div id="check_memo-collapse" class="row collapse">
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
@@ -357,19 +371,19 @@
 				<tbody>
 					<?php
 					$seq = 1;
-					foreach ($checkmemos as $entry) {
+					foreach ($memos as $entry) {
 						if (
-							$entry->category == "checkm"
+							$entry->type == "checkm"
 						) {
 					?>
-							<form id="checkmemo_<?= $seq ?>" action="<?= site_url('dashboard/checkmemo_modify') ?>" method="post">
+							<form id="check_memo_<?= $seq ?>" action="<?= site_url('dashboard/memo_modify') ?>" method="post">
 								<tr>
 									<input type="hidden" name="id" value="<?= $entry->id ?>">
 									<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
 									<th rowspan=2 class="text-nowrap text-center align-middle bg-secondary text-white"> <?= $seq++ ?> </th>
 									<td class="text-center align-middle">
 										<div class="d-flex"> <input type="submit" class="text-center" value="수정">
-										/<input type="button" onclick="location.href='<?= site_url('/dashboard/checkmemo_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
+										/<input type="button" onclick="location.href='<?= site_url('/dashboard/memo_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
 										</div>
 									</td>
 									<td class="aling-middle"><input type="text" name="m_date" size=10 class="text-start" value="<?= $entry->m_date ?>"></td>
@@ -381,7 +395,7 @@
 									<td> 조치완료상태 <input type="text" size=5 name="status" class="text-center" placeholder="" value="<?= $entry->status ?>"></td>
 
 									<td class="text-center align-middle"> --> 조치내용 </td>
-									<td><textarea name="f_memo" cols=50 rows="2" class="text-start"><?= $entry->f_memo ?> </textarea>
+									<td><textarea name="f_memo" cols=50 rows="2" class="text-start"><?= $entry->f_memo ?> </textarea> </td>
 								</tr>
 							</form>
 
@@ -406,7 +420,7 @@
 				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#noshow-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
 					접고펴기
 				</a>
-				<button type="button" onclick="location.href='<?= site_url('/dashboard/checkmemo_add/noshow') ?>'" class="btn btn-sm btn-outline-secondary">
+				<button type="button" onclick="location.href='<?= site_url('/dashboard/memo_add/noshow') ?>'" class="btn btn-sm btn-outline-secondary">
 					추가
 				</button>
 			</div>
@@ -428,19 +442,19 @@
 				<tbody>
 					<?php
 					$seq = 1;
-					foreach ($checkmemos as $entry) {
+					foreach ($memos as $entry) {
 						if (
-							$entry->category == "noshow"
+							$entry->type == "noshow"
 						) {
 					?>
-							<form id="checkmemo_<?= $seq ?>" action="<?= site_url('dashboard/checkmemo_modify') ?>" method="post">
+							<form id="noshow_memo_<?= $seq ?>" action="<?= site_url('dashboard/memo_modify') ?>" method="post">
 								<tr>
 									<input type="hidden" name="id" value="<?= $entry->id ?>">
 									<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
 									<th rowspan=2 class="text-nowrap text-center align-middle bg-secondary text-white"> <?= $seq++ ?> </th>
 									<td class="text-center align-middle">
 										<div class="d-flex"><input type="submit" class="text-center" value="수정">
-										/<input type="button" onclick="location.href='<?= site_url('/dashboard/checkmemo_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
+										/<input type="button" onclick="location.href='<?= site_url('/dashboard/memo_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
 										</div>
 									</td>
 									<td class="align-middle"><input type="text" name="m_date" size=10 class="text-start" placeholder="" value="<?= $entry->m_date ?>"></td>
@@ -452,7 +466,7 @@
 									<td class="align-middle"> 보충완료상태 <input type="text" size=5 name="status" class="text-center" placeholder="" value="<?= $entry->status ?>"></td>
 
 									<td class="align-middle"> --> 보충계획 </td>
-									<td><textarea name="f_memo" cols=50 rows="2" class="text-start"><?= $entry->f_memo ?> </textarea>
+									<td><textarea name="f_memo" cols=50 rows="2" class="text-start"><?= $entry->f_memo ?> </textarea> </td>
 								</tr>
 							</form>
 
@@ -484,13 +498,13 @@
 	</div>
 
 	<!-- collapse start -->
-	<div id="study-collapse" class="row collapse">
+	<div id="study-collapse" class="row collapse.show">
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
 					<tr>
-						<th class="text-center text-nowrap">수정/삭제</th>
 						<th class="text-center text-nowrap">번호 </th>
+						<th class="text-center text-nowrap">수정/삭제</th>
 						<th class="text-center text-nowrap">순서 </th>
 						<th class="text-center text-nowrap">구분 </th>
 						<th class="text-center text-nowrap">날짜 </th>
@@ -523,65 +537,67 @@
 								<tr>
 									<input type="hidden" name="id" value="<?= $entry->id ?>">
 									<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
-									<td rowspan=2 class="col-1 d-flex text-center">
+
+									<th rowspan=2 class="text-nowrap text-center align-middle bg-secondary text-white"> <?= $seq++ ?> </th>
+									<td class="text-center align-middle text-nowrap">
 										<input type="submit" class="text-center" value="수정">
 										/<input type="button" onclick="location.href='<?= site_url('/dashboard/study_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
 									</td>
-									<th rowspan=2 class="text-nowrap"> <?= $seq++ ?> </th>
-									<td><input type="text" name="seq" size=5 class="text-start" value="<?= $entry->seq ?>"></td>
+									<td><input type="text" name="seq" size=2 class="text-start" value="<?= $entry->seq ?>"></td>
 									<td> <input type="text" name="course" size=10 class="text-start" value="<?= $entry->course ?>"> </td>
 									<td> 시작 </td>
-									<td> <input type="text" name="s_chap1" size=2 class="text-start" value="<?= $entry->s_chap1 ?>"> </td>
-									<td> <input type="text" name="s_chap2" size=2 class="text-start" value="<?= $entry->s_chap2 ?>"> </td>
-									<td> <input type="text" name="s_chap3" size=2 class="text-start" value="<?= $entry->s_chap3 ?>"> </td>
-									<td> <input type="text" name="s_chap4" size=2 class="text-start" value="<?= $entry->s_chap4 ?>"> </td>
-									<td> <input type="text" name="s_chap5" size=2 class="text-start" value="<?= $entry->s_chap5 ?>"> </td>
-									<td> <input type="text" name="s_chap6" size=2 class="text-start" value="<?= $entry->s_chap6 ?>"> </td>
-									<td> <input type="text" name="s_chap7" size=2 class="text-start" value="<?= $entry->s_chap7 ?>"> </td>
-									<td> <input type="text" name="s_chap8" size=2 class="text-start" value="<?= $entry->s_chap8 ?>"> </td>
-									<td> <input type="text" name="s_chap9" size=2 class="text-start" value="<?= $entry->s_chap9 ?>"> </td>
-									<td> <input type="text" name="s_chap10" size=2 class="text-start" value="<?= $entry->s_chap10 ?>"> </td>
-									<td> <input type="text" name="s_chap11" size=2 class="text-start" value="<?= $entry->s_chap11 ?>"> </td>
-									<td> <input type="text" name="s_chap12" size=2 class="text-start" value="<?= $entry->s_chap12 ?>"> </td>
-									<td> <input type="text" name="s_chap13" size=2 class="text-start" value="<?= $entry->s_chap13 ?>"> </td>
+									<td> <input type="text" name="s_chap1" size=8 class="text-start" value="<?= $entry->s_chap1 ?>"> </td>
+									<td> <input type="text" name="s_chap2" size=8 class="text-start" value="<?= $entry->s_chap2 ?>"> </td>
+									<td> <input type="text" name="s_chap3" size=8 class="text-start" value="<?= $entry->s_chap3 ?>"> </td>
+									<td> <input type="text" name="s_chap4" size=8 class="text-start" value="<?= $entry->s_chap4 ?>"> </td>
+									<td> <input type="text" name="s_chap5" size=8 class="text-start" value="<?= $entry->s_chap5 ?>"> </td>
+									<td> <input type="text" name="s_chap6" size=8 class="text-start" value="<?= $entry->s_chap6 ?>"> </td>
+									<td> <input type="text" name="s_chap7" size=8 class="text-start" value="<?= $entry->s_chap7 ?>"> </td>
+									<td> <input type="text" name="s_chap8" size=8 class="text-start" value="<?= $entry->s_chap8 ?>"> </td>
+									<td> <input type="text" name="s_chap9" size=8 class="text-start" value="<?= $entry->s_chap9 ?>"> </td>
+									<td> <input type="text" name="s_chap10" size=8 class="text-start" value="<?= $entry->s_chap10 ?>"> </td>
+									<td> <input type="text" name="s_chap11" size=8 class="text-start" value="<?= $entry->s_chap11 ?>"> </td>
+									<td> <input type="text" name="s_chap12" size=8 class="text-start" value="<?= $entry->s_chap12 ?>"> </td>
+									<td> <input type="text" name="s_chap13" size=8 class="text-start" value="<?= $entry->s_chap13 ?>"> </td>
 								</tr>
 								<tr>
-									<td> </td>
-									<td> <input type="text" name="category" size=6 class="text-start" value="<?= $entry->category ?>"> </td>
-									<td> <input type="text" name="book" size=10 class="text-start" value="<?= $entry->book ?>"> </td>
+									<td class="text-nowrap"> <input type="text" name="category" size=6 class="text-start" value="<?= $entry->category ?>"> 
+											 공개<input type="text" name="open" size=1 class="text-start" value="<?= $entry->open ?>"> 
+								</td>
+									<td colspan=2 > <input type="text" name="book" size=20 class="text-start" value="<?= $entry->book ?>"> </td>
 									<td> 종료 </td>
-									<td> <input type="text" name="e_chap1" size=2 class="text-start" value="<?= $entry->e_chap1 ?>"> </td>
-									<td> <input type="text" name="e_chap2" size=2 class="text-start" value="<?= $entry->e_chap2 ?>"> </td>
-									<td> <input type="text" name="e_chap3" size=2 class="text-start" value="<?= $entry->e_chap3 ?>"> </td>
-									<td> <input type="text" name="e_chap4" size=2 class="text-start" value="<?= $entry->e_chap4 ?>"> </td>
-									<td> <input type="text" name="e_chap5" size=2 class="text-start" value="<?= $entry->e_chap5 ?>"> </td>
-									<td> <input type="text" name="e_chap6" size=2 class="text-start" value="<?= $entry->e_chap6 ?>"> </td>
-									<td> <input type="text" name="e_chap7" size=2 class="text-start" value="<?= $entry->e_chap7 ?>"> </td>
-									<td> <input type="text" name="e_chap8" size=2 class="text-start" value="<?= $entry->e_chap8 ?>"> </td>
-									<td> <input type="text" name="e_chap9" size=2 class="text-start" value="<?= $entry->e_chap9 ?>"> </td>
-									<td> <input type="text" name="e_chap10" size=2 class="text-start" value="<?= $entry->e_chap10 ?>"> </td>
-									<td> <input type="text" name="e_chap11" size=2 class="text-start" value="<?= $entry->e_chap11 ?>"> </td>
-									<td> <input type="text" name="e_chap12" size=2 class="text-start" value="<?= $entry->e_chap12 ?>"> </td>
-									<td> <input type="text" name="e_chap13" size=2 class="text-start" value="<?= $entry->e_chap13 ?>"> </td>
+									<td> <input type="text" name="e_chap1" size=8 class="text-start" value="<?= $entry->e_chap1 ?>"> </td>
+									<td> <input type="text" name="e_chap2" size=8 class="text-start" value="<?= $entry->e_chap2 ?>"> </td>
+									<td> <input type="text" name="e_chap3" size=8 class="text-start" value="<?= $entry->e_chap3 ?>"> </td>
+									<td> <input type="text" name="e_chap4" size=8 class="text-start" value="<?= $entry->e_chap4 ?>"> </td>
+									<td> <input type="text" name="e_chap5" size=8 class="text-start" value="<?= $entry->e_chap5 ?>"> </td>
+									<td> <input type="text" name="e_chap6" size=8 class="text-start" value="<?= $entry->e_chap6 ?>"> </td>
+									<td> <input type="text" name="e_chap7" size=8 class="text-start" value="<?= $entry->e_chap7 ?>"> </td>
+									<td> <input type="text" name="e_chap8" size=8 class="text-start" value="<?= $entry->e_chap8 ?>"> </td>
+									<td> <input type="text" name="e_chap9" size=8 class="text-start" value="<?= $entry->e_chap9 ?>"> </td>
+									<td> <input type="text" name="e_chap10" size=8 class="text-start" value="<?= $entry->e_chap10 ?>"> </td>
+									<td> <input type="text" name="e_chap11" size=8 class="text-start" value="<?= $entry->e_chap11 ?>"> </td>
+									<td> <input type="text" name="e_chap12" size=8 class="text-start" value="<?= $entry->e_chap12 ?>"> </td>
+									<td> <input type="text" name="e_chap13" size=8 class="text-start" value="<?= $entry->e_chap13 ?>"> </td>
 								</tr>
 
 								<tr>
 									<td colspan=3 class="text-nowrap"> 학습기간 <input type="text" name="period" size=18 class="text-start" value="<?= $entry->period ?>"> </td>
 									<td class="text-nowrap"> 총단원수: <input type="text" name="count_chap" size=2 class="text-start" value="<?= $entry->count_chap ?>"> </td>
 									<td class="text-nowrap"> 평가기록 </td>
-									<td> <input type="text" name="t_chap1" size=2 class="text-start" value="<?= $entry->t_chap1 ?>"> </td>
-									<td> <input type="text" name="t_chap2" size=2 class="text-start" value="<?= $entry->t_chap2 ?>"> </td>
-									<td> <input type="text" name="t_chap3" size=2 class="text-start" value="<?= $entry->t_chap3 ?>"> </td>
-									<td> <input type="text" name="t_chap4" size=2 class="text-start" value="<?= $entry->t_chap4 ?>"> </td>
-									<td> <input type="text" name="t_chap5" size=2 class="text-start" value="<?= $entry->t_chap5 ?>"> </td>
-									<td> <input type="text" name="t_chap6" size=2 class="text-start" value="<?= $entry->t_chap6 ?>"> </td>
-									<td> <input type="text" name="t_chap7" size=2 class="text-start" value="<?= $entry->t_chap7 ?>"> </td>
-									<td> <input type="text" name="t_chap8" size=2 class="text-start" value="<?= $entry->t_chap8 ?>"> </td>
-									<td> <input type="text" name="t_chap9" size=2 class="text-start" value="<?= $entry->t_chap9 ?>"> </td>
-									<td> <input type="text" name="t_chap10" size=2 class="text-start" value="<?= $entry->t_chap10 ?>"> </td>
-									<td> <input type="text" name="t_chap11" size=2 class="text-start" value="<?= $entry->t_chap11 ?>"> </td>
-									<td> <input type="text" name="t_chap12" size=2 class="text-start" value="<?= $entry->t_chap12 ?>"> </td>
-									<td> <input type="text" name="t_chap13" size=2 class="text-start" value="<?= $entry->t_chap13 ?>"> </td>
+									<td> <input type="text" name="t_chap1" size=20 class="text-start" value="<?= $entry->t_chap1 ?>"> </td>
+									<td> <input type="text" name="t_chap2" size=20 class="text-start" value="<?= $entry->t_chap2 ?>"> </td>
+									<td> <input type="text" name="t_chap3" size=20 class="text-start" value="<?= $entry->t_chap3 ?>"> </td>
+									<td> <input type="text" name="t_chap4" size=20 class="text-start" value="<?= $entry->t_chap4 ?>"> </td>
+									<td> <input type="text" name="t_chap5" size=20 class="text-start" value="<?= $entry->t_chap5 ?>"> </td>
+									<td> <input type="text" name="t_chap6" size=20 class="text-start" value="<?= $entry->t_chap6 ?>"> </td>
+									<td> <input type="text" name="t_chap7" size=20 class="text-start" value="<?= $entry->t_chap7 ?>"> </td>
+									<td> <input type="text" name="t_chap8" size=20 class="text-start" value="<?= $entry->t_chap8 ?>"> </td>
+									<td> <input type="text" name="t_chap9" size=20 class="text-start" value="<?= $entry->t_chap9 ?>"> </td>
+									<td> <input type="text" name="t_chap10" size=20 class="text-start" value="<?= $entry->t_chap10 ?>"> </td>
+									<td> <input type="text" name="t_chap11" size=20 class="text-start" value="<?= $entry->t_chap11 ?>"> </td>
+									<td> <input type="text" name="t_chap12" size=20 class="text-start" value="<?= $entry->t_chap12 ?>"> </td>
+									<td> <input type="text" name="t_chap13" size=20 class="text-start" value="<?= $entry->t_chap13 ?>"> </td>
 								</tr>
 
 							</form>
@@ -618,20 +634,25 @@
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
-					<tr class="d-flex flex-nowrap">
-						<th class="col-1 text-center text-nowrap">#</th>
-						<th class="col-1 text-center text-nowrap">시험구분</th>
-						<th class="col-1 text-center text-nowrap">과정</th>
-						<th class="col-1 text-center text-nowrap">수준</th>
-						<th class="col-1 text-center text-nowrap">단원</th>
-						<th class="col-1 text-center text-nowrap">정답수</th>
-						<th class="col-1 text-center text-nowrap">문제수</th>
-						<th class="col-1 text-center text-nowrap">점수</th>
-						<th class="col-1 text-center text-nowrap">소요시간</th>
-						<th class="col-1 text-center text-nowrap">결과</th>
-						<th class="col-1 text-center text-nowrap">날짜</th>
-						<th class="col-1 text-center text-nowrap">메모</th>
-						<th class="col-1 text-center text-nowrap">수정/삭제</th>
+					<tr class="flex-nowrap">
+						<th class="text-center text-nowrap">번호</th>
+						<th class="text-center text-nowrap">수정/삭제</th>
+						<th class="text-center text-nowrap">시험구분</th>
+						<th class="text-center text-nowrap">학년과정</th>
+						<th class="text-center text-nowrap">수준</th>
+						<th class="text-center text-nowrap">구분1</th>
+						<th class="text-center text-nowrap">구분2</th>
+						<th class="text-center text-nowrap">구분3</th>
+						<th class="text-center text-nowrap">공개</th>
+						<th class="text-center text-nowrap">테스트명</th>
+						<th class="text-center text-nowrap">정답수</th>
+						<th class="text-center text-nowrap">문제수</th>
+						<th class="text-center text-nowrap">점수</th>
+						<th class="text-center text-nowrap">소요시간</th>
+						<th class="text-center text-nowrap">결과</th>
+						<th class="text-center text-nowrap">날짜</th>
+						<th class="text-center text-nowrap">메모</th>
+
 					</tr>
 				</thead>
 
@@ -643,15 +664,25 @@
 							true
 						) {
 					?>
-							<tr class="d-flex flex-nowrap">
-								<form id="test_<?= $seq ?>" action="<?= site_url('dashboard/test_modify') ?>" method="post">
+							<form id="test_<?= $seq ?>" action="<?= site_url('dashboard/test_modify') ?>" method="post">
+								<tr class="flex-nowrap">
 									<input type="hidden" name="id" value="<?= $entry->id ?>">
 									<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
-									<th class="col-1 text-nowrap"> <?= $seq++ ?> </th>
-									<td class="col-1"> <input type="text" name="type" size=10 class="text-start" value="<?= $entry->type ?>"></td>
-									<td class="col-1"> <input type="text" name="grade" size=10 class="text-start" value="<?= $entry->grade ?>"></td>
-									<td class="col-1"> <input type="text" name="level" size=10 class="text-start" value="<?= $entry->level ?>"></td>
-									<td class="col-1"> <input type="text" name="chapter" size=10 class="text-start" value="<?= $entry->chapter ?>"></td>
+
+									<th class="text-nowrap text-center align-middle bg-secondary text-white"> <?= $seq++ ?> </th>
+									<td class="text-center align-middle">
+										<div class="d-flex"><input type="submit" class="text-center" value="수정">
+										/<input type="button" onclick="location.href='<?= site_url('/dashboard/test_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
+										</div>
+									</td>
+									<td class="text-center align-middle"> <input type="text" name="type" size=6 class="text-start" value="<?= $entry->type ?>"></td>
+									<td class="text-center align-middle"> <input type="text" name="grade" size=6 class="text-center" value="<?= $entry->grade ?>"></td>
+									<td class="text-center align-middle"> <input type="text" name="level" size=5 class="text-center" value="<?= $entry->level ?>"></td>
+									<td class="text-center align-middle"> <input type="text" name="gubun1" size=3 class="text-start" value="<?= $entry->gubun1 ?>"></td>
+									<td class="text-center align-middle"> <input type="text" name="gubun2" size=3 class="text-start" value="<?= $entry->gubun2 ?>"></td>
+									<td class="text-center align-middle"> <input type="text" name="gubun3" size=3 class="text-start" value="<?= $entry->gubun3 ?>"></td>
+									<td class="text-center align-middle"> <input type="text" name="open" size=2 class="text-center" value="<?= $entry->open ?>"></td>
+									<td class="text-center align-middle"> <input type="text" name="test_name" size=20 class="text-start" value="<?= $entry->test_name ?>"></td>
 
 									<?php
 									if ($entry->total_num == 0) {
@@ -660,25 +691,24 @@
 										$score = ($entry->corrt_num / $entry->total_num) * 100;
 									}
 									?>
-									<td class="col-1"> <input type="text" name="corrt_num" size=10 class="text-start" value="<?= $entry->corrt_num ?>"></td>
-									<td class="col-1"> <input type="text" name="total_num" size=10 class="text-start" value="<?= $entry->total_num ?>"></td>
-									<td class="col-1 d-flex text-center">
-										<div class="text-center">
-											<?= $entry->corrt_num ?>/<?= $entry->total_num ?>
-											<br>
-											( <?= number_format($score, 2) ?>점 )
+									<td class="text-center align-middle"> <input type="text" name="corrt_num" size=2 class="text-center" value="<?= $entry->corrt_num ?>"></td>
+									<td class="text-center align-middle"> <input type="text" name="total_num" size=2 class="text-center" value="<?= $entry->total_num ?>"></td>
+									<td class="text-center align-middle">
+										<div >
+												<div class="text-nowrap">
+													<?= $entry->corrt_num ?>/<?= $entry->total_num ?>
+												</div>
+												<div class="text-nowrap"> 
+														( <?= number_format($score, 2) ?>점 ) 
+												</div>
 										</div>
 									</td>
-									<td class="col-1"> <input type="text" name="time" size=10 class="text-start" value="<?= $entry->time ?>"></td>
-									<td class="col-1"> <input type="text" name="result" size=10 class="text-start" value="<?= $entry->result ?>"></td>
-									<td class="col-1"> <input type="text" name="test_date" size=10 class="text-start" value="<?= $entry->test_date ?>"></td>
-									<td class="col-1"> <input type="text" name="memo" size=10 class="text-start" value="<?= $entry->memo ?>"></td>
-									<td class="col-1 d-flex text-center">
-										<input type="submit" class="text-center" value="수정">
-										/<input type="button" onclick="location.href='<?= site_url('/dashboard/test_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
-									</td>
-								</form>
-							</tr>
+									<td class="text-center align-middle"> <input type="text" name="time" size=6 class="text-center" value="<?= $entry->time ?>"></td>
+									<td class="text-center align-middle"> <input type="text" name="result" size=5 class="text-center" value="<?= $entry->result ?>"></td>
+									<td class="text-center align-middle"> <input type="text" name="test_date" size=10 class="text-center" value="<?= $entry->test_date ?>"></td>
+									<td class="text-center align-middle"> <textarea name="memo" cols=20 rows="2" class="text-start"><?= $entry->memo ?> </textarea></td>
+								</tr>
+							</form>
 					<?php
 						}
 					}
@@ -689,6 +719,5 @@
 	</div>
 	<!-- collapse end -->
 	<!-- section end -->
-
 
 </main>

@@ -207,40 +207,40 @@ class Dashboard_m extends CI_Model
 		return $result;
 	}
 
-	// 지적사항 CRUD start
+	// 메모 CRUD start
 
-	function checkmemo_add($option)
+	function memo_add($option)
 	{
 		$this->db->set('m_date', 'NOW()', false);
 		$this->db->set('st_id', $option['st_id']);
-		$this->db->set('category', $option['category']);
+		$this->db->set('type', $option['type']);
 
-		$result = $this->db->insert('st_checkmemo');
+		$result = $this->db->insert('st_memo');
 		return $result;
 	}
 
-	function checkmemo_gets($option = null)
+	function memo_gets($option = null)
 	{
 		$this->db->select('*');
 		$this->db->order_by('m_date', 'DESC');
 		if ($option) {
 			$this->db->where('st_id', $option);
 		}
-		$result = $this->db->get('st_checkmemo')->result();
+		$result = $this->db->get('st_memo')->result();
 		return $result;
 	}
 
-	function checkmemo_get($id)
+	function memo_get($id)
 	{
 		$this->db->select('*');
 		$result = $this->db->get_where(
-			'st_checkmemo',
+			'st_memo',
 			array('id' => $id)
 		)->row();
 		return $result;
 	}
 
-	function checkmemo_modify($option)
+	function memo_modify($option)
 	{
 		$this->db->set('st_id', $option['st_id']);
 		$this->db->set('memo', $option['memo']);
@@ -250,19 +250,19 @@ class Dashboard_m extends CI_Model
 
 		$this->db->where('id', $option['id']);
 
-		$result = $this->db->update('st_checkmemo');
+		$result = $this->db->update('st_memo');
 
 		return $result;
 	}
 
-	function checkmemo_delete($id)
+	function memo_delete($id)
 	{
-		$result = $this->db->delete('st_checkmemo', array(
+		$result = $this->db->delete('st_memo', array(
 			'id' => $id
 		));
 		return $result;
 	}
-	// 지적사항 CRUD end
+	// 메모 CRUD end
 
 
 	// 테스트 CRUD start
@@ -285,7 +285,11 @@ class Dashboard_m extends CI_Model
 		$this->db->select('test.type');
 		$this->db->select('test.grade');
 		$this->db->select('test.level');
-		$this->db->select('test.chapter');
+		$this->db->select('test.gubun1');
+		$this->db->select('test.gubun2');
+		$this->db->select('test.gubun3');		
+		$this->db->select('test.open');		
+		$this->db->select('test.test_name');
 		$this->db->select('test.corrt_num');
 		$this->db->select('test.total_num');
 		$this->db->select('test.score');
@@ -296,7 +300,7 @@ class Dashboard_m extends CI_Model
 		$this->db->from('st_test as test');
 		$this->db->join('student as st', 'test.st_id=st.id', 'left');
 		$this->db->order_by('test.grade', 'DESC');
-		$this->db->order_by('test.chapter', 'DESC');
+		$this->db->order_by('test.test_name', 'DESC');
 		$this->db->order_by('test.created', 'ASC');
 		if ($option) {
 			$this->db->where('test.st_id', $option);
@@ -318,7 +322,11 @@ class Dashboard_m extends CI_Model
 		$this->db->select('subject');
 		$this->db->select('type');
 		$this->db->select('grade');
-		$this->db->select('chapter');
+		$this->db->select('gubun1');
+		$this->db->select('gubun2');
+		$this->db->select('gubun3');
+		$this->db->select('open');
+		$this->db->select('test_name');
 		$this->db->select('result');
 		$this->db->select('level');
 		$this->db->select('memo');
@@ -334,7 +342,11 @@ class Dashboard_m extends CI_Model
 		$this->db->set('type', $option['type']);
 		$this->db->set('grade', $option['grade']);
 		$this->db->set('level', $option['level']);
-		$this->db->set('chapter', $option['chapter']);
+		$this->db->set('gubun1', $option['gubun1']);
+		$this->db->set('gubun2', $option['gubun2']);
+		$this->db->set('gubun3', $option['gubun3']);
+		$this->db->set('open', $option['open']);
+		$this->db->set('test_name', $option['test_name']);
 		$this->db->set('corrt_num', $option['corrt_num']);
 		$this->db->set('total_num', $option['total_num']);
 		$this->db->set('score', $option['score']);
@@ -397,6 +409,7 @@ class Dashboard_m extends CI_Model
 		$this->db->set('st_id', $option['st_id']);
 		$this->db->set('seq', $option['seq']);
 		$this->db->set('category', $option['category']);
+		$this->db->set('open', $option['open']);
 		$this->db->set('course', $option['course']);
 		$this->db->set('book', $option['book']);
 		$this->db->set('period', $option['period']);
@@ -514,4 +527,78 @@ class Dashboard_m extends CI_Model
 		return $result;
 	}
 	// 교재이력 CRUD end
+
+
+	// 환경설정 CRUD start
+		function setting_add($option)
+		{
+			$this->db->set('type', $option['type']);
+	
+			$result = $this->db->insert('st_setting');
+			return $result;
+		}
+	
+		function setting_gets($option = null)
+		{
+			$this->db->select('*');
+			$this->db->order_by('seq', 'DESC');
+			if ($option) {
+				$this->db->where('st_id', $option);
+			}
+			$result = $this->db->get('st_setting')->result();
+			return $result;
+		}
+	
+		function setting_get_by_key($option)
+		{
+			$this->db->select('*');
+			$result = $this->db->get_where(
+				'st_setting',
+				array( 
+					'key' => $option['key'] 
+					)
+			)->row();
+			return $result['value'];
+		}
+
+		function setting_get($id)
+		{
+			$this->db->select('*');
+
+			$result = $this->db->get_where(
+				'st_setting',
+				array( 
+					'id' => $id 
+					)
+			)->row();
+			return $result;
+		}
+	
+		function setting_modify($option)
+		{
+			$this->db->set('st_id', $option['st_id']);
+			$this->db->set('type', $option['type']);
+			$this->db->set('key', $option['key']);
+			$this->db->set('gubun1', $option['gubun1']);
+			$this->db->set('gubun2', $option['gubun2']);
+			$this->db->set('value', $option['value']);
+			$this->db->set('flag', $option['flag']);
+			$this->db->set('description', $option['description']);
+	
+			$this->db->where('id', $option['id']);
+	
+			$result = $this->db->update('st_setting');
+	
+			return $result;
+		}
+	
+		function setting_delete($id)
+		{
+			$result = $this->db->delete('st_setting', array(
+				'id' => $id
+			));
+			return $result;
+		}
+		// 환경세팅 CRUD end
+
 }

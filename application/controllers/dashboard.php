@@ -39,14 +39,7 @@ class Dashboard extends MY_Controller
 		}
 	}
 
-	function session_reset()
-	{
-		$this->session->set_userdata('st_id', '');
-
-		redirect( site_url('/dashboard/st_summary') );
-
-	}
-
+	// 학생 현황 요약 컨트롤러 start
 	function st_summary()
 	{
 		$students = $this->dashboard_m->st_gets();
@@ -189,7 +182,7 @@ class Dashboard extends MY_Controller
 		$schedules = $this->dashboard_m->schedule_gets($st_id);
 
 		// 학생 지적사항 Data 로드하기
-		$checkmemos = $this->dashboard_m->checkmemo_gets($st_id);
+		$memos = $this->dashboard_m->memo_gets($st_id);
 
 		// 학생 진도 Data 로드하기
 		$studys = $this->dashboard_m->study_gets($st_id);
@@ -203,7 +196,7 @@ class Dashboard extends MY_Controller
 			'student' => $student,
 			'tests' => $tests,
 			'schedules' => $schedules,
-			'checkmemos' => $checkmemos,
+			'memos' => $memos,
 			'studys' => $studys,
 			'books' => $books
 		));
@@ -211,6 +204,8 @@ class Dashboard extends MY_Controller
 		// footer
 		$this->load->view('dashboard/footer_v');
 	}
+
+	// 대시보드 상세화면 컨트롤러 end
 
 	function st_add()
 	{
@@ -335,71 +330,58 @@ class Dashboard extends MY_Controller
 			alert("schedule 삭제 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 		}
 	}
+	// 스케줄 컨트롤러 end
 
-	// 지적사항 CRUD start
+	// 메모 컨트롤러 start
 	// 추가 컨트롤러
-	function checkmemo_add($category)
+	function memo_add($type)
 	{
 		$st_id = $this->session->userdata('st_id');
 
-		if( $category == "noshow" ) 
-		{
-			$result = $this->dashboard_m->checkmemo_add(
-				array(
-					'st_id' => $st_id,
-					'category' => $category
-				)
-			);
+		if( !$type ) {
 
+			alert("메모 타입 구분이 없습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+		}
+
+		$result = $this->dashboard_m->memo_add(
+			array(
+				'st_id' => $st_id,
+				'type' => $type
+			)
+		);
+
+		if( $type == "noshow" ) 
+		{
 			if (!$result) {
 				alert("지각결석메모 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 			} else {
 				alert("지각결석메모 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 			}
 		}
-
-		elseif ( $category == "checkm"  ) 
+		elseif ( $type == "checkm"  ) 
 		{
-			$result = $this->dashboard_m->checkmemo_add(
-				array(
-					'st_id' => $st_id,
-					'category' => $category
-				)
-			);
 			if (!$result) {
 				alert("지적사항메모 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 			} else {
 				alert("지적사항메모 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 			}
 		}
-
-		elseif ( $category == "bookm"  ) 
+		elseif ( $type == "bookm"  ) 
 		{
-			$result = $this->dashboard_m->checkmemo_add(
-				array(
-					'st_id' => $st_id,
-					'category' => $category
-				)
-			);
 			if (!$result) {
 				alert("교재메모 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 			} else {
 				alert("교재메모 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 			}
 		}
-
-		else 
-		{
-			alert("메모 구분이 없습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
-		}
 		
 	}
 
 	// 수정 컨트롤러
-	function checkmemo_modify()
+	function memo_modify()
 	{
 		$st_id = $this->session->userdata('st_id');
-		$result = $this->dashboard_m->checkmemo_modify(
+		$result = $this->dashboard_m->memo_modify(
 			array(
 				'id' => $this->input->post('id'),
 				'st_id' => $this->input->post('st_id'),
@@ -419,21 +401,21 @@ class Dashboard extends MY_Controller
 	}
 
 	// 삭제 컨트롤러
-	function checkmemo_delete($memo_id)
+	function memo_delete($memo_id)
 	{
 		$st_id = $this->session->userdata('st_id');
 
-		$result = $this->dashboard_m->checkmemo_delete($memo_id);
+		$result = $this->dashboard_m->memo_delete($memo_id);
 
 		if (!$result) {
-			alert("지적사항 삭제 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			alert("메모 삭제 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 		} else {
-			alert("지적사항 삭제 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			alert("메모 삭제 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 		}
 	}
-	// 지적사항 CRUD end
+	// 메모 컨트롤러 end
 
-	// 테스트 CRUD start
+	// 테스트 컨트롤러 start
 	// 추가 컨트롤러
 	function test_add()
 	{
@@ -463,9 +445,13 @@ class Dashboard extends MY_Controller
                 'id'=>$this->input->post('id'),
                 'st_id'=>$this->input->post('st_id'), 
                 'grade'=>$this->input->post('grade'),
-                'chapter'=>$this->input->post('chapter'),
                 'type'=>$this->input->post('type'),
                 'level'=>$this->input->post('level'),
+								'gubun1'=>$this->input->post('gubun1'),
+								'gubun2'=>$this->input->post('gubun2'),
+								'gubun3'=>$this->input->post('gubun3'),
+								'open'=>$this->input->post('open'),
+								'test_name'=>$this->input->post('test_name'),
                 'corrt_num'=>$this->input->post('corrt_num'),
                 'total_num'=>$this->input->post('total_num'),
                 'score'=>$this->input->post('score'),
@@ -496,9 +482,9 @@ class Dashboard extends MY_Controller
 			alert("테스트 삭제 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 		}
 	}
-	// 테스트 CRUD end
+	// 테스트 컨트롤러 end
 
-	// 학습이력 CRUD start
+	// 학습이력 컨트롤러 start
 	// 추가 컨트롤러
 	function study_add()
 	{
@@ -527,6 +513,8 @@ class Dashboard extends MY_Controller
 				'st_id' => $this->input->post('st_id'),
 				'seq' => $this->input->post('seq'),
 				'category' => $this->input->post('category'),
+				'open' => $this->input->post('open'),
+
 				'period' => $this->input->post('period'),
 				'course' => $this->input->post('course'),
 				'book' => $this->input->post('book'),
@@ -597,64 +585,111 @@ class Dashboard extends MY_Controller
 			alert("학습이력 삭제 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 		}
 	}
-	// 학습이력 CRUD end
+	// 학습이력 컨트롤러 end
 
-	// 교재이력 CRUD start
+	// 환경설정 컨트롤러 start
 	// 추가 컨트롤러
-	function book_add()
+	function setting_add($type)
 	{
-		$st_id = $this->session->userdata('st_id');
+		if( !$type )
+		{
+			alert("세팅 타입 구분이 없습니다.", site_url('/dashboard/setting_get'));
+		}
 
-		$result = $this->dashboard_m->book_add(
+		$result = $this->dashboard_m->setting_add(
 			array(
-				'st_id' => $st_id
+				'st_id' => '',
+				'type' => $type
 			)
 		);
 
-		if (!$result) {
-			alert("교재이력 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
-		} else {
-			alert("교재이력 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+		if( $type == "global" ) 
+		{
+			if (!$result) {
+				alert("global 세팅 추가 실패했습니다.", site_url('/dashboard/setting_get'));
+			} else {
+				alert("global 세팅 추가 성공했습니다.", site_url('/dashboard/setting_get'));
+			}
 		}
+		else
+		{
+			if (!$result) {
+				alert("세팅 추가 실패했습니다.", site_url('/dashboard/setting_get'));
+			} else {
+				alert("세팅 추가 성공했습니다.", site_url('/dashboard/setting_get'));
+			}
+		}
+	}
+
+	// 세팅 상세화면 컨트롤러
+	function setting_get()
+	{
+		// 학생들 Data 가져오기 
+		$students = $this->student_m->gets();
+
+		// 위 메뉴 헤더 화면 로드하기
+		$this->load->view('dashboard/header_v');
+
+		// 왼쪽 사이드바 화면 로드하기
+		$this->load->view(
+			'dashboard/sidebar_v',
+			array(
+				'students' => $students
+			)
+		);
+
+		$this->load->helper(array('HTML', 'korean'));
+
+		// 환경설정 Data 로드하기
+		$settings = $this->dashboard_m->setting_gets();
+
+		// main 
+		$this->load->view('dashboard/setting_v', 
+			array(
+					'settings' => $settings
+					));
+
+		// footer
+		$this->load->view('dashboard/footer_v');
+
 	}
 
 	// 수정 컨트롤러
-	function book_modify()
+	function setting_modify()
 	{
-		$st_id = $this->session->userdata('st_id');
-		$result = $this->dashboard_m->book_modify(
+
+		$result = $this->dashboard_m->setting_modify(
 			array(
 				'id' => $this->input->post('id'),
-				'st_id' => $this->input->post('st_id'),
-				'memo' => $this->input->post('memo'),
-				'm_date' => $this->input->post('m_date'),
-				'f_memo' => $this->input->post('f_memo'),
-				'f_date' => $this->input->post('f_date'),
-				'status' => $this->input->post('status'),
+				'type' => $this->input->post('type'),
+				'gubun1' => $this->input->post('gubun1'),
+				'gubun2' => $this->input->post('gubun2'),
+				'key' => $this->input->post('key'),
+				'value' => $this->input->post('value'),
 			)
 		);
 
 		if (!$result) {
-			alert("교재이력 업데이트가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
+			alert("설정 업데이트가 실패했습니다.", site_url('/dashboard/setting_get'));
 		} else {
-			alert("교재이력 업데이트가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $this->input->post('st_id')));
+			alert("설정 업데이트가 성공했습니다.", site_url('/dashboard/setting_get'));
 		}
+
 	}
 
 	// 삭제 컨트롤러
-	function book_delete($memo_id)
+	function setting_delete($setting_id)
 	{
-		$st_id = $this->session->userdata('st_id');
 
-		$result = $this->dashboard_m->book_delete($memo_id);
+		$result = $this->dashboard_m->setting_delete($setting_id);
 
 		if (!$result) {
-			alert("교재이력 삭제 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			alert("세팅 삭제 실패했습니다.", site_url('/dashboard/setting_get'));
 		} else {
-			alert("교재이력 삭제 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			alert("세팅 삭제 성공했습니다.", site_url('/dashboard/setting_get'));
 		}
-	}
-	// 교재이력 CRUD end
 
+	}
+	// 환경설정 컨트롤러 end
 
 }
