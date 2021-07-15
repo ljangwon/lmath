@@ -33,7 +33,7 @@
 			else
 			{
 		?>
-				<div id="st_info-collapse" class="row collapse">
+				<div id="st_info-collapse" class="row collapse.show">
 		<?php
 			}
 		?>
@@ -275,7 +275,7 @@
 	</div>
 
 	<!-- collapse start -->
-	<div id="schedule-collapse" class="row collapse">
+	<div id="schedule-collapse" class="row collapse.show">
 
 		<div class="table-responsive">
 			<table class="table">
@@ -356,7 +356,7 @@
 	</div>
 
 	<!-- collapse start -->
-	<div id="check_memo-collapse" class="row collapse">
+	<div id="check_memo-collapse" class="row collapse.show">
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
@@ -428,7 +428,7 @@
 	</div>
 
 	<!-- collapse start -->
-	<div id="noshow-collapse" class="row collapse">
+	<div id="noshow-collapse" class="row collapse.show">
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
@@ -630,7 +630,7 @@
 	</div>
 
 	<!-- collapse start -->
-	<div id="test-collapse" class="row collapse">
+	<div id="test-collapse" class="row collapse.show">
 		<div class="table-responsive">
 			<table class="table">
 				<thead>

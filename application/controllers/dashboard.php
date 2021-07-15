@@ -13,6 +13,8 @@ class Dashboard extends MY_Controller
 		$this->load->model('student_m');
 		$this->load->model('test_history_m');
 		$this->load->model('dashboard_m');
+
+
 	}
 
 	// Default 컨트롤러
@@ -492,7 +494,25 @@ class Dashboard extends MY_Controller
 
 		$result = $this->dashboard_m->study_add(
 			array(
-				'st_id' => $st_id
+				'st_id' => $st_id,
+				'category' => '현행심화',
+				'seq' => '3-1'
+			)
+		);
+
+		$result = $this->dashboard_m->study_add(
+			array(
+				'st_id' => $st_id,
+				'category' => '개념선행',
+				'seq' => '2-1'
+			)
+		);
+
+		$result = $this->dashboard_m->study_add(
+			array(
+				'st_id' => $st_id,
+				'category' => '연산선행',
+				'seq' => '1-1'
 			)
 		);
 
@@ -666,6 +686,7 @@ class Dashboard extends MY_Controller
 				'gubun2' => $this->input->post('gubun2'),
 				'key' => $this->input->post('key'),
 				'value' => $this->input->post('value'),
+				'description' => $this->input->post('description'),
 			)
 		);
 

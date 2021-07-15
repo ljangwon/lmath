@@ -378,6 +378,8 @@ class Dashboard_m extends CI_Model
 	function study_add($option)
 	{
 		$this->db->set('st_id', $option['st_id']);
+		$this->db->set('category', $option['category']);
+		$this->db->set('seq', $option['seq']);
 
 		$result = $this->db->insert('st_study');
 		return $result;
@@ -541,7 +543,11 @@ class Dashboard_m extends CI_Model
 		function setting_gets($option = null)
 		{
 			$this->db->select('*');
-			$this->db->order_by('seq', 'DESC');
+			$this->db->order_by('type', 'ASC');
+			$this->db->order_by('gubun1', 'ASC');
+			$this->db->order_by('gubun2', 'ASC');
+			$this->db->order_by('key', 'ASC');
+
 			if ($option) {
 				$this->db->where('st_id', $option);
 			}
@@ -576,15 +582,12 @@ class Dashboard_m extends CI_Model
 	
 		function setting_modify($option)
 		{
-			$this->db->set('st_id', $option['st_id']);
 			$this->db->set('type', $option['type']);
 			$this->db->set('key', $option['key']);
 			$this->db->set('gubun1', $option['gubun1']);
 			$this->db->set('gubun2', $option['gubun2']);
 			$this->db->set('value', $option['value']);
-			$this->db->set('flag', $option['flag']);
 			$this->db->set('description', $option['description']);
-	
 			$this->db->where('id', $option['id']);
 	
 			$result = $this->db->update('st_setting');

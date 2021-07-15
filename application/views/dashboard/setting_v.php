@@ -40,7 +40,7 @@
 							  true
 						) {
 					?>
-							<form id="st_setting_<?= $seq ?>" action="<?= site_url('dashboard/setting_modify') ?>" method="post">
+							<form id="setting_<?= $seq ?>" action="<?= site_url('dashboard/setting_modify') ?>" method="post">
 								<tr>
 									<input type="hidden" name="id" value="<?= $entry->id ?>">
 									<th class="text-nowrap text-center align-middle bg-secondary text-white"> <?= $seq++ ?> </th>
@@ -54,7 +54,7 @@
                   <td class="align-middle"><input type="text" name="gubun2" size=10 class="text-start"  value="<?= $entry->gubun2 ?>"></td>
                   <td class="align-middle"><input type="text" name="key" size=10 class="text-start"  value="<?= $entry->key ?>"></td>
                   <td class="align-middle"><input type="text" name="value" size=10 class="text-start"  value="<?= $entry->value ?>"></td>
-									<td><textarea name="description" cols=100 rows="2" class="text-start"><?= $entry->description ?> </textarea> </td>
+									<td><textarea name="description" cols=30 rows="2" class="text-start"><?= $entry->description ?> </textarea> </td>
 								</tr>
 							</form>
 					<?php
