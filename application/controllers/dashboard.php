@@ -523,6 +523,26 @@ class Dashboard extends MY_Controller
 		}
 	}
 
+		// 추가 컨트롤러
+		function study_add1()
+		{
+			$st_id = $this->session->userdata('st_id');
+	
+			$result = $this->dashboard_m->study_add(
+				array(
+					'st_id' => $st_id,
+					'category' => '현행심화',
+					'seq' => '0'
+				)
+			);
+	
+			if (!$result) {
+				alert("학습이력 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			} else {
+				alert("학습이력 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
+			}
+		}
+
 	// 수정 컨트롤러
 	function study_modify()
 	{

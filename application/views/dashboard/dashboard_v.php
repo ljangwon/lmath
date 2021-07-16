@@ -491,7 +491,10 @@
 					접고펴기
 				</a>
 				<button type="button" onclick="location.href='<?= site_url('/dashboard/study_add/') ?>'" class="btn btn-sm btn-outline-secondary">
-					추가
+					추가3
+				</button>
+				<button type="button" onclick="location.href='<?= site_url('/dashboard/study_add1/') ?>'" class="btn btn-sm btn-outline-secondary">
+					추가1
 				</button>
 			</div>
 		</div>
