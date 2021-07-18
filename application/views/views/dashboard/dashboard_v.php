@@ -607,19 +607,19 @@
 									<td colspan=3 class="text-nowrap"> 학습기간 <input type="text" name="period" size=18 class="text-start" value="<?= $entry->period ?>"> </td>
 									<td class="text-nowrap"> 총단원수: <input type="text" name="count_chap" size=2 class="text-start" value="<?= $entry->count_chap ?>"> </td>
 									<td class="text-nowrap"> 평가기록 </td>
-									<td> <input type="text" name="t_chap1" size=35 class="text-start" value="<?= $entry->t_chap1 ?>"> </td>
-									<td> <input type="text" name="t_chap2" size=35 class="text-start" value="<?= $entry->t_chap2 ?>"> </td>
-									<td> <input type="text" name="t_chap3" size=35 class="text-start" value="<?= $entry->t_chap3 ?>"> </td>
-									<td> <input type="text" name="t_chap4" size=35 class="text-start" value="<?= $entry->t_chap4 ?>"> </td>
-									<td> <input type="text" name="t_chap5" size=35 class="text-start" value="<?= $entry->t_chap5 ?>"> </td>
-									<td> <input type="text" name="t_chap6" size=35 class="text-start" value="<?= $entry->t_chap6 ?>"> </td>
-									<td> <input type="text" name="t_chap7" size=35 class="text-start" value="<?= $entry->t_chap7 ?>"> </td>
-									<td> <input type="text" name="t_chap8" size=35 class="text-start" value="<?= $entry->t_chap8 ?>"> </td>
-									<td> <input type="text" name="t_chap9" size=35 class="text-start" value="<?= $entry->t_chap9 ?>"> </td>
-									<td> <input type="text" name="t_chap10" size=35 class="text-start" value="<?= $entry->t_chap10 ?>"> </td>
-									<td> <input type="text" name="t_chap11" size=35 class="text-start" value="<?= $entry->t_chap11 ?>"> </td>
-									<td> <input type="text" name="t_chap12" size=35 class="text-start" value="<?= $entry->t_chap12 ?>"> </td>
-									<td> <input type="text" name="t_chap13" size=35 class="text-start" value="<?= $entry->t_chap13 ?>"> </td>
+									<td> <input type="text" name="t_chap1" size=30 class="text-start" value="<?= $entry->t_chap1 ?>"> </td>
+									<td> <input type="text" name="t_chap2" size=30 class="text-start" value="<?= $entry->t_chap2 ?>"> </td>
+									<td> <input type="text" name="t_chap3" size=30 class="text-start" value="<?= $entry->t_chap3 ?>"> </td>
+									<td> <input type="text" name="t_chap4" size=30 class="text-start" value="<?= $entry->t_chap4 ?>"> </td>
+									<td> <input type="text" name="t_chap5" size=30 class="text-start" value="<?= $entry->t_chap5 ?>"> </td>
+									<td> <input type="text" name="t_chap6" size=30 class="text-start" value="<?= $entry->t_chap6 ?>"> </td>
+									<td> <input type="text" name="t_chap7" size=30 class="text-start" value="<?= $entry->t_chap7 ?>"> </td>
+									<td> <input type="text" name="t_chap8" size=30 class="text-start" value="<?= $entry->t_chap8 ?>"> </td>
+									<td> <input type="text" name="t_chap9" size=30 class="text-start" value="<?= $entry->t_chap9 ?>"> </td>
+									<td> <input type="text" name="t_chap10" size=30 class="text-start" value="<?= $entry->t_chap10 ?>"> </td>
+									<td> <input type="text" name="t_chap11" size=30 class="text-start" value="<?= $entry->t_chap11 ?>"> </td>
+									<td> <input type="text" name="t_chap12" size=30 class="text-start" value="<?= $entry->t_chap12 ?>"> </td>
+									<td> <input type="text" name="t_chap13" size=30 class="text-start" value="<?= $entry->t_chap13 ?>"> </td>
 								</tr>
 
 							</form>
