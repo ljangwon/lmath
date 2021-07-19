@@ -108,6 +108,7 @@ class Dashboard_m extends CI_Model
 		$this->db->set('name', $option['name']);
 		$this->db->set('s_phone', $option['s_phone']);
 		$this->db->set('house', $option['house']);
+		$this->db->set('sibling_memo', $option['sibling_memo']);
 
 		$this->db->set('grade1', $option['grade1']);
 		$this->db->set('school_name', $option['school_name']);
@@ -217,6 +218,7 @@ class Dashboard_m extends CI_Model
 		$this->db->set('m_date', 'NOW()', false);
 		$this->db->set('st_id', $option['st_id']);
 		$this->db->set('type', $option['type']);
+		$this->db->set('seq', $option['seq']);
 
 		$result = $this->db->insert('st_memo');
 		return $result;
@@ -225,6 +227,7 @@ class Dashboard_m extends CI_Model
 	function memo_gets($option = null)
 	{
 		$this->db->select('*');
+		$this->db->order_by('seq', 'ASC');
 		$this->db->order_by('m_date', 'DESC');
 		if ($option) {
 			$this->db->where('st_id', $option);
@@ -247,6 +250,7 @@ class Dashboard_m extends CI_Model
 	{
 		$this->db->set('st_id', $option['st_id']);
 		$this->db->set('memo', $option['memo']);
+		$this->db->set('seq', $option['seq']);
 		$this->db->set('m_date', $option['m_date']);
 		$this->db->set('f_memo', $option['f_memo']);
 		$this->db->set('status', $option['status']);

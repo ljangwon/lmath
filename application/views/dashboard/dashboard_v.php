@@ -59,6 +59,11 @@
 			</div>
 
 			<div class="col-sm-2 text-center">
+				<label for="" class="form-label">형제</label>
+				<input type="text" name="sibling_memo" class="form-control" placeholder="" value="<?= $student->sibling_memo ?>">
+			</div>
+
+			<div class="col-sm-2 text-center">
 				<label for="" class="form-label">학 교</label>
 				<input type="text" name="school_name" class="form-control" placeholder="" value="<?= $student->school_name ?>">
 			</div>
@@ -232,6 +237,7 @@
 					<tr>
 						<th class="text-center text-nowrap">번호 </th>
 						<th class="text-center text-nowrap">구분</th>
+						<th class="text-center text-nowrap">순서</th>
 						<th class="text-center text-nowrap">학습과정</th>
 						<th class="text-center text-nowrap">교재메모</th>
 				</thead>
@@ -254,6 +260,7 @@
 										/<input type="button" onclick="location.href='<?= site_url('/dashboard/memo_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
 										</div>
 									</td>
+									<td class="align-middle"><input type="text" name="seq" size=3 class="text-start" placeholder="" value="<?= $entry->seq ?>"></td>
 									<td class="align-middle"><input type="text" name="m_date" size=10 class="text-start" placeholder="" value="<?= $entry->m_date ?>"></td>
 
 									<td><textarea name="memo" cols=100 rows="2" class="text-start"><?= $entry->memo ?> </textarea> </td>

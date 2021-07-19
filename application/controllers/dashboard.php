@@ -239,6 +239,7 @@ class Dashboard extends MY_Controller
 				'name' => $this->input->post('name'),
 				's_phone' => $this->input->post('s_phone'),
 				'house' => $this->input->post('house'),
+				'sibling_memo' => $this->input->post('sibling_memo'),
 
 				'grade1' => $this->input->post('grade1'),
 				'school_name' => $this->input->post('school_name'),
@@ -351,7 +352,8 @@ class Dashboard extends MY_Controller
 		$result = $this->dashboard_m->memo_add(
 			array(
 				'st_id' => $st_id,
-				'type' => $type
+				'type' => $type,
+				'seq' => '1-1'
 			)
 		);
 
@@ -396,21 +398,24 @@ class Dashboard extends MY_Controller
 		$result = $this->dashboard_m->memo_add(
 			array(
 				'st_id' => $st_id,
-				'type' => $type
+				'type' => $type,
+				'seq' => '1-1'
 			)
 		);
 
 		$result = $this->dashboard_m->memo_add(
 			array(
 				'st_id' => $st_id,
-				'type' => $type
+				'type' => $type,
+				'seq' => '2-1'
 			)
 		);
 
 		$result = $this->dashboard_m->memo_add(
 			array(
 				'st_id' => $st_id,
-				'type' => $type
+				'type' => $type,
+				'seq' => '3-1'
 			)
 		);
 		
@@ -451,6 +456,7 @@ class Dashboard extends MY_Controller
 				'id' => $this->input->post('id'),
 				'st_id' => $this->input->post('st_id'),
 				'memo' => $this->input->post('memo'),
+				'seq' => $this->input->post('seq'),
 				'm_date' => $this->input->post('m_date'),
 				'f_memo' => $this->input->post('f_memo'),
 				'f_date' => $this->input->post('f_date'),
