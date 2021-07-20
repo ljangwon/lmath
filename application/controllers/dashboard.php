@@ -395,41 +395,59 @@ class Dashboard extends MY_Controller
 			alert("메모 타입 구분이 없습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 		}
 
-		$result = $this->dashboard_m->memo_add(
-			array(
-				'st_id' => $st_id,
-				'type' => $type,
-				'seq' => '1-1'
-			)
-		);
-
-		$result = $this->dashboard_m->memo_add(
-			array(
-				'st_id' => $st_id,
-				'type' => $type,
-				'seq' => '2-1'
-			)
-		);
-
-		$result = $this->dashboard_m->memo_add(
-			array(
-				'st_id' => $st_id,
-				'type' => $type,
-				'seq' => '3-1'
-			)
-		);
-		
-
 		if( $type == "noshow" ) 
 		{
+			$result = $this->dashboard_m->memo_add(
+				array(
+					'st_id' => $st_id,
+					'type' => $type,
+				)
+			);
+	
+			$result = $this->dashboard_m->memo_add(
+				array(
+					'st_id' => $st_id,
+					'type' => $type,
+				)
+			);
+	
+			$result = $this->dashboard_m->memo_add(
+				array(
+					'st_id' => $st_id,
+					'type' => $type,
+				)
+			);
+
 			if (!$result) {
 				alert("지각결석메모 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 			} else {
 				alert("지각결석메모 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 			}
 		}
+
 		elseif ( $type == "checkm"  ) 
 		{
+			$result = $this->dashboard_m->memo_add(
+				array(
+					'st_id' => $st_id,
+					'type' => $type,
+				)
+			);
+	
+			$result = $this->dashboard_m->memo_add(
+				array(
+					'st_id' => $st_id,
+					'type' => $type,
+				)
+			);
+	
+			$result = $this->dashboard_m->memo_add(
+				array(
+					'st_id' => $st_id,
+					'type' => $type,
+				)
+			);
+
 			if (!$result) {
 				alert("지적사항메모 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 			} else {
@@ -438,13 +456,37 @@ class Dashboard extends MY_Controller
 		}
 		elseif ( $type == "bookm"  ) 
 		{
+
+			$result = $this->dashboard_m->memo_add(
+				array(
+					'st_id' => $st_id,
+					'type' => $type,
+					'seq' => '1-1'
+				)
+			);
+	
+			$result = $this->dashboard_m->memo_add(
+				array(
+					'st_id' => $st_id,
+					'type' => $type,
+					'seq' => '2-1'
+				)
+			);
+	
+			$result = $this->dashboard_m->memo_add(
+				array(
+					'st_id' => $st_id,
+					'type' => $type,
+					'seq' => '3-1'
+				)
+			);
+
 			if (!$result) {
 				alert("교재메모 추가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 			} else {
 				alert("교재메모 추가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $st_id));
 			}
 		}
-		
 	}
 
 	// 수정 컨트롤러

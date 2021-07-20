@@ -409,13 +409,13 @@
 										/<input type="button" onclick="location.href='<?= site_url('/dashboard/memo_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
 										</div>
 									</td>
-									<td class="aling-middle"><input type="text" name="m_date" size=10 class="text-start" value="<?= $entry->m_date ?>"></td>
+									<td class="text-center align-middle"><input type="text" name="m_date" size=10 class="text-start" value="<?= $entry->m_date ?>"></td>
 
 									<td><textarea name="memo" cols=50 rows="2" class="text-start"><?= $entry->memo ?> </textarea>
 
 								</tr>
 								<tr>
-									<td> 조치완료상태 <input type="text" size=5 name="status" class="text-center" placeholder="" value="<?= $entry->status ?>"></td>
+									<td class="text-center align-middle"> 조치완료상태 <input type="text" size=5 name="status" class="text-center" placeholder="" value="<?= $entry->status ?>"></td>
 
 									<td class="text-center align-middle"> --> 조치내용 </td>
 									<td><textarea name="f_memo" cols=50 rows="2" class="text-start"><?= $entry->f_memo ?> </textarea> </td>
