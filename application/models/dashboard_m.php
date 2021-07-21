@@ -230,7 +230,7 @@ class Dashboard_m extends CI_Model
 		$this->db->order_by('seq', 'ASC');
 		$this->db->order_by('m_date', 'DESC');
 		if ($option) {
-			$this->db->where('st_id', $option);
+			$this->db->where( $option );
 		}
 		$result = $this->db->get('st_memo')->result();
 		return $result;

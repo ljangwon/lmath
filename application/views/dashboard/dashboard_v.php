@@ -218,6 +218,9 @@
 				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#bookm-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
 					접고펴기
 				</a>
+				<button type="button" onclick="" class="btn btn-sm btn-outline-secondary">
+					전체수정
+				</button>
 				<button type="button" onclick="location.href='<?= site_url('/dashboard/memo_add/bookm') ?>'" class="btn btn-sm btn-outline-secondary">
 					추가1
 				</button>
@@ -244,17 +247,17 @@
 
 				<tbody>
 					<?php
-					$seq = 1;
-					foreach ($memos as $entry) {
+					$seq = 0;
+					foreach ($memos_book as $entry) {
 						if (
-							$entry->type == "bookm"
+							true
 						) {
 					?>
-							<form id="book_memo_<?= $seq ?>" action="<?= site_url('dashboard/memo_modify') ?>" method="post">
+							<form id="memo_book<?= $seq ?>" action="<?= site_url('dashboard/memo_modify') ?>" method="post">
 								<tr>
 									<input type="hidden" name="id" value="<?= $entry->id ?>">
 									<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
-									<th class="text-nowrap text-center align-middle bg-secondary text-white"> <?= $seq++ ?> </th>
+									<th class="text-nowrap text-center align-middle bg-secondary text-white"> <?= ++$seq ?> </th>
 									<td class="text-center align-middle">
 										<div class="d-flex"><input type="submit" class="text-center" value="수정">
 										/<input type="button" onclick="location.href='<?= site_url('/dashboard/memo_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
@@ -301,7 +304,7 @@
 			<table class="table">
 				<thead>
 					<tr class="d-flex flex-nowrap">
-						<th class="col-1 text-center text-nowrap">번호 </th>
+						<th width="50px" class="text-center text-nowrap">번호 </th>
 						<th class="col-1 text-center text-nowrap">수정/삭제</th>
 						<th class="col-1 text-center text-nowrap">월</th>
 						<th class="col-1 text-center text-nowrap">화</th>
@@ -326,7 +329,7 @@
 					?>
 							<form id="schedule_<? $seq ?>" action="<?= site_url('dashboard/schedule_modify') ?>" method="post">
 								<tr class="d-flex flex-nowrap">
-									<th class="col-1 text-nowrap"><?= $seq++ ?></th>
+									<th width="50px" class="text-nowrap text-center align-middle bg-secondary text-white"><?= $seq++ ?></th>
 									<td class="col-1 align-middle">
 										<div class="d-flex">
 										<input type="submit" class="text-center" value="수정">
@@ -335,16 +338,16 @@
 									</td>
 									<input type="hidden" name="id" value="<?= $entry->id ?>">
 									<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
-									<td class="col-1"><input type="text" size=6 name="mon_s" class="text-center " value="<?= $entry->mon_s ?>"></td>
-									<td class="col-1"><input type="text" size=6 name="tue_s" class="text-center" value="<?= $entry->tue_s ?>"></td>
-									<td class="col-1"><input type="text" size=6 name="wed_s" class="text-center" value="<?= $entry->wed_s ?>"></td>
-									<td class="col-1"><input type="text" size=6 name="thr_s" class="text-center" value="<?= $entry->thr_s ?>"></td>
-									<td class="col-1"><input type="text" size=6 name="fri_s" class="text-center" value="<?= $entry->fri_s ?>"></td>
-									<td class="col-1"><input type="text" size=6 name="sat_s" class="text-center" value="<?= $entry->sat_s ?>"></td>
-									<td class="col-1"><input type="text" size=6 name="sun_s" class="text-center" value="<?= $entry->sun_s ?>"></td>
-									<td class="col-1"><input type="text" size=6 name="time_per_week" class="text-center" value="<?= $entry->time_per_week ?>"> </td>
-									<td class="col-1"><input type="text" size=20 name="s_date" class="text-left text-nowrap" value="<?= $entry->s_date ?>"></td>
-									<td class="col-1"><input type="text" size=20 name="e_date" class="text-left text-nowrap" value="<?= $entry->e_date ?>"></td>
+									<td class="col-1 "><input type="text" size=6 name="mon_s" class="text-center " value="<?= $entry->mon_s ?>"></td>
+									<td class="col-1 "><input type="text" size=6 name="tue_s" class="text-center" value="<?= $entry->tue_s ?>"></td>
+									<td class="col-1 "><input type="text" size=6 name="wed_s" class="text-center" value="<?= $entry->wed_s ?>"></td>
+									<td class="col-1 "><input type="text" size=6 name="thr_s" class="text-center" value="<?= $entry->thr_s ?>"></td>
+									<td class="col-1 "><input type="text" size=6 name="fri_s" class="text-center" value="<?= $entry->fri_s ?>"></td>
+									<td class="col-1 "><input type="text" size=6 name="sat_s" class="text-center" value="<?= $entry->sat_s ?>"></td>
+									<td class="col-1 "><input type="text" size=6 name="sun_s" class="text-center" value="<?= $entry->sun_s ?>"></td>
+									<td class="col-1 "><input type="text" size=6 name="time_per_week" class="text-center" value="<?= $entry->time_per_week ?>"> </td>
+									<td class="col-1 "><input type="text" size=10 name="s_date" class="text-left text-nowrap" value="<?= $entry->s_date ?>"> </td>
+									<td class="col-1 "><input type="text" size=10 name="e_date" class="text-left text-nowrap" value="<?= $entry->e_date ?>"> </td>
 							</tr>
 							</form>
 <?php
@@ -394,16 +397,16 @@
 				<tbody>
 					<?php
 					$seq = 1;
-					foreach ($memos as $entry) {
+					foreach ($memos_check as $entry) {
 						if (
-							$entry->type == "checkm"
+							 true
 						) {
 					?>
 							<form id="check_memo_<?= $seq ?>" action="<?= site_url('dashboard/memo_modify') ?>" method="post">
 								<tr>
 									<input type="hidden" name="id" value="<?= $entry->id ?>">
 									<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
-									<th rowspan=2 class="text-nowrap text-center align-middle bg-secondary text-white"> <?= $seq++ ?> </th>
+									<th class="text-nowrap text-center align-middle bg-secondary text-white"> <?= $seq++ ?> </th>
 									<td class="text-center align-middle">
 										<div class="d-flex"> <input type="submit" class="text-center" value="수정">
 										/<input type="button" onclick="location.href='<?= site_url('/dashboard/memo_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
@@ -414,12 +417,12 @@
 									<td><textarea name="memo" cols=50 rows="2" class="text-start"><?= $entry->memo ?> </textarea>
 
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td class="text-center align-middle"> 조치완료상태 <input type="text" size=5 name="status" class="text-center" placeholder="" value="<?= $entry->status ?>"></td>
 
-									<td class="text-center align-middle"> --> 조치내용 </td>
+									<td class="text-center align-middle"> 조치내용 </td>
 									<td><textarea name="f_memo" cols=50 rows="2" class="text-start"><?= $entry->f_memo ?> </textarea> </td>
-								</tr>
+								</tr> -->
 							</form>
 
 					<?php
@@ -468,16 +471,16 @@
 				<tbody>
 					<?php
 					$seq = 1;
-					foreach ($memos as $entry) {
+					foreach ($memos_noshow as $entry) {
 						if (
-							$entry->type == "noshow"
+							 true
 						) {
 					?>
 							<form id="noshow_memo_<?= $seq ?>" action="<?= site_url('dashboard/memo_modify') ?>" method="post">
 								<tr>
 									<input type="hidden" name="id" value="<?= $entry->id ?>">
 									<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
-									<th rowspan=2 class="text-nowrap text-center align-middle bg-secondary text-white"> <?= $seq++ ?> </th>
+									<th class="text-nowrap text-center align-middle bg-secondary text-white"> <?= $seq++ ?> </th>
 									<td class="text-center align-middle">
 										<div class="d-flex"><input type="submit" class="text-center" value="수정">
 										/<input type="button" onclick="location.href='<?= site_url('/dashboard/memo_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
@@ -488,12 +491,12 @@
 									<td><textarea name="memo" cols=50 rows="2" class="text-start"><?= $entry->memo ?> </textarea>
 
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td class="align-middle"> 보충완료상태 <input type="text" size=5 name="status" class="text-center" placeholder="" value="<?= $entry->status ?>"></td>
 
-									<td class="align-middle"> --> 보충계획 </td>
+									<td class="align-middle"> 보충계획 </td>
 									<td><textarea name="f_memo" cols=50 rows="2" class="text-start"><?= $entry->f_memo ?> </textarea> </td>
-								</tr>
+								</tr> -->
 							</form>
 
 					<?php

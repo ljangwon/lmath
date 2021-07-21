@@ -183,11 +183,24 @@ class Dashboard extends MY_Controller
 		// 학생 학습 시간 Data 로드하기
 		$schedules = $this->dashboard_m->schedule_gets($st_id);
 
-		// 학생 지적사항 Data 로드하기
-		$memos = $this->dashboard_m->memo_gets($st_id);
-
 		// 학생 진도 Data 로드하기
 		$studys = $this->dashboard_m->study_gets($st_id);
+
+		// 학생 메모 Data 로드하기
+		$memos_book = $this->dashboard_m->memo_gets(	array (
+						'st_id' => $st_id,
+						'type' => 'bookm'
+						) );
+
+		$memos_noshow = $this->dashboard_m->memo_gets(	array (
+						'st_id' => $st_id,
+						'type' => 'noshow'
+						) );
+
+		$memos_check = $this->dashboard_m->memo_gets(	array (
+						'st_id' => $st_id,
+						'type' => 'checkm'
+						) );						
 
 		// 학생 교재이록 Data 로드하기
 		$books = $this->dashboard_m->book_gets($st_id);
@@ -198,7 +211,10 @@ class Dashboard extends MY_Controller
 			'student' => $student,
 			'tests' => $tests,
 			'schedules' => $schedules,
-			'memos' => $memos,
+			'memos_book' => $memos_book,
+			'memos_noshow' => $memos_noshow,
+			'memos_check' => $memos_check,
+
 			'studys' => $studys,
 			'books' => $books
 		));
