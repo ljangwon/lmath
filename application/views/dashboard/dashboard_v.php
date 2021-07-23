@@ -1,5 +1,6 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 	session_st_id : <?= $this->session->userdata('st_id') ?>
+	student name : <?= $this->session->userdata('st_name') ?>
 
 	<!-- section start -->
 	<form id="st_info_modify" action="<?= site_url() ?>/dashboard/st_modify" method="post">
@@ -562,7 +563,7 @@
 					$seq = 1;
 					foreach ($studys as $entry) {
 						if (
-							true
+							$entry->open == "1"
 						) {
 					?>
 							<form id="study_<?= $seq ?>" action="<?= site_url('dashboard/study_modify') ?>" method="post">

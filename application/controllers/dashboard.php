@@ -14,7 +14,6 @@ class Dashboard extends MY_Controller
 		$this->load->model('test_history_m');
 		$this->load->model('dashboard_m');
 
-
 	}
 
 	// Default 컨트롤러
@@ -176,6 +175,7 @@ class Dashboard extends MY_Controller
 
 		// 학생 한명 Data 로드하기 
 		$student = $this->dashboard_m->st_get($st_id);
+		$this->session->set_userdata( 'st_name', $student->name );
 
 		// 학생 테스트들 Data 로드하기 
 		$tests = $this->dashboard_m->test_gets($st_id);
@@ -224,6 +224,55 @@ class Dashboard extends MY_Controller
 	}
 
 	// 대시보드 상세화면 컨트롤러 end
+
+
+// Dashboard 상세화면 컨트롤러
+function study_get($st_id=null)
+{
+	if (empty($st_id)) {
+		$st_id = $this->session->userdata('st_id');
+	} else {
+		$this->session->set_userdata('st_id', $st_id);
+	}
+
+	if (empty($st_id)) {
+		alert('st_id의 값이 없습니다', site_url('/dashboard'));
+	}
+
+	// 학생들 Data 가져오기 
+	$students = $this->student_m->gets();
+
+	// 위 메뉴 헤더 화면 로드하기
+	$this->load->view('dashboard/header_v');
+
+	// 왼쪽 사이드바 화면 로드하기
+	$this->load->view(
+		'dashboard/sidebar_v',
+		array(
+			'students' => $students
+		)
+	);
+
+	$this->load->helper(array('HTML', 'korean'));
+
+	// 학생 한명 Data 로드하기 
+	$student = $this->dashboard_m->st_get($st_id);
+
+	// 학생 진도 Data 로드하기
+	$studys = $this->dashboard_m->study_gets($st_id);
+
+	// main 
+	$this->load->view('dashboard/study_v', array(
+		'student' => $student,
+		'studys' => $studys
+	));
+
+	// footer
+	$this->load->view('dashboard/footer_v');
+}
+
+// 진도 리스트 화면 컨트롤러 end
+
 
 	function st_add()
 	{
@@ -739,6 +788,75 @@ class Dashboard extends MY_Controller
 		}
 	}
 
+		// 수정 컨트롤러
+		function study_modify1()
+		{
+			$st_id = $this->session->userdata('st_id');
+			$result = $this->dashboard_m->study_modify(
+				array(
+					'id' => $this->input->post('id'),
+					'st_id' => $this->input->post('st_id'),
+					'seq' => $this->input->post('seq'),
+					'category' => $this->input->post('category'),
+					'open' => $this->input->post('open'),
+	
+					'period' => $this->input->post('period'),
+					'course' => $this->input->post('course'),
+					'book' => $this->input->post('book'),
+					'period' => $this->input->post('period'),
+					'count_chap' => $this->input->post('count_chap'),
+	
+					's_chap1' => $this->input->post('s_chap1'),
+					's_chap2' => $this->input->post('s_chap2'),
+					's_chap3' => $this->input->post('s_chap3'),
+					's_chap4' => $this->input->post('s_chap4'),
+					's_chap5' => $this->input->post('s_chap5'),
+					's_chap6' => $this->input->post('s_chap6'),
+					's_chap7' => $this->input->post('s_chap7'),
+					's_chap8' => $this->input->post('s_chap8'),
+					's_chap9' => $this->input->post('s_chap9'),
+					's_chap10' => $this->input->post('s_chap10'),
+					's_chap11' => $this->input->post('s_chap11'),
+					's_chap12' => $this->input->post('s_chap12'),
+					's_chap13' => $this->input->post('s_chap13'),
+	
+					'e_chap1' => $this->input->post('e_chap1'),
+					'e_chap2' => $this->input->post('e_chap2'),
+					'e_chap3' => $this->input->post('e_chap3'),
+					'e_chap4' => $this->input->post('e_chap4'),
+					'e_chap5' => $this->input->post('e_chap5'),
+					'e_chap6' => $this->input->post('e_chap6'),
+					'e_chap7' => $this->input->post('e_chap7'),
+					'e_chap8' => $this->input->post('e_chap8'),
+					'e_chap9' => $this->input->post('e_chap9'),
+					'e_chap10' => $this->input->post('e_chap10'),
+					'e_chap11' => $this->input->post('e_chap11'),
+					'e_chap12' => $this->input->post('e_chap12'),
+					'e_chap13' => $this->input->post('e_chap13'),
+	
+					't_chap1' => $this->input->post('t_chap1'),
+					't_chap2' => $this->input->post('t_chap2'),
+					't_chap3' => $this->input->post('t_chap3'),
+					't_chap4' => $this->input->post('t_chap4'),
+					't_chap5' => $this->input->post('t_chap5'),
+					't_chap6' => $this->input->post('t_chap6'),
+					't_chap7' => $this->input->post('t_chap7'),
+					't_chap8' => $this->input->post('t_chap8'),
+					't_chap9' => $this->input->post('t_chap9'),
+					't_chap10' => $this->input->post('t_chap10'),
+					't_chap11' => $this->input->post('t_chap11'),
+					't_chap12' => $this->input->post('t_chap12'),
+					't_chap13' => $this->input->post('t_chap13')
+				)
+			);
+	
+			if (!$result) {
+				alert("학습이력 업데이트가 실패했습니다.", site_url('/dashboard/study_get/' . $st_id) );
+			} else {
+				alert("학습이력 업데이트가 성공했습니다.", site_url('/dashboard/study_get/' . $this->input->post('st_id')));
+			}
+		}
+
 	// 삭제 컨트롤러
 	function study_delete($memo_id)
 	{
@@ -753,6 +871,21 @@ class Dashboard extends MY_Controller
 		}
 	}
 	// 학습이력 컨트롤러 end
+
+		// 삭제 컨트롤러
+		function study_delete1($memo_id)
+		{
+			$st_id = $this->session->userdata('st_id');
+	
+			$result = $this->dashboard_m->study_delete($memo_id);
+	
+			if (!$result) {
+				alert("학습이력 삭제 실패했습니다.", site_url('/dashboard/study_get/' . $st_id));
+			} else {
+				alert("학습이력 삭제 성공했습니다.", site_url('/dashboard/study_get/' . $st_id));
+			}
+		}
+		// 학습이력 컨트롤러 end
 
 	// 환경설정 컨트롤러 start
 	// 추가 컨트롤러

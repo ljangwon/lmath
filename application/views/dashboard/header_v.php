@@ -15,7 +15,8 @@
       <li>
         <hr class="dropdown-divider">
       </li>
-      <li><a class="dropdown-item" href="#">학생 삭제</a></li>
+      <li><a class="dropdown-item" href="<?= site_url('/dashboard/study_get') ?>">진도전체목록</a></li>
+
     </ul>
 
   </div>
