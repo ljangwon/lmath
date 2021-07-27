@@ -284,7 +284,7 @@ class Dashboard_m extends CI_Model
 		return $test_id;
 	}
 
-	function test_gets($option = null)
+	function test_gets($st_id = null)
 	{
 		$this->db->select('test.id as id');
 		$this->db->select('test.st_id as st_id');
@@ -309,8 +309,8 @@ class Dashboard_m extends CI_Model
 		$this->db->order_by('test.grade', 'DESC');
 		$this->db->order_by('test.test_name', 'DESC');
 		$this->db->order_by('test.created', 'ASC');
-		if ($option) {
-			$this->db->where('test.st_id', $option);
+		if ($st_id) {
+			$this->db->where('test.st_id', $st_id);
 		}
 		$result = $this->db->get()->result();
 		//$result =  $this->db->query("SELECT * FROM test")->result();

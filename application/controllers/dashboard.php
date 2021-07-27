@@ -226,7 +226,7 @@ class Dashboard extends MY_Controller
 	// 대시보드 상세화면 컨트롤러 end
 
 
-// Dashboard 상세화면 컨트롤러
+// 학습 진도 체크 모두보기 상세화면 컨트롤러
 function study_get($st_id=null)
 {
 	if (empty($st_id)) {
@@ -265,6 +265,53 @@ function study_get($st_id=null)
 	$this->load->view('dashboard/study_v', array(
 		'student' => $student,
 		'studys' => $studys
+	));
+
+	// footer
+	$this->load->view('dashboard/footer_v');
+}
+
+// 진도 리스트 화면 컨트롤러 end
+
+// 학습 진도 체크 모두보기 상세화면 컨트롤러
+function test_get($st_id=null)
+{
+	if (empty($st_id)) {
+		$st_id = $this->session->userdata('st_id');
+	} else {
+		$this->session->set_userdata('st_id', $st_id);
+	}
+
+	if (empty($st_id)) {
+		alert('st_id의 값이 없습니다', site_url('/dashboard'));
+	}
+
+	// 학생들 Data 가져오기 
+	$students = $this->student_m->gets();
+
+	// 위 메뉴 헤더 화면 로드하기
+	$this->load->view('dashboard/header_v');
+
+	// 왼쪽 사이드바 화면 로드하기
+	$this->load->view(
+		'dashboard/sidebar_v',
+		array(
+			'students' => $students
+		)
+	);
+
+	$this->load->helper(array('HTML', 'korean'));
+
+	// 학생 한명 Data 로드하기 
+	$student = $this->dashboard_m->st_get($st_id);
+
+	// 학생 진도 Data 로드하기
+	$tests = $this->dashboard_m->test_gets($st_id);
+
+	// main 
+	$this->load->view('dashboard/test_v', array(
+		'student' => $student,
+		'tests' => $tests
 	));
 
 	// footer
