@@ -130,6 +130,9 @@ class Dashboard_m extends CI_Model
 		$this->db->set('memo', ltrim($option['memo']));
 		$this->db->set('fees', $option['fees']);
 		$this->db->set('flag', $option['flag']);
+		$this->db->set('start_date', $option['start_date']);
+		$this->db->set('end_date', $option['end_date']);
+		$this->db->set('report_last_date', $option['report_last_date']);
 
 		$this->db->where('id', $option['id']);
 

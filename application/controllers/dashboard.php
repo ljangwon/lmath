@@ -370,7 +370,10 @@ function test_get($st_id=null)
 				'class_time3' => $this->input->post('class_time3'),
 				'memo' => $this->input->post('memo'),
 				'fees' => $this->input->post('fees'),
-				'flag' => $this->input->post('flag')
+				'flag' => $this->input->post('flag'),
+				'start_date' => $this->input->post('start_date'),
+				'end_date' => $this->input->post('end_date'),
+				'report_last_date' => $this->input->post('report_last_date')
 			)
 		);
 
