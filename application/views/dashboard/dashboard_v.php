@@ -61,7 +61,7 @@
 
 			<div class="col-sm-2 text-center">
 				<label for="" class="form-label">형제</label>
-				<input type="text" name="sibling_memo" class="form-control" placeholder="" value="<?= $student->sibling_memo ?>">
+				<input type="text" name="sibling_memo" class="form-control" value="<?= $student->sibling_memo ?>">
 			</div>
 
 			<div class="col-sm-2 text-center">
@@ -128,6 +128,16 @@
 				<input type="text" name="flag" class="form-control" placeholder="" value="<?= $student->flag ?>">
 			</div>
 
+			<div class="col-sm-1 text-center">
+				<label for="" class="form-label text-nowrap">시작일</label>
+				<input type="text" name="start_date" class="form-control" placeholder="" value="<?= $student->start_date ?>">
+			</div>
+
+			<div class="col-sm-1 text-center">
+				<label for="" class="form-label text-nowrap">종료일</label>
+				<input type="text" name="end_date" class="form-control" value="<?= $student->end_date ?>">
+			</div>
+
 			<div class="col-sm-3 text-center">
 				<label class="form-label">연산선행수준</label>
 				<input type="text" name="level1" class="form-control" value="<?= $student->level1 ?>">
@@ -144,6 +154,10 @@
 			</div>
 
 			<!-- --------------------------------------- -->
+			<div class="col-sm-2 text-center">
+				<label for="" class="form-label text-nowrap">마지막상담일</label>
+				<input type="text" name="report_last_date" class="form-control" value="<?= $student->report_last_date ?>">
+			</div>
 			<div class="col-sm-12 text-center">
 				<label class="form-label">메모</label>
 				<textarea name="memo" placeholder="메모" class="form-control text-start" rows="5"><?= $student->memo ?> </textarea>
