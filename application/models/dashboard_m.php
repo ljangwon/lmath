@@ -71,7 +71,11 @@ class Dashboard_m extends CI_Model
 	function st_get_count($option)
 	{
 		$this->db->select('count(*) as cnt');
-		$result = $this->db->get_where('student', array('grade1' => $option))->row();
+		$result = $this->db->get_where('student', 
+						array(
+									'grade1' => $option,
+									'flag' => '1'
+									))->row();
 		return $result;
 	}
 
