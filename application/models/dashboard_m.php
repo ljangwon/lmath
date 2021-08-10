@@ -489,61 +489,6 @@ class Dashboard_m extends CI_Model
 	}
 	// 진도체크 CRUD end
 
-	// 교재이력 CRUD start
-	function book_add($option)
-	{
-		$this->db->set('m_date', 'NOW()', false);
-		$this->db->set('st_id', $option['st_id']);
-
-		$result = $this->db->insert('st_book');
-		return $result;
-	}
-
-	function book_gets($option = null)
-	{
-		$this->db->select('*');
-		$this->db->order_by('m_date', 'DESC');
-		if ($option) {
-			$this->db->where('st_id', $option);
-		}
-		$result = $this->db->get('st_book')->result();
-		return $result;
-	}
-
-	function book_get($id)
-	{
-		$this->db->select('*');
-		$result = $this->db->get_where(
-			'st_book',
-			array('id' => $id)
-		)->row();
-		return $result;
-	}
-
-	function book_modify($option)
-	{
-		$this->db->set('st_id', $option['st_id']);
-		$this->db->set('memo', $option['memo']);
-		$this->db->set('m_date', $option['m_date']);
-		$this->db->set('f_memo', $option['f_memo']);
-		$this->db->set('status', $option['status']);
-
-		$this->db->where('id', $option['id']);
-
-		$result = $this->db->update('st_book');
-
-		return $result;
-	}
-
-	function book_delete($id)
-	{
-		$result = $this->db->delete('st_book', array(
-			'id' => $id
-		));
-		return $result;
-	}
-	// 교재이력 CRUD end
-
 
 	// 환경설정 CRUD start
 		function setting_add($option)

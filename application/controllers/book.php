@@ -22,7 +22,7 @@ class Book extends MY_Controller
 		);
 	}
 
-	// 교재 기본 
+	// 교재 기본 컨트롤
 	public function index()
 	{
 		if( !$book_id = $this->session->userdata('book_id') )	{
@@ -35,15 +35,36 @@ class Book extends MY_Controller
 		}
 	}
 
+		// 교재 마스터 추가
+		function book_add()
+		{
+				$book_id = $this->session->userdata('book_id');
+	
+				$new_book_id = $this->book_m->book_add( array(
+							'grade1' => $this->input->post('grade1'),
+							'grade2' => $this->input->post('grade2'),				
+							'name' => $this->input->post('name'),
+							)
+					);
+		
+				if (!$new_book_id) {
+					alert("교재 추가 실패했습니다.", site_url('/book/book_get/' . $book_id));
+				} else {
+	
+					alert("교재 추가 성공했습니다.", site_url('/book/book_get/' . $new_book_id));
+				}
+		}
+
 	// 교재 현황 요약
 	function book_summary()
 	{
 			$book_count_m1_1 = $this->book_m->book_get_count_option( array(
-						'grade' => '중1-1',
+						'grade1' => '중등',
+						'grade2' => '1-1',
 						'flag' => '1'
 					)
 			);
-			$this->load->view('book/book_summary_v', array(
+			$this->load->view('book/summary_v', array(
 						'book_count_m1_1' => $book_count_m1_1
 					)
 			);
@@ -84,25 +105,6 @@ class Book extends MY_Controller
 		$this->load->view('dashboard/footer_v');
 	}
 
-	// 교재 마스터 추가
-	function book_add()
-	{
-			$book_id = $this->session->userdata('book_id');
-
-			$new_book_id = $this->book_m->book_add( array(
-						'grade' => $this->input->post('grade'),
-						'name' => $this->input->post('name'),
-						)
-				);
-	
-			if (!$new_book_id) {
-				alert("교재 추가 실패했습니다.", site_url('/book/book_get/' . $book_id));
-			} else {
-
-				alert("교재 추가 성공했습니다.", site_url('/book/book_get/' . $new_book_id));
-			}
-	}
-
 	// 교재 마스터 수정 
 	function book_modify()
 	{
@@ -111,20 +113,21 @@ class Book extends MY_Controller
 		$result = $this->book_m->book_modify(
 			array(
 				'id' => $this->input->post('id'),
-				'seq' => $this->input->post('seq'),
-				'grade' => $this->input->post('grade'),
+				'grade1' => $this->input->post('grade1'),
+				'grade2' => $this->input->post('grade2'),
 				'name' => $this->input->post('name'),
 				'level' => $this->input->post('level'),
-				'memo' => $this->input->post('memo'),
+
 				'chapter_num' => $this->input->post('chapter_num'),
+				'memo' => $this->input->post('memo'),
 				'flag' => $this->input->post('flag')
 			)
 		);
 
 		if (!$result) {
-			alert("st 업데이트가 실패했습니다.", site_url('/book/book_get/' . $book_id) );
+			alert("교재 마스터 업데이트가 실패했습니다.", site_url('/book/book_get/' . $book_id) );
 		} else {
-			alert("st 업데이트가 성공했습니다.", site_url('/book/book_get/' . $this->input->post('id')));
+			alert("교재 마스터 업데이트가 성공했습니다.", site_url('/book/book_get/' . $this->input->post('id')));
 		}
 	}
 
@@ -139,9 +142,7 @@ class Book extends MY_Controller
 	}
 	// 교재 마스트 컨트롤러 끝
 
-
   // 단원 컨트롤러 시작
-
 	// 단원 추가
 	function chapter_add()
 	{
@@ -160,6 +161,42 @@ class Book extends MY_Controller
 		}
 	}
 
+		// 단원 추가
+		function chapter_add6()
+		{
+			$book_id = $this->session->userdata('book_id');
+	
+			$result = $this->book_m->chapter_add6(
+				array(
+					'book_id' => $book_id
+				)
+			);
+	
+			if (!$result) {
+				alert("단원6 추가 실패했습니다.", site_url('/book/book_get/' . $book_id));
+			} else {
+				alert("단원6 추가 성공했습니다.", site_url('/book/book_get/' . $book_id));
+			}
+		}
+
+			// 단원 추가
+	function chapter_add9()
+	{
+		$book_id = $this->session->userdata('book_id');
+
+		$result = $this->book_m->chapter_add9(
+			array(
+				'book_id' => $book_id
+			)
+		);
+
+		if (!$result) {
+			alert("단원9 추가 실패했습니다.", site_url('/book/book_get/' . $book_id));
+		} else {
+			alert("단원9 추가 성공했습니다.", site_url('/book/book_get/' . $book_id));
+		}
+	}
+
 	// 단원 수정
 	function chapter_modify()
 	{
@@ -167,7 +204,7 @@ class Book extends MY_Controller
 			array(
 				'id' => $this->input->post('id'),
 				'book_id' => $this->input->post('book_id'),
-				'seq' => $this->input->post('seq'),
+				'num' => $this->input->post('num'),
 				'name' => $this->input->post('name')
 			)
 		);
@@ -184,7 +221,7 @@ class Book extends MY_Controller
 	{
 		$book_id = $this->session->userdata('book_id');
 
-		$result = $this->book_m->schedule_delete($chapter_id);
+		$result = $this->book_m->chapter_delete($chapter_id);
 
 		if (!$result) {
 			alert("단원 삭제 실패했습니다.", site_url('/book/book_get/' . $book_id));
@@ -193,5 +230,4 @@ class Book extends MY_Controller
 		}
 	}
 	// 단원 컨트롤러 end
-
 }

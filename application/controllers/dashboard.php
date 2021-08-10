@@ -202,10 +202,6 @@ class Dashboard extends MY_Controller
 						'type' => 'checkm'
 						) );						
 
-		// 학생 교재이록 Data 로드하기
-		$books = $this->dashboard_m->book_gets($st_id);
-
-
 		// main 
 		$this->load->view('dashboard/dashboard_v', array(
 			'student' => $student,
@@ -216,7 +212,6 @@ class Dashboard extends MY_Controller
 			'memos_check' => $memos_check,
 
 			'studys' => $studys,
-			'books' => $books
 		));
 
 		// footer

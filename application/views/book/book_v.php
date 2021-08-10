@@ -44,19 +44,38 @@
 			</div>
 
 			<div class="col-sm-2 text-center">
-				<label for="" class="form-label">이 름</label>
+				<label for="" class="form-label">교재명</label>
 				<input type="text" name="name" class="form-control" value="<?= $book->name ?>">
 			</div>
 
 			<div class="col-sm-2 text-center">
-				<label for="" class="form-label text-nowrap">구 분</label>
-				<input type="text" name="grade" class="form-control" value="<?= $book->grade ?>">
+				<label for="" class="form-label text-nowrap">구분1</label>
+				<input type="text" name="grade1" class="form-control" value="<?= $book->grade1 ?>">
 			</div>
 
+			<div class="col-sm-2 text-center">
+				<label for="" class="form-label text-nowrap">구분2</label>
+				<input type="text" name="grade2" class="form-control" value="<?= $book->grade2 ?>">
+			</div>
+
+			<div class="col-sm-2 text-center">
+				<label for="" class="form-label text-nowrap">수준</label>
+				<input type="text" name="level" class="form-control" value="<?= $book->level?>">
+			</div>
+
+			<div class="col-sm-2 text-center">
+				<label for="" class="form-label text-nowrap">단원수</label>
+				<input type="text" name="chapter_num" class="form-control" value="<?= $book->chapter_num?>">
+			</div>
+
+			<div class="col-sm-2 text-center">
+				<label for="" class="form-label text-nowrap">유효</label>
+				<input type="text" name="flag" class="form-control" value="<?= $book->flag ?>">
+			</div>
 			<!-- --------------------------------------- -->
 			<div class="col-sm-12 text-center">
 				<label class="form-label">메모</label>
-				<textarea name="memo" placeholder="메모" class="form-control text-start" rows="5"><?= $book->memo ?> </textarea>
+				<textarea name="memo" class="form-control text-start" rows="5"><?= $book->memo ?> </textarea>
 			</div>
 		</div>
 	</form>
@@ -72,7 +91,8 @@
 				</div>
 				<div class="modal-body">
 					<form action="<?= site_url() ?>/book/book_add" method="post">
-						<input type="text" name="grade" placeholder="학년구분" class="span12" />
+						<input type="text" name="grade1" placeholder="학년구분" class="span12" />
+						<input type="text" name="grade2" placeholder="학기" class="span12" />
 						<input type="text" name="name" placeholder="교재이름" class="span12" />
 						<div class="form_control">
 							<input class="btn" type="submit" value="추가" />
@@ -123,15 +143,21 @@
 
 	<!-- 단원 화면 start -->
 	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-		<div class="main-title" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="테스트 결과 입력">
-			테스트 결과 기록 </div>
+		<div class="main-title" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="입력">
+			단원 정보 입력 </div>
 		<div class="btn-toolbar mb-1 mb-md-0">
 			<div class="btn-group me-2">
 				<a type="button" class="btn btn-sm btn-outline-secondary btn-toggle" data-bs-toggle="collapse" data-bs-target="#chapter-collapse" aria-controls="main-collapse" aria-expanded="false" aria-label="Toggle navigation">
 					접고펴기
 				</a>
-				<button type="button" onclick="location.href='<?= site_url('/book/tebook_add/') ?>'" class="btn btn-sm btn-outline-secondary">
+				<button type="button" onclick="location.href='<?= site_url('/book/chapter_add/') ?>'" class="btn btn-sm btn-outline-secondary">
 					추가
+				</button>
+				<button type="button" onclick="location.href='<?= site_url('/book/chapter_add6/') ?>'" class="btn btn-sm btn-outline-secondary">
+					추가6
+				</button>
+				<button type="button" onclick="location.href='<?= site_url('/book/chapter_add9/') ?>'" class="btn btn-sm btn-outline-secondary">
+					추가9
 				</button>
 			</div>
 		</div>
@@ -165,12 +191,12 @@
 
 									<th class="text-nowrap text-center align-middle bg-secondary text-white"> <?= $seq++ ?> </th>
 									<td class="text-center align-middle">
-										<div class="d-flex"><input type="submit" class="text-center" value="수정">
+										<div class="d-inline-flex"><input type="submit" class="text-center" value="수정">
 										/<input type="button" onclick="location.href='<?= site_url('/book/chapter_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
 										</div>
 									</td>
-									<td class="text-center align-middle"> <input type="text" name="num" size=6 class="text-center" value="<?= $entry->num ?>"></td>
-									<td class="text-center align-middle"> <input type="text" name="name" size=5 class="text-center" value="<?= $entry->name ?>"></td>
+									<td class="text-left align-middle"> <input type="text" name="num" size=3 class="text-center" value="<?= $entry->num ?>"></td>
+									<td class="text-left align-middle"> <input type="text" name="name" size=50 class="text-left" value="<?= $entry->name ?>"></td>
 								</tr>
 							</form>
 					<?php
