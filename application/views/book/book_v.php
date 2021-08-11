@@ -153,6 +153,9 @@
 				<button type="button" onclick="location.href='<?= site_url('/book/chapter_add/') ?>'" class="btn btn-sm btn-outline-secondary">
 					추가
 				</button>
+				<button type="button" onclick="location.href='<?= site_url('/book/chapter_add3/') ?>'" class="btn btn-sm btn-outline-secondary">
+					추가3
+				</button>
 				<button type="button" onclick="location.href='<?= site_url('/book/chapter_add6/') ?>'" class="btn btn-sm btn-outline-secondary">
 					추가6
 				</button>
@@ -196,7 +199,7 @@
 										</div>
 									</td>
 									<td class="text-left align-middle"> <input type="text" name="num" size=3 class="text-center" value="<?= $entry->num ?>"></td>
-									<td class="text-left align-middle"> <input type="text" name="name" size=50 class="text-left" value="<?= $entry->name ?>"></td>
+									<td class="text-left align-middle"> <input type="text" name="name" placeholder="교재명" size=50 class="text-left" value="<?= $entry->name ?>"></td>
 								</tr>
 							</form>
 					<?php
