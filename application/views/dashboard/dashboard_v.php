@@ -128,12 +128,12 @@
 				<input type="text" name="flag" class="form-control" placeholder="" value="<?= $student->flag ?>">
 			</div>
 
-			<div class="col-sm-1 text-center">
+			<div class="col-sm-2 text-center">
 				<label for="" class="form-label text-nowrap">시작일</label>
 				<input type="text" name="start_date" class="form-control" placeholder="" value="<?= $student->start_date ?>">
 			</div>
 
-			<div class="col-sm-1 text-center">
+			<div class="col-sm-2 text-center">
 				<label for="" class="form-label text-nowrap">종료일</label>
 				<input type="text" name="end_date" class="form-control" value="<?= $student->end_date ?>">
 			</div>
