@@ -10,8 +10,7 @@
 	<title>LeanMath</title>
 	
 	<!-- Bootstrap core CSS -->
-	<link href="<?= $this->config->item('base_url') ?>
-	/my/bootstrap-5.0.2/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="<?= $this->config->item('base_url') ?>/my/bootstrap-5.0.2/css/bootstrap.min.css" rel="stylesheet" />
 
 	<style>
 		.bd-placeholder-img {
@@ -59,16 +58,16 @@
 		}
 	</style>
 
-
 	<!-- Custom styles for this template -->
 
 	<!-- dashboard.css -->
-	<link href="<?= $this->config->item('base_url') ?>
-	/my/css/bootstrap-5.0.2/dashboard/dashboard.css" rel="stylesheet" />
+	<link href="<?= $this->config->item('base_url') ?>/my/css/bootstrap-5.0.2/dashboard/dashboard.css" rel="stylesheet" />
 
 	<!-- navbar.css -->
-	<link href="<?= $this->config->item('base_url') ?>
-	/my/css/bootstrap-5.0.2/navbars/navbar.css" rel="stylesheet" />
+	<link href="<?= $this->config->item('base_url') ?>/my/css/bootstrap-5.0.2/navbars/navbar.css" rel="stylesheet" />
+
+	<!-- shopping style.css -->
+	<link href="<?= $this->config->item('base_url') ?>/static/shopping/style.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -81,7 +80,11 @@ integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R
 integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
 <!-- feather.js -->
-<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous defer"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" 
+integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous defer"></script>
 
 <!-- common.js -->
 <script src="<?= $this->config->item('base_url') ?>/my/js/common.js" defer></script>
+
+<!-- shopping main.js -->
+<script src="<?= $this->config->item('base_url') ?>/static/shopping/src/main.js" defer></script>

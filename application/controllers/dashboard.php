@@ -7,7 +7,7 @@ class Dashboard extends MY_Controller
 	{
 		parent::__construct();
 
-		$this->load->view('dashboard/head_v');
+		$this->load->view('common/head_v');
 		$this->_require_login(site_url('/dashboard'));
 
 		$this->load->model('student_m');
@@ -19,8 +19,7 @@ class Dashboard extends MY_Controller
 	// Default 컨트롤러
 	public function index()
 	{
-
-		$students = $this->dashboard_m->st_gets();
+/* 		$students = $this->dashboard_m->st_gets();
 
 		$this->load->view('dashboard/header_v');
 		$this->load->view(
@@ -29,9 +28,8 @@ class Dashboard extends MY_Controller
 				'students' => $students
 			)
 		);
-
+ */
 		if( !$st_id = $this->session->userdata('st_id') )	{
-
 			redirect( site_url('/dashboard/st_summary') );
 
 		}
@@ -142,6 +140,8 @@ class Dashboard extends MY_Controller
 							'st_fees_sum_e' => $st_fees_sum_e
 					)
 			);
+		// footer
+		$this->load->view('common/footer_v');
 	}
 
 	// Dashboard 상세화면 컨트롤러
@@ -215,7 +215,7 @@ class Dashboard extends MY_Controller
 		));
 
 		// footer
-		$this->load->view('dashboard/footer_v');
+		$this->load->view('common/footer_v');
 	}
 
 	// 대시보드 상세화면 컨트롤러 end

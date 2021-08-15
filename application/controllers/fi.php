@@ -7,7 +7,7 @@ class Fi extends MY_Controller
 	{
 		parent::__construct();
 
-		$this->load->view('fi/head_v');
+		$this->load->view('common/head_v');
 		$this->load->view('fi/header_v');
 
 		$this->_require_login(site_url('/fi'));
@@ -16,7 +16,9 @@ class Fi extends MY_Controller
 
 		$fis = $this->fi_m->fi_gets();
 
-		$this->load->view('fi/sidebar_v', array(
+		$this->load->view(
+			'fi/sidebar_v',
+			array(
 				'fis' => $fis
 			)
 		);
@@ -25,51 +27,62 @@ class Fi extends MY_Controller
 	// 교재 기본 컨트롤
 	public function index()
 	{
-		if( !$fi_id = $this->session->userdata('fi_id') )	{
-			redirect( site_url('/fi/fi_summary') );
-		}
-		else {
-			redirect( site_url('/fi/fi_get/' . $fi_id) );
+		if (!$fi_id = $this->session->userdata('fi_id')) {
+			redirect(site_url('/fi/fi_summary'));
+		} else {
+			redirect(site_url('/fi/fi_get/' . $fi_id));
 		}
 	}
 
-		// 교재 마스터 추가
-		function fi_add()
+	// 교재 마스터 추가
+	function fi_add()
+	{
+		$fi_id = $this->session->userdata('fi_id');
+
+		$new_fi_id = $this->fi_m->fi_add(
+			array(
+				'grade1' => $this->input->post('grade1'),
+				'grade2' => $this->input->post('grade2'),
+				'name' => $this->input->post('name'),
+			)
+		);
+
+		if (!$new_fi_id) {
+			alert("교재 추가 실패했습니다.", site_url('/fi/fi_get/' . $fi_id));
+		} else {
+
+			alert("교재 추가 성공했습니다.", site_url('/fi/fi_get/' . $new_fi_id));
+		}
+	}
+
+		// 교재 현황 요약
+		function shopping()
 		{
-				$fi_id = $this->session->userdata('fi_id');
+			$this->load->view('shopping/index.html');
 	
-				$new_fi_id = $this->fi_m->fi_add( array(
-							'grade1' => $this->input->post('grade1'),
-							'grade2' => $this->input->post('grade2'),				
-							'name' => $this->input->post('name'),
-							)
-					);
-		
-				if (!$new_fi_id) {
-					alert("교재 추가 실패했습니다.", site_url('/fi/fi_get/' . $fi_id));
-				} else {
-	
-					alert("교재 추가 성공했습니다.", site_url('/fi/fi_get/' . $new_fi_id));
-				}
+			// footer
+			$this->load->view('common/footer_v');
 		}
 
 	// 교재 현황 요약
 	function fi_summary()
 	{
-			$fi_count_m1_1 = $this->fi_m->fi_get_count_option( array(
-						'grade1' => '중등',
-						'grade2' => '1-1',
-						'flag' => '1'
-					)
-			);
-			$this->load->view('fi/summary_v', array(
-						'fi_count_m1_1' => $fi_count_m1_1
-					)
-			);
+		$fi_count_m1_1 = $this->fi_m->fi_get_count_option(
+			array(
+				'grade1' => '중등',
+				'grade2' => '1-1',
+				'flag' => '1'
+			)
+		);
+		$this->load->view(
+			'fi/summary_v',
+			array(
+				'fi_count_m1_1' => $fi_count_m1_1
+			)
+		);
 
 		// footer
-		$this->load->view('default/footer_v');
-
+		$this->load->view('common/footer_v');
 	}
 
 	// 교재 상세화면 
@@ -100,7 +113,7 @@ class Fi extends MY_Controller
 		));
 
 		// footer
-		$this->load->view('fi/footer_v');
+		$this->load->view('common/footer_v');
 	}
 
 	// 교재 마스터 수정 
@@ -123,7 +136,7 @@ class Fi extends MY_Controller
 		);
 
 		if (!$result) {
-			alert("교재 마스터 업데이트가 실패했습니다.", site_url('/fi/fi_get/' . $fi_id) );
+			alert("교재 마스터 업데이트가 실패했습니다.", site_url('/fi/fi_get/' . $fi_id));
 		} else {
 			alert("교재 마스터 업데이트가 성공했습니다.", site_url('/fi/fi_get/' . $this->input->post('id')));
 		}
@@ -132,15 +145,15 @@ class Fi extends MY_Controller
 	// 교재 마스터 삭제
 	function fi_delete()
 	{
-			$fi_id = $this->input->post('fi_id');
+		$fi_id = $this->input->post('fi_id');
 
-			$this->fi_m->fi_delete($fi_id);
-			$this->session->set_userdata('fi_id', '');
-			redirect(site_url('/fi'));
+		$this->fi_m->fi_delete($fi_id);
+		$this->session->set_userdata('fi_id', '');
+		redirect(site_url('/fi'));
 	}
 	// 교재 마스트 컨트롤러 끝
 
-  // 단원 컨트롤러 시작
+	// 단원 컨트롤러 시작
 	// 단원 추가
 	function cash_add()
 	{
@@ -159,25 +172,25 @@ class Fi extends MY_Controller
 		}
 	}
 
-		// 단원 추가
-		function cash_add6()
-		{
-			$fi_id = $this->session->userdata('fi_id');
-	
-			$result = $this->fi_m->cash_add6(
-				array(
-					'fi_id' => $fi_id
-				)
-			);
-	
-			if (!$result) {
-				alert("단원6 추가 실패했습니다.", site_url('/fi/fi_get/' . $fi_id));
-			} else {
-				alert("단원6 추가 성공했습니다.", site_url('/fi/fi_get/' . $fi_id));
-			}
-		}
+	// 단원 추가
+	function cash_add6()
+	{
+		$fi_id = $this->session->userdata('fi_id');
 
-			// 단원 추가
+		$result = $this->fi_m->cash_add6(
+			array(
+				'fi_id' => $fi_id
+			)
+		);
+
+		if (!$result) {
+			alert("단원6 추가 실패했습니다.", site_url('/fi/fi_get/' . $fi_id));
+		} else {
+			alert("단원6 추가 성공했습니다.", site_url('/fi/fi_get/' . $fi_id));
+		}
+	}
+
+	// 단원 추가
 	function cash_add9()
 	{
 		$fi_id = $this->session->userdata('fi_id');
@@ -207,7 +220,7 @@ class Fi extends MY_Controller
 			)
 		);
 
-		
+
 
 		if (!$result) {
 			alert("단원 업데이트가 실패했습니다.", site_url('/fi/fi_get/' . $this->input->post('fi_id')));

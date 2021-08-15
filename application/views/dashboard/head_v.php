@@ -8,8 +8,7 @@
 	<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 	<meta name="generator" content="Hugo 0.84.0">
 	<title>LeanMath</title>
-
-
+	
 	<!-- Bootstrap core CSS -->
 	<link href="<?= $this->config->item('base_url') ?>
 	/my/bootstrap-5.0.2/css/bootstrap.min.css" rel="stylesheet" />
@@ -72,9 +71,8 @@
 	/my/css/bootstrap-5.0.2/navbars/navbar.css" rel="stylesheet" />
 
 </head>
-
 <body>
-	
+
 <!-- bootstrap js core -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" 
@@ -82,16 +80,8 @@ integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" 
 integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
-<!-- sidebars.js -->
-<script src="<?= $this->config->item('base_url') ?>
-	/my/js/bootstrap-5.0.2/sidebars/sidebars.js" defer></script>
-
 <!-- feather.js -->
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous defer"></script>
 
-<!-- chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous" defer></script>
-
-<!-- dashboard.js -->
-<script src="<?= $this->config->item('base_url') ?>
-	/my/js/bootstrap-5.0.2/dashboard/dashboard.js" defer></script>
+<!-- common.js -->
+<script src="<?= $this->config->item('base_url') ?>/my/js/common.js" defer></script>
