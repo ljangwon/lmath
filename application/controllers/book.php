@@ -161,6 +161,24 @@ class Book extends MY_Controller
 		}
 	}
 
+			// 단원 추가
+			function chapter_add3()
+			{
+				$book_id = $this->session->userdata('book_id');
+		
+				$result = $this->book_m->chapter_add3(
+					array(
+						'book_id' => $book_id
+					)
+				);
+		
+				if (!$result) {
+					alert("단원3 추가 실패했습니다.", site_url('/book/book_get/' . $book_id));
+				} else {
+					alert("단원3 추가 성공했습니다.", site_url('/book/book_get/' . $book_id));
+				}
+			}
+
 		// 단원 추가
 		function chapter_add6()
 		{

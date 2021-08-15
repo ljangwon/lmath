@@ -111,6 +111,21 @@ class Book_m extends CI_Model
 			return $chapter_id;
 		}
 
+		function chapter_add3($option=null)
+		{
+			if ($option['book_id']) {
+
+				for( $i=0 ; $i < 3 ; $i++ ) {
+					$this->db->set('book_id', $option['book_id']);
+					$this->db->set('num', $i+1 );
+					$this->db->insert('bk_chapter');
+				}
+			}
+
+			$chapter_id = $this->db->insert_id();
+			return $chapter_id;
+		}
+
 		function chapter_add6($option=null)
 		{
 			if ($option['book_id']) {
