@@ -3,7 +3,6 @@
             <head>
                 <meta charset="utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-								<title> 학생관리 </title>
 			    <!-- Bootstrap -->
 			    <link href="<?=$this->config->item('base_url')?>/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 			    <style>
@@ -14,7 +13,6 @@
 			    		padding-top:20px;
 			    	}
 			    </style>
-
 			    <link href="<?=$this->config->item('base_url')?>/static/lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">			    
             </head>
             <body>
@@ -39,10 +37,7 @@
 				      </a>
 				 
 				      <!-- Be sure to leave the brand out there if you want it shown -->
-				      <a class="brand" href="<?=site_url()?>/student/list_today">Today학생리스트</a>
-							<a class="brand" href="<?=site_url()?>/student/lists">전체학생리스트</a>
-							<a class="brand" href="<?=site_url()?>/student">전체현황</a>
-							<a class="brand" href="<?=site_url()?>/grid">임시화면</a>
+				      <a class="brand" href="#">JavaScript</a>
 				 
 				      <!-- Everything you want hidden at 940px or less, place within here -->
 				      <div class="nav-collapse collapse">
@@ -51,18 +46,19 @@
 				        	if($this->session->userdata('is_login')){
 				        	?>
 										<li> 환영합니다. <?=$this->session->userdata('name')?>님, 
-										현재 id =<?=$this->session->userdata('student_id')?></li>
-				        		<li><a href="<?=site_url()?>/auth/logout">로그아웃</a></li>
+										현재 id =<?=$this->session->userdata('cid')?></li>
+				        		<li><a href="<?=$this->config->item('base_url')?>/index.php/auth/logout">로그아웃</a></li>
 				        	<?php
 				        	} else {
 				        	?>
-				        		<li><a href="<?=site_url()?>/auth/login">로그인</a></li>
-				        		<li><a href="<?=site_url()?>/auth/register">회원가입</a></li>
+				        		<li><a href="<?=$this->config->item('base_url')?>/index.php/auth/login">로그인</a></li>
+				        		<li><a href="<?=$this->config->item('base_url')?>/index.php/auth/register">회원가입</a></li>
 				        	<?php
 				        	}
 				        	?>
 				        </ul>				        
 				      </div>
+
 				    </div>
 				  </div>
 				</div>
@@ -76,5 +72,5 @@
 				<?php
 				}
 				?>
-    <div class="container">
-  		<div class="row">
+            	<div class="container">
+  					<div class="row-fluid">

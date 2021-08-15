@@ -25,6 +25,20 @@
 
   <div class="navbar-brand col dropdown">
     <a href="#" class="link-light text-decoration-none dropdown-toggle" 
+    id="fi_menu" data-bs-toggle="dropdown" aria-expanded="false">
+      자산관리
+    </a>
+    <ul class="dropdown-menu text-small shadow" aria-labelledby="fi_menu">
+    <li><a class="dropdown-item" href="<?= site_url('/fi') ?>"> finance 메뉴 </a></li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li><a class="dropdown-item" href="#">Menu1</a></li>
+    </ul>
+  </div>
+
+  <div class="navbar-brand col dropdown">
+    <a href="#" class="link-light text-decoration-none dropdown-toggle" 
     id="dropdown2-1" data-bs-toggle="dropdown" aria-expanded="false">
       환경설정
     </a>
@@ -34,6 +48,21 @@
         <hr class="dropdown-divider">
       </li>
       <li><a class="dropdown-item" href="#">코드설정</a></li>
+    </ul>
+  </div>
+
+  <div class="navbar-brand col dropdown">
+    <a href="#" class="link-light text-decoration-none dropdown-toggle" 
+    id="other_menu" data-bs-toggle="dropdown" aria-expanded="false">
+      다른 사이트
+    </a>
+    <ul class="dropdown-menu text-small shadow" aria-labelledby="other_menu">
+    <li><a class="dropdown-item" href="<?= site_url('/dashboard') ?>"> 학생관리 </a></li>
+    <li><a class="dropdown-item" href="<?= site_url('/book') ?>"> 교재관리 </a></li>
+    <li>
+        <hr class="dropdown-divider">
+    </li>
+    <li><a class="dropdown-item" href="<?= site_url('/fi') ?>"> 재무관리 </a></li>
     </ul>
   </div>
 

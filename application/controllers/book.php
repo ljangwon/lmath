@@ -70,7 +70,7 @@ class Book extends MY_Controller
 			);
 
 		// footer
-		$this->load->view('dashboard/footer_v');
+		$this->load->view('default/footer_v');
 
 	}
 
@@ -208,6 +208,8 @@ class Book extends MY_Controller
 				'name' => $this->input->post('name')
 			)
 		);
+
+		
 
 		if (!$result) {
 			alert("단원 업데이트가 실패했습니다.", site_url('/book/book_get/' . $this->input->post('book_id')));

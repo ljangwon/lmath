@@ -1,37 +1,22 @@
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
 
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">LeanMath</a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"> Home Finance </a> 
 
   <div class="navbar-brand col ml-5 dropdown">
     <a href="#" class="link-light text-decoration-none dropdown-toggle" 
     id="dropdown2-2" data-bs-toggle="dropdown" aria-expanded="false">
-      학생메뉴
+      Home
     </a>
     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown2-2">
-      <li><a class="dropdown-item" href="<?= site_url('/dashboard/st_add') ?>"> 학생 등록</a></li>
-      <li><a class="dropdown-item" href="<?= site_url('/dashboard/st_summary') ?>">학생 현황</a></li>
-
-      <li><a class="dropdown-item" href="<?= site_url('/dashboard') ?>"> Dashboard </a></li>
+      <li><a class="dropdown-item" href="<?= site_url('/fi/bank_add') ?>"> 은행 등록</a></li>
+      <li><a class="dropdown-item" href="<?= site_url('/fi/fi_summary') ?>"> 재무 현황</a></li>
+      <li><a class="dropdown-item" href="<?= site_url('/fi') ?>"> 재무 </a></li>
       <li>
         <hr class="dropdown-divider">
       </li>
-      <li><a class="dropdown-item" href="#">학생 삭제</a></li>
+      <li><a class="dropdown-item" href="#"> 보험등록 </a></li>
     </ul>
 
-  </div>
-
-  <div class="navbar-brand col dropdown">
-    <a href="#" class="link-light text-decoration-none dropdown-toggle" 
-    id="dropdown2-1" data-bs-toggle="dropdown" aria-expanded="false">
-      환경설정
-    </a>
-    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdown2-1">
-    <li><a class="dropdown-item" href="<?= site_url('/dashboard/setting_get') ?>"> 환경세팅 </a></li>
-      <li>
-        <hr class="dropdown-divider">
-      </li>
-      <li><a class="dropdown-item" href="#">코드설정</a></li>
-    </ul>
   </div>
 
   <div class="navbar-brand col dropdown">
