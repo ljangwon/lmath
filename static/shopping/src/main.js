@@ -5,6 +5,12 @@ function loadItems() {
 		.then((json) => json.items);
 }
 
+function loadBooks() {
+	return fetch('http://localhost/lmath/shopping/gets')
+		.then((response) => response.json())
+		.then((json) => json.items);
+}
+
 // Update the list with the given items
 function displayItems(items) {
 	const container = document.querySelector('.items');

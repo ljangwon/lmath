@@ -160,7 +160,7 @@
 			</div>
 			<div class="col-sm-12 text-center">
 				<label class="form-label">메모</label>
-				<textarea name="memo" placeholder="메모" class="form-control text-start" rows="5"><?= $student->memo ?> </textarea>
+				<textarea name="memo" placeholder="메모" class="form-control text-start" rows="15"><?= $student->memo ?> </textarea>
 			</div>
 		</div>
 	</form>

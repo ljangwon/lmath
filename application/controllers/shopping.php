@@ -8,6 +8,7 @@ class Shopping extends MY_Controller
 		parent::__construct();
 
 		$this->load->view('shopping/head_v');
+		$this->load->model('shopping_m');
 	}
 
 	// 기본 컨트롤
@@ -18,5 +19,13 @@ class Shopping extends MY_Controller
 			array(
 			)
 		);
+	}
+
+	public function gets()
+	{
+		$items = $this->shopping_m->shopping_gets();
+
+		return $items;
+
 	}
 }

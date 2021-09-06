@@ -1,5 +1,5 @@
 <?php
-class Fi_m extends CI_Model
+class Shopping_m extends CI_Model
 {
 
 	function __construct()
@@ -28,7 +28,7 @@ class Fi_m extends CI_Model
 		return $fi_id;
 	}
 
-	function fi_gets($option = null)
+	function shopping_gets($option = null)
 	{
 		$this->db->select('*');
 		$this->db->order_by('flag', 'ASC');
