@@ -88,3 +88,51 @@ integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhG
 
 <!-- shopping main.js -->
 <script src="<?= $this->config->item('base_url') ?>/static/shopping/src/main.js" defer></script>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+	//Json을 사용하지 않고 데이터를 가져와 보자.(첫번째 버튼)
+	$('#no1').click(function(){
+			
+		$.ajax({
+			url: "",
+			type: "post",
+			data: $("form").serialize(),
+		}).done(function(data){			
+			$("#input_data").html(data);		
+		});
+		
+	});
+
+	//Json을 이용해서 데이타를 가져와 보자. (두번째 버튼)
+	$('#no2').click(function(){
+		
+	    $.ajax({
+			url: "http://localhost/lmath/index.php/shopping/ajax_test",
+    	  	type: "post",		
+   			data: $("form").serialize(),
+   			dataType:"json",
+		}).done(function(data){
+			//json을 통해 가져온 데이타를 input_data tag에 넣어준다.
+			var html = "";
+			for(var i = 0; i<data.seq.length; i++){
+				html += "<tr>";
+				html += "<td>Json - "+data.seq[i]+"</td>";
+				html += "<td>"+data.name[i]+"</td>";
+				html += "<td>"+data.age[i]+"</td>";
+				html += "<td>"+data.email[i]+"</td>";
+				html += "</tr>";
+			}
+	
+			$("#input_data").html(html);
+ 		}); 
+          
+	});
+
+	//tbody 안에 있는 내용  지우기
+	$('#no3').click(function(){
+	    $("#input_data").empty();
+	});
+	
+});
+</script>

@@ -28,4 +28,23 @@ class Shopping extends MY_Controller
 		return $items;
 
 	}
+
+	public function test()
+	{
+	
+		$this->load->view(
+			'shopping/ajax_test_v',
+			array(
+			)
+		);
+		
+	}
+
+	public function ajax_test()
+{
+
+	$this->shopping_m->ajax_test_gets();
+	
 }
+}
+
