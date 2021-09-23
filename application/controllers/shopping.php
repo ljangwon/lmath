@@ -43,7 +43,7 @@ class Shopping extends MY_Controller
 	public function ajax_test()
 {
 
-	$this->shopping_m->ajax_test_gets();
+
 	
 }
 }

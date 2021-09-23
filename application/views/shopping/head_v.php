@@ -69,6 +69,8 @@
 	<!-- shopping style.css -->
 	<link href="<?= $this->config->item('base_url') ?>/static/shopping/style.css" rel="stylesheet" />
 
+  <!-- datatable CDD --->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.css">
 </head>
 <body>
 
@@ -88,6 +90,8 @@ integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhG
 
 <!-- shopping main.js -->
 <script src="<?= $this->config->item('base_url') ?>/static/shopping/src/main.js" defer></script>
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.js"></script>
 
 <script type="text/javascript">
 $( document ).ready(function() {
@@ -135,4 +139,11 @@ $( document ).ready(function() {
 	});
 	
 });
+
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
 </script>
+
+
+
