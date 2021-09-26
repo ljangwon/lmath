@@ -616,11 +616,11 @@ function test_get($st_id=null)
 			)
 		);
 
-		if (!$result) {
+/* 		if (!$result) {
 			alert("메모 업데이트가 실패했습니다.", site_url('/dashboard/dashboard_get/' . $st_id) );
 		} else {
 			alert("메모 업데이트가 성공했습니다.", site_url('/dashboard/dashboard_get/' . $this->input->post('st_id')));
-		}
+		} */
 	}
 
 	// 삭제 컨트롤러

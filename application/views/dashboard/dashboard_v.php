@@ -392,6 +392,9 @@
 				<button type="button" onclick="location.href='<?= site_url('/dashboard/memo_add3/checkm') ?>'" class="btn btn-sm btn-outline-secondary">
 					추가3
 				</button>
+				<button type="button" onclick="memo_modify()" class="btn btn-sm btn-outline-secondary">
+					전체수정
+				</button>
 			</div>
 		</div>
 	</div>
