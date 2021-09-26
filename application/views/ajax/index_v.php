@@ -92,3 +92,30 @@ using Json, name
     } );
   }
 </script>
+
+
+
+<p>Type 'correct' to validate.</p>
+<form id='form1' action="javascript:alert( 'success 1 !' );">
+  <div>
+    <input id='test' type="text">
+    <input type="submit">
+  </div>
+</form>
+
+<form id='form1' action="javascript:alert( 'success 2 !' );">
+  <div>
+    <input id='test' type="text">
+    <input type="submit">
+  </div>
+</form>
+<span id='sp'></span>
+
+<button onclick="test()"> test </button>
+ 
+<script>
+  function test() {
+    $( "form:has(div)" ).submit();
+  }
+  
+</script>
