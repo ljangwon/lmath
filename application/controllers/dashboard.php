@@ -122,6 +122,7 @@ class Dashboard extends MY_Controller
 			$this->load->view(
 					'dashboard/st_summary_v',
 					array(
+							'students' => $students,
 							'st_count_h1' => $st_count_h1,
 							'st_count_h2' => $st_count_h2,
 							'st_count_h3' => $st_count_h3,
