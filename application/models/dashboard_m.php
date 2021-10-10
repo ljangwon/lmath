@@ -71,11 +71,13 @@ class Dashboard_m extends CI_Model
 	function st_get_count($option)
 	{
 		$this->db->select('count(*) as cnt');
-		$result = $this->db->get_where('student', 
-						array(
-									'grade1' => $option,
-									'flag' => '1'
-									))->row();
+		$result = $this->db->get_where(
+			'student',
+			array(
+				'grade1' => $option,
+				'flag' => '1'
+			)
+		)->row();
 		return $result;
 	}
 
@@ -108,7 +110,7 @@ class Dashboard_m extends CI_Model
 	// 수정 
 	function st_modify($option)
 	{
-		$this->db->set('created', 'NOW()', false);
+		$this->db->set('created', 'NOW()', FALSE);
 		$this->db->set('name', $option['name']);
 		$this->db->set('s_phone', $option['s_phone']);
 		$this->db->set('house', $option['house']);
@@ -237,7 +239,7 @@ class Dashboard_m extends CI_Model
 		$this->db->order_by('seq', 'ASC');
 		$this->db->order_by('m_date', 'DESC');
 		if ($option) {
-			$this->db->where( $option );
+			$this->db->where($option);
 		}
 		$result = $this->db->get('st_memo')->result();
 		return $result;
@@ -278,8 +280,8 @@ class Dashboard_m extends CI_Model
 	}
 	// 메모 CRUD end
 
-
 	// 테스트 CRUD start
+
 	function test_add($option)
 	{
 		$this->db->set('created', 'NOW()', false);
@@ -301,8 +303,41 @@ class Dashboard_m extends CI_Model
 		$this->db->select('test.level');
 		$this->db->select('test.gubun1');
 		$this->db->select('test.gubun2');
-		$this->db->select('test.gubun3');		
-		$this->db->select('test.open');		
+		$this->db->select('test.gubun3');
+		$this->db->select('test.open');
+		$this->db->select('test.test_name');
+		$this->db->select('test.corrt_num');
+		$this->db->select('test.total_num');
+		$this->db->select('test.score');
+		$this->db->select('test.time');
+		$this->db->select('test.result');
+		$this->db->select('test.test_date');
+		$this->db->select('test.memo');
+		$this->db->from('st_test as test');
+		$this->db->join('student as st', 'test.st_id=st.id', 'left');
+		$this->db->order_by('test.grade', 'DESC');
+		$this->db->order_by('test.test_name', 'DESC');
+		$this->db->order_by('test.created', 'ASC');
+		if ($st_id) {
+			$this->db->where('test.st_id', $st_id);
+		}
+		$result = $this->db->get()->result();
+		//$result =  $this->db->query("SELECT * FROM test")->result();
+		return $result;
+	}
+
+	function test_list($st_id = null)
+	{
+		$this->db->select('test.id as id');
+		$this->db->select('test.st_id as st_id');
+		$this->db->select('st.name as name');
+		$this->db->select('test.type');
+		$this->db->select('test.grade');
+		$this->db->select('test.level');
+		$this->db->select('test.gubun1');
+		$this->db->select('test.gubun2');
+		$this->db->select('test.gubun3');
+		$this->db->select('test.open');
 		$this->db->select('test.test_name');
 		$this->db->select('test.corrt_num');
 		$this->db->select('test.total_num');
@@ -491,76 +526,76 @@ class Dashboard_m extends CI_Model
 
 
 	// 환경설정 CRUD start
-		function setting_add($option)
-		{
-			$this->db->set('type', $option['type']);
-	
-			$result = $this->db->insert('st_setting');
-			return $result;
-		}
-	
-		function setting_gets($option = null)
-		{
-			$this->db->select('*');
-			$this->db->order_by('type', 'ASC');
-			$this->db->order_by('gubun1', 'ASC');
-			$this->db->order_by('gubun2', 'ASC');
-			$this->db->order_by('key', 'ASC');
+	function setting_add($option)
+	{
+		$this->db->set('type', $option['type']);
 
-			if ($option) {
-				$this->db->where('st_id', $option);
-			}
-			$result = $this->db->get('st_setting')->result();
-			return $result;
-		}
-	
-		function setting_get_by_key($option)
-		{
-			$this->db->select('*');
-			$result = $this->db->get_where(
-				'st_setting',
-				array( 
-					'key' => $option['key'] 
-					)
-			)->row();
-			return $result['value'];
-		}
+		$result = $this->db->insert('st_setting');
+		return $result;
+	}
 
-		function setting_get($id)
-		{
-			$this->db->select('*');
+	function setting_gets($option = null)
+	{
+		$this->db->select('*');
+		$this->db->order_by('type', 'ASC');
+		$this->db->order_by('gubun1', 'ASC');
+		$this->db->order_by('gubun2', 'ASC');
+		$this->db->order_by('key', 'ASC');
 
-			$result = $this->db->get_where(
-				'st_setting',
-				array( 
-					'id' => $id 
-					)
-			)->row();
-			return $result;
+		if ($option) {
+			$this->db->where('st_id', $option);
 		}
-	
-		function setting_modify($option)
-		{
-			$this->db->set('type', $option['type']);
-			$this->db->set('key', $option['key']);
-			$this->db->set('gubun1', $option['gubun1']);
-			$this->db->set('gubun2', $option['gubun2']);
-			$this->db->set('value', $option['value']);
-			$this->db->set('description', $option['description']);
-			$this->db->where('id', $option['id']);
-	
-			$result = $this->db->update('st_setting');
-	
-			return $result;
-		}
-	
-		function setting_delete($id)
-		{
-			$result = $this->db->delete('st_setting', array(
+		$result = $this->db->get('st_setting')->result();
+		return $result;
+	}
+
+	function setting_get_by_key($option)
+	{
+		$this->db->select('*');
+		$result = $this->db->get_where(
+			'st_setting',
+			array(
+				'key' => $option['key']
+			)
+		)->row();
+		return $result['value'];
+	}
+
+	function setting_get($id)
+	{
+		$this->db->select('*');
+
+		$result = $this->db->get_where(
+			'st_setting',
+			array(
 				'id' => $id
-			));
-			return $result;
-		}
-		// 환경세팅 CRUD end
+			)
+		)->row();
+		return $result;
+	}
+
+	function setting_modify($option)
+	{
+		$this->db->set('type', $option['type']);
+		$this->db->set('key', $option['key']);
+		$this->db->set('gubun1', $option['gubun1']);
+		$this->db->set('gubun2', $option['gubun2']);
+		$this->db->set('value', $option['value']);
+		$this->db->set('description', $option['description']);
+		$this->db->where('id', $option['id']);
+
+		$result = $this->db->update('st_setting');
+
+		return $result;
+	}
+
+	function setting_delete($id)
+	{
+		$result = $this->db->delete('st_setting', array(
+			'id' => $id
+		));
+		return $result;
+	}
+	// 환경세팅 CRUD end
 
 }

@@ -712,62 +712,7 @@
 				</thead>
 
 				<tbody id='tbody_test'>
-					<?php
-					$seq = 1;
-					foreach ($tests as $entry) {
-						if (
-							true
-						) {
-					?>
-							<form id="test_<?= $seq ?>" action="<?= site_url('dashboard/test_modify') ?>" method="post">
-								<tr class="flex-nowrap">
-									<input type="hidden" name="id" value="<?= $entry->id ?>">
-									<input type="hidden" name="st_id" value="<?= $entry->st_id ?>">
 
-									<th class="text-nowrap text-center align-middle bg-secondary text-white"> <?= $seq++ ?> </th>
-									<td class="text-center align-middle">
-										<div class="d-flex"><input type="submit" class="text-center" value="수정">
-											/<input type="button" onclick="location.href='<?= site_url('/dashboard/test_delete/' . $entry->id) ?>'" class="text-center" value="삭제">
-										</div>
-									</td>
-									<td class="text-center align-middle"> <input type="text" name="type" size=6 class="text-start" value="<?= $entry->type ?>"></td>
-									<td class="text-center align-middle"> <input type="text" name="grade" size=6 class="text-center" value="<?= $entry->grade ?>"></td>
-									<td class="text-center align-middle"> <input type="text" name="level" size=5 class="text-center" value="<?= $entry->level ?>"></td>
-									<td class="text-center align-middle"> <input type="text" name="gubun1" size=3 class="text-start" value="<?= $entry->gubun1 ?>"></td>
-									<td class="text-center align-middle"> <input type="text" name="gubun2" size=3 class="text-start" value="<?= $entry->gubun2 ?>"></td>
-									<td class="text-center align-middle"> <input type="text" name="gubun3" size=3 class="text-start" value="<?= $entry->gubun3 ?>"></td>
-									<td class="text-center align-middle"> <input type="text" name="open" size=2 class="text-center" value="<?= $entry->open ?>"></td>
-									<td class="text-center align-middle"> <input type="text" name="test_name" size=20 class="text-start" value="<?= $entry->test_name ?>"></td>
-
-									<?php
-									if ($entry->total_num == 0) {
-										$score = 0;
-									} else {
-										$score = ($entry->corrt_num / $entry->total_num) * 100;
-									}
-									?>
-									<td class="text-center align-middle"> <input type="text" name="corrt_num" size=2 class="text-center" value="<?= $entry->corrt_num ?>"></td>
-									<td class="text-center align-middle"> <input type="text" name="total_num" size=2 class="text-center" value="<?= $entry->total_num ?>"></td>
-									<td class="text-center align-middle">
-										<div>
-											<div class="text-nowrap">
-												<?= $entry->corrt_num ?>/<?= $entry->total_num ?>
-											</div>
-											<div class="text-nowrap">
-												( <?= number_format($score, 2) ?>점 )
-											</div>
-										</div>
-									</td>
-									<td class="text-center align-middle"> <input type="text" name="time" size=6 class="text-center" value="<?= $entry->time ?>"></td>
-									<td class="text-center align-middle"> <input type="text" name="result" size=5 class="text-center" value="<?= $entry->result ?>"></td>
-									<td class="text-center align-middle"> <input type="text" name="test_date" size=10 class="text-center" value="<?= $entry->test_date ?>"></td>
-									<td class="text-center align-middle"> <textarea name="memo" cols=20 rows="2" class="text-start"><?= $entry->memo ?> </textarea></td>
-								</tr>
-							</form>
-					<?php
-						}
-					}
-					?>
 				</tbody>
 			</table>
 		</div>
@@ -776,3 +721,80 @@
 	<!-- section end -->
 
 </main>
+<script type="text/javascript" src="<?php echo base_url() . 'assets/js/datatables.js' ?>"></script>
+
+<script>
+	$(document).ready(function() {
+		show_test(); //call function show all test
+		let tbody_test = $('tbody_test');
+		let
+
+		//function show all product
+		function show_test() {
+			$.ajax({
+				type: 'ajax',
+				url: '<?php echo site_url('dashboard/test_data') ?>',
+				async: true,
+				data: {
+					st_id: <?= $this->session->userdata('st_id') ?>
+				},
+				dataType: 'json',
+				success: function(data) {
+					$('tbody_test').empty();
+					let html = '';
+					let i;
+					let score;
+					for (i = 0; i < data.length; i++) {
+						if (data[i].total_num == 0) {
+							score = 0;
+						} else {
+							score = (data[i].corrt_num / data[i].total_num) * 100;
+						};
+
+						html += `
+						<form id="test_${i}" action="http://localhost/lmath/dashboard/test_modify" method="post">
+								<tr class="flex-nowrap">
+									<input type="hidden" name="id" value="${data[i].id }">
+									<input type="hidden" name="st_id" value="${data[i].st_id }">
+
+									<th class="text-nowrap text-center align-middle bg-secondary text-white"> ${i} </th>
+									<td class="text-center align-middle">
+										<div class="d-flex"><input type="submit" class="text-center" value="수정">
+											/<input type="button" onclick="location.href='http://localhost/lmath/dashboard/test_delete/${data[i].id}'" class="text-center" value="삭제">
+										</div>
+									</td>
+									<td class="text-center align-middle"> <input type="text" name="type" size=6 class="text-start" value="${data[i].type }"></td>
+									<td class="text-center align-middle"> <input type="text" name="grade" size=6 class="text-center" value="${data[i].grade }"></td>
+									<td class="text-center align-middle"> <input type="text" name="level" size=5 class="text-center" value="${data[i].level }"></td>
+									<td class="text-center align-middle"> <input type="text" name="gubun1" size=3 class="text-start" value="${data[i].gubun1 }"></td>
+									<td class="text-center align-middle"> <input type="text" name="gubun2" size=3 class="text-start" value="${data[i].gubun2 }"></td>
+									<td class="text-center align-middle"> <input type="text" name="gubun3" size=3 class="text-start" value="${data[i].gubun3 }"></td>
+									<td class="text-center align-middle"> <input type="text" name="open" size=2 class="text-center" value="${data[i].open }"></td>
+									<td class="text-center align-middle"> <input type="text" name="test_name" size=20 class="text-start" value="${data[i].test_name }"></td>
+
+									<td class="text-center align-middle"> <input type="text" name="corrt_num" size=2 class="text-center" value="${data[i].corrt_num }"></td>
+									<td class="text-center align-middle"> <input type="text" name="total_num" size=2 class="text-center" value="${data[i].total_num }"></td>
+									<td class="text-center align-middle">
+										<div>
+											<div class="text-nowrap">
+												${data[i].corrt_num}/${data[i].total_num}
+											</div>
+											<div class="text-nowrap">
+												( ${score} 점 )
+											</div>
+										</div>
+									</td>
+									<td class="text-center align-middle"> <input type="text" name="time" size=6 class="text-center" value="${data[i].time }"></td>
+									<td class="text-center align-middle"> <input type="text" name="result" size=5 class="text-center" value="${data[i].result }"></td>
+									<td class="text-center align-middle"> <input type="text" name="test_date" size=10 class="text-center" value="${data[i].test_date }"></td>
+									<td class="text-center align-middle"> <textarea name="memo" cols=20 rows="2" class="text-start">${data[i].memo } </textarea></td>
+								</tr>
+							</form>`;
+					}
+					tbody_test.html(html);
+				}
+
+			});
+		}
+	});
+</script>

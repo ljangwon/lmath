@@ -9,7 +9,7 @@ class Book_m extends CI_Model
 
 	// 교재 마스터 CRUD start 
 	function book_add($option=null)
-	{
+	{	`
 		$this->db->set('created', 'NOW()', false);
 
 		if ($option['name']) {
