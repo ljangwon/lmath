@@ -165,7 +165,7 @@
 				</div>
 				<div class="col-sm-6 text-center">
 					<label class="form-label">학습기록</label>
-					<textarea name="study_history" placeholder="학습기록" class="form-control text-start" rows="15"><?= $student->memo ?> </textarea>
+					<textarea name="study_history" placeholder="학습기록" class="form-control text-start" rows="15"><?= $student->study_memo ?> </textarea>
 				</div>
 				</div>
 	</form>
