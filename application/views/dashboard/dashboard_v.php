@@ -159,13 +159,17 @@
 				</div>
 				<!-- --------------------------------------- -->
 
-				<div class="col-sm-6 text-center">
+				<div class="col-sm-4 text-center">
 					<label class="form-label">메모</label>
 					<textarea name="memo" placeholder="메모" class="form-control text-start" rows="15"><?= $student->memo ?> </textarea>
 				</div>
-				<div class="col-sm-6 text-center">
+				<div class="col-sm-4 text-center">
 					<label class="form-label">학습기록</label>
-					<textarea name="study_history" placeholder="학습기록" class="form-control text-start" rows="15"><?= $student->study_memo ?> </textarea>
+					<textarea name="study_memo" placeholder="학습기록" class="form-control text-start" rows="15"><?= $student->study_memo ?> </textarea>
+				</div>
+				<div class="col-sm-4 text-center">
+					<label class="form-label">내신기록</label>
+					<textarea name="test_memo" placeholder="내신기록" class="form-control text-start" rows="15"><?= $student->test_memo ?> </textarea>
 				</div>
 				</div>
 	</form>

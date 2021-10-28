@@ -134,6 +134,9 @@ class Dashboard_m extends CI_Model
 		$this->db->set('class_time3', $option['class_time3']);
 
 		$this->db->set('memo', ltrim($option['memo']));
+		$this->db->set('study_memo', ltrim($option['study_memo']));
+		$this->db->set('test_memo', ltrim($option['test_memo']));
+		
 		$this->db->set('fees', $option['fees']);
 		$this->db->set('flag', $option['flag']);
 		$this->db->set('start_date', $option['start_date']);

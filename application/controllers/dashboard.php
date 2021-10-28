@@ -361,7 +361,11 @@ class Dashboard extends MY_Controller
 				'class_time2' => $this->input->post('class_time2'),
 				'class_day3' => $this->input->post('class_day3'),
 				'class_time3' => $this->input->post('class_time3'),
+
 				'memo' => $this->input->post('memo'),
+				'study_memo' => $this->input->post('study_memo'),
+				'test_memo' => $this->input->post('test_memo'),
+
 				'fees' => $this->input->post('fees'),
 				'flag' => $this->input->post('flag'),
 				'start_date' => $this->input->post('start_date'),
