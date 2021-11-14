@@ -43,6 +43,7 @@
       </h2>
       <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
+          <!-- start -->
           <ul class="nav flex-column mb-2 list">
             월금 수업
             <?php
@@ -112,21 +113,102 @@
             }
             ?>
           </ul>
+          <!-- end -->
+
         </div>
       </div>
     </div>
-    
+
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingThree">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-          Accordion Item #3
+          요일 수업별 학생 수납현황
         </button>
       </h2>
       <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+        <div class="accordion-body">
+          <!-- start -->
+          <ul class="nav flex-column mb-2 list">
+            월금 수업
+            <?php
+            foreach ($payment_list as $entry) {
+              if (
+                $entry->flag == "1" &&
+                $entry->class_day1 ==  '1' &&
+                $entry->class_day2 ==  '5'
+              ) {
+            ?>
+                <li class="nav-item">
+                  <div>
+                    <span style="font-size:1.5rem">
+                      <a style="display:inline-block" class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
+                        <?= $entry->name ?> </a>
+                      - <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)
+                      -<?= $entry->class_name ?>
+                      -수강료:<?= $entry->fees ?>
+                      -수납상황: <?= $entry->pay_status ?>
+                      <button it="pay"> 수납버튼 </button>
+                    </span>
+                  </div>
+                </li>
+            <?php
+              }
+            }
+            ?>
+          </ul>
+          <!-- nav-item end  -->
+
+          <!-- nav item start -->
+          <ul class="nav flex-column mb-2 list">
+            화목 수업
+            <?php
+            foreach ($payment_list as $entry) {
+              if (
+                $entry->flag == "1" &&
+                $entry->class_day1 ==  '2' &&
+                $entry->class_day2 ==  '4'
+              ) {
+            ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
+                    <span style="font-size:1.5rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?>-수강료:<?= $entry->fees ?></a>
+                  </span>
+                  </a>
+                </li>
+            <?php
+              }
+            }
+            ?>
+          </ul>
+          <!-- nav-item end  -->
+
+          <!-- nav item start -->
+          <ul class="nav flex-column mb-2 list">
+            수토 수업
+            <?php
+            foreach ($payment_list as $entry) {
+              if (
+                $entry->flag == "1" &&
+                $entry->class_day1 ==  '3' &&
+                $entry->class_day2 ==  '6'
+              ) {
+            ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
+                    <span style="font-size:1.5rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?>-수강료:<?= $entry->fees ?></a>
+                  </span>
+                  </a>
+                </li>
+            <?php
+              }
+            }
+            ?>
+          </ul>
+          <!-- end -->
+
+        </div>
       </div>
     </div>
-  </div>
 
 </main>
 

@@ -5,6 +5,37 @@
 // 	});
 // });
 
+// Datatable customized library1
+function saveTdData(db_table, id, header, value) {
+	$.ajax({
+		url: `model/${db_table}/update.php`,
+		method: 'POST',
+		data: { id: id, header: header, value: value },
+		success: function (result) {
+			$(`#${db_table}_result`).html(` <br> ${db_table}_result success: <br> ${id} ${result} <br> `);
+		},
+	}).fail(function (result) {
+		$(`#${db_table}_result`).html(`<br> ${db_table}_result fail: <br> ${id} ${result} <br> `);
+	});
+}
+
+// Datatable customized library2
+function returnTdToOriginal(db_table, table, preClickedTD, rowIdx, colIdx) {
+	let cellInputId = 'td_' + rowIdx + '_' + colIdx;
+	let id = table.cell(rowIdx, 0).data();
+
+	let columnHeader = table.column(colIdx).header();
+	let columnHeaderText = $(columnHeader).html();
+
+	// originData가 바꼈을 때에만 서버업데이트...
+	if ($('#' + cellInputId).attr('originalData') != $('#' + cellInputId).val()) {
+		saveTdData(db_table, id, columnHeaderText, $('#' + cellInputId).val());
+	}
+
+	preClickedTD.data($('#' + preClickedTD.inputID).val());
+}
+
+// Tab related library
 $(document).ready(function () {
 	$('.nav-tabs a').click(function () {
 		$(this).tab('show');

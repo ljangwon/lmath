@@ -17,35 +17,21 @@ class Payment extends MY_Controller
 	// Default 컨트롤러
 	public function index()
 	{
-		/* 		$students = $this->dashboard_m->st_gets();
 
-		$this->load->view('dashboard/header_v');
-		$this->load->view(
-			'dashboard/sidebar_v',
-			array(
-				'students' => $students
-			)
-		);
- */
-		if (!$st_id = $this->session->userdata('st_id')) {
-			redirect(site_url('/dashboard/st_summary'));
-		} else {
-			redirect(site_url('/dashboard/dashboard_get/' . $st_id));
-		}
+		$this->load->view('payment/main_v');
 	}
 
 	// 추가 컨트롤러
-	function create_payments()
+	function add()
 	{
 		$year = "2021";
 		$month = "11";
-
 
 		$students = $this->student_m->gets();
 
 		foreach ($students as $entry) {
 
-			$this->payment_m->add(
+			$this->payment_m->insert(
 				array(
 					'st_id' => $entry->id,
 					'year'  => $year,
@@ -54,6 +40,43 @@ class Payment extends MY_Controller
 				)
 			);
 		}
-		redirect(site_url('/dashboard/st_summary'));
+		redirect(site_url('/payment/summary'));
+	}
+
+	// Read 컨트롤러
+	function read_by_month()
+	{
+		$data =	$this->payment_m->select_by_month(
+			array(
+				'month' => "11"
+			)
+		);
+
+		foreach ($data as $result) {
+			$value[] = (float) $result->product_id;
+		}
+		echo json_encode($value);
+
+		return $result;
+	}
+
+	// Update 컨트롤러
+	function modify()
+	{
+		$result =	$this->payment_m->update(
+			array()
+		);
+
+		return $result;
+	}
+
+	// Delete 컨트롤러
+	function remove()
+	{
+		$result =	$this->payment_m->delete(
+			array()
+		);
+
+		return $result;
 	}
 }

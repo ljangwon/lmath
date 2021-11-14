@@ -13,6 +13,7 @@ class Dashboard extends MY_Controller
 		$this->load->model('student_m');
 		$this->load->model('test_history_m');
 		$this->load->model('dashboard_m');
+		$this->load->model('payment_m');
 	}
 
 	// Default 컨트롤러
@@ -116,6 +117,13 @@ class Dashboard extends MY_Controller
 		$st_fees_sum_m = $this->dashboard_m->st_get_fees_sum('중등');
 		$st_fees_sum_e = $this->dashboard_m->st_get_fees_sum('초등');
 
+		// payment load 
+		$payment_list = $this->payment_m->select_st_payment_by_option(
+			array(
+				'month' => '11'
+			)
+		);
+
 		$this->load->view(
 			'dashboard/st_summary_v',
 			array(
@@ -135,7 +143,8 @@ class Dashboard extends MY_Controller
 				'st_count_e' => $st_count_e,
 				'st_fees_sum_h' => $st_fees_sum_h,
 				'st_fees_sum_m' => $st_fees_sum_m,
-				'st_fees_sum_e' => $st_fees_sum_e
+				'st_fees_sum_e' => $st_fees_sum_e,
+				'payment_list' => $payment_list
 			)
 		);
 		// footer
