@@ -147,7 +147,7 @@
                       -<?= $entry->class_name ?>
                       -수강료:<?= $entry->fees ?>
                       -수납상황: <?= $entry->pay_status ?>
-                      <button it="pay"> 수납버튼 </button>
+                      <button it="pay" > 수납버튼 </button>
                     </span>
                   </div>
                 </li>
