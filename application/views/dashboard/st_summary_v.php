@@ -127,6 +127,7 @@
       </h2>
       <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
+          <?php echo $this->session->flashdata('msg'); ?>
           <!-- start -->
           <ul class="nav flex-column mb-2 list">
             월금 수업
@@ -147,7 +148,7 @@
                       -<?= $entry->class_name ?>
                       -수강료:<?= $entry->fees ?>
                       -수납상황: <?= $entry->pay_status ?>
-                      <button it="pay" > 수납버튼 </button>
+                      <button it="pay"> 수납버튼 </button>
                     </span>
                   </div>
                 </li>
