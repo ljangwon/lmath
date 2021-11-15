@@ -17,10 +17,8 @@
         <div class="col-md-12">
           <h1>Payment
             <small>List</small>
-            <?php echo $this->session->flashdata('msg'); ?>
             <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a></div>
           </h1>
-        </div>
 
         <table class="table table-striped" id="mydata">
           <thead>
@@ -282,6 +280,7 @@
             pay_status: '수납',
           },
           success: function(data) {
+            alert('payment status updated');
             show_payment();
           }
         });

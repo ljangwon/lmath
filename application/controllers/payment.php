@@ -33,6 +33,7 @@ class Payment extends CI_Controller
     function update()
     {
         $data = $this->payment_m->update_payment();
+        
         echo json_encode($data);
     }
 
