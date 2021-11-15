@@ -5,6 +5,7 @@ class Payment extends CI_Controller
     {
         parent::__construct();
         $this->load->model('payment_m');
+        $this->load->model('student_m');
     }
     function index()
     {
@@ -21,6 +22,12 @@ class Payment extends CI_Controller
     {
         $data = $this->payment_m->save_payment();
         echo json_encode($data);
+    }
+
+    function save_month()
+    {
+        $this->payment_m->save_month();
+        redirect('payment');
     }
 
     function update()

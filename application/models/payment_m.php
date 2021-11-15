@@ -18,7 +18,7 @@ class Payment_m extends CI_Model
         return $result;
     }
 
-    function save_product()
+    function save_payment()
     {
         $data = array(
             'year'  => "2021",
@@ -31,9 +31,34 @@ class Payment_m extends CI_Model
         return $result;
     }
 
+    // temporally
+    function save_month()
+    {
+        $this->db->select('*');
+        $this->db->order_by('flag', 'ASC');
+        $this->db->order_by('class_name', 'ASC');
+        $this->db->order_by('grade1', 'DESC');
+        $this->db->order_by('grade2', 'ASC');
+        $this->db->where('flag', 1);
+
+        $result = $this->db->get('student')->result();
+
+        foreach ($result as $entry) {
+            $data = array(
+                'year'  => "2021",
+                'month' => "11",
+                'st_id' => $entry->id,
+                'name' =>  $entry->name,
+                'pay_status'  => "미납"
+            );
+            $result = $this->db->insert('st_payment', $data);
+        }
+        return $result;
+    }
+
     function update_payment()
     {
-        $payment_id = $this->input->post('id');
+        $payment_id = $this->input->post('payment_id');
         $pay_status = $this->input->post('pay_status');
 
         $this->db->set('pay_status', $pay_status);

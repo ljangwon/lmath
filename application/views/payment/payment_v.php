@@ -17,6 +17,7 @@
         <div class="col-md-12">
           <h1>Payment
             <small>List</small>
+            <?php echo $this->session->flashdata('msg'); ?>
             <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a></div>
           </h1>
         </div>
@@ -99,6 +100,13 @@
             </button>
           </div>
           <div class="modal-body">
+
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label">Pay ID</label>
+              <div class="col-md-10">
+                <input type="text" name="payment_id_edit" id="payment_id_edit" class="form-control" placeholder="Pay ID" readonly>
+              </div>
+            </div>
 
             <div class="form-group row">
               <label class="col-md-2 col-form-label">Month</label>
@@ -200,7 +208,7 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-      show_payment(); //call function show all product
+      show_payment(); //call function show all payment
 
       $('#mydata').dataTable();
 
@@ -224,6 +232,7 @@
                 '<td>' + data[i].class_name + '</td>' +
                 '<td>' + data[i].pay_status + '</td>' +
                 '<td style="text-align:right;">' +
+                '<a href="javascript:void(0);" class="btn btn-info btn-sm pay_edit" data-payment_id="' + data[i].id + '">수납</a>' + ' ' +
                 '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-payment_id="' + data[i].id + '" data-month="' + data[i].month + '" data-st_id="' + data[i].st_id + '" data-st_name="' + data[i].name + '" data-class_name="' + data[i].class_name + '"data-pay_status="' + data[i].pay_status + '">Edit</a>' + ' ' +
                 '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-payment_id="' + data[i].id + '" data-month="' + data[i].month + '" data-st_name="' + data[i].name + '">Delete</a>' +
                 '</td>' +
@@ -254,6 +263,25 @@
             $('[name="st_id"]').val("");
             $('[name="st_name"]').val("");
             $('#Modal_Add').modal('hide');
+            show_payment();
+          }
+        });
+        return false;
+      });
+
+      //get data for pay record
+      $('#show_data').on('click', '.pay_edit', function() {
+        var payment_id = $(this).data('payment_id');
+
+        $.ajax({
+          type: "POST",
+          url: "<?php echo site_url('payment/update') ?>",
+          dataType: "JSON",
+          data: {
+            payment_id: payment_id,
+            pay_status: '수납',
+          },
+          success: function(data) {
             show_payment();
           }
         });

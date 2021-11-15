@@ -1,78 +1,86 @@
 <?php
-class Student_m extends CI_Model {
+class Student_m extends CI_Model
+{
 
     function __construct()
-    {    	
+    {
         parent::__construct();
     }
 
-    function gets($option=null) {
+    function gets($option = null)
+    {
         $this->db->select('*');
         $this->db->order_by('flag', 'ASC');
         $this->db->order_by('class_name', 'ASC');
         $this->db->order_by('grade1', 'DESC');
         $this->db->order_by('grade2', 'ASC');
-            if( $option) {
-                $this->db->where('grade1', $option);
-                $this->db->where('flag', 1);       
-            }        
-        $result = $this->db->get('student')->result();;
+        if ($option) {
+            $this->db->where('grade1', $option);
+            $this->db->where('flag', 1);
+        }
+        $result = $this->db->get('student')->result();
         //$result =  $this->db->query("SELECT * FROM student")->result();
-     	return $result;
+        return $result;
     }
 
-    function gets_today($option=null) {
+    function gets_today($option = null)
+    {
         $this->db->select('*');
         $this->db->order_by('flag', 'ASC');
         $this->db->order_by('class_name', 'ASC');
         $this->db->order_by('grade1', 'DESC');
         $this->db->order_by('grade2', 'ASC');
-            if( $option) {
-                $this->db->where('class_day1', $option);
-                $this->db->or_where('class_day2', $option);
-                $this->db->or_where('class_day3', $option);
-                $this->db->where('flag', 1);       
-            }        
+        if ($option) {
+            $this->db->where('class_day1', $option);
+            $this->db->or_where('class_day2', $option);
+            $this->db->or_where('class_day3', $option);
+            $this->db->where('flag', 1);
+        }
         $result = $this->db->get('student')->result();;
         //$result =  $this->db->query("SELECT * FROM student")->result();
-     	return $result;
+        return $result;
     }
 
 
-    function get($student_id){
+    function get($student_id)
+    {
         $this->db->select('*');
 
         $this->db->select('UNIX_TIMESTAMP(created) AS created');
         $result = $this->db->get_where('student', array(
-                                                        'id'=>$student_id
-                                                        ))->row();
-    	return $result;
-    }
-
-    function get_count($option) {
-        $this->db->select('count(*) as cnt');
-        $result = $this->db->get_where('student', array('grade1'=>$option))->row();
+            'id' => $student_id
+        ))->row();
         return $result;
     }
 
-    function get_count_option($option) {
+    function get_count($option)
+    {
         $this->db->select('count(*) as cnt');
-        $result = $this->db->get_where('student', 
+        $result = $this->db->get_where('student', array('grade1' => $option))->row();
+        return $result;
+    }
+
+    function get_count_option($option)
+    {
+        $this->db->select('count(*) as cnt');
+        $result = $this->db->get_where(
+            'student',
             array(
-                'grade1'=>$option['grade1'],
-                'grade2'=>$option['grade2'],
-                'flag'=>'1'            
-                )
-            )->row();
+                'grade1' => $option['grade1'],
+                'grade2' => $option['grade2'],
+                'flag' => '1'
+            )
+        )->row();
         return $result;
     }
 
-    function get_fees_sum($option) {
+    function get_fees_sum($option)
+    {
         $this->db->select_sum('fees');
-        $this->db->where( array(
-                            'grade1'=>$option,
-                            'flag'=>'1'
-                            ));
+        $this->db->where(array(
+            'grade1' => $option,
+            'flag' => '1'
+        ));
         //$result = $this->db->get_where('student', array('grade1'=>$option))->row();
         $result = $this->db->get('student')->row();
         return $result;
@@ -103,7 +111,7 @@ class Student_m extends CI_Model {
     function delete($student_id)
     {
         $result = $this->db->delete('student', array(
-            'id'=>$student_id
+            'id' => $student_id
         ));
         return $result;
     }
@@ -123,7 +131,7 @@ class Student_m extends CI_Model {
         $this->db->set('class_day3', $option['class_day3']);
         $this->db->set('class_time3', $option['class_time3']);
 
-        $this->db->set('memo', ltrim( $option['memo'] ));
+        $this->db->set('memo', ltrim($option['memo']));
         $this->db->set('fees', $option['fees']);
         $this->db->set('flag', $option['flag']);
 
@@ -131,17 +139,18 @@ class Student_m extends CI_Model {
 
         $result = $this->db->update('student');
 
-        if( true) {
+        if (true) {
             $this->load->view('error/main_error_v', array(
-                'error'=>'update error '. 'result: ' . $result
+                'error' => 'update error ' . 'result: ' . $result
             ));
         }
 
         return $result;
     }
 
-    function backup($student_id){
-        return $student_id.'백업 되었습니다.';
+    function backup($student_id)
+    {
+        return $student_id . '백업 되었습니다.';
         //return $this->db->update('student', )
     }
 }
