@@ -41,6 +41,16 @@ class Student_m extends CI_Model
         return $result;
     }
 
+    function get_by_option($option)
+    {
+        $this->db->select('*');
+        $this->db->order_by('name ASC');
+        $this->db->where($option);
+
+        $result = $this->db->get('student')->result();;
+
+        return $result;
+    }
 
     function get($student_id)
     {

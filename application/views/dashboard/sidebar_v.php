@@ -3,10 +3,10 @@
     <?php
     $weekString = array("일", "월", "화", "수", "목", "금", "토");
     ?>
-    <div class="fw-bold text-center"> ( Today: <?= date("Y-m-d", time() ) ?> <?= $weekString[date('w')] ?> )</div>
+    <div class="fw-bold text-center"> ( Today: <?= date("Y-m-d", time()) ?> <?= $weekString[date('w')] ?> )</div>
 
-    <div class="fs-5 fw-bolder text-decoration-underline text-center mt-2"> 
-    학생명단 </div>
+    <div class="fs-5 fw-bolder text-decoration-underline text-center mt-2">
+      학생명단 </div>
 
     <!-- Sidebar List 1 start  -->
     <!-- list Title -->
@@ -35,10 +35,10 @@
 
             <li class="nav-item">
 
-            <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
-              <span style="font-size:0.7rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?></a>
+              <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
+                <span style="font-size:0.7rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?></a>
               </span>
-            </a>
+              </a>
 
             </li>
 
@@ -66,17 +66,17 @@
     <div id="nav2-collapse" class="table-responsive collapse">
 
       <!-- nav item start -->
-      <ul class="nav flex-column mb-2" >
+      <ul class="nav flex-column mb-2">
 
         <?php
         foreach ($students as $entry) {
           if (
-              $entry->flag == "1"
+            $entry->flag == "1"
           ) {
         ?>
 
             <li class="nav-item">
-            <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
+              <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
                 <span style="font-size:0.7rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?></a>
               </span>
               </a>
@@ -95,7 +95,7 @@
     <!-- nav list2 end  -->
 
 
-   <!-- Sidebar List 3 start  -->
+    <!-- Sidebar List 3 start  -->
     <!-- list Title -->
     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
       <a class="link-secondary" data-bs-toggle="collapse" data-bs-target="#standby-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,16 +113,16 @@
         <?php
         foreach ($students as $entry) {
           if (
-            $entry->flag== 0
+            $entry->flag == 0
           ) {
         ?>
 
             <li class="nav-item">
 
-            <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
-              <span style="font-size:0.7rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?></a>
+              <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
+                <span style="font-size:0.7rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?></a>
               </span>
-            </a>
+              </a>
 
             </li>
 
@@ -137,7 +137,7 @@
     <!-- collapse wrapping end -->
     <!-- nav list end  -->
 
-       <!-- Sidebar List 4 start  -->
+    <!-- Sidebar List 4 start  -->
     <!-- list Title -->
     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
       <a class="link-secondary" data-bs-toggle="collapse" data-bs-target="#outstudent-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -153,18 +153,23 @@
       <ul class="nav flex-column mb-2 overflow-auto">
 
         <?php
+        $students = $this->student_m->get_by_option(
+          array(
+            "flag" => "9",
+          )
+        );
         foreach ($students as $entry) {
           if (
-            $entry->flag== 9
+            $entry->flag == 9
           ) {
         ?>
 
             <li class="nav-item">
 
-            <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
-              <span style="font-size:0.7rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?></a>
+              <a class="nav-link" href="<?= site_url('/dashboard/dashboard_get/') ?>/<?= $entry->id ?>">
+                <span style="font-size:0.7rem"> <?= $entry->name ?>- <?= $entry->grade1 ?>(<?= $entry->grade2 ?>)-<?= $entry->class_name ?></a>
               </span>
-            </a>
+              </a>
 
             </li>
 

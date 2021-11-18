@@ -18,6 +18,13 @@ class Payment extends CI_Controller
         echo json_encode($data);
     }
 
+    function payment_data_ajax()
+    {
+        $data = $this->payment_m->payment_list();
+
+        echo json_encode($data);
+    }
+
     function save()
     {
         $data = $this->payment_m->save_payment();
@@ -33,7 +40,7 @@ class Payment extends CI_Controller
     function update()
     {
         $data = $this->payment_m->update_payment();
-        
+
         echo json_encode($data);
     }
 
