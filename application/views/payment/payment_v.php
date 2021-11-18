@@ -20,27 +20,28 @@
         <div class="col-md-12">
           <h1>Payment
             <small>List</small>
+            <div class="form-group float-right">
+              <label for="select_month">Month</label>
+              <select class="form-control" id="select_month">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option selected >11</option>
+                <option>12</option>
+              </select>
+            </div>
+
             <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a></div>
           </h1>
 
           <table class="table table-striped display compact" id="payment_data">
-            <!--
-          <thead>
-              <tr>
-                <th># </th>
-                <th>Pay ID </th>
-                <th>Month</th>
-                <th>St ID</th>
-                <th>St Name</th>
-                <th>Class</th>
-                <th>Pay Status</th>
-                <th style="text-align: right;">Actions</th>
-              </tr>
-            </thead>
-
-            <tbody id="show_data">
-            </tbody>
--->
           </table>
         </div>
       </div>
@@ -227,35 +228,37 @@
 
               let dataset = null;
 
-              if (table != undefined && table != null) {
-                table.destory();
-              }
+              if (table == undefined || table == null) {
 
-              table = $('#payment_data').DataTable({
-                data: dataset,
-                destory: true,
-                stateSave: false,
-                columns: [{
-                  title: '#'
-                }, {
-                  title: 'ID'
-                }, {
-                  title: 'Month'
-                }, {
-                  title: 'ST ID'
-                }, {
-                  title: 'Name'
-                }, {
-                  title: 'Class Name'
-                }, {
-                  title: 'Pay Status'
-                }, {
-                  title: 'Actions'
-                }]
+                table = $('#payment_data').DataTable({
+                  data: dataset,
+                  stateSave: false,
+                  columns: [{
+                    title: '#'
+                  }, {
+                    title: 'ID'
+                  }, {
+                    title: 'Month'
+                  }, {
+                    title: 'ST ID'
+                  }, {
+                    title: 'Name'
+                  }, {
+                    title: 'Class Name'
+                  }, {
+                    title: 'Pay Status'
+                  }, {
+                    title: 'Actions'
+                  }]
 
-              })
+                });
+
+            }
+             
               let rowData = ["#", "id", "st_id", "name", "class_name", "pay_status", "actions"];
               let action_link = null;
+
+              table.clear().draw();
 
               for (i = 0; i < data.length; i++) {
                 action_link =

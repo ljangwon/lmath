@@ -46,7 +46,7 @@ class Payment_m extends CI_Model
         foreach ($result as $entry) {
             $data = array(
                 'year'  => "2021",
-                'month' => "11",
+                'month' => "12",
                 'st_id' => $entry->id,
                 'name' =>  $entry->name,
                 'pay_status'  => "미납"
