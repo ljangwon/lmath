@@ -7,52 +7,64 @@ class Payment_m extends CI_Model
         parent::__construct();
     }
 
-
-    function payment_list()
+    function payment_list($option = null)
     {
-        $this->db->select('p.id, p.month, p.st_id, s.name, s.class_name, p.pay_status');
+        $this->db->select('p.id, p.month, p.st_id, p.name, s.class_name, p.pay_status');
         $this->db->from('st_payment as p');
-        $this->db->join('student as s', 's.id=p.st_id');
-        $this->db->where('year', "2021");
+        $this->db->join('student as s', 'p.st_id=s.id', 'left');
+        $this->db->where('year', "2021년");
+        if ($option) {
+            $this->db->where('month', $option);
+        }
+
         $result = $this->db->get()->result();
         return $result;
     }
 
-    function save_payment()
+    function save_payment($option)
     {
-        $data = array(
-            'year'  => "2021",
-            'month' => $this->input->post('month'),
-            'st_id' => $this->input->post('st_id'),
-            'name' =>  $this->input->post('name'),
-            'pay_status'  => "미납"
-        );
-        $result = $this->db->insert('st_payment', $data);
+
+        $result = $this->db->insert('st_payment', $option);
         return $result;
     }
 
     // temporally
-    function save_month()
+    function add_payment_by_month($option)
     {
         $this->db->select('*');
+        $this->db->where('flag', 1);
         $this->db->order_by('flag', 'ASC');
         $this->db->order_by('class_name', 'ASC');
+        $this->db->order_by('name', 'ASC');
         $this->db->order_by('grade1', 'DESC');
         $this->db->order_by('grade2', 'ASC');
-        $this->db->where('flag', 1);
 
         $result = $this->db->get('student')->result();
 
+        $net_income = 0;
+
         foreach ($result as $entry) {
+            $net_income += $entry->fees;
+            $net_income -= $entry->discount;
             $data = array(
-                'year'  => "2021",
-                'month' => "12",
+                'year'  => $option['year'],
+                'month' => $option['month'],
                 'st_id' => $entry->id,
                 'name' =>  $entry->name,
+                'regular_price' => $entry->fees,
+                'discount' => $entry->discount,
+                'discount_memo' => $entry->discount_memo,
                 'pay_status'  => "미납"
             );
             $result = $this->db->insert('st_payment', $data);
         }
+        return $result;
+    }
+
+    function month_delete($option)
+    {
+        $this->db->where($option);
+        $result = $this->db->delete('st_payment');
         return $result;
     }
 

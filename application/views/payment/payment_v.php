@@ -12,7 +12,6 @@
 <body>
   <table id="report-table">
   </table>
-
   <div class="container">
     <!-- Page Heading -->
     <div class="row">
@@ -20,24 +19,26 @@
         <div class="col-md-12">
           <h1>Payment
             <small>List</small>
+            <?php echo $this->session->flashdata('msg'); ?>
             <div class="form-group float-right">
               <label for="select_month">Month</label>
               <select class="form-control" id="select_month">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option selected >11</option>
-                <option>12</option>
+                <option>1월</option>
+                <option>2월</option>
+                <option>3월</option>
+                <option>4월</option>
+                <option>5월</option>
+                <option>6월</option>
+                <option>7월</option>
+                <option>8월</option>
+                <option>9월</option>
+                <option>10월</option>
+                <option selected>11월</option>
+                <option>12월</option>
               </select>
             </div>
-
+            <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add_Month"><span class="fa fa-plus"></span> Add Month</a></div>
+            <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Delete_Month"><span class="fa fa-plus"></span> Delete Month</a></div>
             <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a></div>
           </h1>
 
@@ -47,8 +48,45 @@
       </div>
 
     </div>
+    <!-- MODAL ADD Month -->
+    <form>
+      <div class="modal fade" id="Modal_Add_Month" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="title_add_month">Add New Month</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 
-    <!-- MODAL ADD -->
+            <div class="modal-body">
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Year</label>
+                <div class="col-md-10">
+                  <input type="text" name="add_year" id="add_year" class="form-control" placeholder="Year">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Month</label>
+                <div class="col-md-10">
+                  <input type="text" name="add_month" id="add_month" class="form-control" placeholder="Month">
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" type="submit" id="btn_add_month" class="btn btn-primary">Add Month</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!--END MODAL ADD Month-->
+
+    <!-- MODAL ADD New-->
     <form>
       <div class="modal fade" id="Modal_Add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -60,6 +98,13 @@
               </button>
             </div>
             <div class="modal-body">
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Year</label>
+                <div class="col-md-10">
+                  <input type="text" name="year" id="year" class="form-control" placeholder="Year">
+                </div>
+              </div>
+
               <div class="form-group row">
                 <label class="col-md-2 col-form-label">Month</label>
                 <div class="col-md-10">
@@ -77,7 +122,7 @@
               <div class="form-group row">
                 <label class="col-md-2 col-form-label">St Name</label>
                 <div class="col-md-10">
-                  <input type="text" name="name" id="name" class="form-control" placeholder="Student Name">
+                  <input type="text" name="st_name" id="st_name" class="form-control" placeholder="Student Name">
                 </div>
               </div>
 
@@ -90,7 +135,7 @@
         </div>
       </div>
     </form>
-    <!--END MODAL ADD-->
+    <!--END MODAL ADD New-->
 
     <!-- MODAL EDIT -->
     <form>
@@ -206,6 +251,44 @@
     </form>
     <!--END MODAL DELETE-->
 
+    <!--MODAL DELETE MONTH-->
+    <form>
+      <div class="modal fade" id="Modal_Delete_Month" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Delete Payment Month</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Year</label>
+                <div class="col-md-10">
+                  <input diplay="inline-block" type="text" name="m_d_m_year" id="m_d_m_year" class="form-control" placeholder="Year">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Month</label>
+                <div class="col-md-10">
+                  <input diplay="inline-block" type="text" name="m_d_m_month" id="m_d_m_month" class="form-control" placeholder="Month">
+                </div>
+              </div>
+
+              <strong>Are you sure to delete this month record?</strong>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              <button type="button" type="submit" id="btn_month_delete" class="btn btn-primary">Yes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!-- END MODAL DELETE MONTH -->
 
     <script type="text/javascript" src="<?php echo base_url() . 'assets/js/jquery-3.3.1.js' ?>"></script>
     <script type="text/javascript" src="<?php echo base_url() . 'assets/js/bootstrap.js' ?>"></script>
@@ -214,15 +297,19 @@
     <script type="text/javascript">
       $(document).ready(function() {
         let table = null;
-        show_payment(); //call function show all payment
+        alert($('#select_month').val());
+        show_payment($('#select_month').val()); //call function show all payment
 
         //function show all product
-        function show_payment() {
+        function show_payment(this_month) {
           $.ajax({
-            type: 'ajax',
             url: '<?php echo site_url('payment/payment_data') ?>',
+            type: "POST",
+            data: {
+              month: this_month
+            },
+            dataType: "JSON",
             async: true,
-            dataType: 'json',
             success: function(data) {
               var i;
 
@@ -253,8 +340,8 @@
 
                 });
 
-            }
-             
+              }
+
               let rowData = ["#", "id", "st_id", "name", "class_name", "pay_status", "actions"];
               let action_link = null;
 
@@ -265,7 +352,6 @@
                   '<a href="javascript:void(0);" class="btn btn-info btn-sm pay_edit" data-payment_id="' + data[i].id + '">수납</a>' + ' ' +
                   '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-payment_id="' + data[i].id + '" data-month="' + data[i].month + '" data-st_id="' + data[i].st_id + '" data-st_name="' + data[i].name + '" data-class_name="' + data[i].class_name + '"data-pay_status="' + data[i].pay_status + '">Edit</a>' + ' ' +
                   '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-payment_id="' + data[i].id + '" data-month="' + data[i].month + '" data-st_name="' + data[i].name + '">Delete</a>';
-                //action_link = "Edit";
                 rowData = [i + 1, data[i].id, data[i].month, data[i].st_id, data[i].name, data[i].class_name, data[i].pay_status, action_link];
                 table.row.add(rowData).draw(false);
               }
@@ -273,43 +359,34 @@
           });
         }
 
-        function show_payment1() {
+        //Add New Month
+        $('#btn_add_month').on('click', function() {
+          let year = $('#add_year').val();
+          let month = $('#add_month').val();
+
           $.ajax({
-            type: 'ajax',
-            url: '<?php echo site_url('payment/payment_data') ?>',
-            async: true,
-            dataType: 'json',
+            url: "<?php echo site_url('payment/add_payment_by_month') ?>",
+            type: "POST",
+            data: {
+              year: year,
+              month: month
+            },
+            dataType: "JSON",
             success: function(data) {
-              var html = '';
-              var i;
-              for (i = 0; i < data.length; i++) {
+              $('[name="add_year"]').val("");
+              $('[name="add_month"]').val("");
 
-                html += '<tr>' +
-                  '<td>' + (i + 1) + '</td>' +
-                  '<td>' + data[i].id + '</td>' +
-                  '<td>' + data[i].month + '</td>' +
-                  '<td>' + data[i].st_id + '</td>' +
-                  '<td>' + data[i].name + '</td>' +
-                  '<td>' + data[i].class_name + '</td>' +
-                  '<td>' + data[i].pay_status + '</td>' +
-
-                  '<td style="text-align:right;">' +
-                  '<a href="javascript:void(0);" class="btn btn-info btn-sm pay_edit" data-payment_id="' + data[i].id + '">수납</a>' + ' ' +
-                  '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-payment_id="' + data[i].id + '" data-month="' + data[i].month + '" data-st_id="' + data[i].st_id + '" data-st_name="' + data[i].name + '" data-class_name="' + data[i].class_name + '"data-pay_status="' + data[i].pay_status + '">Edit</a>' + ' ' +
-                  '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-payment_id="' + data[i].id + '" data-month="' + data[i].month + '" data-st_name="' + data[i].name + '">Delete</a>' +
-                  '</td>' +
-                  '</tr>';
-              }
-              $('#show_data').html(html);
+              alert('month added!!!')
+              $('#Modal_Add_Month').modal('hide');
+              show_payment($('#select_month').val());
             }
           });
-          $('#payment_data').DataTable({
-            stateSave: true
-          });
-        }
+          return false;
+        });
 
-        //Save product
+        //Save payment
         $('#btn_save').on('click', function() {
+          var year = $('#year').val();
           var month = $('#month').val();
           var st_id = $('#st_id').val();
           var st_name = $('#st_name').val();
@@ -318,16 +395,17 @@
             url: "<?php echo site_url('payment/save') ?>",
             dataType: "JSON",
             data: {
+              year: year,
               month: month,
               st_id: st_id,
               st_name: st_name
             },
             success: function(data) {
-              $('[name="month"]').val("");
               $('[name="st_id"]').val("");
               $('[name="st_name"]').val("");
+
               $('#Modal_Add').modal('hide');
-              show_payment();
+              show_payment($('#select_month').val());
             }
           });
           return false;
@@ -347,7 +425,7 @@
             },
             success: function(data) {
               alert('payment status updated');
-              show_payment();
+              show_payment($('#select_month').val());
             }
           });
           return false;
@@ -390,8 +468,9 @@
               $('[name="st_name_edit"]').val("");
               $('[name="class_name_edit"]').val("");
               $('[name="pay_status_edit"]').val("");
+
               $('#Modal_Edit').modal('hide');
-              show_payment();
+              show_payment($('#select_month').val());
             }
           });
           return false;
@@ -426,10 +505,40 @@
               $('[name="month_delete"]').val("");
 
               $('#Modal_Delete').modal('hide');
-              show_payment();
+              show_payment($('#select_month').val());
             }
           });
           return false;
+        });
+
+        //delete month record to database
+        $('#btn_month_delete').on('click', function() {
+          let year_del = $('#m_d_m_year').val();
+          let month_del = $('#m_d_m_month').val();
+
+          $.ajax({
+            type: "POST",
+            url: "<?php echo site_url('payment/month_delete') ?>",
+            dataType: "JSON",
+            data: {
+              year_del: year_del,
+              month_del: month_del
+            },
+            success: function(data) {
+              $('[name="m_d_m_month"]').val("");
+
+              alert('month deleted !!!');
+
+              $('#Modal_Delete_Month').modal('hide');
+              show_payment($('#select_month').val());
+            }
+          });
+          return false;
+        });
+
+        $('#select_month').change(function() {
+          let this_month = $(this).val();
+          show_payment(this_month);
         });
 
       });
