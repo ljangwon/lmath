@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -52,7 +52,7 @@ $db['default']['hostname'] = 'jakeleanco.ipdisk.co.kr';
 $db['default']['username'] = 'codei';
 $db['default']['password'] = '111111';
 $db['default']['database'] = 'leanmath';
-$db['default']['dbdriver'] = 'mysql';
+$db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;

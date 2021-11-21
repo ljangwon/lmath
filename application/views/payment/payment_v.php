@@ -297,7 +297,6 @@
     <script type="text/javascript">
       $(document).ready(function() {
         let table = null;
-        alert($('#select_month').val());
         show_payment($('#select_month').val()); //call function show all payment
 
         //function show all product
