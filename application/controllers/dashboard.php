@@ -374,6 +374,8 @@ class Dashboard extends MY_Controller
 				'memo' => $this->input->post('memo'),
 				'study_memo' => $this->input->post('study_memo'),
 				'test_memo' => $this->input->post('test_memo'),
+				'check_memo' => $this->input->post('check_memo'),
+				'off_memo' => $this->input->post('off_memo'),
 
 				'fees' => $this->input->post('fees'),
 				'flag' => $this->input->post('flag'),

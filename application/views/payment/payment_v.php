@@ -7,14 +7,15 @@
   <title>Payment List</title>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/bootstrap.css' ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/datatables.css' ?>">
-  <script>
-    $(function() {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-  </script>
+
+  <script type="text/javascript" src="<?php echo base_url() . 'assets/js/jquery-3.3.1.js' ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url() . 'assets/js/bootstrap.bundle.min.js' ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url() . 'assets/js/datatables.min.js' ?>"></script>
+
 </head>
 
 <body>
+
   <table id="report-table">
   </table>
   <div class="container">
@@ -48,7 +49,7 @@
             <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a></div>
           </h1>
 
-          <table class="table table-striped display compact" id="payment_data">
+          <table class="table table-striped display compact" id="payment_data" style="width:100%">
           </table>
         </div>
       </div>
@@ -296,10 +297,6 @@
     </form>
     <!-- END MODAL DELETE MONTH -->
 
-    <script type="text/javascript" src="<?php echo base_url() . 'assets/js/jquery-3.3.1.js' ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url() . 'assets/js/bootstrap.js' ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url() . 'assets/js/datatables.js' ?>"></script>
-
     <script type="text/javascript">
       $(document).ready(function() {
         let table = null;
@@ -326,6 +323,7 @@
                 table = $('#payment_data').DataTable({
                   data: dataset,
                   stateSave: false,
+                  paging: false,
                   columns: [{
                     title: '#'
                   }, {
@@ -347,14 +345,16 @@
               let rowData = ["#", "month", "class_name", "name", "pay_status", "actions"];
               let action_link = null;
               let name_tooltip = null;
+              let name_tooltip1 = null;
 
               table.clear().draw();
 
               for (i = 0; i < data.length; i++) {
                 name_tooltip =
-                  '<a href="javascript:void(0);" class="text" data-toggle="tooltip" data-placement="top" title="ID: ' + data[i].id + ' , ST_ID: ' +
+                  '<a href="javascript:void(0);" class="text" data-toggle="popover" data-placement="left" title="ID: ' + data[i].id + ' , ST_ID: ' +
                   data[i].st_id + ' "> ' + data[i].name + ' </a>';
 
+                name_tooltip1 = '<button type="button" class="btn btn-secondary" data-toggle = "tooltip" data-placement = "top" title = "Tooltip on top" > Tooltip on top </button>';
                 action_link =
                   '<a href="javascript:void(0);" class="btn btn-info btn-sm pay_edit" data-payment_id="' + data[i].id + '">수납</a>' + ' ' +
                   '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-payment_id="' + data[i].id + '" data-month="' + data[i].month + '" data-st_id="' + data[i].st_id + '" data-st_name="' + data[i].name + '" data-class_name="' + data[i].class_name + '"data-pay_status="' + data[i].pay_status + '">Edit</a>' + ' ' +
@@ -550,6 +550,17 @@
 
       });
     </script>
+
+    <script>
+      $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+      });
+
+      $(function() {
+        $('[data-toggle="popover"]').popover()
+      });
+    </script>
+
 </body>
 
 </html>

@@ -66,22 +66,22 @@
 					<input type="text" name="" class="form-control" value="">
 				</div>
 				<!-- --------------------------------------- -->
-				<div class="col-sm-4 text-center">
+				<div class="col-sm-3 text-center">
 					<label for="" class="form-label">학 교</label>
 					<input type="text" name="school_name" class="form-control" placeholder="" value="<?= $student->school_name ?>">
 				</div>
 
-				<div class="col-sm-4 text-center">
+				<div class="col-sm-3 text-center">
 					<label for="" class="form-label text-nowrap">구 분</label>
 					<input type="text" name="grade1" class="form-control" placeholder="" value="<?= $student->grade1 ?>">
 				</div>
 
-				<div class="col-sm-4 text-center text-nowrap">
+				<div class="col-sm-3 text-center text-nowrap">
 					<label for="" class="form-label">학 년</label>
 					<input type="text" name="grade2" class="form-control" placeholder="" value="<?= $student->grade2 ?>">
 				</div>
-				<!-- --------------------------------------- -->
-				<div class="col-sm-12 text-center">
+
+				<div class="col-sm-3 text-center">
 					<label for="" class="form-label">수업명</label>
 					<input type="text" name="class_name" class="form-control" placeholder="" value="<?= $student->class_name ?>">
 				</div>
@@ -153,9 +153,17 @@
 					<input type="text" name="level3" class="form-control" value="<?= $student->level3 ?>">
 				</div>
 				<!-- --------------------------------------- -->
-				<div class="col-sm-12 text-center">
+				<div class="col-sm-4 text-center">
 					<label for="" class="form-label text-nowrap">마지막상담일</label>
 					<input type="text" name="report_last_date" class="form-control" value="<?= $student->report_last_date ?>">
+				</div>
+				<div class="col-sm-4 text-center">
+					<label class="form-label">지적사항 메모</label>
+					<textarea name="check_memo" placeholder="지적사항 메모" class="form-control text-start" rows="5"><?= $student->check_memo ?> </textarea>
+				</div>
+				<div class="col-sm-4 text-center">
+					<label class="form-label">지각/결석 메모</label>
+					<textarea name="off_memo" placeholder="지각/결석 메모기" class="form-control text-start" rows="5"><?= $student->off_memo ?> </textarea>
 				</div>
 				<!-- --------------------------------------- -->
 

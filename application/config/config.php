@@ -14,7 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']  = 'http://leanmath.dothome.co.kr/lmath';
+$config['base_url']  = 'http://localhost/lmath';
+//$config['base_url']  = 'http://leanmath.dothome.co.kr/lmath';
 
 /*
 |--------------------------------------------------------------------------
