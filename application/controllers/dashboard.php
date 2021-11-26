@@ -353,7 +353,7 @@ class Dashboard extends MY_Controller
 				'name' => $this->input->post('name'),
 				's_phone' => $this->input->post('s_phone'),
 				'house' => $this->input->post('house'),
-				'sibling_memo' => $this->input->post('sibling_memo'),
+				'sibling_name' => $this->input->post('sibling_name'),
 
 				'grade1' => $this->input->post('grade1'),
 				'school_name' => $this->input->post('school_name'),
@@ -378,6 +378,12 @@ class Dashboard extends MY_Controller
 				'off_memo' => $this->input->post('off_memo'),
 
 				'fees' => $this->input->post('fees'),
+				'discount1' => $this->input->post('discount1'),
+				'discount2' => $this->input->post('discount2'),
+				'discount_memo' => $this->input->post('discount_memo'),
+				'receipt_phone' => $this->input->post('receipt_phone'),
+				'receipt_use' => $this->input->post('receipt_use'),
+
 				'flag' => $this->input->post('flag'),
 				'start_date' => $this->input->post('start_date'),
 				'end_date' => $this->input->post('end_date'),

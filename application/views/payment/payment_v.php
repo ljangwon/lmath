@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Payment List</title>
+  <title>Student Payment List</title>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/bootstrap.css' ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/datatables.css' ?>">
 
@@ -23,7 +23,7 @@
     <div class="row">
       <div class="col-12">
         <div class="col-md-12">
-          <h1>Payment
+          <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> Payment </a>
             <small>List</small>
             <?php echo $this->session->flashdata('msg'); ?>
             <div class="form-group float-right">
@@ -49,7 +49,7 @@
             <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a></div>
           </h1>
 
-          <table class="table table-striped display compact" id="payment_data" style="width:100%">
+          <table class="table table-striped display compact cell-border" id="payment_data" style="width:100%">
           </table>
         </div>
       </div>
@@ -165,6 +165,13 @@
               </div>
 
               <div class="form-group row">
+                <label class="col-md-2 col-form-label">Year</label>
+                <div class="col-md-10">
+                  <input type="text" name="year_edit" id="year_edit" class="form-control" placeholder="Year" readonly>
+                </div>
+              </div>
+
+              <div class="form-group row">
                 <label class="col-md-2 col-form-label">Month</label>
                 <div class="col-md-10">
                   <input type="text" name="month_edit" id="month_edit" class="form-control" placeholder="Month" readonly>
@@ -193,9 +200,74 @@
               </div>
 
               <div class="form-group row">
+                <label class="col-md-2 col-form-label">Regular Price</label>
+                <div class="col-md-10">
+                  <input type="text" name="regular_price_edit" id="regular_price_edit" class="form-control" placeholder="Regular Price">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Discount1</label>
+                <div class="col-md-10">
+                  <input type="text" name="discount1_edit" id="discount1_edit" class="form-control" placeholder="Discount1">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Discount2</label>
+                <div class="col-md-10">
+                  <input type="text" name="discount2_edit" id="discount2_edit" class="form-control" placeholder="Discount2">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Return Price</label>
+                <div class="col-md-10">
+                  <input type="text" name="return_price_edit" id="return_price_edit" class="form-control" placeholder="Return Price">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Discount Memo</label>
+                <div class="col-md-10">
+                  <input type="text" name="discount_memo_edit" id="discount_memo_edit" class="form-control" placeholder="">
+                </div>
+              </div>
+
+
+
+              <!--               <div class="form-group row">
+                <label class="col-md-2 col-form-label">Ratio Month</label>
+                <div class="col-md-10">
+                  <input type="text" name="ratio_month_edit" id="ratio_month_edit" class="form-control" placeholder="Ratio Month" readonly>
+                </div>
+              </div> -->
+
+              <div class="form-group row">
                 <label class="col-md-2 col-form-label">Pay Status</label>
                 <div class="col-md-10">
                   <input type="text" name="pay_status_edit" id="pay_status_edit" class="form-control" placeholder="Pay Status">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Receipt Use</label>
+                <div class="col-md-10">
+                  <input type="text" name="receipt_use_edit" id="receipt_use_edit" class="form-control" placeholder="Receipt Use">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Receipt Phone</label>
+                <div class="col-md-10">
+                  <input type="text" name="receipt_phone_edit" id="receipt_phone_edit" class="form-control" placeholder="Receipt Phone">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Receipt Status</label>
+                <div class="col-md-10">
+                  <input type="text" name="receipt_status_edit" id="receipt_status_edit" class="form-control" placeholder="" readonly>
                 </div>
               </div>
 
@@ -244,7 +316,6 @@
                   <input type="text" name="payment_id_delete" id="payment_id_delete" class="form-control" placeholder="Payment ID" readonly>
                 </div>
               </div>
-              <!-- <input type="hidden" name="payment_id_delete" id="payment_id_delete" class="form-control"> -->
 
               <strong>Are you sure to delete this record?</strong>
             </div>
@@ -306,7 +377,7 @@
         //function show all product
         function show_payment(this_month) {
           $.ajax({
-            url: '<?php echo site_url('payment/payment_data') ?>',
+            url: '<?php echo site_url('payment/payment_list') ?>',
             type: "POST",
             data: {
               month: this_month
@@ -324,8 +395,11 @@
                   data: dataset,
                   stateSave: false,
                   paging: false,
+                  autoWidth: false,
                   columns: [{
                     title: '#'
+                  }, {
+                    title: 'Year'
                   }, {
                     title: 'Month'
                   }, {
@@ -333,7 +407,17 @@
                   }, {
                     title: 'Name'
                   }, {
+                    title: 'Regular Price'
+                  }, {
+                    title: 'Net Income'
+                  }, {
                     title: 'Pay Status'
+                  }, {
+                    title: 'Pay action'
+                  }, {
+                    title: 'Receipt Status'
+                  }, {
+                    title: 'Receipt Action'
                   }, {
                     title: 'Actions'
                   }]
@@ -342,24 +426,82 @@
 
               }
 
-              let rowData = ["#", "month", "class_name", "name", "pay_status", "actions"];
+              let rowData = ["#", "Year", "month", "class_name", "name", "Regular Price", "Net Income", "pay_status ", "pay_action", "Receipt Status", "rectipt_action", "actions"];
               let action_link = null;
-              let name_tooltip = null;
-              let name_tooltip1 = null;
+              let name_link = null;
+              let pay_action_link = null;
+              let receipt_status_link = '';
+              let receipt_action_link = null;
 
               table.clear().draw();
 
               for (i = 0; i < data.length; i++) {
-                name_tooltip =
-                  '<a href="javascript:void(0);" class="text" data-toggle="popover" data-placement="left" title="ID: ' + data[i].id + ' , ST_ID: ' +
-                  data[i].st_id + ' "> ' + data[i].name + ' </a>';
+                name_link =
+                  '<a href="javascript:void(0);" class="text" data-toggle="tooltip" data-placement="top" title="ID: ' +
+                  data[i].id + ' , ST_ID: ' +
+                  data[i].st_id + ' "> ' +
+                  data[i].name + ' </a>';
 
-                name_tooltip1 = '<button type="button" class="btn btn-secondary" data-toggle = "tooltip" data-placement = "top" title = "Tooltip on top" > Tooltip on top </button>';
-                action_link =
-                  '<a href="javascript:void(0);" class="btn btn-info btn-sm pay_edit" data-payment_id="' + data[i].id + '">수납</a>' + ' ' +
-                  '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-payment_id="' + data[i].id + '" data-month="' + data[i].month + '" data-st_id="' + data[i].st_id + '" data-st_name="' + data[i].name + '" data-class_name="' + data[i].class_name + '"data-pay_status="' + data[i].pay_status + '">Edit</a>' + ' ' +
-                  '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-payment_id="' + data[i].id + '" data-month="' + data[i].month + '" data-st_name="' + data[i].name + '">Delete</a>';
-                rowData = [i + 1, data[i].month, data[i].class_name, name_tooltip, data[i].pay_status, action_link];
+                pay_action_link = '' +
+                  '<span display="flex"> <a href="javascript:void(0);" class="btn btn-info btn-sm pay_card_edit" ' +
+                  ' data-payment_id="' + data[i].id + '"> 카드 </a>' + ' ' +
+
+                  '<a display="float" href="javascript:void(0);" class="btn btn-info btn-sm pay_cash_edit" ' +
+                  ' data-payment_id="' + data[i].id + '"> 현금</a> </span>' + ' ';
+
+                if (data[i].receipt_status == '발행필요' && data[i].receipt_phone) {
+                  receipt_status_link = '' + '<span style="color:red" >' +
+                    data[i].receipt_status + '(' + data[i].receipt_phone + ')</span>';
+                } else if (data[i].receipt_status == '발행완료' && data[i].receipt_phone) {
+                  receipt_status_link = '' + '<span style="color:blue" >' +
+                    data[i].receipt_status + '(' + data[i].receipt_phone + ')</span>';
+                } else {
+                  receipt_status_link = '';
+                }
+
+                receipt_action_link = '' +
+                  '<a display="float" href="javascript:void(0);" class="btn btn-info btn-sm receipt_status_edit"' +
+                  ' data-payment_id = "' + data[i].id + '"> 발행 </a>' + ' ';
+
+                action_link = '' +
+                  '<a display="float" href="javascript:void(0);" class="btn btn-info btn-sm item_edit" ' +
+                  ' data-payment_id="' + data[i].id +
+                  '" data-year="' + data[i].year +
+                  '" data-month="' + data[i].month +
+                  '" data-st_id="' + data[i].st_id +
+                  '" data-st_name="' + data[i].name +
+                  '" data-class_name="' + data[i].class_name +
+
+                  '" data-regular_price="' + data[i].regular_price +
+                  '" data-discount1="' + data[i].discount1 +
+                  '" data-discount2="' + data[i].discount2 +
+                  '" data-return_price="' + data[i].return_price +
+                  '" data-discount_memo="' + data[i].discount_memo +
+                  '" data-pay_status="' + data[i].pay_status +
+                  '" data-receipt_use="' + data[i].receipt_use +
+                  '" data-receipt_phone="' + data[i].receipt_phone +
+                  '" data-receipt_status="' + data[i].receipt_status +
+                  '">Edit</a>' + ' ' +
+
+                  '<a display="float" href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" ' +
+                  ' data-payment_id = "' + data[i].id +
+                  '" data-month = "' + data[i].month +
+                  '" data-st_name = "' + data[i].name +
+                  '" > Delete </a>';
+
+                rowData = [i + 1,
+                  data[i].year,
+                  data[i].month,
+                  data[i].class_name,
+                  name_link,
+                  data[i].regular_price,
+                  data[i].net_income,
+                  data[i].pay_status,
+                  pay_action_link,
+                  receipt_status_link,
+                  receipt_action_link,
+                  action_link
+                ];
                 table.row.add(rowData).draw(false);
               }
             }
@@ -419,19 +561,53 @@
         });
 
         //get data for pay record
-        $('#payment_data').on('click', '.pay_edit', function() {
+        $('#payment_data').on('click', '.pay_card_edit', function() {
           var payment_id = $(this).data('payment_id');
 
           $.ajax({
             type: "POST",
-            url: "<?php echo site_url('payment/update') ?>",
+            url: "<?php echo site_url('payment/update_pay_status') ?>",
             dataType: "JSON",
             data: {
               payment_id: payment_id,
-              pay_status: '수납',
+              pay_status: '카드수납',
             },
             success: function(data) {
-              alert('payment status updated');
+              show_payment($('#select_month').val());
+            }
+          });
+          return false;
+        });
+
+        $('#payment_data').on('click', '.pay_cash_edit', function() {
+          var payment_id = $(this).data('payment_id');
+
+          $.ajax({
+            type: "POST",
+            url: "<?php echo site_url('payment/update_pay_status') ?>",
+            dataType: "JSON",
+            data: {
+              payment_id: payment_id,
+              pay_status: '현금수납',
+            },
+            success: function(data) {
+              show_payment($('#select_month').val());
+            }
+          });
+          return false;
+        });
+
+        $('#payment_data').on('click', '.receipt_status_edit', function() {
+          var payment_id = $(this).data('payment_id');
+
+          $.ajax({
+            type: "POST",
+            url: "<?php echo site_url('payment/update_receipt_status') ?>",
+            dataType: "JSON",
+            data: {
+              payment_id: payment_id
+            },
+            success: function(data) {
               show_payment($('#select_month').val());
             }
           });
@@ -440,43 +616,93 @@
 
         //get data for update record
         $('#payment_data').on('click', '.item_edit', function() {
-          var payment_id = $(this).data('payment_id');
-          var month = $(this).data('month');
-          var st_id = $(this).data('st_id');
-          var st_name = $(this).data('st_name');
-          var class_name = $(this).data('class_name');
-          var pay_status = $(this).data('pay_status');
+          let payment_id = $(this).data('payment_id');
+          let year = $(this).data('year');
+          let month = $(this).data('month');
+          let st_id = $(this).data('st_id');
+          let st_name = $(this).data('st_name');
+          let class_name = $(this).data('class_name');
+
+          let regular_price = $(this).data('regular_price');
+          let discount1 = $(this).data('discount1');
+          let discount2 = $(this).data('discount2');
+          let return_price = $(this).data('return_price');
+          let discount_memo = $(this).data('discount_memo');
+
+          let pay_status = $(this).data('pay_status');
+          let receipt_use = $(this).data('receipt_use');
+          let receipt_phone = $(this).data('receipt_phone');
+          let receipt_status = $(this).data('receipt_status');
 
           $('#Modal_Edit').modal('show');
+
           $('[name="payment_id_edit"]').val(payment_id);
+          $('[name="year_edit"]').val(year);
           $('[name="month_edit"]').val(month);
           $('[name="st_id_edit"]').val(st_id);
           $('[name="st_name_edit"]').val(st_name);
           $('[name="class_name_edit"]').val(class_name);
+
+          $('[name="regular_price_edit"]').val(regular_price);
+          $('[name="discount1_edit"]').val(discount1);
+          $('[name="discount2_edit"]').val(discount2);
+          $('[name="return_price_edit"]').val(return_price);
+          $('[name="discount_memo_edit"]').val(discount_memo);
+
           $('[name="pay_status_edit"]').val(pay_status);
+          $('[name="receipt_use_edit"]').val(receipt_use);
+          $('[name="receipt_phone_edit"]').val(receipt_phone);
+          $('[name="receipt_status_edit"]').val(receipt_status);
+
         });
 
         //update record to database
         $('#btn_update').on('click', function() {
-          var payment_id = $('#payment_id_edit').val();
-          var pay_status = $('#pay_status_edit').val();
+          let payment_id = $('#payment_id_edit').val();
+          let pay_status = $('#pay_status_edit').val();
+
+          let regular_price = $('#regular_price_edit').val();
+          let discount1 = $('#discount1_edit').val();
+          let discount2 = $('#discount2_edit').val();
+          let return_price = $('#return_price_edit').val();
+          let discount_memo = $('#discount_memo_edit').val();
+          let receipt_use = $('#receipt_use_edit').val();
+          let receipt_phone = $('#receipt_phone_edit').val();
+
           $.ajax({
             type: "POST",
-            url: "<?php echo site_url('payment/update') ?>",
+            url: "<?php echo site_url('payment/update_discount') ?>",
             dataType: "JSON",
             data: {
               payment_id: payment_id,
-              pay_status: pay_status,
+              regular_price: regular_price,
+              discount1: discount1,
+              discount2: discount2,
+              return_price: return_price,
+              discount_memo: discount_memo,
+              receipt_use: receipt_use,
+              receipt_phone: receipt_phone,
+              pay_status: pay_status
             },
             success: function(data) {
               $('[name="payment_id_edit"]').val("");
+
+              $('[name="year_edit"]').val("");
               $('[name="month_edit"]').val("");
               $('[name="st_id_edit"]').val("");
               $('[name="st_name_edit"]').val("");
               $('[name="class_name_edit"]').val("");
-              $('[name="pay_status_edit"]').val("");
+
+              $('[name="regular_price_edit"]').val("");
+              $('[name="discount1_edit"]').val("");
+              $('[name="discoutn2_edit"]').val("");
+              $('[name="return_price_edit"]').val("");
+              $('[name="discount_memo_edit"]').val("");
+              $('[name="receipt_use_edit"]').val("");
+              $('[name="receipt_phone_edit"]').val("");
 
               $('#Modal_Edit').modal('hide');
+
               show_payment($('#select_month').val());
             }
           });

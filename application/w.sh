@@ -1,1 +1,0 @@
-wput --basename=/Applications/XAMPP/htdocs/lmath/application/views -u /Applications/XAMPP/htdocs/lmath/application/views/* ftp://ljangwon:happysky7788@jakeleanco.ipdisk.co.kr:21/HDD1/HTDOCS/lmath/application/views/

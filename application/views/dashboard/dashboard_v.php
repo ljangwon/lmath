@@ -59,7 +59,7 @@
 
 				<div class="col-sm-2 text-center">
 					<label for="" class="form-label">형제</label>
-					<input type="text" name="sibling_memo" class="form-control" value="<?= $student->sibling_memo ?>">
+					<input type="text" name="sibling_name" class="form-control" value="<?= $student->sibling_name ?>">
 				</div>
 				<div class="col-sm-2 text-center">
 					<label for="" class="form-label">빈칸</label>
@@ -68,42 +68,42 @@
 				<!-- --------------------------------------- -->
 				<div class="col-sm-3 text-center">
 					<label for="" class="form-label">학 교</label>
-					<input type="text" name="school_name" class="form-control" placeholder="" value="<?= $student->school_name ?>">
+					<input type="text" name="school_name" class="form-control" placeholder="명일중" value="<?= $student->school_name ?>">
 				</div>
 
 				<div class="col-sm-3 text-center">
 					<label for="" class="form-label text-nowrap">구 분</label>
-					<input type="text" name="grade1" class="form-control" placeholder="" value="<?= $student->grade1 ?>">
+					<input type="text" name="grade1" class="form-control" placeholder="중등" value="<?= $student->grade1 ?>">
 				</div>
 
 				<div class="col-sm-3 text-center text-nowrap">
 					<label for="" class="form-label">학 년</label>
-					<input type="text" name="grade2" class="form-control" placeholder="" value="<?= $student->grade2 ?>">
+					<input type="text" name="grade2" class="form-control" placeholder="1" value="<?= $student->grade2 ?>">
 				</div>
 
 				<div class="col-sm-3 text-center">
 					<label for="" class="form-label">수업명</label>
-					<input type="text" name="class_name" class="form-control" placeholder="" value="<?= $student->class_name ?>">
+					<input type="text" name="class_name" class="form-control" placeholder="수6토14" value="<?= $student->class_name ?>">
 				</div>
 				<!-- --------------------------------------- -->
 				<div class="col-sm-2 text-center">
 					<label for="" class="form-label">요일1</label>
-					<input type="text" name="class_day1" class="form-control" placeholder="" value="<?= $student->class_day1 ?>">
+					<input type="text" name="class_day1" class="form-control" placeholder="3" value="<?= $student->class_day1 ?>">
 				</div>
 
 				<div class="col-sm-2 text-center">
 					<label for="" class="form-label">시간1</label>
-					<input type="text" name="class_time1" class="form-control" placeholder="" value="<?= $student->class_time1 ?>">
+					<input type="text" name="class_time1" class="form-control" placeholder="14" value="<?= $student->class_time1 ?>">
 				</div>
 
 				<div class="col-sm-2 text-center">
 					<label for="" class="form-label">요일2</label>
-					<input type="text" name="class_day2" class="form-control" placeholder="" value="<?= $student->class_day2 ?>">
+					<input type="text" name="class_day2" class="form-control" placeholder="6" value="<?= $student->class_day2 ?>">
 				</div>
 
 				<div class="col-sm-2 text-center">
 					<label for="" class="form-label">시간2</label>
-					<input type="text" name="class_time2" class="form-control" placeholder="" value="<?= $student->class_time2 ?>">
+					<input type="text" name="class_time2" class="form-control" placeholder="9" value="<?= $student->class_time2 ?>">
 				</div>
 
 				<div class="col-sm-2 text-center">
@@ -118,25 +118,53 @@
 
 				<!-- --------------------------------------- -->
 
-				<div class="col-sm-3 text-center">
+				<div class="col-sm-4 text-center">
 					<label for="" class="form-label">수업료</label>
-					<input type="text" name="fees" class="form-control" placeholder="" value="<?= $student->fees ?>">
+					<input type="text" name="fees" class="form-control" placeholder="수업료" value="<?= $student->fees ?>">
+				</div>
+				<div class="col-sm-4 text-center">
+					<label for="" class="form-label">할인금액1</label>
+					<input type="text" name="discount1" class="form-control" placeholder="할인금액" value="<?= $student->discount1 ?>">
+				</div>
+
+				<div class="col-sm-4 text-center">
+					<label for="" class="form-label">할인금액2</label>
+					<input type="text" name="discount2" class="form-control" placeholder="할인금액" value="<?= $student->discount2 ?>">
+				</div>
+
+				<!-- --------------------------------------- -->
+
+				<div class="col-sm-3 text-center">
+					<label for="" class="form-label">영수증 폰번호</label>
+					<input type="text" name="receipt_phone" class="form-control" placeholder="영수증 폰번호" value="<?= $student->receipt_phone ?>">
 				</div>
 
 				<div class="col-sm-3 text-center">
+					<label for="" class="form-label">영수증 사용</label>
+					<input type="text" name="receipt_use" class="form-control" placeholder="영수증 사용여부" value="<?= $student->receipt_use ?>">
+				</div>
+
+				<div class="col-sm-6 text-center">
+					<label for="" class="form-label">할인사유</label>
+					<input type="text" name="discount_memo" class="form-control" placeholder="할인 사유" value="<?= $student->discount_memo ?>">
+				</div>
+
+				<!-- --------------------------------------- -->
+				<div class="col-sm-4 text-center">
 					<label for="" class="form-label text-nowrap">수강여부</label>
-					<input type="text" name="flag" class="form-control" placeholder="" value="<?= $student->flag ?>">
+					<input type="text" name="flag" class="form-control" placeholder="수강여부" value="<?= $student->flag ?>">
 				</div>
 
-				<div class="col-sm-3 text-center">
+				<div class="col-sm-4 text-center">
 					<label for="" class="form-label text-nowrap">시작일</label>
-					<input type="text" name="start_date" class="form-control" placeholder="" value="<?= $student->start_date ?>">
+					<input type="text" name="start_date" class="form-control" placeholder="시작일" value="<?= $student->start_date ?>">
 				</div>
 
-				<div class="col-sm-3 text-center">
+				<div class="col-sm-4 text-center">
 					<label for="" class="form-label text-nowrap">종료일</label>
 					<input type="text" name="end_date" class="form-control" value="<?= $student->end_date ?>">
 				</div>
+
 				<!-- --------------------------------------- -->
 				<div class="col-sm-4 text-center">
 					<label class="form-label">연산선행수준</label>
@@ -155,7 +183,7 @@
 				<!-- --------------------------------------- -->
 				<div class="col-sm-4 text-center">
 					<label for="" class="form-label text-nowrap">마지막상담일</label>
-					<input type="text" name="report_last_date" class="form-control" value="<?= $student->report_last_date ?>">
+					<input type="text" name="report_last_date" class="form-control" placeholder="2021년11월25일" value="<?= $student->report_last_date ?>">
 				</div>
 				<div class="col-sm-4 text-center">
 					<label class="form-label">지적사항 메모</label>
@@ -167,15 +195,15 @@
 				</div>
 				<!-- --------------------------------------- -->
 
-				<div class="col-sm-4 text-center">
+				<div class="col-sm-3 text-center">
 					<label class="form-label">메모</label>
 					<textarea name="memo" placeholder="메모" class="form-control text-start" rows="15"><?= $student->memo ?> </textarea>
 				</div>
-				<div class="col-sm-4 text-center">
+				<div class="col-sm-6 text-center">
 					<label class="form-label">학습기록</label>
 					<textarea name="study_memo" placeholder="학습기록" class="form-control text-start" rows="15"><?= $student->study_memo ?> </textarea>
 				</div>
-				<div class="col-sm-4 text-center">
+				<div class="col-sm-3 text-center">
 					<label class="form-label">내신기록</label>
 					<textarea name="test_memo" placeholder="내신기록" class="form-control text-start" rows="15"><?= $student->test_memo ?> </textarea>
 				</div>

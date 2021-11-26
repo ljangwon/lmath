@@ -114,7 +114,7 @@ class Dashboard_m extends CI_Model
 		$this->db->set('name', $option['name']);
 		$this->db->set('s_phone', $option['s_phone']);
 		$this->db->set('house', $option['house']);
-		$this->db->set('sibling_memo', $option['sibling_memo']);
+		$this->db->set('sibling_name', $option['sibling_name']);
 
 		$this->db->set('grade1', $option['grade1']);
 		$this->db->set('school_name', $option['school_name']);
@@ -140,6 +140,12 @@ class Dashboard_m extends CI_Model
 		$this->db->set('off_memo', ltrim($option['off_memo']));
 
 		$this->db->set('fees', $option['fees']);
+		$this->db->set('discount1', $option['discount1']);
+		$this->db->set('discount2', $option['discount2']);
+		$this->db->set('discount_memo', $option['discount_memo']);
+		$this->db->set('receipt_phone', $option['receipt_phone']);
+		$this->db->set('receipt_use', $option['receipt_use']);
+
 		$this->db->set('flag', $option['flag']);
 		$this->db->set('start_date', $option['start_date']);
 		$this->db->set('end_date', $option['end_date']);
