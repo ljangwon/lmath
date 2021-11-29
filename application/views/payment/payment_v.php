@@ -11,7 +11,6 @@
   <script type="text/javascript" src="<?php echo base_url() . 'assets/js/jquery-3.3.1.js' ?>"></script>
   <script type="text/javascript" src="<?php echo base_url() . 'assets/js/bootstrap.bundle.min.js' ?>"></script>
   <script type="text/javascript" src="<?php echo base_url() . 'assets/js/datatables.min.js' ?>"></script>
-
 </head>
 
 <body>
@@ -23,8 +22,8 @@
     <div class="row">
       <div class="col-12">
         <div class="col-md-12">
-          <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> Payment </a>
-            <small>List</small>
+          <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> Home </a>
+            <small>/ Payment List</small>
             <?php echo $this->session->flashdata('msg'); ?>
             <div class="form-group float-right">
               <label for="select_month">Month</label>
@@ -39,8 +38,8 @@
                 <option>8월</option>
                 <option>9월</option>
                 <option>10월</option>
-                <option selected>11월</option>
-                <option>12월</option>
+                <option>11월</option>
+                <option selected>12월</option>
               </select>
             </div>
 
@@ -685,21 +684,23 @@
               pay_status: pay_status
             },
             success: function(data) {
-              $('[name="payment_id_edit"]').val("");
+              $('[name$="_edit"]').val("");
+              /* 
+                            $('[name="payment_id_edit"]').val("");
 
-              $('[name="year_edit"]').val("");
-              $('[name="month_edit"]').val("");
-              $('[name="st_id_edit"]').val("");
-              $('[name="st_name_edit"]').val("");
-              $('[name="class_name_edit"]').val("");
+                            $('[name="year_edit"]').val("");
+                            $('[name="month_edit"]').val("");
+                            $('[name="st_id_edit"]').val("");
+                            $('[name="st_name_edit"]').val("");
+                            $('[name="class_name_edit"]').val("");
 
-              $('[name="regular_price_edit"]').val("");
-              $('[name="discount1_edit"]').val("");
-              $('[name="discoutn2_edit"]').val("");
-              $('[name="return_price_edit"]').val("");
-              $('[name="discount_memo_edit"]').val("");
-              $('[name="receipt_use_edit"]').val("");
-              $('[name="receipt_phone_edit"]').val("");
+                            $('[name="regular_price_edit"]').val("");
+                            $('[name="discount1_edit"]').val("");
+                            $('[name="discoutn2_edit"]').val("");
+                            $('[name="return_price_edit"]').val("");
+                            $('[name="discount_memo_edit"]').val("");
+                            $('[name="receipt_use_edit"]').val("");
+                            $('[name="receipt_phone_edit"]').val(""); */
 
               $('#Modal_Edit').modal('hide');
 
@@ -777,13 +778,167 @@
       });
     </script>
 
-    <script>
-      $(function() {
-        $('[data-toggle="tooltip"]').tooltip()
-      });
+    <div id="login_message"></div>
+    <ul>
+      <li id="login">
+        <a href="javascript:void(0)">
+          <span>카카오 로그인 </span>
+        </a>
+      </li>
 
-      $(function() {
-        $('[data-toggle="popover"]').popover()
+
+      <li id="logout">
+        <a href="javascript:void(0)">
+          <span>카카오 로그아웃</span>
+        </a>
+      </li>
+
+      <li id="getFriends">
+        <a href="javascript:void(0)">
+          <span>친구목록 가져오기</span>
+        </a>
+      </li>
+
+      <li id="sendMessage">
+        <a href="javascript:void(0)">
+          <span>카톡 공유하기</span>
+        </a>
+      </li>
+    </ul>
+
+
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"> </script>
+
+    <!--
+    <script src="<?php echo base_url() . '/assets/js/kakaoJavaScriptAPIwrapper.js' ?>"></script>
+    -->
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        //카카오로그인
+        var JAVASCRIPT_KEY = '8cd04fcef65027d7c0f52c968b801e7a';
+        let AccessToken = '';
+        Kakao.init(JAVASCRIPT_KEY);
+        console.log(Kakao.isInitialized());
+
+        function kakaoLogin() {
+          Kakao.Auth.login({
+            scope: 'friends',
+            success: function(response) {
+              Kakao.API.request({
+                url: '/v2/user/me',
+                success: function(response) {
+
+                  console.log(response);
+                  $("#login_message").html("<span> Login Success: " + Kakao.Auth.getAccessToken() + "</span>");
+                  AccessToken = Kakao.Auth.getAccessToken();
+                },
+                fail: function(error) {
+                  console.log(error);
+                  $("#login_message").html("<span> Login Fail </span>");
+                },
+              })
+            },
+            fail: function(error) {
+              console.log(error)
+                ("#login_message").html("<span> Login Fail </span>");
+            },
+          })
+        }
+        //카카오로그아웃
+        function kakaoLogout() {
+          if (Kakao.Auth.getAccessToken()) {
+            Kakao.API.request({
+              url: '/v1/user/unlink',
+              success: function(response) {
+                console.log(response);
+                $("#login_message").html("<span> Logout Success </span>");
+                AccessToken = '';
+              },
+              fail: function(error) {
+                console.log(error);
+                $("#login_message").html("<span> Logout Fail </span>");
+              },
+            })
+            Kakao.Auth.setAccessToken(undefined)
+          }
+        }
+
+        function getFriends() {
+          if (!Kakao.Auth.getAccessToken()) {
+            kakaoLogin();
+          }
+
+          if (Kakao.Auth.getAccessToken()) {
+            Kakao.Auth.setAccessToken(Kakao.Auth.getAccessToken());
+
+            Kakao.API.request({
+              url: '/v1/api/talk/friends',
+              success: function(response) {
+                console.log(response);
+              },
+              fail: function(error) {
+                console.log(error);
+              }
+            });
+          } else {
+            console.log("accessToken이 없음, 로그인 하세요.");
+            console.log("accessToken: " + Kakao.Auth.getAccessToken());
+          }
+        }
+
+        function sendMessage() {
+          Kakao.Link.sendDefault({
+            objectType: 'feed',
+            content: {
+              title: '딸기 치즈 케익',
+              description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+              imageUrl: 'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+              link: {
+                mobileWebUrl: 'https://developers.kakao.com',
+                webUrl: 'https://developers.kakao.com',
+              },
+            },
+            social: {
+              likeCount: 286,
+              commentCount: 45,
+              sharedCount: 845,
+            },
+            buttons: [{
+                title: '웹으로 보기',
+                link: {
+                  mobileWebUrl: 'https://developers.kakao.com',
+                  webUrl: 'https://developers.kakao.com',
+                },
+              },
+              {
+                title: '앱으로 보기',
+                link: {
+                  mobileWebUrl: 'https://developers.kakao.com',
+                  webUrl: 'https://developers.kakao.com',
+                },
+              },
+            ],
+          })
+        }
+
+        //click event
+        $('#login').on('click', function() {
+          kakaoLogin();
+        });
+
+        $('#logout').on('click', function() {
+          kakaoLogout();
+        });
+
+        $('#getFriends').on('click', function() {
+          getFriends();
+        });
+
+        $('#sendMessage').on('click', function() {
+          sendMessage();
+        });
+
       });
     </script>
 

@@ -15,7 +15,7 @@
 |
 */
 //$config['base_url']  = 'http://localhost/lmath';
-$config['base_url']  = 'http://leanmath.dothome.co.kr/lmath';
+$config['base_url']  = 'http://lmath.dothome.co.kr/lmath';
 
 /*
 |--------------------------------------------------------------------------
