@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-12">
         <div class="col-md-12">
-          <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> Home </a>
+          <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> LMATH </a>
             <small>/ Payment List</small>
             <?php echo $this->session->flashdata('msg'); ?>
             <div class="form-group float-right">
@@ -40,6 +40,16 @@
                 <option>10월</option>
                 <option>11월</option>
                 <option selected>12월</option>
+              </select>
+            </div>
+
+            <div class="form-group float-right">
+              <label for="select_month">수납상태</label>
+              <select class="form-control" id="select_pay_status">
+                <option>카드수납</option>
+                <option>현금수납</option>
+                <option>미납</option>
+                <option selected>전체</option>
               </select>
             </div>
 
@@ -685,23 +695,6 @@
             },
             success: function(data) {
               $('[name$="_edit"]').val("");
-              /* 
-                            $('[name="payment_id_edit"]').val("");
-
-                            $('[name="year_edit"]').val("");
-                            $('[name="month_edit"]').val("");
-                            $('[name="st_id_edit"]').val("");
-                            $('[name="st_name_edit"]').val("");
-                            $('[name="class_name_edit"]').val("");
-
-                            $('[name="regular_price_edit"]').val("");
-                            $('[name="discount1_edit"]').val("");
-                            $('[name="discoutn2_edit"]').val("");
-                            $('[name="return_price_edit"]').val("");
-                            $('[name="discount_memo_edit"]').val("");
-                            $('[name="receipt_use_edit"]').val("");
-                            $('[name="receipt_phone_edit"]').val(""); */
-
               $('#Modal_Edit').modal('hide');
 
               show_payment($('#select_month').val());

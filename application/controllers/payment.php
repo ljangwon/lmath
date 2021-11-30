@@ -50,6 +50,7 @@ class Payment extends CI_Controller
 
 	function update_discount()
 	{
+
 		$data = $this->payment_m->update_discount(
 			array(
 				'payment_id' => $this->input->post('payment_id'),
@@ -60,6 +61,7 @@ class Payment extends CI_Controller
 				'return_price' => $this->input->post('return_price'),
 				'discount_memo' => $this->input->post('discount_memo'),
 				'receipt_use' => $this->input->post('receipt_use'),
+				'receipt_phone' => $this->input->post('receipt_phone'),
 				'net_income' => $this->input->post('net_income')
 			)
 		);

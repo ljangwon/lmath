@@ -159,6 +159,7 @@ class Payment_m extends CI_Model
 
         $discount_memo = $option['discount_memo'];
         $receipt_use = $option['receipt_use'];
+        $receipt_phone = $option['receipt_phone'];
 
         // net_income calculation
         $net_income += $regular_price;
@@ -178,6 +179,7 @@ class Payment_m extends CI_Model
             'return_price' => $return_price,
             'discount_memo' => $discount_memo,
             'receipt_use' => $receipt_use,
+            'receipt_phone' => $receipt_phone,
             'net_income' => $net_income
         );
 
