@@ -74,6 +74,7 @@
         <hr class="dropdown-divider">
       </li>
       <li><a class="dropdown-item" href="<?= site_url() ?>/auth/login">로그인</a></li>
+      <li><a class="dropdown-item" href="<?= site_url() ?>/auth/logout">로그아웃</a></li>
       <li><a class="dropdown-item" href="<?= site_url() ?>/auth/register">회원가입</a></li>
     </ul>
   </div>

@@ -8,6 +8,7 @@ class Dashboard extends MY_Controller
 		parent::__construct();
 
 		$this->load->view('common/head_v');
+		
 		$this->_require_login(site_url('/dashboard'));
 
 		$this->load->model('student_m');

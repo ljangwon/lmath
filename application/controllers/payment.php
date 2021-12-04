@@ -1,9 +1,12 @@
 <?php
-class Payment extends CI_Controller
+class Payment extends My_Controller
 {
 	function __construct()
 	{
 		parent::__construct();
+
+		$this->_require_login(site_url('payment'));
+
 		$this->load->model('payment_m');
 		$this->load->model('student_m');
 	}
@@ -14,12 +17,24 @@ class Payment extends CI_Controller
 
 	function payment_list()
 	{
-		$data = $this->payment_m->payment_list(
-			array(
-				'year' => '2021년',
-				'month' => $this->input->post('month')
-			)
-		);
+		if ($this->input->post('pay_status') == '전체') {
+			$data = $this->payment_m->payment_list(
+				array(
+					'year' => $this->session->userdata('year'),
+					'month' => $this->input->post('month')
+				)
+			);
+			
+		} else {
+			$data = $this->payment_m->payment_list(
+				array(
+					'year' => $this->session->userdata('year'),
+					'month' => $this->input->post('month'),
+					'pay_status' => $this->input->post('pay_status')
+				)
+			);
+		}
+
 		echo json_encode($data);
 	}
 

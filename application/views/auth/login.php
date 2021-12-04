@@ -17,10 +17,12 @@
         </div>
       </div>
 
-
-    </div>
-    <div class="modal-footer">
-      <input type="submit" class="btn btn-primary" value="로그인" />
+      <div class="control-group">
+        <label class="control-label" for="inputPassword"></label>
+        <div class="controls">
+          <input type="submit" class="btn btn-primary  " value="로그인" />
+        </div>
+      </div>
     </div>
 
   </form>
