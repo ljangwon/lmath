@@ -3,9 +3,9 @@
     <?php
     $weekString = array("일", "월", "화", "수", "목", "금", "토");
     ?>
-    <div class="fw-bold text-center"> ( Today: <?= date("Y-m-d", time()) ?> <?= $weekString[date('w')] ?> )</div>
+    <div class="fw-bold text-center text-primary"> (<?= date("Y-m-d", time()) ?> <?= $weekString[date('w')] ?>)</div>
 
-    <div class="fs-5 fw-bolder text-decoration-underline text-center mt-2">
+    <div class="fs-5 fw-bolder text-decoration-underline text-center  bg-primary text-white mt-2">
       학생명단 </div>
 
     <!-- Sidebar List 1 start  -->

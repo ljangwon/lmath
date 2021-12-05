@@ -19,13 +19,13 @@
     <!-- row1 title and message begin -->
     <div class="row" id='row1'>
       <div class="col-xs-12">
-        <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> LMATH </a>
+        <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> L-MATH </a>
           <small>/ Payment List</small>
         </h1>
       </div>
 
       <div class="col-xs-12">
-        <span style="background-color: red">
+        <span id="message" style="background-color: red">
           <?php echo $this->session->flashdata('msg'); ?>
         </span>
       </div>
@@ -33,19 +33,19 @@
 
     <!-- row1 title and message end -->
 
-    <!-- row2 add buttons begin -->
+    <!-- row2 add buttons begin col-xs-4 -->
     <div class="row" id='row2'>
-      <div class="col-xs-4">
+      <div class="float-sm-right">
         <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add_Month">
           <span class="fa fa-plus"> Add Month </span>
         </a>
       </div>
-      <div class="col-xs-4">
+      <div class="float-sm-left">
         <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Delete_Month">
           <span class="fa fa-plus"></span> Delete Month
         </a>
       </div>
-      <div class="col-xs-4">
+      <div class="float-sm-left">
         <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add">
           <span class="fa fa-plus"></span> Add New
         </a>
