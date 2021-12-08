@@ -54,9 +54,8 @@ class Auth extends MY_Controller
                 'nickname' => $this->input->post('nickname')
             ));
 
-            $this->session->set_flashdata('message', '회원가입에 성공했습니다.');
-            $this->load->helper('url');
-            redirect($this->config->item('base_url'));
+            $this->session->set_flashdata('msg', '회원가입에 성공했습니다.');
+            redirect(base_url());
         }
 
         $this->_footer();
@@ -71,12 +70,12 @@ class Auth extends MY_Controller
         }
         if (
             $this->input->post('email') == $user->email &&
-            $user->level == 10 &&
             password_verify($this->input->post('password'), $user->password)
         ) {
             $this->session->set_userdata('is_login', true);
             $this->session->set_userdata('name', $user->name);
             $this->session->set_userdata('year', '2021년');
+            $this->session->set_userdata('level', $user->level);
 
             $returnURL = $this->input->get('returnURL');
             if ($returnURL === false) {

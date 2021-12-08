@@ -5,7 +5,7 @@ class Payment extends My_Controller
 	{
 		parent::__construct();
 
-		$this->_require_login(site_url('payment'));
+		$this->_require_login(site_url('payment'), 1);
 
 		$this->load->model('payment_m');
 		$this->load->model('student_m');
@@ -24,7 +24,6 @@ class Payment extends My_Controller
 					'month' => $this->input->post('month')
 				)
 			);
-			
 		} else {
 			$data = $this->payment_m->payment_list(
 				array(
