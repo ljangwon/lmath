@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Student Payment List</title>
+  <title>Kakao Message</title>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/bootstrap.css' ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/datatables.css' ?>">
 
@@ -20,12 +20,12 @@
     <div class="row" id='row1'>
       <div class="col-xs-12">
         <h1><a style=text-decoration-line:none href='<?php echo site_url() ?>'> L-MATH </a>
-          <small>/ Payment List</small>
+          <small>/ Kakao Message</small>
         </h1>
       </div>
 
       <div class="col-xs-12">
-        <span id="msg" style="background-color: red">
+        <span id="message" style="background-color: red">
           <?php echo $this->session->flashdata('msg'); ?>
         </span>
       </div>
@@ -34,71 +34,30 @@
     <!-- row1 title and message end -->
 
     <!-- row2 add buttons begin col-xs-4 -->
-    <div class="row mb-3" id='row2'>
-      <div class="col-6">
-        <div class="row">
-          <div class="float-sm-left mr-2">
-            <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add_Month">
-              <span class="fa fa-plus"> Add Month </span>
-            </a>
-          </div>
-          <div class="float-sm-left mr-2">
-            <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Delete_Month">
-              <span class="fa fa-plus"></span> Delete Month
-            </a>
-          </div>
-          <div class="float-sm-left mr-2">
-            <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add">
-              <span class="fa fa-plus"></span> Add New
-            </a>
-          </div>
-        </div>
+    <div class="row" id='row2'>
+      <div class="float-sm-right">
+        <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add_Month">
+          <span class="fa fa-plus"> Add Month </span>
+        </a>
       </div>
-
-      <div class="col-6">
-        <div class="row">
-          <div class="col-xs-4">
-            <select class="form-control" id="select_month">
-              <option>1월</option>
-              <option>2월</option>
-              <option>3월</option>
-              <option>4월</option>
-              <option>5월</option>
-              <option>6월</option>
-              <option>7월</option>
-              <option>8월</option>
-              <option>9월</option>
-              <option>10월</option>
-              <option>11월</option>
-              <option selected>12월</option>
-            </select>
-          </div>
-
-          <div class="col-xs-4">
-            <select class="form-control" id="select_pay_status">
-              <option>카드수납</option>
-              <option>현금수납</option>
-              <option>미납</option>
-              <option selected>전체</option>
-            </select>
-          </div>
-
-          <div class="col-xs-4">
-            <select class="form-control" id="select_pay_s">
-              <option>카드수납</option>
-              <option>현금수납</option>
-              <option>미납</option>
-              <option selected>전체</option>
-            </select>
-          </div>
-        </div>
+      <div class="float-sm-left">
+        <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Delete_Month">
+          <span class="fa fa-plus"></span> Delete Month
+        </a>
+      </div>
+      <div class="float-sm-left">
+        <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add">
+          <span class="fa fa-plus"></span> Add New
+        </a>
       </div>
     </div>
+
+
 
     <!-- row4 main data table  begin -->
     <div class="row" id='row4'>
       <div class="col-md-12">
-        <table class="table table-striped display compact cell-border" id="payment_data" style="width:100%">
+        <table class="table table-striped display compact cell-border" id="Kakao_friend_data" style="width:100%">
         </table>
       </div>
     </div>
@@ -423,11 +382,10 @@
   <script type="text/javascript">
     $(document).ready(function() {
       let table = null;
-
-      show_payment($('#select_month').val(), $('#select_pay_status').val()); //call function show all payment
+      show_friend();
 
       //function show all product
-      function show_payment(this_month, this_pay_status) {
+      function show_friend() {
         $.ajax({
           url: '<?php echo site_url('payment/payment_list') ?>',
           type: "POST",
@@ -583,7 +541,7 @@
 
             alert('month added!!!')
             $('#Modal_Add_Month').modal('hide');
-            show_payment($('#select_month').val());
+            show_friend();
           }
         });
         return false;
@@ -610,7 +568,7 @@
             $('[name="st_name"]').val("");
 
             $('#Modal_Add').modal('hide');
-            show_payment($('#select_month').val());
+            show_friend();
           }
         });
         return false;
@@ -629,7 +587,7 @@
             pay_status: '카드수납',
           },
           success: function(data) {
-            show_payment($('#select_month').val());
+            show_friend();
           }
         });
         return false;
@@ -647,108 +605,12 @@
             pay_status: '현금수납',
           },
           success: function(data) {
-            show_payment($('#select_month').val());
+            show_friend();
           }
         });
         return false;
       });
 
-      $('#payment_data').on('click', '.receipt_status_edit', function() {
-        var payment_id = $(this).data('payment_id');
-
-        $.ajax({
-          type: "POST",
-          url: "<?php echo site_url('payment/update_receipt_status') ?>",
-          dataType: "JSON",
-          data: {
-            payment_id: payment_id
-          },
-          success: function(data) {
-            show_payment($('#select_month').val());
-          }
-        });
-        return false;
-      });
-
-      //get data for update record
-      $('#payment_data').on('click', '.item_edit', function() {
-        let payment_id = $(this).data('payment_id');
-        let year = $(this).data('year');
-        let month = $(this).data('month');
-        let st_id = $(this).data('st_id');
-        let st_name = $(this).data('st_name');
-        let class_name = $(this).data('class_name');
-
-        let regular_price = $(this).data('regular_price');
-        let discount1 = $(this).data('discount1');
-        let discount2 = $(this).data('discount2');
-        let return_price = $(this).data('return_price');
-        let discount_memo = $(this).data('discount_memo');
-
-        let pay_status = $(this).data('pay_status');
-        let receipt_use = $(this).data('receipt_use');
-        let receipt_phone = $(this).data('receipt_phone');
-        let receipt_status = $(this).data('receipt_status');
-
-        $('#Modal_Edit').modal('show');
-
-        $('[name="payment_id_edit"]').val(payment_id);
-        $('[name="year_edit"]').val(year);
-        $('[name="month_edit"]').val(month);
-        $('[name="st_id_edit"]').val(st_id);
-        $('[name="st_name_edit"]').val(st_name);
-        $('[name="class_name_edit"]').val(class_name);
-
-        $('[name="regular_price_edit"]').val(regular_price);
-        $('[name="discount1_edit"]').val(discount1);
-        $('[name="discount2_edit"]').val(discount2);
-        $('[name="return_price_edit"]').val(return_price);
-        $('[name="discount_memo_edit"]').val(discount_memo);
-
-        $('[name="pay_status_edit"]').val(pay_status);
-        $('[name="receipt_use_edit"]').val(receipt_use);
-        $('[name="receipt_phone_edit"]').val(receipt_phone);
-        $('[name="receipt_status_edit"]').val(receipt_status);
-
-      });
-
-      //update record to database
-      $('#btn_update').on('click', function() {
-        let payment_id = $('#payment_id_edit').val();
-        let pay_status = $('#pay_status_edit').val();
-
-        let regular_price = $('#regular_price_edit').val();
-        let discount1 = $('#discount1_edit').val();
-        let discount2 = $('#discount2_edit').val();
-        let return_price = $('#return_price_edit').val();
-        let discount_memo = $('#discount_memo_edit').val();
-        let receipt_use = $('#receipt_use_edit').val();
-        let receipt_phone = $('#receipt_phone_edit').val();
-
-        $.ajax({
-          type: "POST",
-          url: "<?php echo site_url('payment/update_discount') ?>",
-          dataType: "JSON",
-          data: {
-            payment_id: payment_id,
-            regular_price: regular_price,
-            discount1: discount1,
-            discount2: discount2,
-            return_price: return_price,
-            discount_memo: discount_memo,
-            receipt_use: receipt_use,
-            receipt_phone: receipt_phone,
-            pay_status: pay_status
-          },
-          success: function(data) {
-            $('[name$="_edit"]').val("");
-            $('#Modal_Edit').modal('hide');
-
-            show_payment($('#select_month').val());
-          }
-        });
-        return false;
-      });
 
       //get data for delete record
       $('#payment_data').on('click', '.item_delete', function() {
@@ -779,7 +641,7 @@
             $('[name="month_delete"]').val("");
 
             $('#Modal_Delete').modal('hide');
-            show_payment($('#select_month').val());
+            show_friend();
           }
         });
         return false;
@@ -804,7 +666,7 @@
             alert('month deleted !!!');
 
             $('#Modal_Delete_Month').modal('hide');
-            show_payment($('#select_month').val());
+            show_friend();
           }
         });
         return false;
@@ -812,13 +674,177 @@
 
       $('#select_month').change(function() {
         let this_month = $(this).val();
-        show_payment(this_month, $('#select_pay_status').val());
+        show_friend();
       });
 
       $('#select_pay_status').change(function() {
 
         let this_pay_status = $(this).val();
-        show_payment($('#select_month').val(), this_pay_status);
+        show_friend();
+      });
+
+    });
+  </script>
+
+  <div id="login_message"></div>
+  <ul>
+    <li id="login">
+      <a href="javascript:void(0)">
+        <span>카카오 로그인 </span>
+      </a>
+    </li>
+
+
+    <li id="logout">
+      <a href="javascript:void(0)">
+        <span>카카오 로그아웃</span>
+      </a>
+    </li>
+
+    <li id="getFriends">
+      <a href="javascript:void(0)">
+        <span>친구목록 가져오기</span>
+      </a>
+    </li>
+
+    <li id="sendMessage">
+      <a href="javascript:void(0)">
+        <span>카톡 공유하기</span>
+      </a>
+    </li>
+  </ul>
+
+
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"> </script>
+
+  <!--
+    <script src="<?php echo base_url() . '/assets/js/kakaoJavaScriptAPIwrapper.js' ?>"></script>
+    -->
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      //카카오로그인
+      var JAVASCRIPT_KEY = '8cd04fcef65027d7c0f52c968b801e7a';
+      let AccessToken = '';
+      Kakao.init(JAVASCRIPT_KEY);
+      console.log(Kakao.isInitialized());
+
+      function kakaoLogin() {
+        Kakao.Auth.login({
+          scope: 'friends',
+          success: function(response) {
+            Kakao.API.request({
+              url: '/v2/user/me',
+              success: function(response) {
+
+                console.log(response);
+                $("#login_message").html("<span> Login Success: " + Kakao.Auth.getAccessToken() + "</span>");
+                AccessToken = Kakao.Auth.getAccessToken();
+              },
+              fail: function(error) {
+                console.log(error);
+                $("#login_message").html("<span> Login Fail </span>");
+              },
+            })
+          },
+          fail: function(error) {
+            console.log(error)
+              ("#login_message").html("<span> Login Fail </span>");
+          },
+        })
+      }
+      //카카오로그아웃
+      function kakaoLogout() {
+        if (Kakao.Auth.getAccessToken()) {
+          Kakao.API.request({
+            url: '/v1/user/unlink',
+            success: function(response) {
+              console.log(response);
+              $("#login_message").html("<span> Logout Success </span>");
+              AccessToken = '';
+            },
+            fail: function(error) {
+              console.log(error);
+              $("#login_message").html("<span> Logout Fail </span>");
+            },
+          })
+          Kakao.Auth.setAccessToken(undefined)
+        }
+      }
+
+      function getFriends() {
+        if (!Kakao.Auth.getAccessToken()) {
+          kakaoLogin();
+        }
+
+        if (Kakao.Auth.getAccessToken()) {
+          Kakao.Auth.setAccessToken(Kakao.Auth.getAccessToken());
+
+          Kakao.API.request({
+            url: '/v1/api/talk/friends',
+            success: function(response) {
+              console.log(response);
+            },
+            fail: function(error) {
+              console.log(error);
+            }
+          });
+        } else {
+          console.log("accessToken이 없음, 로그인 하세요.");
+          console.log("accessToken: " + Kakao.Auth.getAccessToken());
+        }
+      }
+
+      function sendMessage() {
+        Kakao.Link.sendDefault({
+          objectType: 'feed',
+          content: {
+            title: '딸기 치즈 케익',
+            description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+            imageUrl: 'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+            link: {
+              mobileWebUrl: 'https://developers.kakao.com',
+              webUrl: 'https://developers.kakao.com',
+            },
+          },
+          social: {
+            likeCount: 286,
+            commentCount: 45,
+            sharedCount: 845,
+          },
+          buttons: [{
+              title: '웹으로 보기',
+              link: {
+                mobileWebUrl: 'https://developers.kakao.com',
+                webUrl: 'https://developers.kakao.com',
+              },
+            },
+            {
+              title: '앱으로 보기',
+              link: {
+                mobileWebUrl: 'https://developers.kakao.com',
+                webUrl: 'https://developers.kakao.com',
+              },
+            },
+          ],
+        })
+      }
+
+      //click event
+      $('#login').on('click', function() {
+        kakaoLogin();
+      });
+
+      $('#logout').on('click', function() {
+        kakaoLogout();
+      });
+
+      $('#getFriends').on('click', function() {
+        getFriends();
+      });
+
+      $('#sendMessage').on('click', function() {
+        sendMessage();
       });
 
     });
