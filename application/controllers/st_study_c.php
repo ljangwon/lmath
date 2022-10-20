@@ -30,9 +30,6 @@ class St_study_c extends My_Controller
 	function ajax_st_study_add()
 	{
 		$a = null;
-
-
-
 		$a = array(
 			'st_id' => $this->input->post('st_id')
 		);
@@ -62,7 +59,6 @@ class St_study_c extends My_Controller
 
 		echo json_encode($data);
 	}
-
 
 	function ajax_get_student_by_grade()
 	{

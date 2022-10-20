@@ -39,11 +39,131 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s4_timetable_v',
+			'student2/s4_timetable_total_v',
 			array(
 				'students' => $students
 			)
 		);
+
+		$this->load->view(
+			'common/s5_footer_v',
+			array()
+		);
+
+		$this->load->view(
+			'common/s6_common_modal_v',
+			array()
+		);
+
+		$this->load->view(
+			'student2/s6_student2_modal_v',
+			array()
+		);
+
+		$this->load->view(
+			'common/s7_common_script_v',
+			array()
+		);
+
+		$this->load->view(
+			'student2/s7_student2_script_v',
+			array()
+		);
+	}
+
+	function screen_timetable_today()
+	{
+		$this->load->view(
+			'common/s1_head_v',
+			array()
+		);
+
+		$students = $this->student_m->gets();
+
+		$this->load->view(
+			'common/s2_sidebar_v',
+			array(
+				'students' => $students
+			)
+		);
+
+		$this->load->view(
+			'common/s3_topbar_v',
+			array()
+		);
+
+		switch (date('w')) {
+			case "1":
+				$this->load->view(
+					'student2/s4_timetable1_v',
+					array(
+						'students' => $students
+					)
+				);
+				break;
+
+			case "2":
+				$this->load->view(
+					'student2/s4_timetable2_v',
+					array(
+						'students' => $students
+					)
+				);
+				break;
+
+			case "3":
+				$this->load->view(
+					'student2/s4_timetable3_v',
+					array(
+						'students' => $students
+					)
+				);
+				break;
+
+			case "4":
+				$this->load->view(
+					'student2/s4_timetabl4_v',
+					array(
+						'students' => $students
+					)
+				);
+				break;
+
+			case "5":
+				$this->load->view(
+					'student2/s4_timetable5_v',
+					array(
+						'students' => $students
+					)
+				);
+				break;
+
+			case "6":
+				$this->load->view(
+					'student2/s4_timetable6_v',
+					array(
+						'students' => $students
+					)
+				);
+				break;
+
+			case "7":
+				$this->load->view(
+					'student2/s4_timetable7_v',
+					array(
+						'students' => $students
+					)
+				);
+				break;
+
+			default:
+				$this->load->view(
+					'student2/s4_timetable1_v',
+					array(
+						'students' => $students
+					)
+				);
+		}
 
 		$this->load->view(
 			'common/s5_footer_v',

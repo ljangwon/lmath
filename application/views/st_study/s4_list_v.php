@@ -3,9 +3,14 @@
   <!-- Page Heading -->
   <div class="row">
     <div class="col-xs-12">
-      <h5><a style=text-decoration-line:none href='<?php echo site_url('st_study_c') ?>'> LEAN-MATH </a>
-        <small>/학습기록 리스트 화면 </small>
-      </h5>
+      <h4>
+        <a style=text-decoration-line:none href='<?= site_url('student2/screen_timetable') ?>'> 시간표 </a>
+        >
+        <a style=text-decoration-line:none href='<?= site_url('st_study_c') ?>'> 학습기록 </a>
+        >
+        <a style=text-decoration-line:none href='<?= site_url('main_test_c') ?>'> 평가기록 </a> >
+        <small>학생 학습기록 화면 </small>
+      </h4>
     </div>
   </div>
   <!-- Message -->

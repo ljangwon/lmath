@@ -248,22 +248,6 @@
 	$add.click(function() {
 		$('#modal_test_add').modal('show');
 
-		$.ajax({
-			url: "<?= site_url('main_test_c/ajax_get_session_student') ?>",
-			method: "POST",
-			data: {},
-			async: true,
-			dataType: 'json',
-			success: function(data) {
-				console.log('ajax get_session_student sucess');
-
-				$('#m_st_id_add').val(data.st_id);
-				$('#m_st_name_add').val(data.st_name);
-			}
-		});
-
-		$('#st_id_add').val();
-
 		$('#modal_test_add').draggable({
 			handle: ".modal-header"
 		});
@@ -332,7 +316,7 @@
 		let grade = $(this).val();
 
 		$.ajax({
-			url: "<?= site_url('main_test_c/ajax_get_student_by_grade') ?>",
+			url: "<?= site_url('ajax_common_c/ajax_get_student_by_grade') ?>",
 			method: "POST",
 			data: {
 				grade: grade
@@ -340,7 +324,7 @@
 			async: true,
 			dataType: 'json',
 			success: function(data) {
-				console.log('ajax_get_student_by_grade sucess');
+				console.log('ajax_get_student list_by_grade sucess');
 				let html = '<option value="">No Selected</option>';
 				let i;
 				for (i = 0; i < data.length; i++) {
@@ -352,26 +336,28 @@
 		return false;
 	});
 
-	$('#st_id').change(function() {
-		console.log('#st_id.change');
-		let params = $(this).val();
-		let param_arr = params.split(':');
-		let st_id = param_arr[0];
+	$('#st_id').change(
+		function() {
+			console.log('#st_id.change');
+			let params = $(this).val();
+			let param_arr = params.split(':');
+			let st_id = param_arr[0];
 
-		let st_name = null;
+			let st_name = null;
 
-		//st_name = get_st_name_by_st_id(st_id);
-		st_name = param_arr[1];
+			//st_name = get_st_name_by_st_id(st_id);
+			st_name = param_arr[1];
 
-		let show = $('#show').val();
+			let show = $('#show').val();
 
-		set_session_student(st_id, st_name);
-		$('#st_id_memo').text(st_id);
-		$('#st_name_memo').text(st_name);
+			set_session_student(st_id, st_name);
 
-		initTable(st_id, show);
+			$('#side_st_id').text(st_id);
+			$('#side_st_name').text(st_name);
 
-	});
+			initTable(st_id, show);
+
+		});
 
 	$("#start_date_edit").datepicker({
 		dateFormat: "yy-mm-dd",
@@ -387,35 +373,13 @@
 		monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
 	});
 
-	function set_session_student(st_id = null, st_name = null) {
-		let p_st_id = st_id;
-		let p_st_name = st_name;
-
-		$.ajax({
-			url: "<?= site_url('main_test_c/ajax_set_session_student') ?>",
-			method: "POST",
-			data: {
-				st_id: p_st_id,
-				st_name: p_st_name
-			},
-			async: true,
-			dataType: 'json',
-			success: function(data) {
-				console.log('ajax set_session_student sucess');
-
-				$('#side_st_id').text(data.st_id);
-				$('#side_st_name').text(data.st_name);
-			}
-		});
-	}
-
 	function get_st_name_by_st_id(p_st_id = null) {
 		console.log('p_st_id:' + p_st_id);
 
 		let st_name = null;
 
 		$.ajax({
-			url: "<?= site_url('main_test_c/ajax_get_st_name_by_st_id') ?>",
+			url: "<?= site_url('ajax_common_c/ajax_get_st_name_by_st_id') ?>",
 			method: "POST",
 			data: {
 				st_id: p_st_id
@@ -428,12 +392,5 @@
 			}
 		});
 		return st_name;
-	}
-
-	$('#test_ajax').click(function() {
-		console.log('button pressed');
-
-		$('#side_st_id').text('test');
-
-	});
+	};
 </script>

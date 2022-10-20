@@ -91,20 +91,6 @@ class Main_test_m extends CI_Model
     return $result;
   }
 
-  function get_student_by_grade($grade)
-  {
-    $this->db->select('id, name');
-
-    $this->db->where('status', '재원');
-
-    $this->db->where('grade', $grade);
-
-
-    $query = $this->db->get($this->tbl_student);
-
-    return $query;
-  }
-
   function get_list_by_st_id($param_arr)
   {
     $this->db->select('*');

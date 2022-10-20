@@ -34,21 +34,28 @@
       </div>
       <!-- Nav Item - Study Time Table -->
       <li class="nav-item">
-        <a class="nav-link" href='<?= base_url("index.php/student2/screen_timetable") ?>'>
+        <a class="nav-link" href='<?= site_url("student2/screen_timetable") ?>'>
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>전체 시간표</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href='<?= base_url("index.php/st_study_c") ?>'>
+        <a class="nav-link" href='<?= site_url("student2/screen_timetable_today") ?>'>
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>오늘 시간표</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href='<?= site_url("st_study_c") ?>'>
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>학습기록</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href='<?= base_url("index.php/main_test_c") ?>'>
+        <a class="nav-link" href='<?= site_url("main_test_c") ?>'>
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>평가기록</span>
         </a>
@@ -56,14 +63,14 @@
 
       <!-- Nav Item - Dashboard(old)-->
       <li class="nav-item">
-        <a class="nav-link" href='<?= base_url("index.php/temp_table_c") ?>'>
+        <a class="nav-link" href='<?= site_url("temp_table_c") ?>'>
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>임시-table 화면</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href='<?= base_url("index.php/user_new_c") ?>'>
+        <a class="nav-link" href='<?= site_url("user_new_c") ?>'>
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>사용자관리</span>
         </a>
@@ -71,7 +78,7 @@
 
       <!-- Nav Item - Student Entire List -->
       <li class="nav-item">
-        <a class="nav-link" href='<?= base_url("index.php/student2/screen_student_list") ?>'>
+        <a class="nav-link" href='<?= site_url("student2/screen_student_list") ?>'>
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>전체 학생목록</span>
         </a>
@@ -87,8 +94,8 @@
         </a>
         <div id="pay1-1" class="collapse" aria-labelledby="" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href='<?= base_url("index.php/payment2") ?>'> 수납현황 </a>
-            <a class="collapse-item" href='<?= base_url("index.php/payment3") ?>'> 수납영수증 </a>
+            <a class="collapse-item" href='<?= site_url("payment2") ?>'> 수납현황 </a>
+            <a class="collapse-item" href='<?= site_url("payment3") ?>'> 수납영수증 </a>
           </div>
         </div>
       </li>

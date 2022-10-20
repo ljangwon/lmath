@@ -3,9 +3,16 @@
   <!-- Page Heading -->
   <div class="row" id='row1'>
     <div class="col-xs-12">
-      <h1><a style=text-decoration-line:none href='<?= base_url() ?>'> ip-L-MATH </a>
-        <small>/학생 상세화면 </small>
-      </h1>
+      <h4>
+        <a style=text-decoration-line:none href='<?= site_url('student2/screen_timetable') ?>'> 전체 시간표 </a>
+        >
+        <a style=text-decoration-line:none href='<?= site_url('student2/screen_timetable_today') ?>'> 오늘 시간표 </a>
+        >
+        <a style=text-decoration-line:none href='<?= site_url('st_study_c') ?>'> 학습기록 </a>
+        >
+        <a style=text-decoration-line:none href='<?= site_url('main_test_c') ?>'> 평가기록 </a> >
+        <small>학생 상세화면 </small>
+      </h4>
     </div>
   </div>
 

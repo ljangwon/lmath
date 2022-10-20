@@ -3,9 +3,14 @@
   <!-- Page Heading -->
   <div class="row" id='row1'>
     <div class="col-xs-12">
-      <h1><a style=text-decoration-line:none href='<?= site_url() ?>'> ip-L-MATH </a>
-        <small>/학생수납현황</small>
-      </h1>
+      <h4>
+        <a style=text-decoration-line:none href='<?= site_url('student2/screen_timetable') ?>'> 시간표 </a>
+        >
+        <a style=text-decoration-line:none href='<?= site_url('payment2') ?>'> 수납현황 </a>
+        >
+        <a style=text-decoration-line:none href='<?= site_url('book') ?>'> 교재현황 </a> >
+        <small> 수납 현황 </small>
+      </h4>
     </div>
 
     <div class="col-xs-12">

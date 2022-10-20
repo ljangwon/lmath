@@ -13,7 +13,7 @@
 
         <div class="form-group row">
           <label class="col-md-2 col-form-label">st_id</label>
-          <input type='text' id="st_id_add" name="st_id_add" placeholder="학생아이디" class="span12">
+          <input type='text' id="st_id_add" name="st_id_add" value="<?= $this->session->userdata('st_id') ?>" placeholder="학생아이디" class="span12">
           </input>
         </div>
         <div class="form-group row">

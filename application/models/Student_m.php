@@ -48,6 +48,19 @@ class Student_m extends CI_Model
     return $result;
   }
 
+  function get_student_by_grade($grade)
+  {
+    $this->db->select('id, name');
+
+    $this->db->where('status', '재원');
+
+    $this->db->where('grade', $grade);
+
+    $result = $this->db->get('student')->result();
+
+    return $result;
+  }
+
   function gets($option = null)
   {
     $this->db->select('*');

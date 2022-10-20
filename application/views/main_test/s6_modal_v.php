@@ -13,9 +13,9 @@
 
         <div class="form-group row">
           <label class="col-md-2 col-form-label">학생정보</label>
-          <input type='text' id="m_st_id_add" name="m_st_id_add" placeholder=" 학생아이디" class="span12">
+          <input type='text' id="m_st_id_add" name="m_st_id_add" value="<?= $this->session->userdata('st_id') ?>" placeholder=" 학생아이디" class="span12">
           </input>
-          <input type='text' id="m_st_name_add" name="m_st_name_add" readonly placeholder="학생이름" class="span12">
+          <input type='text' id="m_st_name_add" name="m_st_name_add" value="<?= $this->session->userdata('st_name') ?>" readonly placeholder="학생이름" class="span12">
           </input>
         </div>
         <div class="form-group row">

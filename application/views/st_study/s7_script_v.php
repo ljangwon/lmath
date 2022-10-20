@@ -248,8 +248,6 @@
 	$add.click(function() {
 		$('#modal_st_study_add').modal('show');
 
-		$('#st_id_add').val($('#st_id').val());
-
 		$('#modal_st_study_add').draggable({
 			handle: ".modal-header"
 		});
@@ -270,7 +268,7 @@
 			dataType: "JSON",
 			success: function(data) {
 				$('#modal_st_study_add').modal('hide');
-				initTable($('#st_id').val(), $('#show').val());
+				initTable($('#st_id_add').val(), $('#show').val());
 			}
 		});
 	});
@@ -345,6 +343,8 @@
 		console.log(show);
 
 		initTable(st_id, show);
+
+		
 	});
 
 	$("#start_date_edit").datepicker({
