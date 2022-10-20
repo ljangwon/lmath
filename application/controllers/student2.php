@@ -122,7 +122,7 @@ class Student2 extends My_Controller
 
 			case "4":
 				$this->load->view(
-					'student2/s4_timetabl4_v',
+					'student2/s4_timetable4_v',
 					array(
 						'students' => $students
 					)
