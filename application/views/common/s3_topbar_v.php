@@ -270,7 +270,7 @@
               Activity Log
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/leanmath/index.php/auth/changePassword">
+            <a class="dropdown-item" href="<?= site_url('auth/changePassword') ?>">
               <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
               ChangePassword
             </a>
@@ -278,8 +278,7 @@
               <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
               Logout
             </a>
-          </div>
-        </li>
+          </div>        </li>
       </ul>
     </nav>
     <!-- End of Topbar -->

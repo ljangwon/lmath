@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>lmath - ERP </title>
+  <title>lmath - ERP 2 </title>
 
   <!-- Custom fonts for this template-->
   <!--
