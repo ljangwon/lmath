@@ -1,7 +1,6 @@
 <?php
 class Payment_m extends CI_Model
 {
-
   function __construct()
   {
     parent::__construct();
@@ -85,7 +84,7 @@ class Payment_m extends CI_Model
   // select
   function pay_status($p_st_id)
   {
-    $this->db->select('pay_status');
+    $this->db->select('pay_status, id');
     $this->db->from('st_payment');
 
     $this->db->where('flag', '1');
@@ -97,11 +96,11 @@ class Payment_m extends CI_Model
     $row = $this->db->get()->row();
 
     if (!$row) {
-      return '<span style="color:blue">미등록</span>';
+      return '<span style="color:red">미등록</span>';
     }
 
     if ($row->pay_status == "미납") {
-      return '<span style="color:red">' . $row->pay_status . '</span>';
+      return '<span style="color:red">' . $row->pay_status . '</span> <a href="javascript:void(0);" class="btn btn-info btn-sm pay_card_status" ' . ' data-pay_status="카드" data-payment_id="' . $row->id . '">카드</a> <a href="javascript:void(0);" class="btn btn-info btn-sm pay_cash_status" ' . ' data-pay_status="현금" data-payment_id="' . $row->id . '">현금</a>';
     }
     return $row->pay_status;
   }

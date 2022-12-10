@@ -10,6 +10,7 @@ class Payment2 extends My_Controller
 		$this->load->model('payment_m');
 		$this->load->model('student_m');
 	}
+
 	function index()
 	{
 		$this->load->view(
@@ -84,7 +85,7 @@ class Payment2 extends My_Controller
 		echo json_encode($data);
 	}
 
-	function save()	
+	function save()
 	{
 		$data = $this->payment_m->save_payment(
 			array(
@@ -99,7 +100,7 @@ class Payment2 extends My_Controller
 		echo json_encode($data);
 	}
 
-	function add_payment_by_month()
+	function ajax_add_payment_by_month()
 	{
 		$data = $this->payment_m->add_payment_by_month(
 			array(
@@ -112,7 +113,7 @@ class Payment2 extends My_Controller
 		echo json_encode($data);
 	}
 
-	function update_discount()
+	function ajax_update_discount()
 	{
 		$data = $this->payment_m->update_discount(
 			array(
@@ -132,7 +133,7 @@ class Payment2 extends My_Controller
 	}
 
 
-	function update_pay_status()
+	function ajax_update_pay_status()
 	{
 		$data = $this->payment_m->update_pay_status(
 			array(
@@ -144,7 +145,7 @@ class Payment2 extends My_Controller
 		echo json_encode($data);
 	}
 
-	function update_receipt_status()
+	function ajax_update_receipt_status()
 	{
 		$data = $this->payment_m->update_receipt_status(
 			array(

@@ -63,7 +63,6 @@
           let month = today.getMonth(); // 월
           let date = today.getDate(); // 날짜
 
-
           table.clear().draw();
           for (i = 0; i < data.length; i++) {
             let rowData = ["", "", "", "", "", "", ""],

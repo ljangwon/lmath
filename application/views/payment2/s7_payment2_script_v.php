@@ -21,7 +21,6 @@
         async: true,
         success: function(data) {
           let i;
-
           let dataset = null;
 
           if (table == undefined || table == null) {
@@ -74,7 +73,7 @@
 
           }
 
-          let rowData = ["#", "Year", "month", "class_name", "class_day1", "class_day2", "name", "grade1", "grade2", "receipt_use", "Regular Price", "Net Income", "pay_status ", "pay_action", "Receipt Status", "rectipt_action", "actions"];
+          let rowData = ["#", "Year", "month", "class_name", "class_day1", "class_day2", "name", "grade1", "grade2", "receipt_use", "Regular Price", "Net Income", "pay_status ", "pay_action", "Receipt Status", "receipt_action", "actions"];
           let action_link = null;
           let name_link = null;
           let pay_action_link = null;
@@ -171,10 +170,8 @@
       let year = $('#add_year').val();
       let month = $('#add_month').val();
 
-      log('add_month');
-
       $.ajax({
-        url: "<?= site_url('payment2/add_payment_by_month') ?>",
+        url: "<?= site_url('payment2/ajax_add_payment_by_month') ?>",
         type: "POST",
         data: {
           year: year,
@@ -203,7 +200,6 @@
       var st_id = $('#st_id').val();
       var st_name = $('#st_name').val();
 
-      log('payment2/save ');
       $.ajax({
         type: "POST",
         url: "<?php echo site_url('payment2/save') ?>",
@@ -231,7 +227,7 @@
       log('update_pay_status start');
       $.ajax({
         type: "POST",
-        url: "<?php echo site_url('payment2/update_pay_status') ?>",
+        url: "<?php echo site_url('payment2/ajax_update_pay_status') ?>",
         dataType: "JSON",
         data: {
           payment_id: payment_id,
@@ -249,7 +245,7 @@
 
       $.ajax({
         type: "POST",
-        url: "<?php echo site_url('payment2/update_pay_status') ?>",
+        url: "<?php echo site_url('payment2/ajax_update_pay_status') ?>",
         dataType: "JSON",
         data: {
           payment_id: payment_id,
@@ -267,7 +263,7 @@
 
       $.ajax({
         type: "POST",
-        url: "<?php echo site_url('payment2/update_receipt_status') ?>",
+        url: "<?php echo site_url('payment2/ajax_update_receipt_status') ?>",
         dataType: "JSON",
         data: {
           payment_id: payment_id
@@ -336,7 +332,7 @@
 
       $.ajax({
         type: "POST",
-        url: "<?php echo site_url('payment2/update_discount') ?>",
+        url: "<?php echo site_url('payment2/ajax_update_discount') ?>",
         dataType: "JSON",
         data: {
           payment_id: payment_id,

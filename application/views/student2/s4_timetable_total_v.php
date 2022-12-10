@@ -93,7 +93,6 @@
                 <?= $this->payment_m->pay_status($entry->id) ?><br>
                 <br>
               </li>
-
           <?php
             }
           }

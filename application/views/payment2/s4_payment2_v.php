@@ -28,7 +28,7 @@
       <div class="row">
         <div class="float-sm-left mr-2">
           <a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add_Month">
-            <span class=""> Add Year </span>
+            <span class=""> Add Month </span>
           </a>
         </div>
         <div class="float-sm-left mr-2">

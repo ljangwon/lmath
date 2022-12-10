@@ -49,7 +49,6 @@ class St_book_m extends CI_Model
     return $result;
   }
 
-
   // update a book
   function update($option)
   {

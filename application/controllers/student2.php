@@ -56,7 +56,7 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s6_student2_modal_v',
+			'student2/s6_timetable_modal_v',
 			array()
 		);
 
@@ -66,7 +66,7 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s7_student2_script_v',
+			'student2/s7_timetable_script_v',
 			array()
 		);
 	}
@@ -158,7 +158,7 @@ class Student2 extends My_Controller
 
 			default:
 				$this->load->view(
-					'student2/s4_timetable1_v',
+					'student2/s4_timetable1_total_v',
 					array(
 						'students' => $students
 					)
@@ -176,7 +176,7 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s6_student2_modal_v',
+			'student2/s6_timetable_modal_v',
 			array()
 		);
 
@@ -186,7 +186,7 @@ class Student2 extends My_Controller
 		);
 
 		$this->load->view(
-			'student2/s7_student2_script_v',
+			'student2/s7_timetable_script_v',
 			array()
 		);
 	}
